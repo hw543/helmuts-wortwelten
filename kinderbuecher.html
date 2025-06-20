@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Helmuts Wortwelten - Geschichten mit Tiefe, Herz und Haltung</title>
+    <title>Kinderbücher - Helmut Wegners Wortwelten</title>
     <style>
         * {
             margin: 0;
@@ -12,9 +12,9 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Georgia', serif;
             line-height: 1.6;
-            color: #333;
+            color: #2c3e50;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
         }
@@ -22,244 +22,369 @@
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 0 20px;
         }
 
-        .header {
+        /* Header */
+        header {
             background: rgba(255, 255, 255, 0.95);
-            padding: 30px;
-            border-radius: 15px;
-            margin-bottom: 30px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-            text-align: center;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #2c3e50;
+            text-decoration: none;
         }
 
         .nav-menu {
-            background: rgba(255, 255, 255, 0.9);
-            padding: 15px;
-            border-radius: 10px;
-            margin-bottom: 30px;
-            text-align: center;
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-item {
+            position: relative;
         }
 
         .nav-link {
-            display: inline-block;
-            background: linear-gradient(135deg, #3498db, #2980b9);
-            color: white;
-            padding: 12px 25px;
+            color: #2c3e50;
             text-decoration: none;
-            border-radius: 25px;
-            font-weight: bold;
-            margin: 10px;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
             transition: all 0.3s ease;
         }
 
         .nav-link:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            background: #f8f9fa;
+            color: #667eea;
         }
 
-        h1 {
-            color: #2c3e50;
-            margin-bottom: 20px;
-            font-size: 3em;
+        .nav-link.active {
+            background: #667eea;
+            color: white;
         }
 
-        .subtitle {
-            color: #7f8c8d;
-            font-size: 1.3em;
-            margin-bottom: 30px;
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            color: white;
+            padding: 4rem 0;
         }
 
-        .profile-section {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 30px;
-            margin-bottom: 30px;
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
 
-        .profile-image {
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            opacity: 0.85;
+            line-height: 1.8;
+        }
+
+        /* Author Photo */
+        .author-photo {
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .author-img {
             width: 150px;
             height: 150px;
             border-radius: 50%;
             object-fit: cover;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-        }
-
-        .profile-text {
-            flex: 1;
-            max-width: 600px;
-            text-align: left;
-        }
-
-        .genres-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-            margin-top: 30px;
-        }
-
-        .genre-card {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 15px;
-            padding: 25px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            border: 4px solid rgba(255, 255, 255, 0.8);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
             transition: transform 0.3s ease;
+        }
+
+        .author-img:hover {
+            transform: scale(1.05);
+        }
+
+        /* Books Grid */
+        .books-section {
+            margin: 4rem 0;
+        }
+
+        .section-title {
             text-align: center;
+            font-size: 2.5rem;
+            color: white;
+            margin-bottom: 3rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
 
-        .genre-card:hover {
-            transform: translateY(-5px);
+        .books-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
         }
 
-        .genre-icon {
-            font-size: 3em;
-            margin-bottom: 15px;
+        .book-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
         }
 
-        .genre-title {
+        .book-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(45deg, #f39c12, #e91e63);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .book-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .book-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+        }
+
+        .book-cover {
+            width: 180px;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin: 0 auto 1.5rem;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .book-cover:hover {
+            transform: scale(1.05);
+        }
+
+        .book-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
             color: #2c3e50;
-            font-size: 1.5em;
-            margin-bottom: 15px;
         }
 
-        .genre-description {
-            color: #7f8c8d;
-            margin-bottom: 20px;
+        .book-subtitle {
+            color: #e91e63;
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+
+        .book-description {
+            color: #6c757d;
+            margin-bottom: 1.5rem;
             line-height: 1.6;
         }
 
-        .genre-button {
-            display: inline-block;
-            background: linear-gradient(135deg, #e74c3c, #c0392b);
+        .book-age {
+            background: #667eea;
             color: white;
-            padding: 12px 25px;
+            padding: 0.5rem 1rem;
+            border-radius: 15px;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            display: inline-block;
+        }
+
+        .book-btn {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 25px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            margin: 0 0.5rem;
+        }
+
+        .book-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .book-btn.secondary {
+            background: linear-gradient(45deg, #28a745, #20c997);
+        }
+
+        .book-btn.amazon {
+            background: linear-gradient(45deg, #ff9500, #ff6b35);
+        }
+
+        /* Back to overview */
+        .back-link {
+            display: inline-block;
+            margin: 2rem 0;
+            padding: 1rem 2rem;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
             text-decoration: none;
             border-radius: 25px;
             font-weight: bold;
             transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
         }
 
-        .genre-button:hover {
+        .back-link:hover {
+            background: rgba(255, 255, 255, 0.3);
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
         }
 
-        .footer {
-            background: rgba(255, 255, 255, 0.9);
-            padding: 20px;
-            border-radius: 10px;
-            margin-top: 50px;
+        /* Footer */
+        footer {
+            background: rgba(44, 62, 80, 0.9);
+            color: white;
             text-align: center;
-            color: #7f8c8d;
+            padding: 2rem 0;
+            margin-top: 4rem;
         }
 
+        /* Mobile Responsiveness */
         @media (max-width: 768px) {
-            .container {
-                padding: 10px;
+            .nav-menu {
+                display: none;
             }
-            
-            h1 {
-                font-size: 2em;
+
+            .hero h1 {
+                font-size: 2.5rem;
             }
-            
-            .profile-section {
-                flex-direction: column;
-                text-align: center;
-            }
-            
-            .profile-text {
-                text-align: center;
-            }
-            
-            .genres-grid {
+
+            .books-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .book-cover {
+                width: 150px;
+                height: 200px;
             }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="nav-menu">
-            <a href="index.html" class="nav-link">Startseite</a>
-            <a href="kinderbuecher-neu.html" class="nav-link">Kinderbücher</a>
-            <a href="chroniken.html" class="nav-link">Chroniken</a>
-            <a href="kontakte.html" class="nav-link">Kontakte</a>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">Helmut Wegners Wortwelten</a>
+                <nav>
+                    <ul class="nav-menu">
+                        <li class="nav-item">
+                            <a href="index.html" class="nav-link">Startseite</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="kinderbuecher.html" class="nav-link active">Kinderbücher</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="chroniken.html" class="nav-link">Chroniken</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="kontakte.html" class="nav-link">Kontakte</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
         </div>
+    </header>
 
-        <div class="header">
-            <div class="profile-section">
-                <img src="helmut.jpg" alt="Helmut Wegner" class="profile-image">
-                <div class="profile-text">
-                    <h1>Helmuts Wortwelten</h1>
-                    <p class="subtitle">Geschichten mit Tiefe, Herz und Haltung</p>
-                    <p>Willkommen in meiner literarischen Welt! Als 82-jähriger Autor schreibe ich Geschichten, die das Herz berühren und den Geist inspirieren. Von spannenden Kinderbüchern bis hin zu fesselnden Thrillern - hier finden Sie Literatur für jeden Geschmack.</p>
+    <section class="hero">
+        <div class="container">
+            <a href="index.html" class="back-link">← Zurück zur Startseite</a>
+            <h1>Kinderbücher</h1>
+            <p class="hero-subtitle">Abenteuer, die bilden – Geschichten, die begeistern</p>
+            <div class="author-photo">
+                <img src="helmut.jpg" alt="Helmut Wegner" class="author-img">
+            </div>
+            <p>Als 82-jähriger Autor mit über 30 Jahren Lehrerfahrung bringe ich eine besondere pädagogische Perspektive in meine Kinderbücher ein. Von liebevollen Kindergeschichten bis hin zu spannenden Abenteuern für junge Leser – hier findest du Geschichten, die nicht nur unterhalten, sondern auch wichtige Lebenslektionen vermitteln.</p>
+        </div>
+    </section>
+
+    <div class="container">
+        <section class="books-section">
+            <h2 class="section-title">Meine Kinderbücher</h2>
+            <div class="books-grid">
+                <div class="book-card">
+                    <img src="verborgener wald.jpg" alt="Der verborgene Wald" class="book-cover">
+                    <h3 class="book-title">Der verborgene Wald</h3>
+                    <p class="book-subtitle">Ein magisches Abenteuer für mutige Entdecker</p>
+                    <p class="book-description">Begleite Maria auf ihrer aufregenden Reise in einen geheimnisvollen Wald voller Wunder und Geheimnisse. Ein Buch über Mut, Freundschaft und die Kraft der Fantasie.</p>
+                    <span class="book-age">Ab 8 Jahren</span><br>
+                    <a href="verborgenerwald-lesen.html" class="book-btn">📖 Lesen</a>
+                    <a href="#" class="book-btn amazon">🛒 Bei Amazon</a>
+                </div>
+
+                <div class="book-card">
+                    <img src="raetseldetektivclub.jpg" alt="Rätseldetektivclub" class="book-cover">
+                    <h3 class="book-title">Rätseldetektivclub</h3>
+                    <p class="book-subtitle">Spannende Fälle für clevere Köpfe</p>
+                    <p class="book-description">Vier Freunde gründen einen Detektivclub und lösen die kniffligsten Rätsel ihrer Stadt. Ein Buch, das logisches Denken fördert und Teamgeist stärkt.</p>
+                    <span class="book-age">Ab 10 Jahren</span><br>
+                    <a href="raetseldetektivclub-lesen.html" class="book-btn">📖 Lesen</a>
+                    <a href="#" class="book-btn amazon">🛒 Bei Amazon</a>
+                </div>
+
+                <div class="book-card">
+                    <img src="zeitnarr.jpg" alt="Der Zeitnarr" class="book-cover">
+                    <h3 class="book-title">Der Zeitnarr</h3>
+                    <p class="book-subtitle">Eine Reise durch vergangene Epochen</p>
+                    <p class="book-description">Ein geheimnisvoller Zeitreisender nimmt junge Leser mit auf eine faszinierende Reise durch die Geschichte. Lehrreich und spannend zugleich.</p>
+                    <span class="book-age">Ab 12 Jahren</span><br>
+                    <a href="zeitnarr-lesen.html" class="book-btn">📖 Lesen</a>
+                    <a href="#" class="book-btn amazon">🛒 Bei Amazon</a>
+                </div>
+
+                <div class="book-card">
+                    <img src="die zauberakademie.png" alt="Die Zauberakademie von Morgenstern" class="book-cover">
+                    <h3 class="book-title">Die Zauberakademie von Morgenstern</h3>
+                    <p class="book-subtitle">Magie, Freundschaft und große Träume</p>
+                    <p class="book-description">Leona erhält eine Einladung zur berühmtesten Zauberakademie des Landes. Eine Geschichte über Selbstvertrauen, wahre Freundschaft und die Magie in uns allen.</p>
+                    <span class="book-age">Ab 9 Jahren</span><br>
+                    <a href="zauberakademie-lesen.html" class="book-btn">📖 Lesen</a>
+                    <a href="#" class="book-btn amazon">🛒 Bei Amazon</a>
                 </div>
             </div>
-        </div>
-
-        <div class="genres-grid">
-            <div class="genre-card">
-                <div class="genre-icon">📚</div>
-                <h3 class="genre-title">Kinderbücher</h3>
-                <p class="genre-description">Abenteuer, die bilden – Geschichten, die begeistern! Pädagogisch wertvolle Erzählungen für junge Leser von 6-14 Jahren.</p>
-                <a href="kinderbuecher-neu.html" class="genre-button">Entdecken</a>
-            </div>
-
-            <div class="genre-card">
-                <div class="genre-icon">🔍</div>
-                <h3 class="genre-title">Krimis</h3>
-                <p class="genre-description">Mysterien der Heide - Spannende Kriminalfälle aus der norddeutschen Landschaft mit Kommissar Steffen Harder.</p>
-                <a href="krimis.html" class="genre-button">Ermitteln</a>
-            </div>
-
-            <div class="genre-card">
-                <div class="genre-icon">⚡</div>
-                <h3 class="genre-title">Thriller</h3>
-                <p class="genre-description">Nervenaufreibende Spannung und unvorhersehbare Wendungen, die Sie bis zur letzten Seite fesseln werden.</p>
-                <a href="thriller.html" class="genre-button">Erleben</a>
-            </div>
-
-            <div class="genre-card">
-                <div class="genre-icon">💕</div>
-                <h3 class="genre-title">Romantik</h3>
-                <p class="genre-description">Gefühlvolle Liebesgeschichten, die das Herz erwärmen und von der Macht wahrer Gefühle erzählen.</p>
-                <a href="romantik.html" class="genre-button">Verlieben</a>
-            </div>
-
-            <div class="genre-card">
-                <div class="genre-icon">🏰</div>
-                <h3 class="genre-title">Fantasy</h3>
-                <p class="genre-description">Magische Welten voller Wunder, Abenteuer und fantastischer Kreaturen erwarten Sie in diesen Geschichten.</p>
-                <a href="fantasy.html" class="genre-button">Träumen</a>
-            </div>
-
-            <div class="genre-card">
-                <div class="genre-icon">📖</div>
-                <h3 class="genre-title">Chroniken</h3>
-                <p class="genre-description">Historische Aufzeichnungen und Heimatgeschichten aus der Altmark - Vergangenheit wird lebendig.</p>
-                <a href="chroniken.html" class="genre-button">Erforschen</a>
-            </div>
-
-            <div class="genre-card">
-                <div class="genre-icon">🌹</div>
-                <h3 class="genre-title">Gedichte</h3>
-                <p class="genre-description">Lyrische Werke zu Liebe, Leben und Heimat - Gefühle in Versen eingefangen.</p>
-                <a href="gedichte.html" class="genre-button">Lauschen</a>
-            </div>
-
-            <div class="genre-card">
-                <div class="genre-icon">🔥</div>
-                <h3 class="genre-title">New Adult</h3>
-                <p class="genre-description">Intensive Geschichten für erwachsene Leser - Leidenschaft, Konflikte und emotionale Tiefe.</p>
-                <a href="newadult.html" class="genre-button">Erleben</a>
-            </div>
-        </div>
-
-        <div class="footer">
-            <p>&copy; 2025 Helmut Wegner - Helmuts Wortwelten. Geschichten mit Tiefe, Herz und Haltung.</p>
-        </div>
+        </section>
     </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Helmut Wegner - Helmut Wegners Wortwelten. Geschichten mit Tiefe, Herz und Haltung.</p>
+        </div>
+    </footer>
 </body>
 </html>
