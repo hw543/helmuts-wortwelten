@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Helmuts Wortwelten - Geschichten mit Tiefe, Herz und Haltung</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .nav-menu {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .nav-link {
+            display: inline-block;
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            margin: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-size: 3em;
+        }
+
+        .subtitle {
+            color: #7f8c8d;
+            font-size: 1.3em;
+            margin-bottom: 30px;
+        }
+
+        .profile-section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .profile-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .profile-text {
+            flex: 1;
+            max-width: 600px;
+            text-align: left;
+        }
+
+        .genres-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .genre-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            text-align: center;
+        }
+
+        .genre-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .genre-icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+        }
+
+        .genre-title {
+            color: #2c3e50;
+            font-size: 1.5em;
+            margin-bottom: 15px;
+        }
+
+        .genre-description {
+            color: #7f8c8d;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .genre-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            color: white;
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .genre-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .footer {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 50px;
+            text-align: center;
+            color: #7f8c8d;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            h1 {
+                font-size: 2em;
+            }
+            
+            .profile-section {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .profile-text {
+                text-align: center;
+            }
+            
+            .genres-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="nav-menu">
+            <a href="index.html" class="nav-link">Startseite</a>
+            <a href="kinderbuecher-neu.html" class="nav-link">Kinderbücher</a>
+            <a href="chroniken.html" class="nav-link">Chroniken</a>
+            <a href="kontakte.html" class="nav-link">Kontakte</a>
+        </div>
+
+        <div class="header">
+            <div class="profile-section">
+                <img src="helmut.jpg" alt="Helmut Wegner" class="profile-image">
+                <div class="profile-text">
+                    <h1>Helmuts Wortwelten</h1>
+                    <p class="subtitle">Geschichten mit Tiefe, Herz und Haltung</p>
+                    <p>Willkommen in meiner literarischen Welt! Als 82-jähriger Autor schreibe ich Geschichten, die das Herz berühren und den Geist inspirieren. Von spannenden Kinderbüchern bis hin zu fesselnden Thrillern - hier finden Sie Literatur für jeden Geschmack.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="genres-grid">
+            <div class="genre-card">
+                <div class="genre-icon">📚</div>
+                <h3 class="genre-title">Kinderbücher</h3>
+                <p class="genre-description">Abenteuer, die bilden – Geschichten, die begeistern! Pädagogisch wertvolle Erzählungen für junge Leser von 6-14 Jahren.</p>
+                <a href="kinderbuecher-neu.html" class="genre-button">Entdecken</a>
+            </div>
+
+            <div class="genre-card">
+                <div class="genre-icon">🔍</div>
+                <h3 class="genre-title">Krimis</h3>
+                <p class="genre-description">Mysterien der Heide - Spannende Kriminalfälle aus der norddeutschen Landschaft mit Kommissar Steffen Harder.</p>
+                <a href="krimis.html" class="genre-button">Ermitteln</a>
+            </div>
+
+            <div class="genre-card">
+                <div class="genre-icon">⚡</div>
+                <h3 class="genre-title">Thriller</h3>
+                <p class="genre-description">Nervenaufreibende Spannung und unvorhersehbare Wendungen, die Sie bis zur letzten Seite fesseln werden.</p>
+                <a href="thriller.html" class="genre-button">Erleben</a>
+            </div>
+
+            <div class="genre-card">
+                <div class="genre-icon">💕</div>
+                <h3 class="genre-title">Romantik</h3>
+                <p class="genre-description">Gefühlvolle Liebesgeschichten, die das Herz erwärmen und von der Macht wahrer Gefühle erzählen.</p>
+                <a href="romantik.html" class="genre-button">Verlieben</a>
+            </div>
+
+            <div class="genre-card">
+                <div class="genre-icon">🏰</div>
+                <h3 class="genre-title">Fantasy</h3>
+                <p class="genre-description">Magische Welten voller Wunder, Abenteuer und fantastischer Kreaturen erwarten Sie in diesen Geschichten.</p>
+                <a href="fantasy.html" class="genre-button">Träumen</a>
+            </div>
+
+            <div class="genre-card">
+                <div class="genre-icon">📖</div>
+                <h3 class="genre-title">Chroniken</h3>
+                <p class="genre-description">Historische Aufzeichnungen und Heimatgeschichten aus der Altmark - Vergangenheit wird lebendig.</p>
+                <a href="chroniken.html" class="genre-button">Erforschen</a>
+            </div>
+
+            <div class="genre-card">
+                <div class="genre-icon">🌹</div>
+                <h3 class="genre-title">Gedichte</h3>
+                <p class="genre-description">Lyrische Werke zu Liebe, Leben und Heimat - Gefühle in Versen eingefangen.</p>
+                <a href="gedichte.html" class="genre-button">Lauschen</a>
+            </div>
+
+            <div class="genre-card">
+                <div class="genre-icon">🔥</div>
+                <h3 class="genre-title">New Adult</h3>
+                <p class="genre-description">Intensive Geschichten für erwachsene Leser - Leidenschaft, Konflikte und emotionale Tiefe.</p>
+                <a href="newadult.html" class="genre-button">Erleben</a>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>&copy; 2025 Helmut Wegner - Helmuts Wortwelten. Geschichten mit Tiefe, Herz und Haltung.</p>
+        </div>
+    </div>
+</body>
+</html>
