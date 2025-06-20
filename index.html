@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Helmuts Wortwelten - Geschichten mit Tiefe, Herz und Haltung</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            padding: 1rem 0;
+            margin-bottom: 2rem;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #2c3e50;
+            text-decoration: none;
+        }
+
+        /* Navigation */
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav a {
+            color: #2c3e50;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+
+        nav a:hover {
+            color: white;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            color: white;
+            padding: 4rem 0;
+        }
+
+        .author-photo {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            margin: 0 auto 2rem;
+            border: 5px solid white;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            object-fit: cover;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero .subtitle {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            opacity: 0.95;
+            font-style: italic;
+        }
+
+        .hero .description {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            opacity: 0.9;
+            line-height: 1.8;
+        }
+
+        /* About Section */
+        .about-section {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            margin: 3rem 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .about-section h2 {
+            color: #2c3e50;
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-section p {
+            font-size: 1.1rem;
+            color: #6c757d;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .highlight {
+            color: #e91e63;
+            font-weight: bold;
+        }
+
+        /* Genres Grid */
+        .genres-section {
+            margin: 4rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.8rem;
+            color: white;
+            margin-bottom: 3rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .genres-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .genre-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem;
+            text-align: center;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .genre-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(45deg, #f39c12, #e91e63);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .genre-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .genre-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+        }
+
+        .genre-icon {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .genre-title {
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            color: #2c3e50;
+        }
+
+        .genre-description {
+            color: #6c757d;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .book-count {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            display: inline-block;
+        }
+
+        /* Stats Section */
+        .stats-section {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 3rem;
+            margin: 3rem 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .stat-item {
+            padding: 1.5rem;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #e91e63;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            color: #6c757d;
+            margin-top: 0.5rem;
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(44, 62, 80, 0.9);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 4rem;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 1rem;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero .subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .genres-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .author-photo {
+                width: 150px;
+                height: 150px;
+            }
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container">
+        <div class="header-content">
+            <a href="index.html" class="logo">Helmuts Wortwelten</a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Startseite</a></li>
+                    <li><a href="kinderbuecher.html">Kinderbücher</a></li>
+                    <li><a href="chroniken.html">Chroniken</a></li>
+                    <li><a href="kontakte.html">Kontakte</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+<section class="hero">
+    <div class="container">
+        <img src="helmut.jpg" alt="Helmut Wegner" class="author-photo fade-in">
+        <h1 class="fade-in">Helmuts Wortwelten</h1>
+        <p class="subtitle fade-in">Geschichten mit Tiefe, Herz und Haltung</p>
+        <p class="description fade-in">
+            Willkommen in meiner literarischen Welt! Als 82-jähriger Autor mit über 30 Jahren Lehrerfahrung 
+            bringe ich eine besondere pädagogische Perspektive in meine Werke ein. 
+            Von liebevollen Kinderbüchern bis hin zu tiefgründigen Chroniken und spannenden Thrillern – 
+            hier findest du Geschichten, die berühren, bilden und begeistern.
+        </p>
+    </div>
+</section>
+
+<div class="container">
+
+    <section class="about-section fade-in">
+        <h2>Mein Lebenswerk</h2>
+        <p>
+            <span class="highlight">Mit über 70 Jahren entdeckte ich das Schreiben für mich</span> – 
+            und heute, mit 82, schreibe ich mit mehr Leidenschaft denn je! Als ehemaliger Lehrmeister 
+            verstehe ich es, komplexe Themen verständlich und spannend zu vermitteln.
+        </p>
+        <p>
+            Jedes meiner Bücher ist sorgfältig konzipiert, um nicht nur zu unterhalten, sondern auch 
+            wichtige Lebenslektionen zu vermitteln. <span class="highlight">Es ist nie zu spät, 
+            etwas Neues zu beginnen</span> – das ist die Botschaft, die ich mit meinen Geschichten teile.
+        </p>
+    </section>
+
+    <section class="genres-section">
+        <h2 class="section-title fade-in">Meine Buchgenres</h2>
+        <div class="genres-grid">
+
+            <a href="kinderbuecher.html" class="genre-card fade-in">
+                <span class="genre-icon">🌈</span>
+                <h3 class="genre-title">Kinderbücher</h3>
+                <p class="genre-description">
+                    Abenteuer, die bilden – Geschichten, die begeistern. 
+                    Pädagogisch wertvolle Erzählungen für junge Leser von 6-14 Jahren.
+                </p>
+                <span class="book-count">5 Bücher verfügbar</span>
+            </a>
+
+            <a href="chroniken.html" class="genre-card fade-in">
+                <span class="genre-icon">📜</span>
+                <h3 class="genre-title">Chroniken & Geschichte</h3>
+                <p class="genre-description">
+                    Authentische Berichte und historische Aufarbeitungen, 
+                    die Vergangenheit lebendig werden lassen.
+                </p>
+                <span class="book-count">Bald verfügbar</span>
+            </a>
+
+            <a href="thriller.html" class="genre-card fade-in">
+                <span class="genre-icon">🎭</span>
+                <h3 class="genre-title">Thriller & Spannung</h3>
+                <p class="genre-description">
+                    Fesselnde Geschichten voller Wendungen, 
+                    die den Leser bis zur letzten Seite bannen.
+                </p>
+                <span class="book-count">Bald verfügbar</span>
+            </a>
+
+            <a href="fiktion.html" class="genre-card fade-in">
+                <span class="genre-icon">💫</span>
+                <h3 class="genre-title">Fiktion & Fantasy</h3>
+                <p class="genre-description">
+                    Fantastische Welten und emotionale Geschichten, 
+                    die die Grenzen der Realität überschreiten.
+                </p>
+                <span class="book-count">Bald verfügbar</span>
+            </a>
+
+            <a href="politik.html" class="genre-card fade-in">
+                <span class="genre-icon">🏛️</span>
+                <h3 class="genre-title">Politik & Gesellschaft</h3>
+                <p class="genre-description">
+                    Kritische Analysen und durchdachte Betrachtungen 
+                    zu aktuellen gesellschaftlichen Themen.
+                </p>
+                <span class="book-count">Bald verfügbar</span>
+            </a>
+
+            <a href="biografien.html" class="genre-card fade-in">
+                <span class="genre-icon">👤</span>
+                <h3 class="genre-title">Biografien & Memoiren</h3>
+                <p class="genre-description">
+                    Persönliche Geschichten und Lebenserfahrungen, 
+                    die inspirieren und zum Nachdenken anregen.
+                </p>
+                <span class="book-count">Bald verfügbar</span>
+            </a>
+
+        </div>
+    </section>
+
+    <section class="stats-section fade-in">
+        <div class="stats-grid">
+            <div class="stat-item">
+                <span class="stat-number">82</span>
+                <span class="stat-label">Jahre jung</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">30+</span>
+                <span class="stat-label">Jahre Lehrerfahrung</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">10+</span>
+                <span class="stat-label">Jahre Schreiberfahrung</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">6</span>
+                <span class="stat-label">Buchgenres</span>
+            </div>
+        </div>
+    </section>
+
+</div>
+
+<footer>
+    <div class="container">
+        <p>&copy; 2025 Helmut Wegner - Helmuts Wortwelten. Geschichten mit Tiefe, Herz und Haltung.</p>
+    </div>
+</footer>
+
+<script>
+// Intersection Observer for animations
+const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+};
+
+const observer = new IntersectionObserver(function(entries) {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+        }
+    });
+}, observerOptions);
+
+document.querySelectorAll('.fade-in').forEach(el => {
+    observer.observe(el);
+});
+
+// Auto-show first elements
+setTimeout(() => {
+    document.querySelectorAll('.fade-in').forEach((el, index) => {
+        if (index < 3) {
+            el.classList.add('visible');
+        }
+    });
+}, 300);
+</script>
+
+</body>
+</html>
