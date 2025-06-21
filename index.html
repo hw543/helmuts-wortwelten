@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Helmuts Wortwelten - Geschichten mit Tiefe, Herz und Haltung</title>
+    <title>Helmut Wegners Wortwelten - Geschichten mit Tiefe, Herz und Haltung</title>
     <style>
         * {
             margin: 0;
@@ -31,46 +31,81 @@
             backdrop-filter: blur(10px);
             box-shadow: 0 4px 20px rgba(0,0,0,0.1);
             padding: 1rem 0;
-            margin-bottom: 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
 
         .header-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            flex-wrap: wrap;
         }
 
         .logo {
-            font-size: 2rem;
+            font-size: 1.8rem;
             font-weight: bold;
             color: #2c3e50;
             text-decoration: none;
         }
 
-        /* Navigation */
-        nav ul {
-            list-style: none;
+        .nav-menu {
             display: flex;
             gap: 2rem;
-            margin: 0;
-            padding: 0;
+            list-style: none;
         }
 
-        nav a {
+        .nav-item {
+            position: relative;
+        }
+
+        .nav-link {
             color: #2c3e50;
             text-decoration: none;
             font-weight: 500;
-            font-size: 1.1rem;
             padding: 0.5rem 1rem;
-            border-radius: 25px;
+            border-radius: 5px;
             transition: all 0.3s ease;
         }
 
-        nav a:hover {
-            color: white;
-            background: linear-gradient(45deg, #667eea, #764ba2);
-            transform: translateY(-2px);
+        .nav-link:hover {
+            background: #f8f9fa;
+            color: #667eea;
+        }
+
+        /* Dropdown */
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background: white;
+            min-width: 200px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            z-index: 1;
+            border-radius: 5px;
+            top: 100%;
+            left: 0;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown-content a {
+            color: #2c3e50;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .dropdown-content a:hover {
+            background: #f1f1f1;
+            color: #667eea;
         }
 
         /* Hero Section */
@@ -80,39 +115,48 @@
             padding: 4rem 0;
         }
 
-        .author-photo {
-            width: 180px;
-            height: 180px;
-            border-radius: 50%;
-            margin: 0 auto 2rem;
-            border: 5px solid white;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-            object-fit: cover;
-        }
-
         .hero h1 {
             font-size: 3.5rem;
             margin-bottom: 1rem;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
 
-        .hero .subtitle {
-            font-size: 1.4rem;
-            margin-bottom: 1rem;
-            opacity: 0.95;
-            font-style: italic;
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
         }
 
-        .hero .description {
+        .hero p {
             font-size: 1.2rem;
             max-width: 800px;
-            margin: 0 auto 3rem;
-            opacity: 0.9;
+            margin: 0 auto 2rem;
+            opacity: 0.85;
             line-height: 1.8;
         }
 
-        /* About Section */
-        .about-section {
+        /* Author Photo */
+        .author-photo {
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .author-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid rgba(255, 255, 255, 0.8);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .author-img:hover {
+            transform: scale(1.05);
+        }
+
+        /* Author Message */
+        .author-message {
             background: white;
             border-radius: 20px;
             padding: 3rem;
@@ -121,13 +165,13 @@
             text-align: center;
         }
 
-        .about-section h2 {
+        .author-message h2 {
             color: #2c3e50;
-            font-size: 2.2rem;
+            font-size: 2rem;
             margin-bottom: 1.5rem;
         }
 
-        .about-section p {
+        .author-message p {
             font-size: 1.1rem;
             color: #6c757d;
             line-height: 1.8;
@@ -139,14 +183,14 @@
             font-weight: bold;
         }
 
-        /* Genres Grid */
+        /* Genre Grid */
         .genres-section {
             margin: 4rem 0;
         }
 
         .section-title {
             text-align: center;
-            font-size: 2.8rem;
+            font-size: 2.5rem;
             color: white;
             margin-bottom: 3rem;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
@@ -154,22 +198,19 @@
 
         .genres-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2.5rem;
-            margin-top: 3rem;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
         }
 
         .genre-card {
             background: white;
             border-radius: 20px;
-            padding: 2.5rem;
+            padding: 2rem;
             text-align: center;
             box-shadow: 0 15px 35px rgba(0,0,0,0.1);
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
-            text-decoration: none;
-            color: inherit;
         }
 
         .genre-card::before {
@@ -195,40 +236,82 @@
 
         .genre-icon {
             font-size: 4rem;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
             display: block;
         }
 
         .genre-title {
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             font-weight: bold;
-            margin-bottom: 1rem;
+            margin-bottom: 0.5rem;
             color: #2c3e50;
+        }
+
+        .genre-subtitle {
+            color: #e91e63;
+            font-style: italic;
+            margin-bottom: 1rem;
         }
 
         .genre-description {
             color: #6c757d;
-            line-height: 1.6;
             margin-bottom: 1.5rem;
+            line-height: 1.6;
         }
 
         .book-count {
-            background: linear-gradient(45deg, #667eea, #764ba2);
+            background: #667eea;
             color: white;
             padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-size: 0.9rem;
+            border-radius: 15px;
             font-weight: bold;
+            margin-bottom: 1rem;
             display: inline-block;
         }
 
-        /* Stats Section */
+        .available {
+            background: #28a745;
+        }
+
+        .coming-soon {
+            background: #6c757d;
+        }
+
+        .genre-btn {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 25px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .genre-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .genre-btn.disabled {
+            background: #6c757d;
+            cursor: not-allowed;
+        }
+
+        .genre-btn.disabled:hover {
+            transform: none;
+            box-shadow: none;
+        }
+
+        /* Statistics */
         .stats-section {
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(255, 255, 255, 0.1);
+            padding: 3rem 0;
+            margin: 4rem 0;
             border-radius: 20px;
-            padding: 3rem;
-            margin: 3rem 0;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
         }
 
         .stats-grid {
@@ -239,20 +322,19 @@
         }
 
         .stat-item {
-            padding: 1.5rem;
+            color: white;
         }
 
         .stat-number {
             font-size: 3rem;
             font-weight: bold;
-            color: #e91e63;
+            color: #f39c12;
             display: block;
         }
 
         .stat-label {
             font-size: 1.1rem;
-            color: #6c757d;
-            margin-top: 0.5rem;
+            opacity: 0.9;
         }
 
         /* Footer */
@@ -266,220 +348,183 @@
 
         /* Mobile Responsiveness */
         @media (max-width: 768px) {
-            .header-content {
-                flex-direction: column;
-                gap: 1rem;
+            .nav-menu {
+                display: none;
             }
-            
-            nav ul {
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 1rem;
-            }
-            
+
             .hero h1 {
                 font-size: 2.5rem;
             }
-            
-            .hero .subtitle {
-                font-size: 1.2rem;
-            }
-            
+
             .genres-grid {
                 grid-template-columns: 1fr;
             }
-            
-            .author-photo {
-                width: 150px;
-                height: 150px;
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
-        }
-
-        /* Animations */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease;
-        }
-
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
         }
     </style>
 </head>
 <body>
-
-<header>
-    <div class="container">
-        <div class="header-content">
-            <a href="index.html" class="logo">Helmuts Wortwelten</a>
-            <nav>
-                <ul>
-                    <li><a href="index.html">Startseite</a></li>
-                    <li><a href="kinderbuecher.html">Kinderbücher</a></li>
-                    <li><a href="chroniken.html">Chroniken</a></li>
-                    <li><a href="kontakte.html">Kontakte</a></li>
-                </ul>
-            </nav>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">Helmut Wegners Wortwelten</a>
+                <nav>
+                    <ul class="nav-menu">
+                        <li class="nav-item">
+                            <a href="kinderbuecher.html" class="nav-link">Kinderbücher</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a href="#" class="nav-link">Fiction & Fantasy ▼</a>
+                            <div class="dropdown-content">
+                                <a href="romantik-fiktion.html">Romantik Fiktion</a>
+                                <a href="new-adult.html">New Adult</a>
+                                <a href="high-fantasy.html">High Fantasy</a>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a href="krimis.html" class="nav-link">Krimis</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="thriller.html" class="nav-link">Thriller</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">Chroniken & Geschichte</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">Kontakt</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
         </div>
-    </div>
-</header>
+    </header>
 
-<section class="hero">
-    <div class="container">
-        <img src="helmut.jpg" alt="Helmut Wegner" class="author-photo fade-in">
-        <h1 class="fade-in">Helmuts Wortwelten</h1>
-        <p class="subtitle fade-in">Geschichten mit Tiefe, Herz und Haltung</p>
-        <p class="description fade-in">
-            Willkommen in meiner literarischen Welt! Als 82-jähriger Autor mit über 30 Jahren Lehrerfahrung 
-            bringe ich eine besondere pädagogische Perspektive in meine Werke ein. 
-            Von liebevollen Kinderbüchern bis hin zu tiefgründigen Chroniken und spannenden Thrillern – 
-            hier findest du Geschichten, die berühren, bilden und begeistern.
-        </p>
-    </div>
-</section>
-
-<div class="container">
-
-    <section class="about-section fade-in">
-        <h2>Mein Lebenswerk</h2>
-        <p>
-            <span class="highlight">Mit über 70 Jahren entdeckte ich das Schreiben für mich</span> – 
-            und heute, mit 82, schreibe ich mit mehr Leidenschaft denn je! Als ehemaliger Lehrmeister 
-            verstehe ich es, komplexe Themen verständlich und spannend zu vermitteln.
-        </p>
-        <p>
-            Jedes meiner Bücher ist sorgfältig konzipiert, um nicht nur zu unterhalten, sondern auch 
-            wichtige Lebenslektionen zu vermitteln. <span class="highlight">Es ist nie zu spät, 
-            etwas Neues zu beginnen</span> – das ist die Botschaft, die ich mit meinen Geschichten teile.
-        </p>
-    </section>
-
-    <section class="genres-section">
-        <h2 class="section-title fade-in">Meine Buchgenres</h2>
-        <div class="genres-grid">
-
-            <a href="kinderbuecher.html" class="genre-card fade-in">
-                <span class="genre-icon">🌈</span>
-                <h3 class="genre-title">Kinderbücher</h3>
-                <p class="genre-description">
-                    Abenteuer, die bilden – Geschichten, die begeistern. 
-                    Pädagogisch wertvolle Erzählungen für junge Leser von 6-14 Jahren.
-                </p>
-                <span class="book-count">5 Bücher verfügbar</span>
-            </a>
-
-            <a href="chroniken.html" class="genre-card fade-in">
-                <span class="genre-icon">📜</span>
-                <h3 class="genre-title">Chroniken & Geschichte</h3>
-                <p class="genre-description">
-                    Authentische Berichte und historische Aufarbeitungen, 
-                    die Vergangenheit lebendig werden lassen.
-                </p>
-                <span class="book-count">Bald verfügbar</span>
-            </a>
-
-            <a href="thriller.html" class="genre-card fade-in">
-                <span class="genre-icon">🎭</span>
-                <h3 class="genre-title">Thriller & Spannung</h3>
-                <p class="genre-description">
-                    Fesselnde Geschichten voller Wendungen, 
-                    die den Leser bis zur letzten Seite bannen.
-                </p>
-                <span class="book-count">Bald verfügbar</span>
-            </a>
-
-            <a href="fiktion.html" class="genre-card fade-in">
-                <span class="genre-icon">💫</span>
-                <h3 class="genre-title">Fiktion & Fantasy</h3>
-                <p class="genre-description">
-                    Fantastische Welten und emotionale Geschichten, 
-                    die die Grenzen der Realität überschreiten.
-                </p>
-                <span class="book-count">Bald verfügbar</span>
-            </a>
-
-            <a href="politik.html" class="genre-card fade-in">
-                <span class="genre-icon">🏛️</span>
-                <h3 class="genre-title">Politik & Gesellschaft</h3>
-                <p class="genre-description">
-                    Kritische Analysen und durchdachte Betrachtungen 
-                    zu aktuellen gesellschaftlichen Themen.
-                </p>
-                <span class="book-count">Bald verfügbar</span>
-            </a>
-
-            <a href="biografien.html" class="genre-card fade-in">
-                <span class="genre-icon">👤</span>
-                <h3 class="genre-title">Biografien & Memoiren</h3>
-                <p class="genre-description">
-                    Persönliche Geschichten und Lebenserfahrungen, 
-                    die inspirieren und zum Nachdenken anregen.
-                </p>
-                <span class="book-count">Bald verfügbar</span>
-            </a>
-
+    <section class="hero">
+        <div class="container">
+            <h1>Helmut Wegners Wortwelten</h1>
+            <p class="hero-subtitle">Geschichten mit Tiefe, Herz und Haltung</p>
+            <div class="author-photo">
+                <img src="helmut.jpg" alt="Helmut Wegner" class="author-img">
+            </div>
+            <p>Willkommen in meiner literarischen Welt! Als 82-jähriger Autor mit über 30 Jahren Lehrerfahrung bringe ich eine besondere pädagogische Perspektive in meine Werke ein. Von liebevollen Kinderbüchern bis hin zu tiefgründigen Chroniken und spannenden Thrillern -- hier findest du Geschichten, die berühren, bilden und begeistern.</p>
         </div>
     </section>
 
-    <section class="stats-section fade-in">
-        <div class="stats-grid">
-            <div class="stat-item">
-                <span class="stat-number">82</span>
-                <span class="stat-label">Jahre jung</span>
-            </div>
-            <div class="stat-item">
-                <span class="stat-number">30+</span>
-                <span class="stat-label">Jahre Lehrerfahrung</span>
-            </div>
-            <div class="stat-item">
-                <span class="stat-number">10+</span>
-                <span class="stat-label">Jahre Schreiberfahrung</span>
-            </div>
-            <div class="stat-item">
-                <span class="stat-number">6</span>
-                <span class="stat-label">Buchgenres</span>
-            </div>
-        </div>
-    </section>
-
-</div>
-
-<footer>
     <div class="container">
-        <p>&copy; 2025 Helmut Wegner - Helmuts Wortwelten. Geschichten mit Tiefe, Herz und Haltung.</p>
+        <section class="author-message">
+            <h2>Mein Lebenswerk</h2>
+            <p><span class="highlight">Mit über 70 Jahren entdeckte ich das Schreiben für mich</span> -- und heute, mit 82, schreibe ich mit mehr Leidenschaft denn je! Als ehemaliger Lehrmeister verstehe ich es, komplexe Themen verständlich und spannend zu vermitteln.</p>
+            <p>Jedes meiner Bücher ist sorgfältig konzipiert, um nicht nur zu unterhalten, sondern auch wichtige Lebenslektionen zu vermitteln. <span class="highlight">Es ist nie zu spät, etwas Neues zu beginnen</span> -- das ist die Botschaft, die ich mit meinen Geschichten teile.</p>
+        </section>
+
+        <section class="genres-section">
+            <h2 class="section-title">Meine Buchgenres</h2>
+            <div class="genres-grid">
+                <div class="genre-card">
+                    <span class="genre-icon">📚</span>
+                    <h3 class="genre-title">Kinderbücher</h3>
+                    <p class="genre-subtitle">Abenteuer, die bilden -- Geschichten, die begeistern</p>
+                    <p class="genre-description">Pädagogisch wertvolle Erzählungen für junge Leser von 6-14 Jahren.</p>
+                    <span class="book-count available">5 Bücher verfügbar</span>
+                    <a href="kinderbuecher.html" class="genre-btn">Bücher entdecken</a>
+                </div>
+
+                <div class="genre-card">
+                    <span class="genre-icon">💕</span>
+                    <h3 class="genre-title">Romantik Fiktion</h3>
+                    <p class="genre-subtitle">Verlangen der Herzen -- Adelaide Hills Serie</p>
+                    <p class="genre-description">Emotionale Geschichten über Liebe, Leidenschaft und menschliche Verbindungen.</p>
+                    <span class="book-count available">7 Bücher verfügbar</span>
+                    <a href="romantik-fiktion.html" class="genre-btn">Serie erkunden</a>
+                </div>
+
+                <div class="genre-card">
+                    <span class="genre-icon">💫</span>
+                    <h3 class="genre-title">New Adult</h3>
+                    <p class="genre-subtitle">Zwischen Herz und Verstand -- Eine romantische Serie</p>
+                    <p class="genre-description">Geschichten über das Erwachsenwerden, erste große Liebe und die Suche nach dem eigenen Weg.</p>
+                    <span class="book-count available">3 Bücher verfügbar</span>
+                    <a href="new-adult.html" class="genre-btn">Serie erkunden</a>
+                </div>
+
+                <div class="genre-card">
+                    <span class="genre-icon">⚔️</span>
+                    <h3 class="genre-title">High Fantasy</h3>
+                    <p class="genre-subtitle">Eldorias Vermächtnis -- Epische Saga</p>
+                    <p class="genre-description">Fantastische Welten und heldenhafte Abenteuer in einer magischen Dimension.</p>
+                    <span class="book-count available">6 Bücher verfügbar</span>
+                    <a href="high-fantasy.html" class="genre-btn">Fantasie erleben</a>
+                </div>
+
+                <div class="genre-card">
+                    <span class="genre-icon">🔍</span>
+                    <h3 class="genre-title">Krimis</h3>
+                    <p class="genre-subtitle">Mysterien der Heide -- Fesselnde Ermittlungsgeschichten</p>
+                    <p class="genre-description">Spannungsgeladene Krimis aus der Lüneburger Heide und anderen düsteren Schauplätzen.</p>
+                    <span class="book-count available">3 Bücher verfügbar</span>
+                    <a href="krimis.html" class="genre-btn">Krimis entdecken</a>
+                </div>
+
+                <div class="genre-card">
+                    <span class="genre-icon">🔥</span>
+                    <h3 class="genre-title">Thriller</h3>
+                    <p class="genre-subtitle">Flammen des Verrats -- Intensive Charakterstudien</p>
+                    <p class="genre-description">Psychologisch tiefgreifende Thriller über menschliche Abgründe und Obsessionen.</p>
+                    <span class="book-count available">1 Buch verfügbar</span>
+                    <a href="thriller.html" class="genre-btn">Thriller erleben</a>
+                </div>
+
+                <div class="genre-card">
+                    <span class="genre-icon">📜</span>
+                    <h3 class="genre-title">Chroniken & Geschichte</h3>
+                    <p class="genre-subtitle">Authentische Berichte und historische Aufarbeitungen</p>
+                    <p class="genre-description">Vergangenheit lebendig werden lassen.</p>
+                    <span class="book-count coming-soon">Bald verfügbar</span>
+                    <a href="#" class="genre-btn disabled">Bald verfügbar</a>
+                </div>
+
+                <div class="genre-card">
+                    <span class="genre-icon">📖</span>
+                    <h3 class="genre-title">Biografien & Memoiren</h3>
+                    <p class="genre-subtitle">Persönliche Geschichten und Lebenserfahrungen</p>
+                    <p class="genre-description">Die inspirieren und zum Nachdenken anregen.</p>
+                    <span class="book-count coming-soon">Bald verfügbar</span>
+                    <a href="#" class="genre-btn disabled">Bald verfügbar</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="stats-section">
+            <div class="container">
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <span class="stat-number">82</span>
+                        <span class="stat-label">Jahre jung</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">30+</span>
+                        <span class="stat-label">Jahre Lehrerfahrung</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">10+</span>
+                        <span class="stat-label">Jahre Schreiberfahrung</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">20+</span>
+                        <span class="stat-label">Bücher veröffentlicht</span>
+                    </div>
+                </div>
+            </div>
+        </section>
     </div>
-</footer>
 
-<script>
-// Intersection Observer for animations
-const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-};
-
-const observer = new IntersectionObserver(function(entries) {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-        }
-    });
-}, observerOptions);
-
-document.querySelectorAll('.fade-in').forEach(el => {
-    observer.observe(el);
-});
-
-// Auto-show first elements
-setTimeout(() => {
-    document.querySelectorAll('.fade-in').forEach((el, index) => {
-        if (index < 3) {
-            el.classList.add('visible');
-        }
-    });
-}, 300);
-</script>
-
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Helmut Wegner - Helmut Wegners Wortwelten. Geschichten mit Tiefe, Herz und Haltung.</p>
+        </div>
+    </footer>
 </body>
 </html>
