@@ -13,378 +13,366 @@
 
         body {
             font-family: 'Georgia', serif;
-            line-height: 1.6;
-            color: #2c3e50;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
+            line-height: 1.6;
         }
 
-        .container {
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Header */
-        header {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-            padding: 1rem 0;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        .header-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding: 0 2rem;
         }
 
         .logo {
             font-size: 1.8rem;
             font-weight: bold;
-            color: #2c3e50;
-            text-decoration: none;
+            color: #333;
         }
 
         .nav-menu {
             display: flex;
-            gap: 2rem;
             list-style: none;
+            gap: 2rem;
         }
 
-        .nav-item {
-            position: relative;
-        }
-
-        .nav-link {
-            color: #2c3e50;
+        .nav-menu a {
             text-decoration: none;
+            color: #333;
             font-weight: 500;
-            padding: 0.5rem 1rem;
-            border-radius: 5px;
-            transition: all 0.3s ease;
+            transition: color 0.3s ease;
         }
 
-        .nav-link:hover {
-            background: #f8f9fa;
+        .nav-menu a:hover, .nav-menu a.active {
             color: #667eea;
         }
 
-        .nav-link.active {
-            background: #667eea;
+        .back-button {
+            display: inline-block;
+            margin: 2rem auto;
+            padding: 0.8rem 2rem;
+            background: rgba(255, 255, 255, 0.2);
             color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            text-align: center;
         }
 
-        /* Hero Section */
-        .hero {
+        .back-button:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
             text-align: center;
+        }
+
+        .hero {
             color: white;
-            padding: 4rem 0;
+            margin-bottom: 3rem;
         }
 
         .hero h1 {
-            font-size: 3.5rem;
+            font-size: 3rem;
             margin-bottom: 1rem;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
 
-        .hero-subtitle {
-            font-size: 1.5rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
-        }
-
         .hero p {
             font-size: 1.2rem;
-            max-width: 800px;
-            margin: 0 auto 2rem;
-            opacity: 0.85;
-            line-height: 1.8;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
         }
 
-        /* Author Photo */
-        .author-photo {
-            margin: 2rem 0;
-            text-align: center;
-        }
-
-        .author-img {
-            width: 150px;
-            height: 150px;
+        .author-circle {
+            width: 120px;
+            height: 120px;
             border-radius: 50%;
-            object-fit: cover;
-            border: 4px solid rgba(255, 255, 255, 0.8);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
-            transition: transform 0.3s ease;
+            margin: 2rem auto;
+            background: url('helmut.jpg') center/cover;
+            border: 4px solid rgba(255, 255, 255, 0.3);
         }
 
-        .author-img:hover {
-            transform: scale(1.05);
+        .intro-text {
+            color: white;
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 2rem auto;
+            opacity: 0.95;
         }
 
-        /* Books Grid */
         .books-section {
-            margin: 4rem 0;
+            margin-top: 3rem;
         }
 
         .section-title {
-            text-align: center;
-            font-size: 2.5rem;
             color: white;
+            font-size: 2.5rem;
             margin-bottom: 3rem;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
 
         .books-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
-            max-width: 1000px;
-            margin: 0 auto;
+            margin-top: 2rem;
         }
 
         .book-card {
-            background: white;
+            background: rgba(255, 255, 255, 0.95);
             border-radius: 20px;
             padding: 2rem;
-            text-align: center;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .book-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 5px;
-            background: linear-gradient(45deg, #f39c12, #e91e63);
-            transform: scaleX(0);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
             transition: transform 0.3s ease;
-        }
-
-        .book-card:hover::before {
-            transform: scaleX(1);
         }
 
         .book-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
         }
 
         .book-cover {
-            width: 180px;
-            height: 250px;
-            object-fit: cover;
-            border-radius: 10px;
+            width: 200px;
+            height: 300px;
             margin: 0 auto 1.5rem;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-            transition: transform 0.3s ease;
+            border-radius: 10px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+            overflow: hidden;
         }
 
-        .book-cover:hover {
-            transform: scale(1.05);
+        .book-cover img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         .book-title {
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             font-weight: bold;
+            color: #333;
             margin-bottom: 0.5rem;
-            color: #2c3e50;
         }
 
         .book-subtitle {
-            color: #e91e63;
+            color: #e74c3c;
             font-style: italic;
             margin-bottom: 1rem;
+            font-size: 0.95rem;
         }
 
         .book-description {
-            color: #6c757d;
+            color: #666;
             margin-bottom: 1.5rem;
-            line-height: 1.6;
+            font-size: 0.95rem;
+            text-align: left;
         }
 
-        .book-age {
+        .age-tag {
+            display: inline-block;
             background: #667eea;
             color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 15px;
-            font-weight: bold;
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
             margin-bottom: 1rem;
-            display: inline-block;
         }
 
-        .book-btn {
-            background: linear-gradient(45deg, #667eea, #764ba2);
-            color: white;
-            padding: 12px 24px;
+        .button-group {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 0.8rem 1.5rem;
             border: none;
             border-radius: 25px;
+            text-decoration: none;
             font-weight: bold;
+            transition: all 0.3s ease;
             cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-block;
-            margin: 0 0.5rem;
+            font-size: 0.9rem;
         }
 
-        .book-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
-        }
-
-        .book-btn.secondary {
-            background: linear-gradient(45deg, #28a745, #20c997);
-        }
-
-        .book-btn.amazon {
-            background: linear-gradient(45deg, #ff9500, #ff6b35);
-        }
-
-        /* Back to overview */
-        .back-link {
-            display: inline-block;
-            margin: 2rem 0;
-            padding: 1rem 2rem;
-            background: rgba(255, 255, 255, 0.2);
+        .btn-read {
+            background: #667eea;
             color: white;
-            text-decoration: none;
-            border-radius: 25px;
-            font-weight: bold;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
         }
 
-        .back-link:hover {
-            background: rgba(255, 255, 255, 0.3);
+        .btn-read:hover {
+            background: #5a67d8;
             transform: translateY(-2px);
         }
 
-        /* Footer */
-        footer {
-            background: rgba(44, 62, 80, 0.9);
+        .btn-amazon {
+            background: #ff9500;
+            color: white;
+        }
+
+        .btn-amazon:hover {
+            background: #e88500;
+            transform: translateY(-2px);
+        }
+
+        .btn-unavailable {
+            background: #ccc;
+            color: #666;
+            cursor: not-allowed;
+        }
+
+        .footer {
+            background: rgba(0, 0, 0, 0.8);
             color: white;
             text-align: center;
             padding: 2rem 0;
             margin-top: 4rem;
         }
 
-        /* Mobile Responsiveness */
         @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
             .nav-menu {
-                display: none;
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
             }
 
             .hero h1 {
-                font-size: 2.5rem;
+                font-size: 2rem;
             }
 
             .books-grid {
                 grid-template-columns: 1fr;
             }
 
-            .book-cover {
-                width: 150px;
-                height: 200px;
+            .button-group {
+                flex-direction: column;
             }
         }
     </style>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <div class="header-content">
-                <a href="index.html" class="logo">Helmut Wegners Wortwelten</a>
-                <nav>
-                    <ul class="nav-menu">
-                        <li class="nav-item">
-                            <a href="index.html" class="nav-link">Startseite</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="kinderbuecher.html" class="nav-link active">Kinderbücher</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="chroniken.html" class="nav-link">Chroniken</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="kontakte.html" class="nav-link">Kontakte</a>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
-        </div>
+    <header class="header">
+        <nav class="nav-container">
+            <div class="logo">Helmut Wegners Wortwelten</div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Startseite</a></li>
+                <li><a href="kinderbuecher.html" class="active">Kinderbücher</a></li>
+                <li><a href="#">Chroniken</a></li>
+                <li><a href="#">Kontakte</a></li>
+            </ul>
+        </nav>
     </header>
 
-    <section class="hero">
-        <div class="container">
-            <a href="index.html" class="back-link">← Zurück zur Startseite</a>
-            <h1>Kinderbücher</h1>
-            <p class="hero-subtitle">Abenteuer, die bilden – Geschichten, die begeistern</p>
-            <div class="author-photo">
-                <img src="helmut.jpg" alt="Helmut Wegner" class="author-img">
-            </div>
-            <p>Als 82-jähriger Autor mit über 30 Jahren Lehrerfahrung bringe ich eine besondere pädagogische Perspektive in meine Kinderbücher ein. Von liebevollen Kindergeschichten bis hin zu spannenden Abenteuern für junge Leser – hier findest du Geschichten, die nicht nur unterhalten, sondern auch wichtige Lebenslektionen vermitteln.</p>
-        </div>
-    </section>
-
     <div class="container">
-        <section class="books-section">
+        <a href="index.html" class="back-button">← Zurück zur Startseite</a>
+        
+        <div class="hero">
+            <h1>Kinderbücher</h1>
+            <p>Abenteuer, die bilden – Geschichten, die begeistern</p>
+        </div>
+
+        <div class="author-circle"></div>
+
+        <div class="intro-text">
+            Als 82-jähriger Autor mit über 30 Jahren Lehrerfahrung bringe ich eine besondere pädagogische Perspektive in meine Kinderbücher ein. Von liebevollen Kindergeschichten bis hin zu tiefgreifenden Chroniken und spannenden Thrillern – hier finden Sie Geschichten, die berühren, bilden und begeistern.
+        </div>
+
+        <div class="books-section">
             <h2 class="section-title">Meine Kinderbücher</h2>
+            
             <div class="books-grid">
+                <!-- Der verborgene Wald -->
                 <div class="book-card">
-                    <img src="verborgener-wald.jpg" alt="Der verborgene Wald" class="book-cover">
+                    <div class="book-cover">
+                        <img src="verborgenerwald.jpg" alt="Der verborgene Wald">
+                    </div>
                     <h3 class="book-title">Der verborgene Wald</h3>
                     <p class="book-subtitle">Ein magisches Abenteuer für mutige Entdecker</p>
-                    <p class="book-description">Begleite Maria auf ihrer aufregenden Reise in einen geheimnisvollen Wald voller Wunder und Geheimnisse. Ein Buch über Mut, Freundschaft und die Kraft der Fantasie.</p>
-                    <span class="book-age">Ab 8 Jahren</span><br>
-                    <a href="verborgenerwald-lesen.html" class="book-btn">📖 Lesen</a>
-                    <a href="#" class="book-btn amazon">🛒 Bei Amazon</a>
+                    <div class="age-tag">Ab 8 Jahren</div>
+                    <div class="book-description">
+                        Begleite Maria und ihrer aufregenden Reise in einen geheimnisvollen Wald voller Wunder und Geheimnisse. Ein Buch über Mut, Freundschaft und die Kraft der Fantasie.
+                    </div>
+                    <div class="button-group">
+                        <a href="verborgenerwald-lesen.html" class="btn btn-read">📖 Lesen</a>
+                        <span class="btn btn-unavailable">Bei Amazon (bald verfügbar)</span>
+                    </div>
                 </div>
 
+                <!-- Rätseldetektivclub -->
                 <div class="book-card">
-                    <img src="raetseldetektivclub.jpg" alt="Rätseldetektivclub" class="book-cover">
+                    <div class="book-cover">
+                        <img src="raetseldetektivclub.jpg" alt="Der Rätseldetektivclub">
+                    </div>
                     <h3 class="book-title">Rätseldetektivclub</h3>
                     <p class="book-subtitle">Spannende Fälle für clevere Köpfe</p>
-                    <p class="book-description">Vier Freunde gründen einen Detektivclub und lösen die kniffligsten Rätsel ihrer Stadt. Ein Buch, das logisches Denken fördert und Teamgeist stärkt.</p>
-                    <span class="book-age">Ab 10 Jahren</span><br>
-                    <a href="raetseldetektivclub-lesen.html" class="book-btn">📖 Lesen</a>
-                    <a href="#" class="book-btn amazon">🛒 Bei Amazon</a>
+                    <div class="age-tag">Ab 10 Jahren</div>
+                    <div class="book-description">
+                        Vier Freunde gründen einen Detektivclub und lösen die kniffligsten Rätsel ihrer Stadt. Ein Buch, das logisches Denken fördert und Teamgeist stärkt.
+                    </div>
+                    <div class="button-group">
+                        <a href="raetseldetektivclub-lesen.html" class="btn btn-read">📖 Lesen</a>
+                        <a href="https://amazon.de/dp/B0F8Q3LQ6K" class="btn btn-amazon" target="_blank">Bei Amazon</a>
+                    </div>
                 </div>
 
+                <!-- Der Zeitnarr -->
                 <div class="book-card">
-                    <img src="zeitnarr.jpg" alt="Der Zeitnarr" class="book-cover">
+                    <div class="book-cover">
+                        <img src="zeitnarr.jpg" alt="Der Zeitnarr">
+                    </div>
                     <h3 class="book-title">Der Zeitnarr</h3>
                     <p class="book-subtitle">Eine Reise durch vergangene Epochen</p>
-                    <p class="book-description">Ein geheimnisvoller Zeitreisender nimmt junge Leser mit auf eine faszinierende Reise durch die Geschichte. Lehrreich und spannend zugleich.</p>
-                    <span class="book-age">Ab 12 Jahren</span><br>
-                    <a href="zeitnarr-lesen.html" class="book-btn">📖 Lesen</a>
-                    <a href="#" class="book-btn amazon">🛒 Bei Amazon</a>
+                    <div class="age-tag">Ab 12 Jahren</div>
+                    <div class="book-description">
+                        Ein geheimnisvoller Zeitreisender nimmt junge Leser mit auf eine faszinierende Reise durch die Geschichte. Lehrreich und spannend zugleich.
+                    </div>
+                    <div class="button-group">
+                        <a href="zeitnarr-lesen.html" class="btn btn-read">📖 Lesen</a>
+                        <a href="https://amazon.de/dp/B0F8HY1P5G" class="btn btn-amazon" target="_blank">Bei Amazon</a>
+                    </div>
                 </div>
 
+                <!-- Die Zauberakademie -->
                 <div class="book-card">
-                    <img src="die zauberakademie.jpg" alt="Die Zauberakademie von Morgenstern" class="book-cover">
+                    <div class="book-cover">
+                        <img src="die zauberakademie.jpg" alt="Die Zauberakademie von Morgenstern">
+                    </div>
                     <h3 class="book-title">Die Zauberakademie von Morgenstern</h3>
                     <p class="book-subtitle">Magie, Freundschaft und große Träume</p>
-                    <p class="book-description">Leona erhält eine Einladung zur berühmtesten Zauberakademie des Landes. Eine Geschichte über Selbstvertrauen, wahre Freundschaft und die Magie in uns allen.</p>
-                    <span class="book-age">Ab 9 Jahren</span><br>
-                    <a href="zauberakademie-lesen.html" class="book-btn">📖 Lesen</a>
-                    <a href="#" class="book-btn amazon">🛒 Bei Amazon</a>
+                    <div class="age-tag">Ab 9 Jahren</div>
+                    <div class="book-description">
+                        Leona erhält eine Einladung zur berühmtesten Zauberakademie des Landes. Eine Geschichte über Selbstvertrauen, wahre Freundschaft und die Magie in uns allen.
+                    </div>
+                    <div class="button-group">
+                        <a href="zauberakademie-lesen.html" class="btn btn-read">📖 Lesen</a>
+                        <a href="https://amazon.de/dp/B0F8V7TLVT" class="btn btn-amazon" target="_blank">Bei Amazon</a>
+                    </div>
                 </div>
             </div>
-        </section>
+        </div>
     </div>
 
-    <footer>
-        <div class="container">
-            <p>&copy; 2025 Helmut Wegner - Helmut Wegners Wortwelten. Geschichten mit Tiefe, Herz und Haltung.</p>
-        </div>
+    <footer class="footer">
+        <p>&copy; 2025 Helmut Wegner - Helmut Wegners Wortwelten. Geschichten mit Tiefe, Herz und Haltung.</p>
     </footer>
 </body>
 </html>
