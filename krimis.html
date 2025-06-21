@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Krimis & Thriller - Helmut Wegners Wortwelten</title>
+    <title>Mysterien der Heide - Helmut Wegners Wortwelten</title>
     <style>
         body {
             font-family: 'Georgia', serif;
@@ -15,7 +15,7 @@
         }
 
         .container {
-            max-width: 800px;
+            max-width: 1000px;
             margin: 0 auto;
             background: #f9f9f9;
             border-radius: 15px;
@@ -66,9 +66,14 @@
             opacity: 0.9;
         }
 
-        .book {
-            display: flex;
-            margin-bottom: 40px;
+        .books-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .book-card {
             background: white;
             border-radius: 15px;
             padding: 25px;
@@ -77,14 +82,15 @@
             transition: transform 0.3s ease;
         }
 
-        .book:hover {
+        .book-card:hover {
             transform: translateY(-5px);
         }
 
         .book-cover {
-            width: 120px;
-            height: 180px;
-            margin-right: 25px;
+            width: 150px;
+            height: 225px;
+            margin: 0 auto 20px auto;
+            display: block;
             border-radius: 8px;
             box-shadow: 0 8px 25px rgba(0,0,0,0.2);
             transition: transform 0.3s ease;
@@ -94,15 +100,12 @@
             transform: scale(1.05);
         }
 
-        .book-info {
-            flex: 1;
-        }
-
         .book-title {
             color: #e67e22;
-            font-size: 1.8em;
+            font-size: 1.5em;
             font-weight: bold;
             margin: 0 0 10px 0;
+            text-align: center;
             text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
         }
 
@@ -110,182 +113,46 @@
             color: #7f8c8d;
             font-style: italic;
             margin: 0 0 15px 0;
-            font-size: 1.1em;
+            font-size: 1em;
+            text-align: center;
         }
 
         .book-description {
             color: #2c3e50;
             margin-bottom: 20px;
-            font-size: 1.05em;
+            font-size: 1em;
             text-align: justify;
+            line-height: 1.5;
         }
 
         .button-container {
-            margin-top: 15px;
+            text-align: center;
+            margin-top: 20px;
         }
 
-        /* Button Styles */
         .btn {
             display: inline-block;
-            padding: 8px 16px;
-            margin: 5px 5px 5px 0;
+            padding: 12px 24px;
+            margin: 5px;
             border: none;
-            border-radius: 20px;
-            font-size: 0.9em;
+            border-radius: 25px;
+            font-size: 1em;
             font-weight: bold;
             text-decoration: none;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-        }
-
-        .btn-soon {
-            background: linear-gradient(135deg, #7f8c8d, #95a5a6);
-            color: white;
-        }
-
-        .btn-soon:hover {
-            background: linear-gradient(135deg, #6c7b7d, #7f8c8d);
-            transform: translateY(-2px);
-        }
-
-        .btn-sample {
-            background: linear-gradient(135deg, #95a5a6, #bdc3c7);
-            color: white;
-        }
-
-        .btn-sample:hover {
-            background: linear-gradient(135deg, #7f8c8d, #95a5a6);
-            transform: translateY(-2px);
-        }
-
-        .btn-vorlesen {
-            background: linear-gradient(135deg, #8B4513, #D2691E);
-            color: white;
-        }
-
-        .btn-vorlesen:hover {
-            background: linear-gradient(135deg, #D2691E, #8B4513);
-            transform: translateY(-2px);
-        }
-
-        /* Pop-up Styles */
-        .popup-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            z-index: 1000;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .popup-content {
-            background: white;
-            border-radius: 15px;
-            padding: 30px;
-            max-width: 700px;
-            max-height: 80vh;
-            overflow-y: auto;
-            position: relative;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-            margin: 20px;
-        }
-
-        .popup-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 20px;
-            border-bottom: 2px solid #e67e22;
-            padding-bottom: 15px;
-        }
-
-        .popup-cover {
-            width: 60px;
-            height: 90px;
-            margin-right: 15px;
-            border-radius: 5px;
             box-shadow: 0 3px 10px rgba(0,0,0,0.2);
         }
 
-        .popup-title {
-            flex: 1;
-        }
-
-        .popup-title h3 {
-            color: #e67e22;
-            margin: 0 0 5px 0;
-            font-size: 1.4em;
-        }
-
-        .popup-title p {
-            color: #7f8c8d;
-            margin: 0;
-            font-style: italic;
-        }
-
-        .popup-close {
-            background: #e74c3c;
-            color: white;
-            border: none;
-            border-radius: 50%;
-            width: 30px;
-            height: 30px;
-            cursor: pointer;
-            font-size: 18px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .popup-text {
-            color: #2c3e50;
-            line-height: 1.8;
-            font-size: 1.1em;
-            text-align: justify;
-            margin-bottom: 20px;
-        }
-
-        .popup-navigation {
-            text-align: center;
-            padding-top: 15px;
-            border-top: 1px solid #ecf0f1;
-        }
-
-        .popup-page-info {
-            color: #7f8c8d;
-            font-style: italic;
-            margin-bottom: 15px;
-        }
-
-        .btn-nav {
+        .btn-read {
             background: linear-gradient(135deg, #e67e22, #f39c12);
             color: white;
-            padding: 12px 25px;
-            border: none;
-            border-radius: 25px;
-            cursor: pointer;
-            font-size: 1em;
-            font-weight: bold;
-            margin: 0 10px;
-            transition: all 0.3s ease;
-            box-shadow: 0 3px 10px rgba(230, 126, 34, 0.3);
         }
 
-        .btn-nav:hover {
+        .btn-read:hover {
             background: linear-gradient(135deg, #d35400, #e67e22);
             transform: translateY(-2px);
             box-shadow: 0 5px 15px rgba(230, 126, 34, 0.4);
-        }
-
-        .btn-nav:disabled {
-            background: #bdc3c7;
-            cursor: not-allowed;
-            transform: none;
-            box-shadow: none;
         }
 
         .back-link {
@@ -314,19 +181,13 @@
         }
 
         @media (max-width: 600px) {
-            .book {
-                flex-direction: column;
-                text-align: center;
+            .books-grid {
+                grid-template-columns: 1fr;
             }
             
             .book-cover {
-                margin: 0 auto 20px auto;
-            }
-
-            .popup-content {
-                margin: 10px;
-                padding: 20px;
-                max-height: 90vh;
+                width: 120px;
+                height: 180px;
             }
         }
     </style>
@@ -334,74 +195,52 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>Krimis & Thriller</h1>
-            <p>Fesselnde Ermittlungsgeschichten und spannungsgeladene Mysterien aus der Lüneburger Heide und anderen düsteren Schauplätzen</p>
+            <h1>Mysterien der Heide</h1>
+            <p>Fesselnde Ermittlungsgeschichten voller Spannung und menschlicher Abgründe aus der Lüneburger Heide</p>
         </div>
 
         <div class="series-banner">
-            <h2>MYSTERIEN DER HEIDE</h2>
-            <p>Eine Krimi-Reihe voller Geheimnisse, Spannung und menschlicher Abgründe</p>
+            <h2>KRIMINALROMANE VON HELMUT WEGNER</h2>
+            <p>Eine Reihe atmosphärischer Krimis, die Realität und Übernatürliches meisterhaft verbinden</p>
         </div>
 
-        <!-- Band 1: Der Geist der Heide -->
-        <div class="book">
-            <img src="geistderheide.jpg" alt="Der Geist der Heide Cover" class="book-cover">
-            <div class="book-info">
+        <div class="books-grid">
+            <!-- Band 1: Der Geist der Heide -->
+            <div class="book-card">
+                <img src="geistderheide.jpg" alt="Der Geist der Heide Cover" class="book-cover">
                 <h3 class="book-title">Band 1: Der Geist der Heide</h3>
                 <p class="book-subtitle">Mysterien der Heide</p>
                 <div class="book-description">
-                    In der mystischen Lüneburger Heide geschehen Morde, die zunächst keinen Zusammenhang haben. Elias erhält geheimnisvolle Briefe in einer uralten Sprache und wird in eine Welt voller Magie und Gefahr gezogen. Ein Krimi, der die Spannung eines Mordfalls mit den geheimnisvollen Elementen einer ländlichen Sage verbindet.<br><br>
-                    Die Lüneburger Heide wird zu einem eigenständigen Charakter, dessen Weite und undurchschaubare Atmosphäre die Geschichte prägt. Ein atmosphärischer Thriller über die Grenzen zwischen Realität und dem Übernatürlichen.
+                    In der mystischen Lüneburger Heide geschehen Morde, die zunächst keinen Zusammenhang haben. Elias erhält geheimnisvolle Briefe in einer uralten Sprache und wird in eine Welt voller Magie und Gefahr gezogen. Ein Krimi, der die Spannung eines Mordfalls mit den geheimnisvollen Elementen einer ländlichen Sage verbindet.
                 </div>
-                
                 <div class="button-container">
-                    <span class="btn btn-soon">📅 Bald verfügbar</span>
-                    <span class="btn btn-soon">📖 Taschenbuch folgt</span>
-                    <span class="btn btn-soon">📱 Kindle folgt</span>
-                    <button class="btn btn-sample" onclick="openSample('geist', 1)">👁 Leseprobe</button>
-                    <a href="mysterien-der-heide-vorlesen.html" class="btn btn-vorlesen">🎧 Vorlesen</a>
+                    <a href="geistderheide-lesen.html" class="btn btn-read">📖 Lesen</a>
                 </div>
             </div>
-        </div>
 
-        <!-- Band 2: Das Moor des Vergessens -->
-        <div class="book">
-            <img src="moordesvergessens.jpg" alt="Das Moor des Vergessens Cover" class="book-cover">
-            <div class="book-info">
+            <!-- Band 2: Das Moor des Vergessens -->
+            <div class="book-card">
+                <img src="moordesvergessens.jpg" alt="Das Moor des Vergessens Cover" class="book-cover">
                 <h3 class="book-title">Band 2: Das Moor des Vergessens</h3>
                 <p class="book-subtitle">Ein Heide Psycho-Thriller</p>
                 <div class="book-description">
-                    Kommissarin Anna Hartmann wird zu einem grausigen Fund ins Dorf Eldermoor gerufen. Eine Leiche im Moor - entstellt und einbalsamiert. Das Dorf hütet dunkle Geheimnisse, und ein altes Kinderheim wirft Schatten der Vergangenheit.<br><br>
-                    Die Dorfbewohner schweigen, als wüssten sie von einer unauflöslichen Macht. Zwischen Realität und Alptraum, zwischen Wahrheit und Legende muss Anna herausfinden, was wirklich geschehen ist. Ein atmosphärischer Psycho-Thriller über verschwundene Kinder und die Geheimnisse des Moors.
+                    Kommissarin Anna Hartmann wird zu einem grausigen Fund ins Dorf Eldermoor gerufen. Eine Leiche im Moor - entstellt und einbalsamiert. Das Dorf hütet dunkle Geheimnisse, und ein altes Kinderheim wirft Schatten der Vergangenheit. Ein atmosphärischer Psycho-Thriller über verschwundene Kinder und die Geheimnisse des Moors.
                 </div>
-                
                 <div class="button-container">
-                    <span class="btn btn-soon">📅 Bald verfügbar</span>
-                    <span class="btn btn-soon">📖 Taschenbuch folgt</span>
-                    <span class="btn btn-soon">📱 Kindle folgt</span>
-                    <button class="btn btn-sample" onclick="openSample('moor', 1)">👁 Leseprobe</button>
-                    <a href="mysterien-der-heide-vorlesen.html" class="btn btn-vorlesen">🎧 Vorlesen</a>
+                    <a href="moordesvergessens-lesen.html" class="btn btn-read">📖 Lesen</a>
                 </div>
             </div>
-        </div>
 
-        <!-- Band 3: Die Schatten der Dörfer -->
-        <div class="book">
-            <img src="schattenderdoerfer.jpg" alt="Die Schatten der Dörfer Cover" class="book-cover">
-            <div class="book-info">
+            <!-- Band 3: Die Schatten der Dörfer -->
+            <div class="book-card">
+                <img src="schattenderdoerfer.jpg" alt="Die Schatten der Dörfer Cover" class="book-cover">
                 <h3 class="book-title">Band 3: Die Schatten der Dörfer</h3>
                 <p class="book-subtitle">Ein gesellschaftskritischer Thriller</p>
                 <div class="book-description">
-                    Ein idyllisches Dorf hofft auf einen Neuanfang. Doch als das historische Denkmal mit Graffiti beschmiert wird, verwandelt sich die ländliche Gemeinschaft in einen Hexenkessel aus Verdächtigungen und Misstrauen.<br><br>
-                    Erik wird zum unfreiwilligen Detektiv in einem Spiel aus Wahrheit und Lüge, in dem jeder Bewohner ein Geheimnis zu verbergen scheint. Ein brisanter Gesellschaftsthriller über Integration, Vorurteile und den Kampf um Zusammenhalt. Wie schnell kann Harmonie in Hysterie umschlagen?
+                    Ein idyllisches Dorf hofft auf einen Neuanfang. Doch als das historische Denkmal mit Graffiti beschmiert wird, verwandelt sich die ländliche Gemeinschaft in einen Hexenkessel aus Verdächtigungen und Misstrauen. Erik wird zum unfreiwilligen Detektiv in einem brisanten Gesellschaftsthriller über Integration und Vorurteile.
                 </div>
-                
                 <div class="button-container">
-                    <span class="btn btn-soon">📅 Bald verfügbar</span>
-                    <span class="btn btn-soon">📖 Taschenbuch folgt</span>
-                    <span class="btn btn-soon">📱 Kindle folgt</span>
-                    <button class="btn btn-sample" onclick="openSample('schatten', 1)">👁 Leseprobe</button>
-                    <a href="mysterien-der-heide-vorlesen.html" class="btn btn-vorlesen">🎧 Vorlesen</a>
+                    <a href="schattenderdoerfer-lesen.html" class="btn btn-read">📖 Lesen</a>
                 </div>
             </div>
         </div>
@@ -410,156 +249,5 @@
             <a href="index.html">← Zurück zur Startseite</a>
         </div>
     </div>
-
-    <!-- Pop-up für Leseproben -->
-    <div id="popup-overlay" class="popup-overlay">
-        <div class="popup-content">
-            <div class="popup-header">
-                <img id="popup-cover" class="popup-cover" src="" alt="Book Cover">
-                <div class="popup-title">
-                    <h3 id="popup-book-title"></h3>
-                    <p id="popup-chapter-title"></p>
-                </div>
-                <button class="popup-close" onclick="closePopup()">&times;</button>
-            </div>
-            
-            <div id="popup-text" class="popup-text"></div>
-            
-            <div class="popup-navigation">
-                <p id="popup-page-info" class="popup-page-info"></p>
-                <button id="btn-prev" class="btn-nav" onclick="previousPage()" disabled>← Vorherige Seite</button>
-                <button id="btn-next" class="btn-nav" onclick="nextPage()">Nächste Seite →</button>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        // Vollständige Krimi-Leseproben mit Helmuts Original-Kapiteln
-        const samples = {
-            geist: {
-                title: "Band 1: Der Geist der Heide",
-                chapter: "Kapitel 1: Der Beginn",
-                cover: "geistderheide.jpg",
-                pages: [
-                    // Seite 1
-                    `<p><strong>Der Beginn</strong></p>
-                    <p>Der Regen prasselte in unregelmäßigen Tropfen auf die Kopfsteinpflasterstraße und formte kleine, glitzernde Pfützen in den Vertiefungen des alten Gesteins. Die Dämmerung war bereits hereingebrochen, und das fahle Licht der Gaslaternen tauchte die Umgebung in ein schummriges Halbdunkel, das Schatten in den Ecken verstärkte und die Formen der Gebäude verzerrte.</p>
-                    <p>In der Ferne drang das schrille Pfeifen eines Zuges durch die Nacht, als ein junger Mann, in einen dunklen Mantel gehüllt, langsam die Straße entlangging. Er war nicht älter als zwanzig, doch sein Blick schien eine Reife auszustrahlen, die sein Alter Lügen strafte.</p>`,
-                    
-                    // Seite 2
-                    `<p>Seine Augen waren von einer ungewöhnlichen Blässe, fast wie milchiges Glas, das nur dann lebendig wirkte, wenn das Licht im richtigen Winkel darauf fiel. Die Anspannung war förmlich greifbar, als er immer wieder über die Schulter blickte, als erwartete er, dass ihn jemand beobachtete.</p>
-                    <p>Sein Name war Elias, und heute war der Tag, an dem sich alles verändern sollte. Seit Wochen hatte er die geheimnisvollen Briefe erhalten -- handgeschrieben, in einer altmodischen Schrift, die er selbst nicht entziffern konnte, aber jemand, den er kannte, warf einen beunruhigenden Blick auf die Worte und hatte ihm versprochen, sie zu übersetzen.</p>`,
-                    
-                    // Weitere Seiten...
-                    `<p><strong>Folge Elias auf seiner mysteriösen Reise in die Welt der Magie und Geheimnisse! Bald verfügbar.</strong></p>`
-                ]
-            },
-            
-            moor: {
-                title: "Band 2: Das Moor des Vergessens",
-                chapter: "Kapitel 1: Der Fund im Moor",
-                cover: "moordesvergessens.jpg",
-                pages: [
-                    `<p><strong>Der Fund im Moor</strong></p>
-                    <p>Es war ein grauer, nebliger Morgen im kleinen Dorf Eldermoor, das inmitten einer endlosen Moorlandschaft verborgen lag. Das Licht der ersten Sonne kämpfte vergeblich gegen die dichte Nebeldecke, die sich wie ein undurchdringlicher Schleier über die Landschaft legte.</p>`,
-                    `<p><strong>Tauche ein in den atmosphärischen Psycho-Thriller des Moors! Bald verfügbar.</strong></p>`
-                ]
-            },
-            
-            schatten: {
-                title: "Band 3: Die Schatten der Dörfer",
-                chapter: "Kapitel 1: Die ersten Schatten",
-                cover: "schattenderdoerfer.jpg",
-                pages: [
-                    `<p><strong>Die ersten Schatten</strong></p>
-                    <p>Die ersten Sonnenstrahlen schlichen sich über die sanften Hügel des kleinen Dorfes, das in der Dämmerung lag wie ein kostbares Geheimnis. Die Luft war frisch und rein, und ein sanfter Nebel schwebte über den Wiesen.</p>`,
-                    `<p><strong>Erlebe mit Erik die Verwandlung einer idyllischen Gemeinschaft! Bald verfügbar.</strong></p>`
-                ]
-            }
-        };
-
-        let currentSample = null;
-        let currentPage = 0;
-
-        function openSample(book, page) {
-            if (!samples[book]) return;
-            
-            currentSample = book;
-            currentPage = page - 1;
-            
-            const sample = samples[book];
-            document.getElementById('popup-book-title').textContent = sample.title;
-            document.getElementById('popup-chapter-title').textContent = sample.chapter;
-            document.getElementById('popup-cover').src = sample.cover;
-            
-            updatePopupContent();
-            
-            document.getElementById('popup-overlay').style.display = 'flex';
-            document.body.style.overflow = 'hidden';
-        }
-
-        function updatePopupContent() {
-            const sample = samples[currentSample];
-            const totalPages = sample.pages.length;
-            
-            document.getElementById('popup-text').innerHTML = sample.pages[currentPage];
-            document.getElementById('popup-page-info').textContent = `Seite ${currentPage + 1} von ${totalPages}`;
-            
-            // Navigation buttons
-            document.getElementById('btn-prev').disabled = currentPage === 0;
-            
-            if (currentPage === totalPages - 1) {
-                document.getElementById('btn-next').textContent = 'Leseprobe beenden';
-            } else {
-                document.getElementById('btn-next').textContent = 'Nächste Seite →';
-            }
-        }
-
-        function nextPage() {
-            const sample = samples[currentSample];
-            if (currentPage < sample.pages.length - 1) {
-                currentPage++;
-                updatePopupContent();
-            } else {
-                closePopup();
-            }
-        }
-
-        function previousPage() {
-            if (currentPage > 0) {
-                currentPage--;
-                updatePopupContent();
-            }
-        }
-
-        function closePopup() {
-            document.getElementById('popup-overlay').style.display = 'none';
-            document.body.style.overflow = 'auto';
-            currentSample = null;
-            currentPage = 0;
-        }
-
-        // Close popup when clicking outside
-        document.getElementById('popup-overlay').addEventListener('click', function(e) {
-            if (e.target === this) {
-                closePopup();
-            }
-        });
-
-        // Keyboard navigation
-        document.addEventListener('keydown', function(e) {
-            if (currentSample) {
-                if (e.key === 'ArrowRight' || e.key === 'Space') {
-                    e.preventDefault();
-                    nextPage();
-                } else if (e.key === 'ArrowLeft') {
-                    e.preventDefault();
-                    previousPage();
-                } else if (e.key === 'Escape') {
-                    closePopup();
-                }
-            }
-        });
-    </script>
 </body>
 </html>
