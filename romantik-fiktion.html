@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Romantik Fiktion - Verlangen der Herzen Serie | Helmut Wegners Wortwelten</title>
+    <title>Romantik Fiktion - Helmut Wegners Wortwelten</title>
     <style>
         * {
             margin: 0;
@@ -62,6 +62,7 @@
             padding: 0.5rem 1rem;
             border-radius: 5px;
             transition: all 0.3s ease;
+            cursor: pointer;
         }
 
         .nav-link:hover {
@@ -73,76 +74,121 @@
         .hero {
             text-align: center;
             color: white;
-            padding: 4rem 0;
+            padding: 6rem 0;
         }
 
         .hero h1 {
-            font-size: 3.5rem;
+            font-size: 4rem;
             margin-bottom: 1rem;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
 
         .hero-subtitle {
-            font-size: 1.5rem;
-            margin-bottom: 2rem;
+            font-size: 1.8rem;
+            margin-bottom: 3rem;
             opacity: 0.9;
         }
 
-        .hero p {
+        .hero-button {
+            display: inline-block;
+            padding: 20px 40px;
+            background: linear-gradient(45deg, #ff9a9e, #e91e63);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
             font-size: 1.2rem;
-            max-width: 800px;
-            margin: 0 auto;
-            opacity: 0.85;
-            line-height: 1.8;
-        }
-
-        /* Series Intro */
-        .series-intro {
-            background: white;
-            border-radius: 20px;
-            padding: 3rem;
-            margin: 3rem 0;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            text-align: center;
-        }
-
-        .series-intro h2 {
-            color: #2c3e50;
-            font-size: 2rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .series-intro p {
-            font-size: 1.1rem;
-            color: #6c757d;
-            line-height: 1.8;
-            margin-bottom: 1.5rem;
-        }
-
-        .highlight {
-            color: #e91e63;
             font-weight: bold;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
         }
 
-        /* Books Grid */
-        .books-grid {
+        .hero-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(233, 30, 99, 0.4);
+        }
+
+        /* Series Selection Modal */
+        .series-modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.8);
+            backdrop-filter: blur(5px);
+        }
+
+        .series-modal-content {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
+            margin: 5% auto;
+            padding: 3rem;
+            border-radius: 30px;
+            width: 90%;
+            max-width: 1000px;
+            max-height: 80vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        .series-close {
+            color: white;
+            float: right;
+            font-size: 35px;
+            font-weight: bold;
+            cursor: pointer;
+            position: absolute;
+            right: 25px;
+            top: 25px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+        }
+
+        .series-close:hover {
+            transform: scale(1.2);
+            color: #e91e63;
+        }
+
+        .series-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .series-header h2 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .series-header p {
+            font-size: 1.3rem;
+            opacity: 0.9;
+        }
+
+        .series-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 2rem;
-            margin: 3rem 0;
+            gap: 3rem;
+            margin-top: 2rem;
         }
 
-        .book-card {
+        .series-card {
             background: white;
-            border-radius: 20px;
-            padding: 2rem;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
+            border-radius: 25px;
+            padding: 2.5rem;
+            text-align: center;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+            transition: all 0.4s ease;
+            cursor: pointer;
             position: relative;
             overflow: hidden;
         }
 
-        .book-card::before {
+        .series-card::before {
             content: '';
             position: absolute;
             top: 0;
@@ -154,149 +200,99 @@
             transition: transform 0.3s ease;
         }
 
-        .book-card:hover::before {
+        .series-card:hover::before {
             transform: scaleX(1);
         }
 
-        .book-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+        .series-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 25px 60px rgba(233, 30, 99, 0.2);
         }
 
-        .book-cover {
-            width: 120px;
-            height: 180px;
-            object-fit: cover;
-            border-radius: 10px;
-            float: left;
-            margin-right: 1.5rem;
+        .series-icon {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            color: #e91e63;
+        }
+
+        .series-title {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #2c3e50;
             margin-bottom: 1rem;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
         }
 
-        .book-content {
-            overflow: hidden;
+        .series-description {
+            color: #6c757d;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
         }
 
-        .book-title {
+        .series-stats {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 2rem;
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 15px;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
             font-size: 1.5rem;
             font-weight: bold;
-            margin-bottom: 0.5rem;
-            color: #2c3e50;
-        }
-
-        .book-subtitle {
             color: #e91e63;
-            font-style: italic;
-            margin-bottom: 1rem;
         }
 
-        .book-description {
+        .stat-label {
+            font-size: 0.9rem;
             color: #6c757d;
-            margin-bottom: 1.5rem;
-            line-height: 1.6;
         }
 
-        .book-status {
+        .series-button {
             display: inline-block;
-            padding: 0.5rem 1rem;
-            border-radius: 15px;
-            font-weight: bold;
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
-        }
-
-        .available {
-            background: #28a745;
-            color: white;
-        }
-
-        .coming-soon {
-            background: #6c757d;
-            color: white;
-        }
-
-        .book-buttons {
-            clear: both;
-            padding-top: 1rem;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 12px 24px;
-            margin: 0.5rem 0.5rem 0.5rem 0;
-            border: none;
-            border-radius: 25px;
-            font-weight: bold;
-            text-decoration: none;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 0.9rem;
-        }
-
-        .btn-primary {
+            padding: 15px 30px;
             background: linear-gradient(45deg, #ff9a9e, #e91e63);
             color: white;
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(233, 30, 99, 0.3);
-        }
-
-        .btn-secondary {
-            background: #6c757d;
-            color: white;
-        }
-
-        .btn-disabled {
-            background: #dee2e6;
-            color: #6c757d;
-            cursor: not-allowed;
-        }
-
-        .btn-disabled:hover {
-            transform: none;
-            box-shadow: none;
-        }
-
-        /* Modal */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0,0,0,0.5);
-        }
-
-        .modal-content {
-            background-color: white;
-            margin: 5% auto;
-            padding: 2rem;
-            border-radius: 20px;
-            width: 80%;
-            max-width: 800px;
-            max-height: 80vh;
-            overflow-y: auto;
-            position: relative;
-        }
-
-        .close {
-            color: #aaa;
-            float: right;
-            font-size: 28px;
+            text-decoration: none;
+            border-radius: 25px;
             font-weight: bold;
-            cursor: pointer;
-            position: absolute;
-            right: 20px;
-            top: 20px;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
         }
 
-        .close:hover {
-            color: black;
+        .series-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(233, 30, 99, 0.3);
+        }
+
+        /* Sample Content Area */
+        .content-area {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            margin: 3rem 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .content-area h2 {
+            color: #2c3e50;
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .content-area p {
+            font-size: 1.2rem;
+            color: #6c757d;
+            line-height: 1.8;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
         }
 
         /* Footer */
@@ -318,20 +314,19 @@
                 font-size: 2.5rem;
             }
 
-            .books-grid {
+            .series-grid {
                 grid-template-columns: 1fr;
+                gap: 2rem;
             }
 
-            .book-cover {
-                width: 100px;
-                height: 150px;
-                margin-right: 1rem;
-            }
-
-            .modal-content {
+            .series-modal-content {
                 width: 95%;
                 margin: 10% auto;
-                padding: 1.5rem;
+                padding: 2rem;
+            }
+
+            .series-header h2 {
+                font-size: 2rem;
             }
         }
     </style>
@@ -343,9 +338,11 @@
                 <a href="index.html" class="logo">Helmut Wegners Wortwelten</a>
                 <nav>
                     <ul class="nav-menu">
-                        <li><a href="index.html" class="nav-link">← Zur Hauptseite</a></li>
+                        <li><a href="index.html" class="nav-link">Startseite</a></li>
+                        <li><a href="#" class="nav-link" onclick="openSeriesModal()">Romantik Fiktion</a></li>
                         <li><a href="kinderbuecher.html" class="nav-link">Kinderbücher</a></li>
                         <li><a href="high-fantasy.html" class="nav-link">High Fantasy</a></li>
+                        <li><a href="einzelbuecher.html" class="nav-link">Einzelbücher</a></li>
                     </ul>
                 </nav>
             </div>
@@ -354,171 +351,134 @@
 
     <section class="hero">
         <div class="container">
-            <h1>Romantik Fiktion</h1>
-            <p class="hero-subtitle">Die "Verlangen der Herzen" Serie</p>
-            <p>Leidenschaftliche Geschichten aus den malerischen Adelaide Hills. Eine emotionale Reise durch Liebe, Träume und menschliche Verbindungen, die das Herz berühren und die Seele erwärmen.</p>
+            <h1>Willkommen in Helmuts Wortwelten</h1>
+            <p class="hero-subtitle">Entdecke leidenschaftliche Romanzen, magische Abenteuer und unvergessliche Geschichten</p>
+            <button class="hero-button" onclick="openSeriesModal()">
+                🌹 Romantik Fiktion entdecken
+            </button>
         </div>
     </section>
 
     <div class="container">
-        <section class="series-intro">
-            <h2>Über die "Verlangen der Herzen" Serie</h2>
-            <p>In den sanften Hügeln von Adelaide entfaltet sich eine <span class="highlight">sechsteilige Romance-Saga</span>, die von der Kraft der Liebe und dem Mut zu neuen Anfängen erzählt. Jeder Band steht für sich, während sich durch alle Bücher ein roter Faden zieht, der die Charaktere miteinander verbindet.</p>
-            <p><span class="highlight">Authentische Emotionen</span> treffen auf wunderschöne Landschaften -- eine perfekte Mischung für alle Liebhaber romantischer Geschichten mit Tiefgang.</p>
+        <section class="content-area">
+            <h2>Über den Autor</h2>
+            <p>Helmut Wegner erschafft Welten voller Emotion, Leidenschaft und unvergesslicher Charaktere. Von den malerischen Adelaide Hills bis zu den mystischen Reichen der Fantasy – jede Geschichte ist eine Reise, die das Herz berührt und die Fantasie beflügelt.</p>
         </section>
-
-        <div class="books-grid">
-            <!-- Band 1 -->
-            <div class="book-card">
-                <img src="band1.jpg" alt="Unter dem Sternenhimmel" class="book-cover">
-                <div class="book-content">
-                    <h3 class="book-title">Unter dem Sternenhimmel</h3>
-                    <p class="book-subtitle">Band 1 der Verlangen der Herzen Serie</p>
-                    <p class="book-description">Der Auftakt der emotionalen Adelaide Hills Saga. Eine Geschichte über neue Anfänge, unerwartete Begegnungen und die Magie sternenklarer Nächte, die zwei Herzen zusammenführen.</p>
-                    <span class="book-status available">✓ Verfügbar</span>
-                    <div class="book-buttons">
-                        <a href="https://www.amazon.de/dp/B0F9Y4L5LK" class="btn btn-primary" target="_blank">📚 Taschenbuch kaufen - Amazon</a>
-                        <button class="btn btn-secondary" onclick="openModal('leseprobe1')">👁 Leseprobe</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Band 2 -->
-            <div class="book-card">
-                <img src="band2.jpg" alt="Im Netz der Liebe" class="book-cover">
-                <div class="book-content">
-                    <h3 class="book-title">Im Netz der Liebe</h3>
-                    <p class="book-subtitle">Band 2 der Verlangen der Herzen Serie</p>
-                    <p class="book-description">Die Geschichte entfaltet sich weiter in den Adelaide Hills. Komplizierte Gefühle und unerwartete Wendungen führen zu einer tiefen emotionalen Reise über Vertrauen und wahre Liebe.</p>
-                    <span class="book-status available">✓ Verfügbar</span>
-                    <div class="book-buttons">
-                        <a href="https://www.amazon.de/dp/B0FBL167H5" class="btn btn-primary" target="_blank">📚 Taschenbuch kaufen - Amazon</a>
-                        <button class="btn btn-secondary" onclick="openModal('leseprobe2')">👁 Leseprobe</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Band 3 -->
-            <div class="book-card">
-                <img src="band3.jpg" alt="Ankommen im neuen Leben" class="book-cover">
-                <div class="book-content">
-                    <h3 class="book-title">Ankommen im neuen Leben</h3>
-                    <p class="book-subtitle">Band 3 der Verlangen der Herzen Serie</p>
-                    <p class="book-description">Ein neues Kapitel beginnt in den Adelaide Hills. Charaktere finden zu sich selbst und entdecken, dass manchmal die größten Veränderungen die schönsten Geschenke des Lebens sind.</p>
-                    <span class="book-status coming-soon">📅 Bald verfügbar</span>
-                    <div class="book-buttons">
-                        <a href="https://www.amazon.de" class="btn btn-primary" target="_blank">📚 Taschenbuch kaufen - Amazon</a>
-                        <button class="btn btn-secondary" onclick="openModal('leseprobe3')">👁 Leseprobe</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Band 4 -->
-            <div class="book-card">
-                <img src="band4.jpg" alt="Die Ernte der Träume" class="book-cover">
-                <div class="book-content">
-                    <h3 class="book-title">Die Ernte der Träume</h3>
-                    <p class="book-subtitle">Band 4 der Verlangen der Herzen Serie</p>
-                    <p class="book-description">Die emotionale Saga erreicht neue Höhen. Träume werden Realität, während die Charaktere lernen, dass wahres Glück oft dort zu finden ist, wo man es am wenigsten erwartet.</p>
-                    <span class="book-status coming-soon">🔄 In Vorbereitung</span>
-                    <div class="book-buttons">
-                        <button class="btn btn-disabled">🔄 In Vorbereitung</button>
-                        <button class="btn btn-disabled">📚 Leseprobe folgt</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Band 5 -->
-            <div class="book-card">
-                <img src="band5.jpg" alt="Neue Horizonte" class="book-cover">
-                <div class="book-content">
-                    <h3 class="book-title">Neue Horizonte</h3>
-                    <p class="book-subtitle">Band 5 der Verlangen der Herzen Serie</p>
-                    <p class="book-description">Die vorletzten Abenteuer in den Adelaide Hills. Horizonte erweitern sich, Liebe vertieft sich, und alle Charaktere bereiten sich auf die große finale Enthüllung vor.</p>
-                    <span class="book-status coming-soon">🔄 In Vorbereitung</span>
-                    <div class="book-buttons">
-                        <button class="btn btn-disabled">🔄 In Vorbereitung</button>
-                        <button class="btn btn-disabled">📚 Leseprobe folgt</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Band 6 -->
-            <div class="book-card">
-                <img src="band6.jpg" alt="Band 6" class="book-cover">
-                <div class="book-content">
-                    <h3 class="book-title">Band 6</h3>
-                    <p class="book-subtitle">Finaler Band der Verlangen der Herzen Serie</p>
-                    <p class="book-description">Das große Finale der Adelaide Hills Saga. Alle Geschichten finden zusammen, alle Herzen finden ihr Zuhause, und die Serie erreicht ihren emotionalen und befriedigenden Abschluss.</p>
-                    <span class="book-status coming-soon">🔄 In Vorbereitung</span>
-                    <div class="book-buttons">
-                        <button class="btn btn-disabled">🔄 In Vorbereitung</button>
-                        <button class="btn btn-disabled">📚 Leseprobe folgt</button>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 
-    <!-- Modals for Leseproben -->
-    <div id="leseprobe1" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h3>Leseprobe: Unter dem Sternenhimmel</h3>
-            <h4>Kapitel 1: Begegnung</h4>
-            <p><em>Die sanfte Brise des späten Nachmittags trug den salzigen Duft des Meeres in die kleinen Gassen der Küstenstadt Adelaide. Clara versank in Gedanken, während sie an blühender Bougainvillea entlangschlenderte. Die warmen Farben der Sommerblumen spiegelten ihre Leidenschaft für die Kunst wider -- eine Leidenschaft, die sie täglich in ihrem Job als Kunsthistorikerin im örtlichen Museum lebte. Diese Stadt war nicht nur ihr Zuhause. Sie war ihre Muse. Heute war ein besonders schöner Tag. Die Sonne strahlte hell am Himmel, die Wellen schimmerten im goldenen Licht. Clara stellte sich vor, wie sie mit Pinsel und Leinwand am Strand saß, ihre Umgebung in lebendigen Farben festhaltend. Diese Vorstellung erfüllte sie mit tiefer Zufriedenheit. Und doch -- trotz der Schönheit um sie herum spürte sie eine leise Melancholie in sich, ein Sehnen nach etwas, das sie nicht benennen konnte. Als sie an einem kleinen Café vorbeikam, lockte sie das Lachen der Gäste. Spontan blieb sie stehen, sog die Atmosphäre ein: das Klirren von Tassen, das Aroma frisch gebrühten Kaffees, Stimmen, die von Nähe erzählten. Sie beobachtete ein älteres Paar, das die kleinen Freuden des Lebens teilte. Dann trat ein Mann aus dem Café -- und Clara blieb der Atem stehen. Groß, athletisch, mit markanten Gesichtszügen und einem selbstbewussten Lächeln. Seine dunklen Haare fielen locker über die Stirn, und als er sich zu einem Gast drehte, fingen seine Augen das Sonnenlicht. Ihre Blicke trafen sich, und ein elektrisches Prickeln durchzog Claras Körper. Die Zeit schien stillzustehen. „Hi, ich bin Alex", sagte er mit warmer Stimme. Clara antwortete zögernd, überrascht von der Intensität des Moments. „Ich bin Clara." Alex lachte leise. „Wie wäre es mit einem Kaffee?" Nach kurzem Zögern nickte Clara. Drinnen im Café fühlte sich alles anders an -- wie eine Blase außerhalb der Zeit. Sie setzten sich ans Fenster, mit Blick auf das Meer. Das Gespräch floss leicht. Clara erzählte von ihrer Arbeit und ihrer Liebe zur Kunst. Alex hörte aufmerksam zu. Ihre Themen verwebten sich: Kunst, Träume, Werte. Es war mehr als ein Gespräch. Es war der Beginn von Vertrautheit. Clara spürte, dass Alex nicht alles sagte. Ein Schatten lag in seinen Augen. Doch sie empfand den Wunsch, ihn zu verstehen. „Ich hoffe, das ist nicht unser letztes Gespräch", sagte Alex schließlich. „Das hoffe ich auch", erwiderte Clara. Draußen brach Abendlicht durch die Fensterscheiben. Die Chemie zwischen ihnen war unbestreitbar. Während sie vom Café aus Richtung Strand schlenderten, wuchs die Verbindung. Die Wellen brandeten sacht, der Himmel leuchtete in Farben. „Was bedeutet Kunst für dich?", fragte Clara. Alex' Antwort war tief und ehrlich. Ihre Gespräche wurden persönlicher. Sie sprach von ihrer Sehnsucht nach Familie, er von alten Wunden. Ihre Wege schienen sich nicht zufällig gekreuzt zu haben. Pläne entstanden -- eine gemeinsame Ausstellung vielleicht. Eine künstlerische wie seelische Verbindung. Als Jugendliche lachend den Moment unterbrachen, lächelten sie still. Die Realität klopfte an, doch sie ließen sich nicht vertreiben. „Was ist, wenn es funktioniert?", fragte Clara leise. „Dann genießen wir jeden Moment", sagte Alex. Und in dieser einfachen Antwort lag der Mut zu einem Anfang. Sie gingen weiter -- nicht nur durch den Sand, sondern auch in etwas Neues hinein.</em></p>
-            <p><strong>Entdecke die volle romantische Reise in "Unter dem Sternenhimmel" -- verfügbar als Taschenbuch und Kindle!</strong></p>
-        </div>
-    </div>
+    <!-- Series Selection Modal -->
+    <div id="seriesModal" class="series-modal">
+        <div class="series-modal-content">
+            <span class="series-close">&times;</span>
+            
+            <div class="series-header">
+                <h2>Romantik Fiktion Serien</h2>
+                <p>Wähle deine nächste emotionale Reise</p>
+            </div>
 
-    <div id="leseprobe2" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h3>Leseprobe: Im Netz der Liebe</h3>
-            <h4>Kapitel 1: Begegnung</h4>
-            <p><em>Die sanfte Brise des späten Nachmittags trug den salzigen Duft des Meeres in die kleinen Gassen der Küstenstadt Adelaide. Clara versank in Gedanken, während sie über die blühende Bougainvillea entlang der Straßen schlenderte. Die warmen Farben der Sommerblumen spiegelten ihre Leidenschaft für die Kunst wider. Heute war ein besonders schöner Tag. Die Sonne strahlte hell am Himmel, und die Wellen schimmerten im goldenen Licht. Clara stellte sich vor, wie sie mit Pinsel und Leinwand am Strand saß, ihre Umgebung in lebendigen Farben festhaltend. Gerade als sie an einem kleinen Café vorbeikam, hörte sie das Lachen von Menschen. Es zog sie magisch an, und sie beschloss, einen Moment innezuhalten und die lebhafte Atmosphäre aufzusaugen. Doch während sie schaute, lenkte plötzlich eine neue Person ihre Aufmerksamkeit ab. Ein Mann trat aus dem Café, und Clara konnte nicht anders, als ihn zu mustern. Er hatte eine ergreifende Ausstrahlung: groß und athletisch. In diesem Augenblick hielt die Zeit für sie an. Als ihre Blicke sich trafen, überkam sie ein unerklärliches Prickeln. Es war, als ob die Luft zwischen ihnen elektrisch geladen war. Jeder Atemzug schien synchron zu einem tiefen, inneren Verlangen zu sein. „Oh, nein! Ich bin Clara", ihre Stimme bebte leise und spürte noch immer die Überraschung über die Intensität des Augenblicks. „Ich war nur... in Gedanken versunken." Ein verschmitztes Lächeln breitete sich auf Alex' Gesicht aus. Nach einem kurzen Zögern stimmte Clara zu. Es war untypisch für sie, in solchen Momenten impulsiv zu handeln, doch etwas an Alex's Ausstrahlung zog sie an. Sie ließ die Vertrautheit ihrer künstlerischen Welt hinter sich und folgte ihm ins Café. Sobald sie drinnen waren, bemerkte Clara, wie sich die Atmosphäre veränderte. Der Klang des Betriebs wurde zu einer sanften Melodie, und in dieser kleinen Blase fühlten sie sich wie in einer anderen Realität. Sie setzten sich an einen Tisch am Fenster. „Was führt dich in unsere kleine Stadt?", fragte Alex, während er den Kellner herbeirief. Clara spürte, wie ihre Nervosität allmählich verschwand, als sie ihm von ihrer Arbeit und ihrer Leidenschaft für die Kunst erzählte. Seine Augen weiteten sich vor Interesse. „Das klingt fantastisch. Kunst hat eine unglaubliche Kraft, uns zu verbinden und Geschichten zu erzählen, nicht wahr?" „Absolut", antwortete Clara, ihre Stimme wurde lebhafter. „Es ist eine Sprache, die jeder versteht, egal woher man kommt." Während sie sprachen, schien die Zeit stillzustehen. Clara und Alex entdeckten, dass sie nicht nur eine gemeinsame Leidenschaft für die Kunst, sondern auch ähnliche Werte und Träume hatten. Clara spürte, wie sich eine vertrauliche Anziehung zwischen ihnen aufbaute. Doch als sie Alex' Augen betrachtete, spürte sie, dass er einen Teil seiner Geschichte nicht preisgab -- einen Schatten, über den er noch nicht sprechen wollte. Trotz ihrer eigenen Verletzlichkeit fühlte Clara ein tiefes Verlangen, ihm zu helfen, diese Mauern zu überwinden. „Clara, es ist so erfrischend, jemanden zu treffen, der genauso leidenschaftlich ist wie ich", sagte Alex schließlich mit einem Lächeln, das tief in ihr Herz eindrang. „Ich hoffe, es ist nicht unser letztes Gespräch." „Das hoffe ich auch", erwiderte sie, und in diesem Moment wussten sie beide, dass diese Begegnung nur der Anfang von etwas Außergewöhnlichem war. Die chemische Anziehung zwischen ihnen war unbestreitbar, und während sie in den nächsten Gesprächen tiefer in ihre Träume und Ängste eintauchten, waren Clara und Alex bereit, die Herausforderungen zu erkennen, die in ihrem Weg lagen -- ein Weg, der sie zu einer tiefen und bedeutungsvollen Verbindung führen würde.</em></p>
-            <p><strong>Erlebe die vollständige emotionale Reise in "Im Netz der Liebe" -- verfügbar als Taschenbuch und Kindle!</strong></p>
-        </div>
-    </div>
+            <div class="series-grid">
+                <!-- Verlangen der Herzen Serie -->
+                <div class="series-card" onclick="goToSeries('verlangen-der-herzen')">
+                    <div class="series-icon">💕</div>
+                    <h3 class="series-title">Verlangen der Herzen</h3>
+                    <p class="series-description">
+                        Leidenschaftliche Geschichten aus den malerischen Adelaide Hills. Eine emotionale Reise durch Liebe, Träume und menschliche Verbindungen.
+                    </p>
+                    <div class="series-stats">
+                        <div class="stat">
+                            <div class="stat-number">4</div>
+                            <div class="stat-label">Bände</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">🇩🇪🇬🇧🇪🇸</div>
+                            <div class="stat-label">Sprachen*</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">2</div>
+                            <div class="stat-label">Verfügbar</div>
+                        </div>
+                    </div>
+                    <div style="font-size: 0.8rem; color: #6c757d; margin-bottom: 1rem;">
+                        *Spanisch nur Band 1, Englisch in Vorbereitung
+                    </div>
+                    <span class="series-button">Serie entdecken →</span>
+                </div>
 
-    <div id="leseprobe3" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h3>Leseprobe: Ankommen im neuen Leben</h3>
-            <h4>Kapitel 1: Berufliche Konflikte</h4>
-            <p><em>Der Wecker klingelte früh an diesem Morgen, doch Clara war bereits wach. Sie lag im Bett und starrte an die Decke, während die ersten Sonnenstrahlen durch die Vorhänge krochen. Der heutige Tag markierte einen Wendepunkt in ihrer Karriere: die Beförderung zur Leiterin der Kunstabteilung. Eine Position, um die sie hart gekämpft hatte. Stolz und Vorfreude mischten sich mit einer unterschwelligen Nervosität. Doch inmitten all dieser Gefühle gab es einen Gedanken, der sie nicht losließ -- wie würde sich diese Veränderung auf ihre Beziehung zu Alex auswirken? Alex war noch tief in den Kissen vergraben, sein Atem gleichmäßig und ruhig. Sie beobachtete ihn einen Moment lang. Sein Gesicht wirkte entspannt, fast friedlich, doch Clara wusste, dass auch er mit Herausforderungen zu kämpfen hatte. Seit Wochen war er von einem prestigeträchtigen Projekt für eine renommierte Galerie in der Stadt absorbiert. Seine Leidenschaft für Kunst und seine unnachgiebige Arbeitsmoral hatten ihn stets ausgezeichnet, aber Clara konnte nicht ignorieren, wie sehr ihn diese Verantwortung belastete. Langsam erhob sie sich aus dem Bett, zog den Morgenmantel über und machte sich auf den Weg in die Küche. Während der Duft von frisch gebrühtem Kaffee die Luft erfüllte, gingen ihre Gedanken in verschiedene Richtungen. Sie wusste, dass diese Beförderung mit einem höheren Arbeitspensum und längeren Abenden im Büro verbunden war. Ihre Freizeit würde schrumpfen -- Zeit, die sie sonst mit Alex geteilt hatte. Würden sie es schaffen, trotz all dieser Verpflichtungen ihre Beziehung lebendig zu halten? Später am Vormittag saßen Clara und Alex gemeinsam am Frühstückstisch. Die Gespräche waren oberflächlich -- kleine Notizen über den Tagesablauf, ein Austausch über die Schlagzeilen in der Zeitung. Clara bemerkte, wie Alex mehr in Gedanken als bei ihr zu sein schien. Seine Stirn war in Sorgenfalten gelegt, und seine Blicke glitten immer wieder zu seinem Handy, das auf dem Tisch lag. „Ist alles in Ordnung, Alex?" fragte sie vorsichtig. Er zuckte leicht zusammen, als ob er aus einem Traum gerissen wurde. „Ja, sicher. Es ist nur... dieses Projekt. Ich habe heute eine wichtige Besprechung, und die Erwartungen sind hoch." Clara nickte, obwohl sie spürte, dass mehr dahintersteckte. Sie wollte ihn nicht drängen, wusste aber auch, dass die Kommunikation zwischen ihnen in letzter Zeit gelitten hatte. Es war, als ob beide ihre Gedanken hinter einem Schutzschild verbargen, aus Angst, den anderen zu belasten. Die Stunden vergingen, und Clara war in ihrem neuen Büro angekommen. Der Raum war hell und modern, die Wände geschmückt mit Bildern, die sie selbst kuratiert hatte. Sie sollte sich freuen, doch ein Hauch von Melancholie begleitete sie. Die Verantwortung, die mit dieser Beförderung einherging, war greifbar. Und mit jeder E-Mail und jedem Anruf wuchs das Gefühl, dass etwas auf der Strecke bleiben könnte.</em></p>
-            <p><strong>Entdecke Clara und Alex' Reise in "Ankommen im neuen Leben" -- bald verfügbar!</strong></p>
+                <!-- Die Verborgenen Kammern Serie -->
+                <div class="series-card" onclick="goToSeries('verborgene-kammern')">
+                    <div class="series-icon">🏰</div>
+                    <h3 class="series-title">Die Verborgenen Kammern</h3>
+                    <p class="series-description">
+                        Geheimnisvolle Romanzen in historischen Gemäuern. Wo Vergangenheit und Gegenwart aufeinandertreffen und Herzen ihre dunkelsten Geheimnisse preisgeben.
+                    </p>
+                    <div class="series-stats">
+                        <div class="stat">
+                            <div class="stat-number">3</div>
+                            <div class="stat-label">Bände</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">🇩🇪🇬🇧</div>
+                            <div class="stat-label">Sprachen*</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">1</div>
+                            <div class="stat-label">Verfügbar</div>
+                        </div>
+                    </div>
+                    <div style="font-size: 0.8rem; color: #6c757d; margin-bottom: 1rem;">
+                        *Englisch in Vorbereitung
+                    </div>
+                    <span class="series-button">Serie entdecken →</span>
+                </div>
+            </div>
         </div>
     </div>
 
     <footer>
         <div class="container">
-            <p>&copy; 2025 Helmut Wegner - Verlangen der Herzen Serie. Romantik aus den Adelaide Hills.</p>
+            <p>&copy; 2025 Helmut Wegner - Professionelle Autoren-Website. Alle Rechte vorbehalten.</p>
         </div>
     </footer>
 
     <script>
-        function openModal(modalId) {
-            document.getElementById(modalId).style.display = 'block';
+        function openSeriesModal() {
+            document.getElementById('seriesModal').style.display = 'block';
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        }
+
+        function closeSeriesModal() {
+            document.getElementById('seriesModal').style.display = 'none';
+            document.body.style.overflow = 'auto'; // Re-enable scrolling
+        }
+
+        function goToSeries(seriesName) {
+            if (seriesName === 'verlangen-der-herzen') {
+                // Navigation zur bestehenden "Verlangen der Herzen" Seite
+                window.location.href = 'romantik-fiktion.html';
+            } else if (seriesName === 'verborgene-kammern') {
+                // Navigation zur "Verborgene Kammern" Seite
+                window.location.href = 'verborgene-kammern.html';
+            }
         }
 
         // Close modal functionality
         document.addEventListener('DOMContentLoaded', function() {
-            const modals = document.querySelectorAll('.modal');
-            const closeButtons = document.querySelectorAll('.close');
+            const modal = document.getElementById('seriesModal');
+            const closeButton = document.querySelector('.series-close');
 
-            closeButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    this.closest('.modal').style.display = 'none';
-                });
+            closeButton.addEventListener('click', closeSeriesModal);
+
+            modal.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    closeSeriesModal();
+                }
             });
 
-            modals.forEach(modal => {
-                modal.addEventListener('click', function(e) {
-                    if (e.target === this) {
-                        this.style.display = 'none';
-                    }
-                });
+            // Close modal with Escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    closeSeriesModal();
+                }
             });
         });
     </script>
