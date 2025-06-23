@@ -168,6 +168,14 @@
             margin-bottom: 20px;
         }
 
+        .availability.ebook-only {
+            background: #2196F3;
+        }
+
+        .availability.coming-soon {
+            background: #FF9800;
+        }
+
         .book-buttons {
             display: flex;
             gap: 15px;
@@ -204,6 +212,26 @@
         .btn-buy:hover {
             background: #e55a30;
             transform: translateY(-2px);
+        }
+
+        .btn-ebook {
+            background: #2196F3;
+            color: white;
+        }
+
+        .btn-ebook:hover {
+            background: #1976D2;
+            transform: translateY(-2px);
+        }
+
+        .btn-disabled {
+            background: #bbb;
+            color: #666;
+            cursor: not-allowed;
+        }
+
+        .btn-disabled:hover {
+            transform: none;
         }
 
         @media (max-width: 768px) {
@@ -262,10 +290,10 @@
                         <div class="language-flags">
                             <span>Verfügbar in:</span> 🇩🇪🇬🇧🇪🇸
                         </div>
-                        <div class="availability">✓ Verfügbar</div>
+                        <div class="availability">✓ Taschenbuch & eBook</div>
                         <div class="book-buttons">
                             <a href="unter-dem-sternenhimmel-lesen.html" class="btn btn-read">📖 Lesen</a>
-                            <a href="https://amazon.de" class="btn btn-buy">🛒 Bei Amazon kaufen</a>
+                            <a href="https://amazon.de/dp/B0F9Y4L5LK" class="btn btn-buy">🛒 Bei Amazon kaufen</a>
                         </div>
                     </div>
                 </div>
@@ -285,10 +313,10 @@
                         <div class="language-flags">
                             <span>Verfügbar in:</span> 🇩🇪🇬🇧
                         </div>
-                        <div class="availability">✓ Verfügbar</div>
+                        <div class="availability">✓ Taschenbuch & eBook</div>
                         <div class="book-buttons">
                             <a href="im-netz-der-liebe-lesen.html" class="btn btn-read">📖 Lesen</a>
-                            <a href="https://amazon.de" class="btn btn-buy">🛒 Bei Amazon kaufen</a>
+                            <a href="https://amazon.de/dp/B0FBL167H5" class="btn btn-buy">🛒 Bei Amazon kaufen</a>
                         </div>
                     </div>
                 </div>
@@ -308,10 +336,10 @@
                         <div class="language-flags">
                             <span>Verfügbar in:</span> 🇩🇪🇬🇧
                         </div>
-                        <div class="availability">✓ Verfügbar</div>
+                        <div class="availability ebook-only">💻 Nur als eBook</div>
                         <div class="book-buttons">
                             <a href="ankommen-im-neuen-leben-lesen.html" class="btn btn-read">📖 Lesen</a>
-                            <a href="https://amazon.de" class="btn btn-buy">🛒 Bei Amazon kaufen</a>
+                            <a href="https://amazon.de/dp/B0FBKKW3HF" class="btn btn-ebook">💻 eBook kaufen</a>
                         </div>
                     </div>
                 </div>
@@ -331,10 +359,10 @@
                         <div class="language-flags">
                             <span>Verfügbar in:</span> 🇩🇪🇬🇧
                         </div>
-                        <div class="availability">✓ Verfügbar</div>
+                        <div class="availability coming-soon">📅 Bald bei Amazon</div>
                         <div class="book-buttons">
                             <a href="gemeinsam-in-die-zukunft-lesen.html" class="btn btn-read">📖 Lesen</a>
-                            <a href="https://amazon.de" class="btn btn-buy">🛒 Bei Amazon kaufen</a>
+                            <span class="btn btn-disabled">📅 Bald verfügbar</span>
                         </div>
                     </div>
                 </div>
