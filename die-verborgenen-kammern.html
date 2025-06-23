@@ -1,1 +1,277 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Die Verborgenen Kammern - Mysteriöse Thriller Serie | Helmut Wegners Wortwelten</title>
+    <meta name="description" content="Entdecken Sie die geheimnisvolle Thriller-Serie 'Die Verborgenen Kammern' von Helmut Wegner - Mystische Atmosphäre und fesselnde Spannung">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            background: linear-gradient(135deg, #2C1810 0%, #4A2C2A 50%, #5D4037 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #5D4037 0%, #8D6E63 50%, #A1887F 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .back-button {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 25px;
+            text-decoration: none;
+            display: inline-block;
+            margin-bottom: 20px;
+            font-size: 14px;
+            transition: background 0.3s ease;
+        }
+
+        .back-button:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .profile-pic {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .series-title {
+            font-size: 3em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .series-subtitle {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+            opacity: 0.9;
+        }
+
+        .series-description {
+            font-size: 1.1em;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+            opacity: 0.8;
+        }
+
+        .books-section {
+            padding: 40px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.2em;
+            color: #333;
+            margin-bottom: 40px;
+        }
+
+        .book-card {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 2px solid #8D6E63;
+        }
+
+        .book-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .book-content {
+            display: flex;
+            padding: 30px;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .book-cover {
+            width: 180px;
+            height: 270px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            object-fit: cover;
+            flex-shrink: 0;
+        }
+
+        .book-info {
+            flex: 1;
+        }
+
+        .book-title {
+            font-size: 1.8em;
+            color: #333;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .book-subtitle {
+            font-size: 1.1em;
+            color: #8D6E63;
+            margin-bottom: 15px;
+            font-style: italic;
+        }
+
+        .book-description {
+            font-size: 1em;
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .language-flags {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            gap: 10px;
+        }
+
+        .language-flags span {
+            font-size: 0.9em;
+            color: #777;
+        }
+
+        .availability {
+            background: #4CAF50;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.8em;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        .book-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 25px;
+            text-decoration: none;
+            font-size: 1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .btn-read {
+            background: #5D4037;
+            color: white;
+        }
+
+        .btn-read:hover {
+            background: #4A2C2A;
+            transform: translateY(-2px);
+        }
+
+        .btn-buy {
+            background: #ff6b35;
+            color: white;
+        }
+
+        .btn-buy:hover {
+            background: #e55a30;
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .book-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .book-cover {
+                width: 150px;
+                height: 225px;
+            }
+            
+            .series-title {
+                font-size: 2.2em;
+            }
+            
+            .book-title {
+                font-size: 1.5em;
+            }
+            
+            .book-buttons {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <a href="romantik-fiktion.html" class="back-button">← Zurück zu Romantik-Fiktion</a>
+            <img src="helmut.jpg" alt="Helmut Wegner" class="profile-pic">
+            <h1 class="series-title">Die Verborgenen Kammern</h1>
+            <p class="series-subtitle">Geheimnisvolle Romanzen in historischen Gemäuern</p>
+            <p class="series-description">
+                Wo Vergangenheit und Gegenwart aufeinanderprallen und Herzen ihre dunkesten Geheimnisse preisgeben. 
+                Mystische Atmosphäre verbindet sich mit leidenschaftlicher Romantik in jahrhundertealten Gemäuern.
+            </p>
+        </div>
+        
+        <div class="books-section">
+            <h2 class="section-title">Alle Bände der Serie</h2>
+            
+            <!-- Band 1 -->
+            <div class="book-card">
+                <div class="book-content">
+                    <img src="hinter-verschlossenen-tueren.jpg" alt="Band 1: Hinter verschlossenen Türen" class="book-cover">
+                    <div class="book-info">
+                        <h3 class="book-title">Band 1: Hinter verschlossenen Türen</h3>
+                        <p class="book-subtitle">Geheimnisse in historischen Gemäuern</p>
+                        <p class="book-description">
+                            Elena Winters, eine renommierte Kunstrestauratorin, erhält ein geheimnisvolles Angebot von Marcus Castellano. 
+                            Sein italienisches Museum birgt nicht nur kunstvolle Schätze, sondern auch dunkle Geheimnisse, 
+                            die Elena in ein Netz aus Leidenschaft und Gefahr verstricken.
+                        </p>
+                        <div class="language-flags">
+                            <span>Verfügbar in:</span> 🇩🇪🇬🇧🇪🇸
+                        </div>
+                        <div class="availability">✓ Taschenbuch & eBook</div>
+                        <div class="book-buttons">
+                            <a href="hinter-verschlossenen-tueren-lesen.html" class="btn btn-read">📖 Lesen</a>
+                            <a href="https://amazon.de/dp/B0F1YC3J79" class="btn btn-buy">🛒 Bei Amazon kaufen</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
