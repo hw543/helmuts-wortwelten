@@ -1,1 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Time Fool - Read | Helmut Wegner's Word-Worlds</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #2c3e50;
+            text-decoration: none;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-link {
+            color: #2c3e50;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover {
+            background: #f8f9fa;
+            color: #667eea;
+        }
+
+        /* Main Content */
+        .content-wrapper {
+            background: white;
+            border-radius: 20px;
+            margin: 2rem auto;
+            padding: 3rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            max-width: 800px;
+            text-align: center;
+        }
+
+        .book-cover {
+            width: 200px;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            margin: 0 auto 2rem auto;
+            display: block;
+        }
+
+        .book-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 2rem;
+            color: #2c3e50;
+        }
+
+        .button-container {
+            margin-bottom: 3rem;
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 25px;
+            font-weight: bold;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .btn-secondary {
+            background: linear-gradient(45deg, #ff7b54, #ff6b35);
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 123, 84, 0.3);
+        }
+
+        .back-link {
+            background: #6c757d;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+            display: inline-block;
+        }
+
+        .back-link:hover {
+            background: #5a6268;
+        }
+
+        /* Language Navigation */
+        .language-nav {
+            margin-bottom: 2rem;
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .lang-btn {
+            padding: 8px 16px;
+            border: 2px solid #667eea;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .lang-btn.active {
+            background: #667eea;
+            color: white;
+        }
+
+        .lang-btn:not(.active) {
+            background: white;
+            color: #667eea;
+        }
+
+        .lang-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+        }
+
+        /* Chapter Content */
+        .chapter-content {
+            text-align: left;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #444;
+            margin-top: 2rem;
+            border-top: 2px solid #667eea;
+            padding-top: 2rem;
+        }
+
+        .chapter-title {
+            font-size: 1.8rem;
+            color: #667eea;
+            margin-bottom: 2rem;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .chapter-content p {
+            margin-bottom: 1.2rem;
+            text-align: justify;
+            text-indent: 1.5em;
+        }
+
+        .chapter-content p:first-child {
+            text-indent: 0;
+        }
+
+        .chapter-content p:first-child::first-letter {
+            font-size: 3.5em;
+            font-weight: bold;
+            float: left;
+            line-height: 1;
+            margin: 0.1em 0.1em 0 0;
+            color: #667eea;
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(44, 62, 80, 0.9);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .content-wrapper {
+                margin: 1rem;
+                padding: 2rem 1rem;
+            }
+
+            .book-title {
+                font-size: 2rem;
+            }
+
+            .book-cover {
+                width: 150px;
+                height: 225px;
+            }
+
+            .button-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .chapter-content {
+                font-size: 1rem;
+                line-height: 1.6;
+            }
+
+            .language-nav {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="https://hw543.github.io/helmuts-wortwelten/index.html" class="logo">Helmut Wegner's Word-Worlds</a>
+                <nav>
+                    <ul class="nav-menu">
+                        <li><a href="https://hw543.github.io/helmuts-wortwelten/index.html" class="nav-link">Home</a></li>
+                        <li><a href="https://hw543.github.io/helmuts-wortwelten/kinderbuecher.html" class="nav-link">Children's Books</a></li>
+                        <li><a href="https://hw543.github.io/helmuts-wortwelten/krimis.html" class="nav-link">Crime Stories</a></li>
+                        <li><a href="#" class="nav-link">Chronicles</a></li>
+                        <li><a href="#" class="nav-link">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="content-wrapper">
+            <a href="https://hw543.github.io/helmuts-wortwelten/kinderbuecher.html" class="back-link">← Back to Children's Books</a>
+            
+            <img src="zeitnarr.jpg" alt="The Time Fool" class="book-cover">
+            
+            <h1 class="book-title">The Time Fool</h1>
+            
+            <!-- Language Navigation -->
+            <div class="language-nav">
+                <a href="zeitnarr-lesen.html" class="lang-btn">🇩🇪 Deutsch</a>
+                <a href="#" class="lang-btn active">🇬🇧 English</a>
+            </div>
+            
+            <div class="button-container">
+                <a href="https://amazon.de/dp/B0F8HY1P5G" class="btn btn-secondary" target="_blank">🛒 Buy on Amazon</a>
+            </div>
+
+            <div class="chapter-content">
+                <h2 class="chapter-title">Chapter 1: The Flea Market Find</h2>
+
+                <p>The flea market was a world unto itself. Rows of stalls stretched across the small marketplace, each loaded with a colorful mixture of old, curious, and valuable items. Max pushed through the crowd, his hands buried deep in the pockets of his worn jeans. His mother had dragged him along, although he would have preferred to stay home. "Here, Max! Look, old books!" his mother called and disappeared between the stalls. Max sighed. Books weren't his thing. He wandered aimlessly through the alleys until his gaze caught on a small stall.</p>
+
+                <p>It was inconspicuous—an old man with a wrinkled face sat on a rickety chair behind a table on which lay a collection of seemingly worthless junk. But something on this table magically attracted Max. A pocket watch. The watch was made of brass, decorated with filigree engravings that spread like a labyrinth across the surface. Its glass was slightly scratched, and the lid was half open. Max reached for it, hesitated briefly, but then took it in his hand. It felt surprisingly heavy, and when he opened it, the hands began dancing wildly as if by themselves.</p>
+
+                <p>"Are you interested in old things?" the man asked with a hoarse voice. His eyes sparkled in a way that Max couldn't place—somewhere between curiosity and mystery. "Maybe. What does it cost?" Max turned the watch in his hand while the dial flashed in the afternoon sunlight. The man seemed to think briefly. "For you? Ten euros. But be careful with it. This watch has more history than you can imagine."</p>
+
+                <p>Max pulled out his pocket money and placed it on the table. The man nodded briefly, took the money, and smiled as Max walked away with the watch in his hand. At home, Max sat down at his desk. He opened the watch and examined the dial more closely. It seemed almost alive—the engravings moved slightly as if they were breathing. Without thinking long, he pulled the small crown on the side.</p>
+
+                <p>Suddenly the air in the room seemed to vibrate. A deep humming filled his ears, and the walls around him blurred. Max's eyes flew open, he wanted to drop the watch, but it stuck to his hand as if grown there. A bright light flared up, and for a moment the world seemed to stand still. Then it was over.</p>
+
+                <p>When Max blinked, he was no longer in his room. He stood in a narrow, cobblestone alley. The buildings on both sides were old and crooked, built of rough wood and stone. People in strange clothes hurried past him, some throwing him irritated glances. Max gasped for air. "Where am I?" he murmured, but his voice sounded strange, almost suffocated. He felt the watch pulse in his hand like a heartbeat. And then he heard a voice behind him, quiet and threatening: "Well, Time Fool? You have no idea what you've done."</p>
+
+                <p>Max turned around abruptly, but the alley was empty. His heart was racing. Who had spoken? And above all—how would he get out of here again?</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Helmut Wegner - The Time Fool. A journey through past epochs.</p>
+        </div>
+    </footer>
+</body>
+</html>
