@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Der Rätseldetektivclub - Lesen | Helmut Wegners Wortwelten</title>
+    <title>Rätseldetektivclub - Lesen | Helmut Wegners Wortwelten</title>
     <style>
         * {
             margin: 0;
@@ -70,11 +70,11 @@
         }
 
         /* Main Content */
-        .main-content {
+        .content-wrapper {
             background: white;
             border-radius: 20px;
             margin: 2rem auto;
-            padding: 2rem;
+            padding: 3rem;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
             max-width: 800px;
             text-align: center;
@@ -93,18 +93,11 @@
         .book-title {
             font-size: 2.5rem;
             font-weight: bold;
-            margin-bottom: 0.5rem;
+            margin-bottom: 2rem;
             color: #2c3e50;
         }
 
-        .book-subtitle {
-            color: #667eea;
-            font-style: italic;
-            margin-bottom: 2rem;
-            font-size: 1.2rem;
-        }
-
-        .book-buttons {
+        .button-container {
             margin-bottom: 3rem;
             display: flex;
             gap: 1rem;
@@ -122,16 +115,6 @@
             cursor: pointer;
             transition: all 0.3s ease;
             font-size: 1rem;
-        }
-
-        .btn-primary {
-            background: linear-gradient(45deg, #667eea, #764ba2);
-            color: white;
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
         }
 
         .btn-secondary {
@@ -157,6 +140,38 @@
 
         .back-link:hover {
             background: #5a6268;
+        }
+
+        /* Language Navigation */
+        .language-nav {
+            margin-bottom: 2rem;
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .lang-btn {
+            padding: 8px 16px;
+            border: 2px solid #667eea;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .lang-btn.active {
+            background: #667eea;
+            color: white;
+        }
+
+        .lang-btn:not(.active) {
+            background: white;
+            color: #667eea;
+        }
+
+        .lang-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
         }
 
         /* Chapter Content */
@@ -188,6 +203,15 @@
             text-indent: 0;
         }
 
+        .chapter-content p:first-child::first-letter {
+            font-size: 3.5em;
+            font-weight: bold;
+            float: left;
+            line-height: 1;
+            margin: 0.1em 0.1em 0 0;
+            color: #667eea;
+        }
+
         /* Footer */
         footer {
             background: rgba(44, 62, 80, 0.9);
@@ -203,7 +227,7 @@
                 display: none;
             }
 
-            .main-content {
+            .content-wrapper {
                 margin: 1rem;
                 padding: 2rem 1rem;
             }
@@ -217,7 +241,7 @@
                 height: 225px;
             }
 
-            .book-buttons {
+            .button-container {
                 flex-direction: column;
                 align-items: center;
             }
@@ -225,6 +249,11 @@
             .chapter-content {
                 font-size: 1rem;
                 line-height: 1.6;
+            }
+
+            .language-nav {
+                flex-direction: column;
+                align-items: center;
             }
         }
     </style>
@@ -248,54 +277,42 @@
     </header>
 
     <div class="container">
-        <div class="main-content">
+        <div class="content-wrapper">
             <a href="https://hw543.github.io/helmuts-wortwelten/kinderbuecher.html" class="back-link">← Zurück zu Kinderbücher</a>
             
-            <img src="raetseldetektivclub.jpg" alt="Der Rätseldetektivclub" class="book-cover">
+            <img src="raetseldetektivclub.jpg" alt="Rätseldetektivclub" class="book-cover">
             
-            <h1 class="book-title">Der Rätseldetektivclub</h1>
-            <p class="book-subtitle">Ein neuer Fall beginnt</p>
+            <h1 class="book-title">Rätseldetektivclub</h1>
             
-            <div class="book-buttons">
-                <a href="#" class="btn btn-primary">📖 Lesen</a>
-                <a href="https://www.amazon.de/dp/B0F6K8NPZR" class="btn btn-secondary" target="_blank">🛒 Bei Amazon kaufen</a>
+            <!-- Language Navigation -->
+            <div class="language-nav">
+                <a href="#" class="lang-btn active">🇩🇪 Deutsch</a>
+                <a href="raetseldetektivclub-english.html" class="lang-btn">🇬🇧 English</a>
+            </div>
+            
+            <div class="button-container">
+                <a href="https://amazon.de/dp/B0F8Q3LQ6K" class="btn btn-secondary" target="_blank">🛒 Bei Amazon kaufen</a>
             </div>
 
             <div class="chapter-content">
                 <h2 class="chapter-title">Kapitel 1: Ein neuer Fall beginnt</h2>
 
-                <p>Der rätselhafte Fund</p>
-
                 <p>Die Nachmittagssonne schien durch die hohen Fenster der Schulbibliothek, und Max blätterte gelangweilt in einem alten Buch. Sein Blick wanderte über die staubigen Regale, als er plötzlich einen alten, vergilbten Umschlag bemerkte, der aus einem zerlesenen Band hervorstand. Neugierig zog er den Umschlag heraus und öffnete ihn vorsichtig. Innen befand sich eine Notiz in geschwungener Handschrift: „Suche dort, wo die Schatten Geschichten erzählen, und finde den ersten Schlüssel." Max' Herz schlug schneller. Das klang nach einem Rätsel, das nur darauf wartete, gelöst zu werden. Ohne zu zögern, steckte er den Umschlag ein und eilte aus der Bibliothek.</p>
 
-                <p>Der Club versammelt sich ihrem geheimen Hauptquartier: dem alten Baumhaus im Garten von Jonas. Die Wände des Baumhauses waren mit Landkarten, Zeitungsausschnitten und Fotos dekoriert, die sie von ihren bisherigen Abenteuern gesammelt hatten. „Was hast du da, Max?", fragte Emma neugierig, als er den Umschlag auf den Tisch legte. „Das ist ein Rätsel!" Max erklärte aufgeregt, was er in der Bibliothek gefunden hatte. Jonas lehnte sich nach vorn, die Stirn gerunzelt. „Wo die Schatten Geschichten erzählen" ... Das klingt wie das alte Theater in der Stadt." „Oder vielleicht das Museum?", warf Lena ein. „Dort gibt es doch diese Abteilung mit alten Märchenfiguren." Die Gruppe diskutierte lebhaft, bis sie sich schließlich darauf einigte, zuerst das Theater zu untersuchen.</p>
-
-                <p>Eine unerwartete Entdeckung</p>
+                <p>Der Club versammelte sich in ihrem geheimen Hauptquartier: dem alten Baumhaus im Garten von Jonas. Die Wände des Baumhauses waren mit Landkarten, Zeitungsausschnitten und Fotos dekoriert, die sie von ihren bisherigen Abenteuern gesammelt hatten. „Was hast du da, Max?", fragte Emma neugierig, als er den Umschlag auf den Tisch legte. „Das ist ein Rätsel!" Max erklärte aufgeregt, was er in der Bibliothek gefunden hatte. Jonas lehnte sich nach vorn, die Stirn gerunzelt. „Wo die Schatten Geschichten erzählen" ... Das klingt wie das alte Theater in der Stadt." „Oder vielleicht das Museum?", warf Lena ein. „Dort gibt es doch diese Abteilung mit alten Märchenfiguren." Die Gruppe diskutierte lebhaft, bis sie sich schließlich darauf einigte, zuerst das Theater zu untersuchen.</p>
 
                 <p>Am Abend schlichen sich die vier Freunde in das alte, längst geschlossene Theater. Der große Saal war dunkel, und Staub tanzte in den Lichtstrahlen ihrer Taschenlampen. Überall standen alte Kulissen und Requisiten. „Hier erzählen die Schatten wirklich Geschichten", murmelte Lena und zeigte auf die seltsamen Schatten, die die Kulissen auf die Wände warfen. Emma entdeckte schließlich eine unscheinbare Holztruhe, die halb unter einer Bühne verborgen war. Sie kniete sich hin und zog sie hervor. „Hier! Das könnte der Schlüssel sein!" Mit klopfendem Herzen öffneten sie die Truhe und fanden darin eine kleine Karte und eine weitere Nachricht: „Der Weg beginnt mit einem Schritt ins Ungewisse. Folge den Sternen, und du wirst den zweiten Hinweis finden." Jonas hielt die Karte hoch. „Das ist ein Plan von unserer Stadt ... und diese Markierung zeigt den alten Uhrenturm. Das ist unser nächster Halt."</p>
 
-                <p>Der erste Hinweis führt zu einer Gefahr. Als die Kinder das Theater verließen, bemerkten sie, dass sie nicht allein waren. Ein dunkler Schatten bewegte sich hinter einem der Fenster, und draußen auf der Straße war das leise Summen eines Motors zu hören. „Jemand beobachtet uns", flüsterte Emma, während sie sich an Jonas klammerte. „Weg hier!", rief Max und rannte los, die anderen dicht hinter ihm. In letzter Sekunde schlüpften sie in eine schmale Gasse und versteckten sich hinter einem Stapel alter Kisten. Keuchend lauschten sie, wie schwere Schritte näherkamen und dann wieder verschwanden. „Das war knapp", sagte Lena atemlos. „Aber jetzt wissen wir, dass wir nicht die Einzigen sind, die hinter diesem Rätsel her sind." Max nickte. „Das macht es nur noch spannender. Morgen gehen wir zum Uhrenturm."</p>
+                <p>Als die Kinder das Theater verließen, bemerkten sie, dass sie nicht allein waren. Ein dunkler Schatten bewegte sich hinter einem der Fenster, und draußen auf der Straße war das leise Summen eines Motors zu hören. „Jemand beobachtet uns", flüsterte Emma, während sie sich an Jonas klammerte. „Weg hier!", rief Max und rannte los, die anderen dicht hinter ihm. In letzter Sekunde schlüpften sie in eine schmale Gasse und versteckten sich hinter einem Stapel alter Kisten. Keuchend lauschten sie, wie schwere Schritte näherkamen und dann wieder verschwanden. „Das war knapp", sagte Lena atemlos. „Aber jetzt wissen wir, dass wir nicht die Einzigen sind, die hinter diesem Rätsel her sind." Max nickte. „Das macht es nur noch spannender. Morgen gehen wir zum Uhrenturm."</p>
 
-                <p>Die Freunde trennten sich schließlich, jeder in Gedanken versunken. Max lag in seinem Bett und starrte an die Decke. Wer könnte noch hinter dem Rätsel her sein? Und was würde sie am Uhrenturm erwarten? Der letzte Satz: „Max wusste, dass dies kein gewöhnliches Abenteuer werden würde -- und der wahre Schlüssel im Verborgenen lag." Max konnte kaum die Augen schließen. Das geheimnisvolle Rätsel ließ ihn nicht los. Die Worte der Nachricht hallten in seinem Kopf wider wie ein Echo in einer endlosen Höhle: „Der Weg beginnt mit einem Schritt ins Ungewisse." Die Nacht war ungewöhnlich still, fast bedrückend. Selbst das gelegentliche Knarren der alten Holzdielen in seinem Zimmer, das ihn sonst beruhigte, schien jetzt eine andere Bedeutung zu tragen.</p>
-
-                <p>Er drehte sich auf die Seite und starrte auf die Karte, die er auf seinem Nachttisch ausgebreitet hatte. „Was steckt nur dahinter?", murmelte er leise und versuchte, die Markierung auf dem Plan zu deuten. Der alte Uhrenturm -- ein verlassener Ort voller Gerüchte und Geschichten. Es hieß, er sei einst von einem seltsamen Architekten gebaut worden, der spurlos verschwand. Plötzlich ertönte ein leises Kratzen an seinem Fenster. Max' Herz setzte einen Schlag aus. Mit zitternden Fingern griff er nach seiner Taschenlampe, die immer neben seinem Bett lag, und schaltete sie ein. Ein Schatten bewegte sich draußen im Garten, kaum erkennbar im schwachen Mondlicht. Er spähte hinaus, hielt den Atem an. „Nur der Wind ...", flüsterte er zu sich selbst, doch ein ungutes Gefühl blieb. Schließlich zwang er sich, die Augen zu schließen. Morgen würde ein langer Tag werden.</p>
-
-                <p>Ein neuer Tag, ein neues Rätsel. Am nächsten Morgen wirkte alles normal -- zumindest auf den ersten Blick. Die Sonne strahlte warm durch die Fenster, und der Duft von frisch gebackenem Brot zog aus der Küche in Max' Zimmer. Doch das Kratzen der vergangenen Nacht ließ ihn nicht los. „Max, beeil dich, du kommst noch zu spät!", rief seine Mutter. Er schnappte sich seinen Rucksack, indem er die Karte und die Notizen sicher verstaut hatte, und eilte hinaus. Am Treffpunkt im Park warteten Jonas, Emma und Lena bereits ungeduldig. „Du siehst aus, als hättest du die ganze Nacht nicht geschlafen", bemerkte Emma und runzelte die Stirn. „Habe ich auch nicht", gab Max zu und zog die Karte hervor. „Ich habe nachgedacht. Der Uhrenturm ... glaubt ihr, dass dort wirklich etwas versteckt ist?" „Das werden wir gleich herausfinden", sagte Jonas entschlossen. „Aber wir müssen vorsichtig sein. Wenn uns wirklich jemand beobachtet hat, könnte das gefährlich werden." Lena nickte und sah sich nervös um. „Vielleicht sollten wir einen Plan machen, bevor wir einfach hineinstürmen."</p>
-
-                <p>Die Erkundung des Uhrenturms</p>
-
-                <p>Der Uhrenturm ragte düster vor ihnen auf, als sie das verlassene Gelände betraten. Die Zeit hatte ihre Spuren hinterlassen -- bröckelnde Steine, verwilderte Ranken und ein Tor, das nur noch an einer Scharnierhälfte hing " fühlt sich das unheimlich an", flüsterte Lena. „Genau richtig für ein Abenteuer", entgegnete Jonas mit einem schiefen Grinsen und schob das quietschende Tor auf. Drinnen roch es nach feuchtem Holz und Staub. Der Boden war mit alten Blättern und Schutt bedeckt, und in der Ferne hörten sie das Tropfen von Wasser. Max leuchtete mit seiner Taschenlampe umher, während Emma das Tagebuch hervorzog, das sie am Abend zuvor gefunden hatten. „Hier steht etwas über eine geheime Treppe", sagte sie. „Sie soll hinter einer Falltür sein." Jonas klopfte mit seinem Fuß gegen die Dielen und lauschte. „Hier! Das klingt hohl." Gemeinsam schafften sie es, die schwere Holzklappe anzuheben, die eine schmale, steinerne Treppe freigab, die hinab in die Dunkelheit führte.</p>
-
-                <p>Die erste Entdeckung. „Ich gehe zuerst", sagte Jonas, doch Max hielt ihn zurück. „Warte. Lass mich. Ich habe die Karte." Die Stufen knarrten unter Max' Gewicht, während er langsam hinunterstieg. Die anderen folgten ihm dicht auf den Fersen. Die Luft wurde kühler, und ein schwaches Licht flackerte am Ende der Treppe -- als würde eine alte Lampe mit letzter Kraft kämpfen, nicht zu erlöschen. „Was ist das für ein Ort?", fragte Lena flüsternd, während sie in einen kleinen Raum traten. Die Wände waren mit seltsamen Symbolen bemalt, die Max an alte Karten erinnerten, die er einmal in einem Geschichtsbuch gesehen hatte. In der Mitte des Raumes stand ein Podest, auf dem eine kleine Truhe lag, umgeben von einer dünnen Staubschicht. Emma trat vorsichtig näher und untersuchte sie. „Keine Schlösser, keine Fallen ... zumindest keine, die ich sehe", murmelte sie, bevor sie den Deckel öffnete. Drinnen lag ein seltsames Medaillon, das in die Karte eingearbeitet zu sein schien. „Das sieht aus wie ... ein Teil von etwas Größerem", bemerkte Max. „Vielleicht ein Schlüssel", überlegte Jonas.</p>
-
-                <p>Doch bevor sie weiter nachdenken konnten, hallte ein lautes Geräusch durch den Raum -- Schritte, die sich der Treppe näherten. „Schnell, wir müssen hier raus!", flüsterte Lena panisch. Die Freunde griffen nach dem Medaillon und suchten verzweifelt nach einem zweiten Ausgang. Der Raum schien jedoch keine weiteren Türen zu haben. Die Schritte wurden lauter, und eine dunkle Silhouette erschien oben an der Treppe. Max presste das Medaillon fest an sich und flüsterte: „Egal, was passiert -- wir dürfen das Rätsel nicht aufgeben." Der letzte Satz: „Das Abenteuer hatte gerade erst begonnen, doch sie ahnten bereits, dass der Weg gefährlicher war, als sie sich vorgestellt hatten."</p>
+                <p>Die Freunde trennten sich schließlich, jeder in Gedanken versunken. Max lag in seinem Bett und starrte an die Decke. Wer könnte noch hinter dem Rätsel her sein? Und was würde sie am Uhrenturm erwarten? Max wusste, dass dies kein gewöhnliches Abenteuer werden würde -- und der wahre Schlüssel im Verborgenen lag.</p>
             </div>
         </div>
     </div>
 
     <footer>
         <div class="container">
-            <p>&copy; 2025 Helmut Wegner - Der Rätseldetektivclub. Ein neuer Fall beginnt.</p>
+            <p>&copy; 2025 Helmut Wegner - Rätseldetektivclub. Spannende Fälle für clevere Köpfe.</p>
         </div>
     </footer>
 </body>
