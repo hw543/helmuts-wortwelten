@@ -117,24 +117,10 @@
             font-size: 1rem;
         }
 
-        .btn-primary {
-            background: linear-gradient(45deg, #667eea, #764ba2);
-            color: white;
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
-        }
-
-        .btn-secondary {
-            background: linear-gradient(45deg, #ff7b54, #ff6b35);
-            color: white;
-        }
-
-        .btn-secondary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(255, 123, 84, 0.3);
+        .btn-unavailable {
+            background: #ccc;
+            color: #666;
+            cursor: not-allowed;
         }
 
         .back-link {
@@ -150,6 +136,38 @@
 
         .back-link:hover {
             background: #5a6268;
+        }
+
+        /* Language Navigation */
+        .language-nav {
+            margin-bottom: 2rem;
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .lang-btn {
+            padding: 8px 16px;
+            border: 2px solid #667eea;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .lang-btn.active {
+            background: #667eea;
+            color: white;
+        }
+
+        .lang-btn:not(.active) {
+            background: white;
+            color: #667eea;
+        }
+
+        .lang-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
         }
 
         /* Chapter Content */
@@ -179,6 +197,15 @@
 
         .chapter-content p:first-child {
             text-indent: 0;
+        }
+
+        .chapter-content p:first-child::first-letter {
+            font-size: 3.5em;
+            font-weight: bold;
+            float: left;
+            line-height: 1;
+            margin: 0.1em 0.1em 0 0;
+            color: #667eea;
         }
 
         /* Footer */
@@ -219,6 +246,11 @@
                 font-size: 1rem;
                 line-height: 1.6;
             }
+
+            .language-nav {
+                flex-direction: column;
+                align-items: center;
+            }
         }
     </style>
 </head>
@@ -248,9 +280,14 @@
             
             <h1 class="book-title">Der verborgene Wald</h1>
             
+            <!-- Language Navigation -->
+            <div class="language-nav">
+                <a href="#" class="lang-btn active">🇩🇪 Deutsch</a>
+                <a href="verborgenerwald-english.html" class="lang-btn">🇬🇧 English</a>
+            </div>
+            
             <div class="button-container">
-                <button class="btn btn-primary">📖 Lesen</button>
-                <a href="https://www.amazon.de/dp/B0F8V7TLVT" class="btn btn-secondary" target="_blank">🛒 Bei Amazon kaufen</a>
+                <span class="btn btn-unavailable">🛒 Bei Amazon (bald verfügbar)</span>
             </div>
 
             <div class="chapter-content">
@@ -317,66 +354,6 @@
                 <p>„Ich weiß nicht", sagte Lisa mit einem Blick auf die Karte, „aber ich glaube, die Reise hat gerade erst begonnen."</p>
 
                 <p>Mit einem letzten Blick zurück auf die Stadt, die langsam in der Dunkelheit verschwand, traten Max, Lisa und Bruno in den geheimen Wald ein, und das Abenteuer begann.</p>
-
-                <p>Die Sonne neigte sich langsam dem Horizont entgegen, und die letzten goldenen Strahlen tauchten die Welt in ein sanftes, warmes Orange. Der alte Marktplatz, auf dem Max und Lisa standen, war in den späten Nachmittagsstunden fast leer. Die Fenster der Geschäfte waren bereits geschlossen, und nur das entfernte Lachen von Kindern war zu hören, die auf dem Heimweg waren. Der Marktplatz war nun der ruhigste Ort in der Stadt, und trotzdem hatten Max und Lisa keinen Gedanken daran verschwendet, nach Hause zu gehen.</p>
-
-                <p>„Glaubst du, es ist wirklich der Verborgene Wald?", fragte Max aufgeregt und sprang ungeduldig von einem Bein auf das andere. In seiner Hand hielt er die Notiz, die sie heute Morgen in einem alten Antiquariat gefunden hatten. Sie hatte sie den ganzen Nachmittag über begleitet, und je mehr er darüber nachdachte, desto stärker spürte er das Verlangen, die Geheimnisse zu lüften, die sie verbarg.</p>
-
-                <p>„Vielleicht...", antwortete Lisa nachdenklich und sah sich um. Ihre Augen glitten über den Marktplatz, als ob sie nach etwas suchte, das ihr noch nicht bewusst war. In ihren Gedanken kreisten die Worte der geheimen Nachricht. Sie hatten sie aus einem vergilbten Buch herausgelesen, das Max in einem kleinen Antiquariat aufgestöbert hatte. Ein Buch, das mehr Fragen aufwarf, als es Antworten gab. Die Nachricht versprach ihnen eine Karte, die zu einem magischen Ort führte -- einem Ort voller Abenteuer, der nur denjenigen offenbart wurde, die bereit waren, ihn zu suchen. Und Max, der von Natur aus neugierig war, hatte sofort beschlossen, dass sie dem Geheimnis auf den Grund gehen mussten.</p>
-
-                <p>„Sieh mal da!", rief Max plötzlich und zeigte auf einen schmalen, fast unsichtbaren Weg zwischen zwei alten Häusern, der von Efeu und moosbewachsenen Steinen umrahmt war.</p>
-
-                <p>Am Ende dieses geheimen Pfades stand ein alter Mann in einem langen grauen Umhang. Seine silbernen Haare fielen in weichen Wellen auf seine Schultern, und seine Augen funkelten wie zwei Sterne, die in der Dämmerung leuchteten. Die Atmosphäre um ihn herum schien durchzogen von einer fast greifbaren Energie -- als ob der Wald, von dem sie in der Nachricht gelesen hatten, in diesem Mann lebte.</p>
-
-                <p>„Ah, ihr seid endlich gekommen", sagte der Mann mit einer Stimme, die so sanft und zugleich so kraftvoll war, dass sie sich wie das Flüstern des Windes in den Bäumen anhörte. „Ich habe gewusst, dass ihr es seid."</p>
-
-                <p>„W-wir?", fragte Max überrascht, seine Augen weiteten sich. „Wie können Sie das wissen?"</p>
-
-                <p>Der Mann lächelte geheimnisvoll, und es war, als ob ein Hauch von Magie die Luft um sie herum durchzog. „Ich kenne viele Dinge, die andere nicht wissen", antwortete er. „Die Karte, die ihr sucht, wird euch den Weg weisen -- aber nur, wenn ihr mutig genug seid, ihn zu gehen."</p>
-
-                <p>Mit einer eleganten Bewegung zog der alte Mann eine vergilbte, zusammengerollte Karte aus seinem Mantel. Er hielt sie Max entgegen. Die Karte war mit seltsamen Symbolen und mystischen Markierungen versehen, die wie geheime Botschaften wirkten. Am Rand waren goldene Schnörkel zu sehen, die im letzten Licht des Tages schimmerten. Sie schienen fast lebendig, als ob sie in der Dämmerung eine eigene Geschichte erzählten.</p>
-
-                <p>Max nahm die Karte vorsichtig in seine Hände. Als er sie berührte, fühlte er, wie ein leises Knistern durch seine Finger zog, fast so, als ob die Karte aufgeregt darauf wartete, entdeckt zu werden. Sie schien zu flimmern, als ob sie einen unsichtbaren Rhythmus hatte.</p>
-
-                <p>„Was bedeutet das?", fragte Lisa und deutete auf einen merkwürdigen Punkt in der Mitte der Karte, der in einem schwachen, aber auffälligen Licht zu leuchten schien.</p>
-
-                <p>„Das ist der Verborgene Wald", erklärte der Mann mit einer ruhigen Stimme. „Er wartet auf euch. Nur die, die das Herz eines Abenteurers besitzen, können ihn finden. Doch wenn ihr ihm begegnet, werdet ihr ein Geheimnis erfahren, das seit vielen Jahren verborgen ist."</p>
-
-                <p>Max' Augen funkelten vor Aufregung. „Das hört sich nach einem echten Abenteuer an!", rief er und drückte die Karte fest an sich.</p>
-
-                <p>Doch Lisa war etwas vorsichtiger. Sie betrachtete die Karte mit einer Mischung aus Staunen und Skepsis. „Aber was passiert, wenn wir nicht zurückkommen?", fragte sie leise, fast zögernd.</p>
-
-                <p>Der alte Mann sah sie mit einem durchdringenden Blick an. „Ihr werdet zurückkommen", sagte er ruhig. „Doch nicht so, wie ihr gegangen seid. Ihr werdet stärker, weiser und vielleicht auch ein wenig anders sein. Aber das ist es, was ein Abenteuer ausmacht."</p>
-
-                <p>Max war kaum noch zu bremsen. Er zog Lisa an ihrem Ärmel. „Komm schon, Lisa! Wir müssen das unbedingt versuchen!"</p>
-
-                <p>Lisa seufzte tief, doch ihre Augen funkelten von Neugier. Sie konnte die Verlockung des Unbekannten nicht leugnen. „Okay", sagte sie schließlich. „Aber nur, wenn du uns auch hilfst, den Weg zu finden."</p>
-
-                <p>Der alte Mann nickte, und in dem Moment, als er sich zum Gehen wandte, war er plötzlich verschwunden, als hätte er sich im Schatten der Gasse aufgelöst. Max und Lisa standen einen Moment lang verblüfft da. War er wirklich dort gewesen? Es fühlte sich an, als ob die Zeit für einen Augenblick stillgestanden hatte.</p>
-
-                <p>„Komm, wir müssen aufbrechen", sagte Max entschlossen und drückte die Karte fest an sich, während er den schmalen Pfad entlangging.</p>
-
-                <p>Lisa zögerte noch einen Moment und sah sich dann um. Der alte Marktplatz, den sie eben noch gekannt hatten, schien nun weit entfernt und fern. Die Stadt verblasste hinter ihnen, als sie den Waldweg betraten. Der Himmel war mittlerweile in tiefes Blau getaucht, und die ersten Sterne funkelten am Himmel.</p>
-
-                <p>„Vielleicht sollten wir uns besser vorbereiten", murmelte Lisa, während Bruno, ihr Hund, fröhlich an ihrer Seite sprang. „Wir brauchen Proviant, vielleicht ein paar Seile, und auf jeden Fall etwas zum Leuchten."</p>
-
-                <p>„Das wird großartig", sagte Max, der schon seine Taschen durchwühlte, um seine eigenen Abenteuergüter zu finden. „Stell dir vor, wir entdecken Magie!"</p>
-
-                <p>Lisa warf ihm einen skeptischen Blick zu. „Oder wir verlieren uns. Oder schlimmer noch, was ist, wenn etwas Unerklärliches passiert?"</p>
-
-                <p>Gerade in diesem Moment flimmerte die Karte plötzlich auf. Ein sanftes goldenes Licht erstrahlte, das die Dunkelheit durchbrach. Es war, als ob die Karte von einer eigenen, geheimen Energie erweckt wurde. Das goldene Licht verflog in einen Nebel, der sich sanft in der Luft auflöste.</p>
-
-                <p>„Sie lebt...", flüsterte Lisa fasziniert.</p>
-
-                <p>Max ergriff ihre Hand. „Wir folgen ihr. Sie wird uns den Weg weisen."</p>
-
-                <p>Der Wald schien in dieser Nacht lebendig zu sein. Das Rascheln der Blätter war wie ein leises, einladendes Murmeln, das nur für sie bestimmt war. Doch gleichzeitig war da ein Gefühl der Unheimlichkeit -- als ob sie nicht alleine auf diesem Weg waren. Ein Knistern lag in der Luft.</p>
-
-                <p>„Bist du bereit?", fragte Max mit einem schelmischen Grinsen.</p>
-
-                <p>Lisa sah auf die Karte, die in Max' Händen weiter pulsierte. „Ich weiß nicht", sagte sie nachdenklich. „Aber ich glaube, die Reise hat gerade erst begonnen."</p>
-
-                <p>Mit einem letzten Blick zurück auf die Stadt, die nun hinter den Bäumen verschwunden war, traten Max, Lisa und Bruno in den geheimen Wald ein. Ihre Herzen klopften schneller, als sie sich tiefer in die Dunkelheit wagten. Und so begann ihre Reise -- ein Abenteuer, das sie nie vergessen würden.</p>
             </div>
         </div>
     </div>
