@@ -1,10 +1,9 @@
-
 <!DOCTYPE html>
 <html lang="de">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Die Zauberakademie von Morgenstern - Kapitel 1 - Helmuts Wortwelten</title>
+    <title>Die Zauberakademie von Morgenstern - Lesen | Helmut Wegners Wortwelten</title>
     <style>
         * {
             margin: 0;
@@ -14,304 +13,317 @@
 
         body {
             font-family: 'Georgia', serif;
-            line-height: 1.8;
+            line-height: 1.6;
             color: #2c3e50;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
         }
 
         .container {
-            max-width: 800px;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 40px 20px;
+            padding: 0 20px;
         }
 
-        .back-link {
-            display: inline-block;
-            margin-bottom: 30px;
-            padding: 12px 24px;
-            background: rgba(255, 255, 255, 0.2);
-            color: white;
-            text-decoration: none;
-            border-radius: 25px;
-            font-weight: bold;
-            transition: all 0.3s ease;
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
 
-        .back-link:hover {
-            background: rgba(255, 255, 255, 0.3);
-            transform: translateY(-2px);
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
-        .book-header {
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #2c3e50;
+            text-decoration: none;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-link {
+            color: #2c3e50;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover {
+            background: #f8f9fa;
+            color: #667eea;
+        }
+
+        /* Main Content */
+        .content-wrapper {
+            background: white;
+            border-radius: 20px;
+            margin: 2rem auto;
+            padding: 3rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            max-width: 800px;
             text-align: center;
-            margin-bottom: 40px;
-            color: white;
         }
 
         .book-cover {
             width: 200px;
-            height: 280px;
+            height: 300px;
             object-fit: cover;
-            border-radius: 15px;
-            margin-bottom: 20px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+            border-radius: 10px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            margin: 0 auto 2rem auto;
+            display: block;
         }
 
         .book-title {
             font-size: 2.5rem;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
-
-        .book-subtitle {
-            font-size: 1.3rem;
-            opacity: 0.9;
-            font-style: italic;
-            margin-bottom: 20px;
-        }
-
-        .chapter-title {
-            font-size: 1.5rem;
-            color: #f39c12;
-            margin-bottom: 30px;
-        }
-
-        .content {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 20px;
-            padding: 40px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
-            margin-bottom: 30px;
-        }
-
-        .story-text {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            text-align: justify;
+            font-weight: bold;
+            margin-bottom: 2rem;
             color: #2c3e50;
         }
 
-        .story-text p {
-            margin-bottom: 20px;
+        .button-container {
+            margin-bottom: 3rem;
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
         }
 
-        .footer-nav {
-            text-align: center;
-            margin-top: 30px;
-        }
-
-        .amazon-link {
+        .btn {
             display: inline-block;
-            padding: 15px 30px;
-            background: linear-gradient(45deg, #ff9500, #ff6b35);
-            color: white;
-            text-decoration: none;
+            padding: 12px 24px;
+            border: none;
             border-radius: 25px;
             font-weight: bold;
+            text-decoration: none;
+            cursor: pointer;
             transition: all 0.3s ease;
-            margin: 0 10px;
+            font-size: 1rem;
         }
 
-        .amazon-link:hover {
+        .btn-secondary {
+            background: linear-gradient(45deg, #ff7b54, #ff6b35);
+            color: white;
+        }
+
+        .btn-secondary:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(255, 149, 0, 0.3);
+            box-shadow: 0 5px 15px rgba(255, 123, 84, 0.3);
         }
 
+        .back-link {
+            background: #6c757d;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+            display: inline-block;
+        }
+
+        .back-link:hover {
+            background: #5a6268;
+        }
+
+        /* Language Navigation */
+        .language-nav {
+            margin-bottom: 2rem;
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .lang-btn {
+            padding: 8px 16px;
+            border: 2px solid #667eea;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .lang-btn.active {
+            background: #667eea;
+            color: white;
+        }
+
+        .lang-btn:not(.active) {
+            background: white;
+            color: #667eea;
+        }
+
+        .lang-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+        }
+
+        /* Chapter Content */
+        .chapter-content {
+            text-align: left;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #444;
+            margin-top: 2rem;
+            border-top: 2px solid #667eea;
+            padding-top: 2rem;
+        }
+
+        .chapter-title {
+            font-size: 1.8rem;
+            color: #667eea;
+            margin-bottom: 2rem;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .chapter-content p {
+            margin-bottom: 1.2rem;
+            text-align: justify;
+            text-indent: 1.5em;
+        }
+
+        .chapter-content p:first-child {
+            text-indent: 0;
+        }
+
+        .chapter-content p:first-child::first-letter {
+            font-size: 3.5em;
+            font-weight: bold;
+            float: left;
+            line-height: 1;
+            margin: 0.1em 0.1em 0 0;
+            color: #667eea;
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(44, 62, 80, 0.9);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+
+        /* Mobile Responsiveness */
         @media (max-width: 768px) {
-            .container {
-                padding: 20px 15px;
+            .nav-menu {
+                display: none;
+            }
+
+            .content-wrapper {
+                margin: 1rem;
+                padding: 2rem 1rem;
             }
 
             .book-title {
                 font-size: 2rem;
             }
 
-            .content {
-                padding: 25px;
+            .book-cover {
+                width: 150px;
+                height: 225px;
             }
 
-            .story-text {
+            .button-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .chapter-content {
                 font-size: 1rem;
+                line-height: 1.6;
+            }
+
+            .language-nav {
+                flex-direction: column;
+                align-items: center;
             }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <a href="kinderbuecher.html" class="back-link">← Zurück zu den Kinderbüchern</a>
-        
-        <div class="book-header">
-            <img src="die zauberakademie.jpg" alt="Die Zauberakademie von Morgenstern" class="book-cover">
-            <h1 class="book-title">Die Zauberakademie von Morgenstern</h1>
-            <p class="book-subtitle">Magie, Freundschaft und große Träume</p>
-            <p class="chapter-title">Kapitel 1: Die geheimnisvolle Einladung</p>
-        </div>
-
-        <div class="content">
-            <div class="story-text">
-                <p>Die Morgenluft war kühl und klar, als Leonas Grünfeld seinen Schulranzen über die Schulter schwang und den staubigen Weg zur Schule einschlug. Der Pfad schlängelte sich zwischen alten Eichen hindurch, deren Äste sich wie schützende Arme über ihm verwoben und Schatten auf den ausgetretenen Weg warfen. Sein Dorf, eingebettet in weite Felder und dichte Wälder, erwachte langsam zum Leben.</p>
-
-                <p>Die Morgensonne malte goldene Streifen über die Wiesen, auf denen der Tau wie tausend kleine Diamanten funkelte. Kühe muhten leise in der Ferne, ihre Stimmen mischten sich mit dem Gezwitscher der Vögel, die ihre Morgenliedchen sangen. Die ersten warmen Sonnenstrahlen brachen durch die Baumwipfel und ließen die Blätter in allen Grüntönen leuchten.</p>
-
-                <p>Für andere mochte es ein gewöhnlicher Tag sein, aber Leonas spürte eine ungewöhnliche Anspannung in der Luft, ein seltsames Kribbeln, das über seine Haut wanderte und ihn innerlich unruhig machte. Es war, als würde sich etwas Wichtiges anbahnen, etwas, das sein Leben für immer verändern würde.</p>
-
-                <p>Leonas war ein schüchterner Junge von zwölf Jahren mit strohblonden Haaren, die ihm ständig in die Stirn fielen, und grünen Augen, die oft nachdenklich und ein wenig melancholisch in die Ferne blickten. Seine Haut war blass, da er die meiste Zeit im Schatten der Bäume verbrachte, und seine Hände waren immer ein wenig schmutzig von der Erde, in der er gerne grub, um Käfer und Würmer zu beobachten.</p>
-
-                <p>Er mied die lauten Kinder in seiner Klasse und zog es vor, Zeit mit den Tieren des Waldes zu verbringen, die ihn nie verspotteten oder ausschlossen. Seine Schritte waren leise und bedacht, als würde er versuchen, so unsichtbar wie möglich zu bleiben, während er durch die Welt wandelte. Er bewegte sich oft wie ein Schatten, geschmeidig und unbemerkt, eine Eigenschaft, die er sich über Jahre des Vermeidens und Versteckens angeeignet hatte.</p>
-
-                <p>Die anderen Kinder in der Schule verstanden ihn nicht, und er verstand sie genauso wenig. Während sie sich für Ballspiele und laute Scherze begeisterten, für die neuesten Spielzeuge und Trends, fand Leonas Trost in der stillen Beobachtung von Käfern, die über die raue Baumrinde krochen, oder Vögeln, die geschickt ihre Nester aus Zweigen und Moos bauten.</p>
-
-                <p>Er kannte jeden Baum im Wald um sein Dorf, wusste, wo die Eichhörnchen ihre Wintervorräte versteckten und welche Pflanzen essbar waren. Seine Mutter nannte ihn oft ihren kleinen Naturphilosophen, doch für seine Mitschüler war er einfach nur der seltsame Junge, der lieber mit Tieren sprach als mit Menschen.</p>
-
-                <p>Oft wurde er deshalb verspottet, besonders von Jasper und seiner Clique, einer Gruppe von fünf Jungen, die sich für die Könige des Schulhofs hielten. Sie nannten sich selbst "die Falken" und trugen diesen Namen mit einem Stolz, der völlig unangebracht war. Jasper war ihr Anführer, ein großer, kräftiger Junge mit schütterem braunen Haar und kleinen, stechenden Augen, die immer nach Schwäche suchten.</p>
-
-                <p>Er hatte die unangenehme Gewohnheit, andere zu erniedrigen, um sich selbst größer zu fühlen, und Leonas war sein Lieblingsziel geworden. Jeden Fehler von Leonas quittierten sie mit schallendem Gelächter, jede Besonderheit wurde zum Anlass für neue Hänseleien. Seine sanfte Art und seine Vorliebe für die Stille der Natur machten ihn zu einem leichten Ziel für ihre grausamen Späße, die mit jedem Tag erfindungsreicher und verletzender wurden.</p>
-
-                <p>Sie nannten ihn den "Waldgeist", den "Tier-Tuschler" oder den "Baum-Kuschler", Spitznamen, die bei jedem Aussprechen wie kleine Messerstiche in sein Herz drangen. Manchmal versteckten sie seine Schulsachen, warfen seine Brotdose in den Dreck oder nachahmten seine ruhige, nachdenkliche Art auf übertriebene Weise. Leonas versuchte, sich nichts anmerken zu lassen, aber jeder Spott hinterließ Spuren in seiner Seele, wie Tropfen, die einen Stein aushöhlen.</p>
-
-                <p>Heute war keine Ausnahme. Als Leonas die Schule erreichte, das alte Backsteingebäude mit seinen hohen, schmalen Fenstern und dem verwitterten Schieferdach, das aussah, als hätte es schon hundert Winter überstanden, war es nur eine Frage von Minuten, bevor sie ihn umringten.</p>
-
-                <p>Der Schulhof hallte bereits von den Stimmen der anderen Kinder wider, die sich in kleinen Gruppen versammelten und lebhaft über ihre Pläne für den Tag sprachen, über Hausaufgaben, Spielpläne und die kleinen Dramen, die das Leben von Zwölfjährigen bestimmten. Die Luft war erfüllt vom Lärm des beginnenden Schultags: Lachen, Rufen, das Klappern von Schulranzen und das Quietschen von Turnschuhen auf dem Asphalt.</p>
-
-                <p>Leonas versuchte, unbemerkt an ihnen vorbeizuschleichen, den Kopf gesenkt und die Schultern eingezogen, als könne er sich unsichtbar machen, wenn er nur klein genug wurde. Doch Jasper hatte ihn bereits entdeckt, seine Augen wie die eines Raubvogels, der seine Beute erspäht hatte.</p>
-
-                <p>"Hey, Grünfeld! Hast du wieder mit deinen Eichhörnchen geplaudert?", fragte Jasper mit einem breiten Grinsen und stieß Leonas an die Schulter. Der blonde Junge war größer als Leonas und nutzte diese Tatsache gerne aus, um andere einzuschüchtern. Seine Freunde, eine Gruppe von vier oder fünf Kindern, die ihm überallhin folgten, lachten auf Kommando.</p>
-
-                <p>Die anderen Kinder lachten, während Leonas stumm blieb und den Boden betrachtete. Seine Hände umklammerten den Riemen seines Ranzens, und er wünschte sich nichts sehnlicher, als unsichtbar zu werden. Der braune Lederranzen war alt und abgewetzt, ein Erbstück seines verstorbenen Großvaters, und manchmal schämte er sich für dessen shabby Aussehen im Vergleich zu den glänzenden neuen Rucksäcken seiner Mitschüler.</p>
-
-                <p>Die Worte schmerzten mehr, als er zeigen wollte, denn sie trafen genau das, was ihn von den anderen unterschied - seine tiefe Liebe zur Natur und seine merkwürdige Fähigkeit, sich in der Gegenwart von Tieren wohler zu fühlen als bei Menschen.</p>
-
-                <p>"Vielleicht kann er ja auch mit den Steinen reden", höhnte ein anderer Junge namens Erik, und wieder brach schallendes Gelächter aus. Leonas spürte, wie seine Wangen brannten, doch er wusste, dass jede Reaktion nur mehr Spott hervorrufen würde. Also schwieg er und wartete darauf, dass der Sturm vorüberziehen würde.</p>
-
-                <p>"Los, sag doch was!", drängte Jasper und stieß ihn erneut. "Oder haben die Bäume dir die Sprache geraubt?"</p>
-
-                <p>Die Glocke läutete schließlich zur ersten Stunde, und die Gruppe löste sich widerwillig auf. Leonas atmete erleichtert auf und folgte den anderen ins Schulgebäude. Die Korridore rochen nach Kreide und Desinfektionsmittel, ein Geruch, der ihm immer Unbehagen bereitete. Er sehnte sich nach dem frischen Duft des Waldes, nach dem Geruch von feuchter Erde und wilden Blumen.</p>
-
-                <p>Der Unterricht zog sich endlos hin wie ein träger Fluss an einem heißen Sommertag. Leonas saß in der letzten Reihe, seinem gewohnten Platz, von wo aus er sowohl die Tafel sehen als auch unbemerkt aus dem Fenster blicken konnte. Die Luft im Klassenzimmer war stickig und roch nach Kreide, Radiergummi und dem muffigen Geruch alter Bücher.</p>
-
-                <p>Frau Müller, eine kleine, rundliche Frau mit streng nach hinten gekämmten grauen Haaren und einer Brille, die ständig auf ihre Nasenspitze rutschte, sprach über Mathematik, doch ihre Worte drangen kaum zu ihm durch. Sie erklärte gerade Bruchrechnung, zeichnete Zahlen und Striche an die grüne Tafel, die für Leonas aussahen wie mystische Symbole einer fremden Sprache.</p>
-
-                <p>Seine Gedanken wanderten unwillkürlich zu den Eichhörnchen, die er gestern beim Sammeln von Nüssen beobachtet hatte. Es war faszinierend gewesen, wie geschickt sie von Ast zu Ast gesprungen waren, ihre buschigen Schwänze als perfekte Balancierhilfen nutzend. Wie sie miteinander kommunizierten durch kleine Laute und blitzschnelle Bewegungen, eine komplexe Sprache, die nur sie verstanden. Viel interessanter als Algebra und Bruchrechnung, fand er.</p>
-
-                <p>Eines der Eichhörnchen war besonders mutig gewesen und bis auf wenige Meter an ihn herangekommen, hatte ihn mit schwarzen Knopfaugen neugierig gemustert, als wüsste es, dass von diesem seltsamen menschlichen Jungen keine Gefahr ausging. Leonas hatte regungslos dagestanden und das kleine Geschöpf bewundert, das so perfekt an sein Leben in den Bäumen angepasst war.</p>
-
-                <p>"Leonas!", rief Frau Müller scharf. "Kannst du mir die Antwort auf die Frage geben?"</p>
-
-                <p>Leonas schreckte auf und blickte verwirrt zur Tafel. Er hatte keine Ahnung, worum es ging. Die anderen Kinder kicherten, und er spürte wieder dieses vertraute Brennen in den Wangen.</p>
-
-                <p>"Ich... ich weiß es nicht", murmelte er.</p>
-
-                <p>"Dann solltest du besser aufpassen, anstatt zu träumen", ermahnte ihn die Lehrerin mit einem missbilligenden Blick.</p>
-
-                <p>Nach einem langen Tag voller peinlicher Momente und schiefer Blicke eilte Leonas nach Hause, seine Schritte wurden schneller, je näher er seinem Zuhause kam. Der kleine Hof seiner Familie, umgeben von dichten Hecken aus Weißdorn und Holunder und blühenden Wildblumen, die seine Mutter liebevoll pflegte, bot ihm zumindest etwas Geborgenheit.</p>
-
-                <p>Das Haus war bescheiden, aber gemütlich, mit einem roten Ziegeldach, das von Efeu bewachsen war, und grünen Fensterläden, die sein Vater selbst gebaut und gestrichen hatte. Ein kleiner Garten erstreckte sich vor dem Haus, in dem Gemüse und Kräuter wuchsen: Tomaten, Karotten, Petersilie und Basilikum. Seine Mutter war oft dort zu finden, die Hände voller Erde, das Gesicht der Sonne zugewandt.</p>
-
-                <p>Der Duft von frisch gebackenem Brot drang durch die offenen Fenster und vermischte sich mit dem Geruch von Lavendelöl, das seine Mutter immer in den Schränken aufbewahrte. Es war ein Geruch von Heimat, von Sicherheit, von bedingungsloser Liebe. Doch selbst hier, in diesem Refugium der Geborgenheit, konnte er die Worte seiner Mitschüler nicht vergessen. Sie hingen an ihm wie Kletten, die sich nicht abschütteln ließen.</p>
-
-                <p>Er fühlte sich wie ein Fremder in seiner eigenen Welt, gefangen zwischen dem brennenden Wunsch, dazuzugehören und akzeptiert zu werden, und dem tiefen, unerschütterlichen Bedürfnis, er selbst zu sein, auch wenn das bedeutete, anders zu sein als alle anderen.</p>
-
-                <p>Seine Mutter bemerkte seine niedergeschlagene Stimmung. "War es wieder schlimm heute?", fragte sie sanft und strich ihm über das Haar. Leonas nickte nur. Seine Mutter verstand ihn besser als alle anderen, aber selbst ihr konnte er nicht richtig erklären, wie es war, sich ständig fehl am Platz zu fühlen.</p>
-
-                <p>"Du bist etwas Besonderes, Leonas", sagte sie leise. "Eines Tages wirst du verstehen, was das bedeutet."</p>
-
-                <p>Er verbrachte den Nachmittag wie gewohnt in seinem Lieblingsversteck, einer kleinen Lichtung im Wald, wo ein alter Baum mit knorrigen Wurzeln stand, der schon da gewesen war, als sein Großvater noch ein Kind war. Es war sein Zufluchtsort, sein Heiligtum, der einzige Ort auf der Welt, wo er sich vollkommen zu Hause fühlte.</p>
-
-                <p>Der Wald erstreckte sich über mehrere Hektar hinter ihrem Dorf, ein wilder, unberührter Ort voller Leben und Geheimnisse. Alte Eichen und Buchen ragten hoch über ihm auf, ihre Kronen so dicht, dass sie einen natürlichen Dom bildeten, der das Sonnenlicht filterte und in tausend goldene Strahlen zerlegte.</p>
-
-                <p>Hier konnte er den wahren Stimmen der Natur lauschen: dem sanften Rascheln der Blätter, die Geschichten von Wind und Wetter erzählten, dem melodischen Zwitschern der Vögel, die ihre Neuigkeiten von Baum zu Baum trugen, und dem leisen, geschäftigen Summen der Bienen, die von Blüte zu Blüte flogen und ihren wichtigen Auftrag erfüllten.</p>
-
-                <p>Die Luft war erfüllt von dem erdigen, reichen Duft des Waldbodens, der aus verrottenden Blättern, feuchter Erde und dem süßen Parfüm wilder Blumen bestand. Moose und Farne bildeten einen weichen, smaragdgrünen Teppich zu seinen Füßen, so weich, dass er darauf liegen konnte wie auf dem bequemsten Bett. Sonnenstrahlen fielen durch das dichte Blätterdach und malten immer neue, tanzende Lichtmuster auf den Boden, ein ständig wechselndes Schauspiel aus Licht und Schatten.</p>
-
-                <p>Der alte Baum war gewaltig und ehrfurchtgebietend, sein Stamm so dick, dass drei Erwachsene ihn nicht hätten umfassen können, seine Wurzeln so ausladend, dass sie kleine Höhlen und Verstecke bildeten. Seine Rinde war rau und tief gefurcht, von Flechten und kleinen Pflanzen bewachsen, die in den Rillen und Spalten ihr Zuhause gefunden hatten.</p>
-
-                <p>Leonas liebte es, seine Hand auf die warme Rinde zu legen und zu spüren, wie lebendig der Baum war, wie stark und beständig. Manchmal bildete er sich ein, dass er das langsame, kraftvolle Pulsieren des Saftes in den Ästen hören konnte, das geduldige, tiefe Atmen des uralten Wesens, das schon so viele Generationen von Menschen, Tieren und anderen Bäumen kommen und gehen gesehen hatte.</p>
-
-                <p>Ein Rotkehlchen landete auf einem Ast in seiner Nähe und betrachtete ihn neugierig mit seinen kleinen, glänzenden schwarzen Augen. Das kleine Vogelchen war so zutraulich, wie Leonas es noch nie bei anderen Menschen erlebt hatte. Leonas bewegte sich nicht, atmete kaum, und nach einer Weile kam der Vogel näher und noch näher, bis er fast aus seiner Hand fressen könnte.</p>
-
-                <p>Sein rotes Brustgefieder leuchtete wie ein kleiner Edelstein in der gedämpften Beleuchtung des Waldes. Es war ein magischer Moment, einer von vielen, die er in diesem Wald erlebt hatte, Momente, die ihm das Gefühl gaben, mit etwas Größerem verbunden zu sein.</p>
-
-                <p>Tiere schienen sich in seiner Gegenwart wohler zu fühlen, als es normal war, als spürten sie etwas Besonderes in ihm, das andere Menschen nicht hatten. Kaninchen versteckten sich nicht vor ihm, sondern hoppelten manchmal sogar auf ihn zu, ihre Nasen zuckten neugierig, wenn sie seinen Geruch aufnahmen. Rehe ließen ihn näherkommen, als wäre er einer von ihnen, und sogar scheue Waldmäuse zeigten sich manchmal und huschten über seine Füße, als würden sie ihn begrüßen.</p>
-
-                <p>Einmal hatte sich sogar ein junger Fuchs zu ihm gesellt und eine Weile neben ihm gelegen, bevor er wieder in den Wald verschwunden war. Seine Mutter sagte immer, er habe eine besondere Gabe, ein Geschenk, das nicht jeder Mensch besitze, doch Leonas verstand nie ganz, was sie damit meinte. Für ihn war es einfach natürlich, und er konnte sich nicht vorstellen, dass andere Menschen diese Verbindung nicht spürten.</p>
-
-                <p>Doch heute war etwas anders, etwas, das die gewohnte Ruhe des Waldes durchbrach. Die Luft schien gespannter, elektrischer, als läge ein Gewitter in der Luft, obwohl der Himmel klar und blau war. Die Vögel sangen leiser als sonst, und selbst das Summen der Insekten schien gedämpfter. Es war, als hielte der ganze Wald den Atem an und wartete auf etwas Wichtiges.</p>
-
-                <p>Als er die Augen öffnete, nachdem er sie eine Weile geschlossen hatte, um den Geräuschen des Waldes zu lauschen und seinen Geist zur Ruhe kommen zu lassen, bemerkte er eine seltsame Gestalt, die neben dem Stamm des alten Baumes stand, als wäre sie aus dem Nichts erschienen.</p>
-
-                <p>Es war ein Mann, hochgewachsen und von edler, königlicher Haltung, in einen schimmernden, dunkelblauen Mantel gehüllt, der im gedämpften Licht des Waldes zu funkeln schien wie der Nachthimmel voller Sterne. Der Stoff sah aus, als wären tatsächlich Sterne hineingewebt, winzige Lichtpunkte, die sanft pulstierten und ein eigenes, schwaches Licht ausstrahlten.</p>
-
-                <p>Das Haar des Mannes war silbern wie frisch gefallener Schnee im Mondschein und fiel ihm in weichen, geschmeidigen Wellen über die Schultern. Es schimmerte mit jedem seiner Bewegungen, als wären auch dort kleine Lichtfunken eingewebt. Seine Augen funkelten wie Sterne in einer klaren Winternacht, von einem tiefen, durchdringenden Blau, das an die Farbe des Himmels in der Dämmerung erinnerte, wenn Tag und Nacht miteinander verschmelzen.</p>
-
-                <p>Eine Aura der Macht umgab ihn, und doch strahlte er gleichzeitig eine beruhigende Wärme aus, die Leonas seltsamerweise keine Angst machte. Der Mann schien nicht ganz von dieser Welt zu sein, als gehöre er in eine der Geschichten, die Leonas' Großmutter ihm früher erzählt hatte.</p>
-
-                <p>Leonas blieb wie angewurzelt stehen, sein Herz pochte schneller, doch seltsamerweise verspürte er keine Furcht. Es war mehr ein Gefühl der Ehrfurcht, als stünde er vor etwas Wunderbarem und Geheimnisvollem. Die Luft um den Fremden schien zu schimmern, als wäre sie von unsichtbarer Magie erfüllt.</p>
-
-                <p>"Leonas Grünfeld, nehme ich an?", fragte der Mann mit einer warmen und ruhigen Stimme, die trotzdem die Stille des Waldes mit einer besonderen Macht durchdrang und Leonas' Herz noch schneller schlagen ließ. Seine Stimme klang wie das Murmeln eines Baches, melodisch und beruhigend zugleich, aber mit einer Tiefe, die von großer Weisheit und Erfahrung sprach.</p>
-
-                <p>"Ja, das bin ich", stammelte Leonas und fragte sich, woher dieser fremde Mann seinen Namen kannte. Seine Stimme war kaum mehr als ein Flüstern, so überwältigt war er von der Erscheinung. "Wer sind Sie? Und woher wissen Sie, wer ich bin?"</p>
-
-                <p>Der Mann lächelte, und sein Gesicht wurde von einer inneren Güte erleuchtet, die Leonas sofort vertraute. Es war das Lächeln eines Menschen, der viel Freude und viel Leid gesehen hatte und dennoch die Hoffnung nicht verloren hatte. "Mein Name ist Elias Nachtflug. Ich bin ein Bote der Zauberakademie von Morgenstern. Und ich habe eine besondere Einladung für dich, junger Leonas."</p>
-
-                <p>Mit diesen Worten zog er eine Pergamentrolle aus seinem Mantel. Das Pergament schimmerte in einem sanften goldenen Licht, als wäre es von Magie durchdrungen. Es war mit einem Siegel verschlossen, das die Form eines Sterns hatte, der von Ranken umschlungen war.</p>
-
-                <p>Leonas starrte den Mann ungläubig an. "Eine Zauberakademie?", flüsterte er. "Aber... aber das gibt es doch gar nicht. Das sind nur Märchen."</p>
-
-                <p>Elias' Lächeln wurde breiter. "Märchen, sagst du? Schau dich um, Leonas. Siehst du nicht die Magie, die dich jeden Tag umgibt? Die Art, wie die Tiere zu dir kommen, wie die Pflanzen unter deinen Händen zu gedeihen scheinen? Du hast schon immer gewusst, dass du anders bist."</p>
-
-                <p>Leonas nahm die Rolle mit zitternden Händen entgegen. Das Pergament fühlte sich glatt und kühl an, aber auch warm zugleich, als pulsiere Leben in ihm. Als er es entrollte, schien es in einem sanften Licht zu schimmern, und die Buchstaben auf dem Papier bewegten sich sanft, als wären sie lebendig.</p>
-
-                <p>Die Schrift war elegant und kunstvoll, mit goldenen Akzenten verziert, und die Worte schienen vor seinen Augen zu tanzen: "An Leonas Grünfeld, das Schicksal hat dich auserwählt, ein Schüler der Zauberakademie von Morgenstern zu werden. Deine Gabe ist einzigartig und verdient es, gefördert zu werden. Du besitzt eine seltene Verbindung zur natürlichen Welt, eine Fähigkeit, die nur wenige in jedem Jahrhundert entwickeln..."</p>
-
-                <p>Leonas' Kopf schwirrte. Eine Zauberakademie? Er hatte immer von Magie geträumt, von einer Welt, in der seine Andersartigkeit nicht nur akzeptiert, sondern geschätzt wurde, aber das war doch unmöglich! Oder etwa nicht?</p>
-
-                <p>"Das muss ein Irrtum sein", flüsterte er und blickte zu Elias auf. Seine grünen Augen waren weit vor Staunen und Unglauben. "Ich bin nur ein ganz normaler Junge. Ich kann nichts Besonderes."</p>
-
-                <p>Elias schüttelte den Kopf, und seine Augen funkelten mit einem Wissen, das weit über das hinausging, was Leonas begreifen konnte. "Du bist alles andere als normal, Leonas. Du hast eine Gabe, die selten und wertvoll ist. Die Art, wie du mit der Natur verbunden bist, wie du ihre Stimmen hörst und ihre Geheimnisse verstehst - das ist nicht gewöhnlich."</p>
-
-                <p>Leonas dachte an all die merkwürdigen Momente in seinem Leben zurück. An die kranke Katze, die nach seiner Berührung wieder gesund geworden war. An den Baum in ihrem Garten, der nach einem Sturm fast gestorben war, aber unter seiner täglichen Pflege wieder aufgeblüht hatte. An die Träume von fernen Wäldern und sprechenden Tieren, die so real gewesen waren, dass er nach dem Aufwachen noch Erdgeruch in der Nase hatte.</p>
-
-                <p>"Es liegt an dir, diese Gabe zu entdecken und zu entfalten", fuhr Elias fort. "In der Akademie von Morgenstern wirst du andere treffen, die ebenfalls besondere Fähigkeiten haben. Du wirst lernen, dass das, was dich anders macht, in Wahrheit deine größte Stärke ist."</p>
-
-                <p>Die Worte des Boten schienen direkt in Leonas' Herz zu dringen. Plötzlich ergaben all die Momente, in denen er sich als Außenseiter gefühlt hatte, einen Sinn. Die Tiere, die keine Angst vor ihm hatten, die Pflanzen, die unter seinen Händen zu gedeihen schienen, die Träume von fernen Welten voller Wunder - vielleicht war das alles kein Zufall gewesen. Vielleicht war er wirklich anders, aber auf eine gute Art.</p>
-
-                <p>"Aber was ist, wenn ich nicht gut genug bin?", fragte Leonas leise. "Was ist, wenn ich alle enttäusche?"</p>
-
-                <p>Elias legte eine warme Hand auf seine Schulter. "Mut ist nicht die Abwesenheit von Angst, Leonas. Mut ist, trotz der Angst das Richtige zu tun. Du hast bereits mehr Mut gezeigt, als du weißt. Jeden Tag, wenn du du selbst bleibst, obwohl andere dich nicht verstehen. Das ist wahre Stärke."</p>
-
-                <p>Als Elias zu verschwinden begann, sein Körper wurde durchsichtig wie Nebel, fügte er hinzu: "Die Entscheidung liegt bei dir, Leonas. Aber denk daran: Manchmal führen uns die Wege, die uns am meisten Angst machen, zu den schönsten Zielen."</p>
-
-                <p>Als Elias verschwunden war, so lautlos wie er gekommen war, kehrte Leonas nach Hause zurück. Der Wald um ihn schien anders zu sein, erfüllt von neuen Möglichkeiten. Jeder Baum, jeder Strauch schien ihm zuzuflüstern: "Du gehörst hierher, aber du gehörst auch anderswohin."</p>
-
-                <p>Die Abenddämmerung senkte sich über das Dorf, und die ersten Sterne begannen am Himmel zu funkeln. Leonas blieb stehen und blickte hinauf zu den fernen Lichtern. Irgendwo dort oben, jenseits der Sterne, lag vielleicht seine Zukunft.</p>
-
-                <p>Mit zitternden, aber entschlossenen Händen packte Leonas eine kleine Tasche: ein Notizbuch, in das er seine Gedanken und Beobachtungen über die Natur schrieb, seinen Lieblingsstift aus Holz, den sein Großvater geschnitzt hatte, und ein altes Amulett, das seiner verstorbenen Mutter gehört hatte. Es war ein einfacher Anhänger aus grünem Stein, der in bestimmten Momenten zu leuchten schien.</p>
-
-                <p>Die Nacht zog sich endlos hin. Leonas lag wach in seinem Bett und starrte an die Decke, während seine Gedanken zwischen Aufregung und Furcht hin und her sprangen. Das Mondlicht fiel durch sein Fenster und malte silberne Muster auf den Boden.</p>
-
-                <p>Als die ersten Sonnenstrahlen durch sein Fenster fielen und das Zimmer in goldenes Licht tauchten, hörte er ein sanftes Klopfen an der Haustür. Sein Herz setzte einen Schlag aus. Es war Zeit.</p>
-
-                <p>Er sprang aus dem Bett, griff seine gepackte Tasche und eilte nach draußen. Vor dem Haus stand eine prachtvolle Kutsche, prächtiger als alles, was er je gesehen hatte. Sie war aus dunklem Holz geschnitzt und mit goldenen Verzierungen versehen, die in der Morgensonne funkelten wie Edelsteine. Gezogen wurde sie von zwei schneeweißen, geflügelten Pferden, deren Flügel im Morgenlicht schimmerten wie Perlmutt.</p>
-
-                <p>Ein Kutscher in einem sternenbesetzten Umhang, dessen Gesicht von der Kapuze beschattet war, öffnete die Tür der Kutsche und lächelte ihm freundlich zu. Seine Stimme war tief und beruhigend: "Bereit für dein Abenteuer, junger Herr Grünfeld? Die Akademie wartet auf dich."</p>
-
-                <p>Leonas nickte, obwohl seine Knie zitterten. Er warf einen letzten Blick auf sein Zuhause, auf das kleine Dorf mit seinen vertrauten Häusern und Gärten, das sein ganzes Leben lang seine Welt gewesen war. Er sah seine Mutter am Fenster stehen, Tränen in den Augen, aber auch Stolz in ihrem Lächeln.</p>
-
-                <p>Dann stieg er in die Kutsche und spürte, wie sich unter seinen Füßen etwas Wunderbares veränderte. Das Innere der Kutsche war noch prächtiger als das Äußere. Die Sitze waren mit samtweichem, tiefblauem Stoff bezogen, und die Wände waren mit schimmernden Symbolen verziert, die im Licht zu tanzen schienen.</p>
-
-                <p>Als die Kutsche sich in die Lüfte erhob - ja, tatsächlich abhob vom Boden! - und die geflügelten Pferde ihre majestätischen Schwingen ausbreiteten, blickte Leonas durch das Fenster auf die Welt hinab, die kleiner und kleiner wurde. Sein Dorf sah aus wie ein Spielzeugmodell, die Felder wie ein Flickenteppich, und die Wälder wie grüne Teppiche, die sich bis zum Horizont erstreckten.</p>
-
-                <p>Das Abenteuer, von dem er immer geträumt hatte, hatte endlich begonnen, und obwohl er nicht wusste, was ihn erwartete, spürte er zum ersten Mal in seinem Leben, dass er bereit war, mutig zu sein.</p>
-
-                <p><em>[Die magische Reise geht weiter... Folge Leonas auf seinem Weg in die Zauberakademie von Morgenstern - Eine Geschichte über Mut, Freundschaft und die Entdeckung der eigenen Magie.]</em></p>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="https://hw543.github.io/helmuts-wortwelten/index.html" class="logo">Helmut Wegners Wortwelten</a>
+                <nav>
+                    <ul class="nav-menu">
+                        <li><a href="https://hw543.github.io/helmuts-wortwelten/index.html" class="nav-link">Startseite</a></li>
+                        <li><a href="https://hw543.github.io/helmuts-wortwelten/kinderbuecher.html" class="nav-link">Kinderbücher</a></li>
+                        <li><a href="https://hw543.github.io/helmuts-wortwelten/krimis.html" class="nav-link">Krimis</a></li>
+                        <li><a href="#" class="nav-link">Chroniken</a></li>
+                        <li><a href="#" class="nav-link">Kontakt</a></li>
+                    </ul>
+                </nav>
             </div>
         </div>
+    </header>
 
-        <div class="footer-nav">
-            <a href="https://www.amazon.de/dp/B0DJBZ8KLM" class="amazon-link">📚 Komplettes Buch bei Amazon</a>
+    <div class="container">
+        <div class="content-wrapper">
+            <a href="https://hw543.github.io/helmuts-wortwelten/kinderbuecher.html" class="back-link">← Zurück zu Kinderbücher</a>
+            
+            <img src="die zauberakademie.jpg" alt="Die Zauberakademie von Morgenstern" class="book-cover">
+            
+            <h1 class="book-title">Die Zauberakademie von Morgenstern</h1>
+            
+            <!-- Language Navigation -->
+            <div class="language-nav">
+                <a href="#" class="lang-btn active">🇩🇪 Deutsch</a>
+                <a href="zauberakademie-english.html" class="lang-btn">🇬🇧 English</a>
+            </div>
+            
+            <div class="button-container">
+                <a href="https://amazon.de/dp/B0F8V7TLVT" class="btn btn-secondary" target="_blank">🛒 Bei Amazon kaufen</a>
+            </div>
+
+            <div class="chapter-content">
+                <h2 class="chapter-title">Kapitel 1: Die geheimnisvolle Einladung</h2>
+
+                <p>Die Morgenluft war kühl und klar, als Leonas Grünfeld seinen Schulranzen über die Schulter schwang und den staubigen Weg zur Schule einschlug. Der Pfad schlängelte sich zwischen alten Eichen hindurch, deren Äste sich wie schützende Arme über ihm verwoben und Schatten auf den ausgetretenen Weg warfen. Sein Dorf, eingebettet in weite Felder und dichte Wälder, erwachte langsam zum Leben. Die Morgensonne malte goldene Streifen über die Wiesen, auf denen der Tau wie tausend kleine Diamanten funkelte.</p>
+
+                <p>Leonas war ein schüchterner Junge von zwölf Jahren mit strohblonden Haaren, die ihm ständig in die Stirn fielen, und grünen Augen, die oft nachdenklich und ein wenig melancholisch in die Ferne blickten. Er mied die lauten Kinder in seiner Klasse und zog es vor, Zeit mit den Tieren des Waldes zu verbringen, die ihn nie verspotteten oder ausschlossen. Heute war keine Ausnahme. Als Leonas die Schule erreichte, war es nur eine Frage von Minuten, bevor sie ihn umringten.</p>
+
+                <p>„Hey, Grünfeld! Hast du wieder mit deinen Eichhörnchen geplaudert?", fragte Jasper mit einem breiten Grinsen und stieß Leonas an die Schulter. „Vielleicht kann er ja auch mit den Steinen reden", höhnte ein anderer Junge namens Erik, und wieder brach schallendes Gelächter aus. Leonas spürte, wie seine Wangen brannten, doch er wusste, dass jede Reaktion nur mehr Spott hervorrufen würde. Also schwieg er und wartete darauf, dass der Sturm vorüberziehen würde.</p>
+
+                <p>Der Unterricht zog sich endlos hin wie ein träger Fluss an einem heißen Sommertag. Seine Gedanken wanderten unwillkürlich zu den Eichhörnchen, die er gestern beim Sammeln von Nüssen beobachtet hatte. Es war faszinierend gewesen, wie geschickt sie von Ast zu Ast gesprungen waren, ihre buschigen Schwänze als perfekte Balancierhilfen nutzend. Nach einem langen Tag voller peinlicher Momente und schiefer Blicke eilte Leonas nach Hause. Er verbrachte den Nachmittag wie gewohnt in seinem Lieblingsversteck, einer kleinen Lichtung im Wald, wo ein alter Baum mit knorrigen Wurzeln stand.</p>
+
+                <p>Doch heute war etwas anders, etwas, das die gewohnte Ruhe des Waldes durchbrach. Als er die Augen öffnete, bemerkte er eine seltsame Gestalt, die neben dem Stamm des alten Baumes stand, als wäre sie aus dem Nichts erschienen. Es war ein Mann, hochgewachsen und von edler Haltung, in einen schimmernden, dunkelblauen Mantel gehüllt, der im gedämpften Licht des Waldes zu funkeln schien wie der Nachthimmel voller Sterne.</p>
+
+                <p>„Leonas Grünfeld, nehme ich an?", fragte der Mann mit einer warmen und ruhigen Stimme. „Ja, das bin ich", stammelte Leonas und fragte sich, woher dieser fremde Mann seinen Namen kannte. „Wer sind Sie? Und woher wissen Sie, wer ich bin?" Der Mann lächelte. „Mein Name ist Elias Nachtflug. Ich bin ein Bote der Zauberakademie von Morgenstern. Und ich habe eine besondere Einladung für dich, junger Leonas."</p>
+
+                <p>Mit diesen Worten zog er eine Pergamentrolle aus seinem Mantel. Das Pergament schimmerte in einem sanften goldenen Licht, als wäre es von Magie durchdrungen. Leonas starrte den Mann ungläubig an. „Eine Zauberakademie?", flüsterte er. „Aber... aber das gibt es doch gar nicht. Das sind nur Märchen." Elias' Lächeln wurde breiter. „Märchen, sagst du? Schau dich um, Leonas. Siehst du nicht die Magie, die dich jeden Tag umgibt? Die Art, wie die Tiere zu dir kommen, wie die Pflanzen unter deinen Händen zu gedeihen scheinen? Du hast schon immer gewusst, dass du anders bist."</p>
+
+                <p>Leonas nahm die Rolle mit zitternden Händen entgegen. Als er sie entrollte, schienen die Buchstaben auf dem Papier zu tanzen: „An Leonas Grünfeld, das Schicksal hat dich auserwählt, ein Schüler der Zauberakademie von Morgenstern zu werden. Deine Gabe ist einzigartig und verdient es, gefördert zu werden. Am ersten Lichtstrahl des kommenden Morgens wirst du von einem magischen Gefährt abgeholt. Professor Efraim Morgenstern, Direktor der Zauberakademie von Morgenstern."</p>
+
+                <p>Als Elias verschwunden war, kehrte Leonas nach Hause zurück. Mit zitternden, aber entschlossenen Händen packte er eine kleine Tasche: ein Notizbuch, seinen Lieblingsstift aus Holz und ein altes Amulett, das seiner verstorbenen Mutter gehört hatte. Als die ersten Sonnenstrahlen durch sein Fenster fielen, hörte er ein sanftes Klopfen an der Haustür. Vor dem Haus stand eine prachtvolle Kutsche, gezogen von zwei schneeweißen, geflügelten Pferden, deren Flügel im Morgenlicht schimmerten wie Perlmutt.</p>
+
+                <p>Leonas stieg in die Kutsche und spürte, wie sich unter seinen Füßen etwas Wunderbares veränderte. Als die Kutsche sich in die Lüfte erhob und die geflügelten Pferde ihre majestätischen Schwingen ausbreiteten, blickte Leonas durch das Fenster auf die Welt hinab. Das Abenteuer, von dem er immer geträumt hatte, hatte endlich begonnen.</p>
+            </div>
         </div>
     </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Helmut Wegner - Die Zauberakademie von Morgenstern. Magie, Freundschaft und große Träume.</p>
+        </div>
+    </footer>
 </body>
 </html>
