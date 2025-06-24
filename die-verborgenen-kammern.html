@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Die Verborgenen Kammern - Mysteriöse Thriller Serie | Helmut Wegners Wortwelten</title>
-    <meta name="description" content="Entdecken Sie die geheimnisvolle Thriller-Serie 'Die Verborgenen Kammern' von Helmut Wegner - Mystische Atmosphäre und fesselnde Spannung">
+    <title>Die Verborgenen Kammern - Helmut Wegners Wortwelten</title>
     <style>
         * {
             margin: 0;
@@ -13,265 +12,385 @@
         }
 
         body {
-            font-family: 'Georgia', 'Times New Roman', serif;
-            background: linear-gradient(135deg, #2C1810 0%, #4A2C2A 50%, #5D4037 100%);
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background: linear-gradient(135deg, #8B4513 0%, #D2691E 100%);
             min-height: 100vh;
-            padding: 20px;
         }
 
         .container {
-            max-width: 1000px;
+            max-width: 1200px;
             margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
             background: rgba(255, 255, 255, 0.95);
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            overflow: hidden;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
 
-        .header {
-            background: linear-gradient(135deg, #5D4037 0%, #8D6E63 50%, #A1887F 100%);
-            color: white;
-            padding: 40px;
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #2c3e50;
+            text-decoration: none;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-link {
+            color: #2c3e50;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover {
+            background: #f8f9fa;
+            color: #8B4513;
+        }
+
+        /* Hero Section */
+        .hero {
             text-align: center;
+            padding: 4rem 0;
+            color: white;
         }
 
-        .back-button {
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 2rem auto;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+
+        .author-image {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin: 0 auto 1rem auto;
+            display: block;
+            border: 4px solid white;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .back-link {
             background: rgba(255, 255, 255, 0.2);
             color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 25px;
+            padding: 8px 16px;
+            border-radius: 20px;
             text-decoration: none;
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
             display: inline-block;
-            margin-bottom: 20px;
-            font-size: 14px;
-            transition: background 0.3s ease;
+            backdrop-filter: blur(10px);
         }
 
-        .back-button:hover {
+        .back-link:hover {
             background: rgba(255, 255, 255, 0.3);
         }
 
-        .profile-pic {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            margin: 0 auto 20px;
-            border: 3px solid rgba(255, 255, 255, 0.3);
-        }
-
-        .series-title {
-            font-size: 3em;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-        }
-
-        .series-subtitle {
-            font-size: 1.2em;
-            margin-bottom: 10px;
-            opacity: 0.9;
-        }
-
-        .series-description {
-            font-size: 1.1em;
-            max-width: 600px;
-            margin: 0 auto;
-            line-height: 1.6;
-            opacity: 0.8;
-        }
-
+        /* Books Section */
         .books-section {
-            padding: 40px;
+            background: white;
+            border-radius: 20px;
+            margin: 2rem auto;
+            padding: 3rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
 
-        .section-title {
+        .books-title {
             text-align: center;
-            font-size: 2.2em;
-            color: #333;
-            margin-bottom: 40px;
+            font-size: 2.5rem;
+            color: #2c3e50;
+            margin-bottom: 3rem;
+        }
+
+        .books-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            margin-top: 2rem;
         }
 
         .book-card {
-            background: white;
+            background: #f8f9fa;
             border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            margin-bottom: 30px;
-            overflow: hidden;
+            padding: 2rem;
+            text-align: center;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border: 2px solid #8D6E63;
+            border: 2px solid #e9ecef;
         }
 
         .book-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-        }
-
-        .book-content {
-            display: flex;
-            padding: 30px;
-            gap: 30px;
-            align-items: center;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
         }
 
         .book-cover {
-            width: 180px;
-            height: 270px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            width: 160px;
+            height: 240px;
             object-fit: cover;
-            flex-shrink: 0;
-        }
-
-        .book-info {
-            flex: 1;
+            border-radius: 10px;
+            margin: 0 auto 1.5rem auto;
+            display: block;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
         }
 
         .book-title {
-            font-size: 1.8em;
-            color: #333;
-            margin-bottom: 10px;
+            font-size: 1.5rem;
             font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
         }
 
         .book-subtitle {
-            font-size: 1.1em;
-            color: #8D6E63;
-            margin-bottom: 15px;
+            color: #8B4513;
             font-style: italic;
+            margin-bottom: 1rem;
+            font-size: 1rem;
         }
 
         .book-description {
-            font-size: 1em;
-            color: #666;
+            color: #6c757d;
+            margin-bottom: 1.5rem;
             line-height: 1.6;
-            margin-bottom: 20px;
+            text-align: left;
         }
 
-        .language-flags {
-            display: flex;
-            align-items: center;
-            margin-bottom: 15px;
-            gap: 10px;
+        .language-info {
+            margin-bottom: 1.5rem;
         }
 
-        .language-flags span {
-            font-size: 0.9em;
-            color: #777;
-        }
-
-        .availability {
-            background: #4CAF50;
-            color: white;
-            padding: 5px 10px;
-            border-radius: 15px;
-            font-size: 0.8em;
+        .language-label {
+            background: #e9ecef;
+            color: #495057;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            margin-bottom: 0.5rem;
             display: inline-block;
-            margin-bottom: 20px;
         }
 
-        .book-buttons {
+        .status-badge {
+            display: inline-block;
+            padding: 6px 12px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .status-available {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .button-container {
             display: flex;
-            gap: 15px;
+            gap: 0.5rem;
+            justify-content: center;
             flex-wrap: wrap;
         }
 
         .btn {
-            padding: 12px 25px;
+            padding: 10px 20px;
             border: none;
-            border-radius: 25px;
+            border-radius: 20px;
             text-decoration: none;
-            font-size: 1em;
             font-weight: bold;
             cursor: pointer;
             transition: all 0.3s ease;
+            font-size: 0.9rem;
             display: inline-block;
         }
 
-        .btn-read {
-            background: #5D4037;
+        .btn-primary {
+            background: linear-gradient(45deg, #8B4513, #A0522D);
             color: white;
         }
 
-        .btn-read:hover {
-            background: #4A2C2A;
+        .btn-primary:hover {
             transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(139, 69, 19, 0.3);
         }
 
-        .btn-buy {
-            background: #ff6b35;
+        .btn-secondary {
+            background: linear-gradient(45deg, #ff7b54, #ff6b35);
             color: white;
         }
 
-        .btn-buy:hover {
-            background: #e55a30;
+        .btn-secondary:hover {
             transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 123, 84, 0.3);
         }
 
+        /* Footer */
+        footer {
+            background: rgba(44, 62, 80, 0.9);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+
+        /* Mobile Responsiveness */
         @media (max-width: 768px) {
-            .book-content {
+            .nav-menu {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .books-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .book-card {
+                padding: 1.5rem;
+            }
+
+            .books-section {
+                margin: 1rem;
+                padding: 2rem 1rem;
+            }
+
+            .button-container {
                 flex-direction: column;
-                text-align: center;
+                align-items: center;
             }
-            
-            .book-cover {
-                width: 150px;
-                height: 225px;
-            }
-            
-            .series-title {
-                font-size: 2.2em;
-            }
-            
-            .book-title {
-                font-size: 1.5em;
-            }
-            
-            .book-buttons {
-                justify-content: center;
+
+            .btn {
+                width: 100%;
+                max-width: 200px;
             }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <a href="romantik-fiktion.html" class="back-button">← Zurück zu Romantik-Fiktion</a>
-            <img src="helmut.jpg" alt="Helmut Wegner" class="profile-pic">
-            <h1 class="series-title">Die Verborgenen Kammern</h1>
-            <p class="series-subtitle">Geheimnisvolle Romanzen in historischen Gemäuern</p>
-            <p class="series-description">
-                Wo Vergangenheit und Gegenwart aufeinanderprallen und Herzen ihre dunkesten Geheimnisse preisgeben. 
-                Mystische Atmosphäre verbindet sich mit leidenschaftlicher Romantik in jahrhundertealten Gemäuern.
-            </p>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="https://hw543.github.io/helmuts-wortwelten/index.html" class="logo">Helmut Wegners Wortwelten</a>
+                <nav>
+                    <ul class="nav-menu">
+                        <li><a href="https://hw543.github.io/helmuts-wortwelten/index.html" class="nav-link">Startseite</a></li>
+                        <li><a href="https://hw543.github.io/helmuts-wortwelten/kinderbuecher.html" class="nav-link">Kinderbücher</a></li>
+                        <li><a href="https://hw543.github.io/helmuts-wortwelten/krimis.html" class="nav-link">Krimis</a></li>
+                        <li><a href="https://hw543.github.io/helmuts-wortwelten/romantik-fiktion.html" class="nav-link">Romantik</a></li>
+                        <li><a href="#" class="nav-link">Chroniken</a></li>
+                        <li><a href="#" class="nav-link">Kontakt</a></li>
+                    </ul>
+                </nav>
+            </div>
         </div>
-        
-        <div class="books-section">
-            <h2 class="section-title">Alle Bände der Serie</h2>
+    </header>
+
+    <div class="container">
+        <div class="hero">
+            <a href="https://hw543.github.io/helmuts-wortwelten/romantik-fiktion.html" class="back-link">← Zurück zu Romantik-Fiktion</a>
             
-            <!-- Band 1 -->
-            <div class="book-card">
-                <div class="book-content">
-                    <img src="hinter-verschlossenen-tueren.jpg" alt="Band 1: Hinter verschlossenen Türen" class="book-cover">
-                    <div class="book-info">
-                        <h3 class="book-title">Band 1: Hinter verschlossenen Türen</h3>
-                        <p class="book-subtitle">Geheimnisse in historischen Gemäuern</p>
-                        <p class="book-description">
-                            Elena Winters, eine renommierte Kunstrestauratorin, erhält ein geheimnisvolles Angebot von Marcus Castellano. 
-                            Sein italienisches Museum birgt nicht nur kunstvolle Schätze, sondern auch dunkle Geheimnisse, 
-                            die Elena in ein Netz aus Leidenschaft und Gefahr verstricken.
-                        </p>
-                        <div class="language-flags">
-                            <span>Verfügbar in:</span> 🇩🇪🇬🇧🇪🇸
-                        </div>
-                        <div class="availability">✓ Taschenbuch & eBook</div>
-                        <div class="book-buttons">
-                            <a href="hinter-verschlossenen-tueren-lesen.html" class="btn btn-read">📖 Lesen</a>
-                            <a href="https://amazon.de/dp/B0F1YC3J79" class="btn btn-buy">🛒 Bei Amazon kaufen</a>
-                        </div>
+            <img src="helmut.jpg" alt="Helmut Wegner" class="author-image">
+            
+            <h1>Die Verborgenen Kammern</h1>
+            <p>Geheimnisvolle Romanzen in historischen Gemäuern. Wo Vergangenheit und Gegenwart aufeinandertreffen und Herzen ihre dunkelsten Geheimnisse preisgeben. Mystische Atmosphäre verbindet sich mit leidenschaftlicher Romantik in jahrhundertealten Gemäuern.</p>
+        </div>
+
+        <div class="books-section">
+            <h2 class="books-title">Alle Bände der Serie</h2>
+
+            <div class="books-grid">
+                <!-- Band 1 -->
+                <div class="book-card">
+                    <img src="Band 1 hinter verschlossenen türen.jpg" alt="Hinter verschlossenen Türen" class="book-cover">
+                    <h3 class="book-title">Band 1: Hinter verschlossenen Türen</h3>
+                    <p class="book-subtitle">Geheimnisse in historischen Gemäuern</p>
+                    <p class="book-description">Elena Winters, eine renommierte Kunstrestauratorin, erhält ein geheimnisvolles Angebot von Marcus Castellano. Sein italienisches Museum birgt nicht nur kunstvolle Schätze, sondern auch dunkle Geheimnisse, die Elena in eine tiefere Verbindung voller Brillanz und Träume verstricken.</p>
+                    
+                    <div class="language-info">
+                        <div class="language-label">Verfügbar in: 🇩🇪🇬🇧🇪🇸</div>
+                    </div>
+                    
+                    <div class="status-badge status-available">Vollständig in Stock</div>
+                    
+                    <div class="button-container">
+                        <a href="hinter-verschlossenen-tueren-lesen.html" class="btn btn-primary">📖 Lesen</a>
+                        <a href="https://amazon.de/dp/B0F1YC3J79" class="btn btn-secondary" target="_blank">🛒 Bei Amazon kaufen</a>
+                    </div>
+                </div>
+
+                <!-- Band 2 -->
+                <div class="book-card">
+                    <img src="Band 2 die kunst der hingabe.jpg" alt="Die Kunst der Hingabe" class="book-cover">
+                    <h3 class="book-title">Band 2: Die Kunst der Hingabe</h3>
+                    <p class="book-subtitle">Wenn sich Herzen in Toskanischen Träumen verlieren</p>
+                    <p class="book-description">Die Destinationen für aufreizende Pläne, in der berufliche Herausforderungen und persönliche Träume aufeinandertreffen und neue Wege entstehen können.</p>
+                    
+                    <div class="language-info">
+                        <div class="language-label">Verfügbar in: 🇩🇪🇬🇧</div>
+                    </div>
+                    
+                    <div class="status-badge status-available">Vollständig in Stock</div>
+                    
+                    <div class="button-container">
+                        <a href="die-kunst-der-hingabe-lesen.html" class="btn btn-primary">📖 Lesen</a>
+                    </div>
+                </div>
+
+                <!-- Band 3 -->
+                <div class="book-card">
+                    <img src="Band 3 die tiefe der begierde.jpg" alt="Die Tiefe der Begierde" class="book-cover">
+                    <h3 class="book-title">Band 3: Die Tiefe der Begierde</h3>
+                    <p class="book-subtitle">Ein Angebot zu Begehren</p>
+                    <p class="book-description">Das bewegende Abschluss der Serie, in dem alle Charaktere ihre Frieden finden und gemeinsam in die hoffnungsvolle Zukunft blicken.</p>
+                    
+                    <div class="language-info">
+                        <div class="language-label">Verfügbar in: 🇩🇪🇬🇧</div>
+                    </div>
+                    
+                    <div class="status-badge status-available">Vollständig in Stock</div>
+                    
+                    <div class="button-container">
+                        <a href="die-tiefe-der-begierde-lesen.html" class="btn btn-primary">📖 Lesen</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Helmut Wegner - Professionelle Autoren-Website. Alle Rechte vorbehalten.</p>
+        </div>
+    </footer>
 </body>
 </html>
