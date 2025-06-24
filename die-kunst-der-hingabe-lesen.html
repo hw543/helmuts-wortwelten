@@ -1,1 +1,303 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Die Kunst der Hingabe - Lesen | Helmut Wegners Wortwelten</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background: linear-gradient(135deg, #8B4513 0%, #D2691E 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #2c3e50;
+            text-decoration: none;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-link {
+            color: #2c3e50;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover {
+            background: #f8f9fa;
+            color: #8B4513;
+        }
+
+        /* Main Content */
+        .content-wrapper {
+            background: white;
+            border-radius: 20px;
+            margin: 2rem auto;
+            padding: 3rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            max-width: 800px;
+            text-align: center;
+        }
+
+        .book-cover {
+            width: 200px;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            margin: 0 auto 2rem auto;
+            display: block;
+        }
+
+        .book-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 2rem;
+            color: #2c3e50;
+        }
+
+        .back-link {
+            background: #6c757d;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+            display: inline-block;
+        }
+
+        .back-link:hover {
+            background: #5a6268;
+        }
+
+        /* Language Navigation */
+        .language-nav {
+            margin-bottom: 2rem;
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .lang-btn {
+            padding: 8px 16px;
+            border: 2px solid #8B4513;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .lang-btn.active {
+            background: #8B4513;
+            color: white;
+        }
+
+        .lang-btn:not(.active) {
+            background: white;
+            color: #8B4513;
+        }
+
+        .lang-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(139, 69, 19, 0.3);
+        }
+
+        /* Chapter Content */
+        .chapter-content {
+            text-align: left;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #444;
+            margin-top: 2rem;
+            border-top: 2px solid #8B4513;
+            padding-top: 2rem;
+        }
+
+        .chapter-title {
+            font-size: 1.8rem;
+            color: #8B4513;
+            margin-bottom: 2rem;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .chapter-content p {
+            margin-bottom: 1.2rem;
+            text-align: justify;
+            text-indent: 1.5em;
+        }
+
+        .chapter-content p:first-child {
+            text-indent: 0;
+        }
+
+        .chapter-content p:first-child::first-letter {
+            font-size: 3.5em;
+            font-weight: bold;
+            float: left;
+            line-height: 1;
+            margin: 0.1em 0.1em 0 0;
+            color: #8B4513;
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(44, 62, 80, 0.9);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .content-wrapper {
+                margin: 1rem;
+                padding: 2rem 1rem;
+            }
+
+            .book-title {
+                font-size: 2rem;
+            }
+
+            .book-cover {
+                width: 150px;
+                height: 225px;
+            }
+
+            .chapter-content {
+                font-size: 1rem;
+                line-height: 1.6;
+            }
+
+            .language-nav {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="https://hw543.github.io/helmuts-wortwelten/index.html" class="logo">Helmut Wegners Wortwelten</a>
+                <nav>
+                    <ul class="nav-menu">
+                        <li><a href="https://hw543.github.io/helmuts-wortwelten/index.html" class="nav-link">Startseite</a></li>
+                        <li><a href="https://hw543.github.io/helmuts-wortwelten/kinderbuecher.html" class="nav-link">Kinderbücher</a></li>
+                        <li><a href="https://hw543.github.io/helmuts-wortwelten/krimis.html" class="nav-link">Krimis</a></li>
+                        <li><a href="https://hw543.github.io/helmuts-wortwelten/romantik-fiktion.html" class="nav-link">Romantik</a></li>
+                        <li><a href="#" class="nav-link">Chroniken</a></li>
+                        <li><a href="#" class="nav-link">Kontakt</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="content-wrapper">
+            <a href="https://hw543.github.io/helmuts-wortwelten/die-verborgenen-kammern.html" class="back-link">← Zurück zur Serie</a>
+            
+            <img src="Band 2 die kunst der hingabe.jpg" alt="Die Kunst der Hingabe" class="book-cover">
+            
+            <h1 class="book-title">Die Kunst der Hingabe</h1>
+            
+            <!-- Language Navigation -->
+            <div class="language-nav">
+                <a href="#" class="lang-btn active">🇩🇪 Deutsch</a>
+                <a href="die-kunst-der-hingabe-english.html" class="lang-btn">🇬🇧 English</a>
+            </div>
+
+            <div class="chapter-content">
+                <h2 class="chapter-title">Kapitel 1: Das Vermächtnis</h2>
+
+                <p>Die Nachricht vom Tod seiner Tante Marie erreichte Marcus an einem kühlen Herbstmorgen. Die Sonne stand tief am Horizont und tauchte die toskanische Landschaft in ein goldenes Licht, das die Schatten der Vergangenheit kaum zu durchdringen vermochte. Elena, die an seiner Seite stand, spürte die Last der Nachricht, die schwer auf Marcus' Schultern ruhte. Marie, die Matriarchin der Familie Castellano, war nicht nur eine Verwandte gewesen, sondern auch die Hüterin eines Erbes, das weit über Kunst und Geschichte hinausging.</p>
+
+                <p>Die Reise zum Familienanwesen in der Toskana war von einer seltsamen Stille geprägt. Elena beobachtete, wie Marcus' Gesichtszüge mit jedem Kilometer härter wurden, als ob er sich hinter einer Maske aus Kontrolle und Pflichtbewusstsein versteckte. Sie wusste, dass die Beerdigung mehr war als nur ein Abschied -- es war eine Konfrontation mit der Vergangenheit, die Marcus so lange zu verdrängen versucht hatte.</p>
+
+                <p>Das Anwesen, ein imposantes Gebäude aus Stein und Geschichte, ragte vor ihnen auf wie ein stummer Zeuge der Zeit. In der großen Halle, wo das Licht durch die hohen Fenster fiel, versammelte sich die Familie. Die Luft war schwer von unausgesprochenen Worten und alten Geheimnissen. Als das Testament verlesen wurde, spürte Elena, wie sich die Atmosphäre veränderte. Ein unbekannter Teil der Sammlung wurde erwähnt, ein "verlorener Schatz", der die Familie seit Generationen begleitete.</p>
+
+                <p>Marie hatte Marcus eine verschlüsselte Botschaft hinterlassen, die von einem Erbe sprach, das weit mehr war als nur materieller Besitz. Elena sah, wie Marcus' Hände leicht zitterten, als er das Dokument entgegennahm. Die Trauer und die Familiendynamik schienen ihn in alte Verhaltensmuster zurückzuführen, und Elena fragte sich, ob die Last der Vergangenheit jemals von ihm abfallen würde.</p>
+
+                <p>In diesem Moment der Stille, als die Familie sich zurückzog, blieb Elena an Marcus' Seite. Sie spürte die Verletzlichkeit hinter seiner Fassade und wusste, dass die Reise, die vor ihnen lag, nicht nur eine Suche nach einem verlorenen Schatz war, sondern auch eine Reise zu sich selbst.</p>
+
+                <p>Die Stille im Raum war fast greifbar, als Marcus das Dokument in seinen Händen betrachtete. Die verschlüsselte Botschaft seiner Tante Marie war nicht nur ein Rätsel, sondern ein Schlüssel zu einer Welt, die er kaum kannte. Elena beobachtete ihn aufmerksam, ihre Augen suchten nach Anzeichen von Schwäche oder Unsicherheit, doch Marcus blieb äußerlich gefasst.</p>
+
+                <p>"Was denkst du, was sie uns damit sagen will?", fragte Elena leise, ihre Stimme kaum mehr als ein Flüstern.</p>
+
+                <p>Marcus hob den Blick und sah sie an, seine Augen spiegelten eine Mischung aus Trauer und Entschlossenheit wider. "Marie war immer eine Meisterin der Geheimnisse. Sie wollte, dass wir die Wahrheit selbst herausfinden, dass wir uns mit der Vergangenheit auseinandersetzen."</p>
+
+                <p>Elena nickte und legte sanft ihre Hand auf seine Schulter. "Wir werden es gemeinsam herausfinden. Aber zuerst müssen wir uns um die Beerdigung kümmern."</p>
+
+                <p>Die Beerdigung war ein stilles, würdevolles Ereignis. Die Familie und enge Freunde versammelten sich, um Marie die letzte Ehre zu erweisen. Der Priester sprach Worte des Trostes, doch Marcus' Gedanken waren weit entfernt. Er dachte an die vielen Geschichten, die Marie ihm erzählt hatte, an die Geheimnisse, die sie bewahrt hatte.</p>
+
+                <p>Nach der Zeremonie zog sich die Familie in das große Wohnzimmer des Anwesens zurück. Die Atmosphäre war angespannt, jeder schien in seinen eigenen Gedanken gefangen zu sein. Marcus und Elena setzten sich in eine Ecke, ein wenig abseits von den anderen.</p>
+
+                <p>"Ich erinnere mich an die Sommer, die wir hier verbracht haben", begann Marcus, seine Stimme leise und nachdenklich. "Marie hat uns immer Geschichten über die Familie erzählt, über die Kunstwerke und ihre Bedeutung. Aber ich habe nie wirklich verstanden, wie tief diese Verbindungen reichen."</p>
+
+                <p>Elena hörte aufmerksam zu, ihre Hand ruhte auf seiner. "Vielleicht ist es an der Zeit, dass du es verstehst. Vielleicht ist das der Grund, warum sie dir diese Botschaft hinterlassen hat."</p>
+
+                <p>Marcus nickte langsam. "Ja, vielleicht. Aber es wird nicht einfach sein. Die Vergangenheit hat viele Schatten, und ich weiß nicht, ob ich bereit bin, ihnen ins Gesicht zu sehen."</p>
+
+                <p>Elena drückte seine Hand sanft. "Du bist nicht allein, Marcus. Wir werden das zusammen durchstehen."</p>
+
+                <p>Die Nacht brach herein, und das Anwesen wurde von einer sanften Dunkelheit umhüllt. Marcus und Elena saßen noch lange zusammen, sprachen über die Vergangenheit und die Zukunft, über die Geheimnisse und die Hoffnungen, die sie teilten. Es war der Beginn einer Reise, die sie beide verändern würde, eine Reise, die sie tiefer in die Welt der Castellano-Familie und ihrer verborgenen Schätze führen würde.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Helmut Wegner - Die Kunst der Hingabe. Geheimnisse, Leidenschaft und große Träume.</p>
+        </div>
+    </footer>
+</body>
+</html>
