@@ -1,1 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Hidden Forest - Read | Helmut Wegner's Word-Worlds</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #2c3e50;
+            text-decoration: none;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-link {
+            color: #2c3e50;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover {
+            background: #f8f9fa;
+            color: #667eea;
+        }
+
+        /* Main Content */
+        .content-wrapper {
+            background: white;
+            border-radius: 20px;
+            margin: 2rem auto;
+            padding: 3rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            max-width: 800px;
+            text-align: center;
+        }
+
+        .book-cover {
+            width: 200px;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            margin: 0 auto 2rem auto;
+            display: block;
+        }
+
+        .book-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 2rem;
+            color: #2c3e50;
+        }
+
+        .button-container {
+            margin-bottom: 3rem;
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 25px;
+            font-weight: bold;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .btn-unavailable {
+            background: #ccc;
+            color: #666;
+            cursor: not-allowed;
+        }
+
+        .back-link {
+            background: #6c757d;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+            display: inline-block;
+        }
+
+        .back-link:hover {
+            background: #5a6268;
+        }
+
+        /* Language Navigation */
+        .language-nav {
+            margin-bottom: 2rem;
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .lang-btn {
+            padding: 8px 16px;
+            border: 2px solid #667eea;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .lang-btn.active {
+            background: #667eea;
+            color: white;
+        }
+
+        .lang-btn:not(.active) {
+            background: white;
+            color: #667eea;
+        }
+
+        .lang-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+        }
+
+        /* Chapter Content */
+        .chapter-content {
+            text-align: left;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #444;
+            margin-top: 2rem;
+            border-top: 2px solid #667eea;
+            padding-top: 2rem;
+        }
+
+        .chapter-title {
+            font-size: 1.8rem;
+            color: #667eea;
+            margin-bottom: 2rem;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .chapter-content p {
+            margin-bottom: 1.2rem;
+            text-align: justify;
+            text-indent: 1.5em;
+        }
+
+        .chapter-content p:first-child {
+            text-indent: 0;
+        }
+
+        .chapter-content p:first-child::first-letter {
+            font-size: 3.5em;
+            font-weight: bold;
+            float: left;
+            line-height: 1;
+            margin: 0.1em 0.1em 0 0;
+            color: #667eea;
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(44, 62, 80, 0.9);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .content-wrapper {
+                margin: 1rem;
+                padding: 2rem 1rem;
+            }
+
+            .book-title {
+                font-size: 2rem;
+            }
+
+            .book-cover {
+                width: 150px;
+                height: 225px;
+            }
+
+            .button-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .chapter-content {
+                font-size: 1rem;
+                line-height: 1.6;
+            }
+
+            .language-nav {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="https://hw543.github.io/helmuts-wortwelten/index.html" class="logo">Helmut Wegner's Word-Worlds</a>
+                <nav>
+                    <ul class="nav-menu">
+                        <li><a href="https://hw543.github.io/helmuts-wortwelten/index.html" class="nav-link">Home</a></li>
+                        <li><a href="https://hw543.github.io/helmuts-wortwelten/kinderbuecher.html" class="nav-link">Children's Books</a></li>
+                        <li><a href="https://hw543.github.io/helmuts-wortwelten/krimis.html" class="nav-link">Crime Stories</a></li>
+                        <li><a href="#" class="nav-link">Chronicles</a></li>
+                        <li><a href="#" class="nav-link">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="content-wrapper">
+            <a href="https://hw543.github.io/helmuts-wortwelten/kinderbuecher.html" class="back-link">← Back to Children's Books</a>
+            
+            <img src="verborgener-wald.jpg" alt="The Hidden Forest" class="book-cover">
+            
+            <h1 class="book-title">The Hidden Forest</h1>
+            
+            <!-- Language Navigation -->
+            <div class="language-nav">
+                <a href="verborgenerwald-lesen.html" class="lang-btn">🇩🇪 Deutsch</a>
+                <a href="#" class="lang-btn active">🇬🇧 English</a>
+            </div>
+            
+            <div class="button-container">
+                <span class="btn btn-unavailable">🛒 On Amazon (coming soon)</span>
+            </div>
+
+            <div class="chapter-content">
+                <h2 class="chapter-title">Chapter 1: The Mysterious Map</h2>
+
+                <p>The sun was sinking toward the horizon, painting the sky in soft shades of orange. Max and Lisa stood in the old market square of their town, looking around curiously. The square was empty, most of the shops had already closed, and only the distant laughter of children on their way home could be heard. But Max and Lisa hadn't headed home. They had something else on their minds.</p>
+
+                <p>"Do you think it's really the Hidden Forest?" Max asked excitedly. He jumped from one foot to the other and patted his pocket with his hand, where he had hidden a small note that had occupied them all afternoon.</p>
+
+                <p>"Maybe..." Lisa answered thoughtfully. She turned slowly, searching for the secret clue they had received. Max had found the message in an old book they had discovered in the town's antique shop. It had confused them, but also made them curious.</p>
+
+                <p>The message spoke of an old man who would lead them to the secret map—a map that led to a hidden place full of magic and adventure. Max had immediately decided they should set out, but Lisa had needed more time to think about whether it was really safe.</p>
+
+                <p>"Look over there!" Max suddenly called out, pointing to a narrow, almost hidden path between the houses.</p>
+
+                <p>At the end of the path stood an old man in a long, gray cloak. His eyes gleamed like two sparkling stars. Lisa immediately felt a strange energy near him—as if the forest they had heard about lived within him.</p>
+
+                <p>The man noticed them immediately and waved with an inviting gesture. "Ah, you have come," he said with a voice that sounded like the whisper of the wind. "I knew it would be you."</p>
+
+                <p>"U-us?" Max asked in surprise. "How can you know that?"</p>
+
+                <p>The man smiled mysteriously. "I know many things that others do not. The map you seek will show you the way, but only if you are brave enough to walk it."</p>
+
+                <p>He pulled out an old, rolled-up map from his cloak and handed it to Max. The map was decorated with strange symbols and colorful, secret markings. The edge was adorned with golden flourishes that shimmered in the twilight in the light of the moon.</p>
+
+                <p>Max opened the map and held it curiously in his hand. It was as if the map came alive. It seemed to flicker and pulse, as if it was excitedly waiting for him to discover it.</p>
+
+                <p>"What does this mean?" Lisa asked, pointing to a strange, glowing point in the center of the map.</p>
+
+                <p>"The Hidden Forest," the man explained. "It is waiting for you. When you encounter it, you will learn a secret that has been hidden for many years. But only those who have the heart of an adventurer can find it."</p>
+
+                <p>Max's eyes gleamed with excitement. "That sounds like a real adventure!" he exclaimed, pressing the map tightly against himself.</p>
+
+                <p>Lisa, however, looked at the map and the old man suspiciously. "But what happens if we don't come back?" she asked quietly.</p>
+
+                <p>The man looked at her with a knowing gaze. "You will come back," he said gently. "But not as you left. You will be stronger, wiser, and perhaps a little different. But that is the adventure."</p>
+
+                <p>Max pulled Lisa somewhat impatiently by the sleeve. "Come on, Lisa! We can at least try!"</p>
+
+                <p>Lisa sighed, but curiosity sparkled in her eyes. "Okay," she said finally. "But only if you also help us find the way."</p>
+
+                <p>The old man nodded and then disappeared into the shadow of the alley, as if he had never been there. Max and Lisa stood uncertainly for a moment, then turned together toward the forest.</p>
+
+                <p>It was already evening, and the first stars were visible in the sky. The map in Max's hands glowed faintly, as if it was showing them the way. They weren't sure what to expect—but the tension that the unknown brought with it made their hearts beat faster.</p>
+
+                <p>"Let's set out," Max said resolutely.</p>
+
+                <p>Lisa hesitated briefly, then nodded. "Yes, let's go, but carefully," she murmured, while looking at Bruno, their dog, who was running happily beside them.</p>
+
+                <p>"We need to prepare well. Maybe we need provisions, some ropes, and definitely something to light the way," Lisa thought aloud, while Max was already reaching into one of his jacket pockets, searching for his adventure gear.</p>
+
+                <p>"This will be great," Max said, packing a flashlight. "What if we discover magic?"</p>
+
+                <p>Lisa turned and looked at the map pulsing in his hands. "What if we get lost or something else happens?"</p>
+
+                <p>But just as she spoke the question aloud, the map suddenly shimmered brighter. A warm, golden light flickered on the map and dissolved like mist in the air. A soft sound, like the gentle rustling of leaves, could be heard.</p>
+
+                <p>"It's alive..." Lisa whispered in fascination.</p>
+
+                <p>Max grabbed her hand, and together they followed the magical trail that the map showed them. But just as they took their first steps onto the forest path, a soft, eerie crackling sounded in the air—a sound that gave them the feeling they were not alone.</p>
+
+                <p>"Are you ready?" Max asked.</p>
+
+                <p>"I don't know," Lisa said, looking at the map, "but I think the journey has just begun."</p>
+
+                <p>With one last look back at the town, which was slowly disappearing in the darkness, Max, Lisa, and Bruno entered the secret forest, and the adventure began.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Helmut Wegner - The Hidden Forest. A magical adventure.</p>
+        </div>
+    </footer>
+</body>
+</html>
