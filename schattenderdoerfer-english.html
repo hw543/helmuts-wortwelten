@@ -1,1 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Shadows of the Villages - Read | Helmut Wegner's Word Worlds</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #2c3e50;
+            text-decoration: none;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-link {
+            color: #2c3e50;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover {
+            background: #f8f9fa;
+            color: #667eea;
+        }
+
+        /* Main Content */
+        .main-content {
+            background: white;
+            border-radius: 20px;
+            margin: 2rem auto;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            max-width: 800px;
+            text-align: center;
+        }
+
+        .back-link {
+            background: #6c757d;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+            display: inline-block;
+        }
+
+        .back-link:hover {
+            background: #5a6268;
+        }
+
+        .book-cover {
+            width: 200px;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            margin: 0 auto 2rem auto;
+            display: block;
+        }
+
+        .book-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: #2c3e50;
+        }
+
+        .book-subtitle {
+            color: #667eea;
+            font-style: italic;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        /* Language Navigation */
+        .language-nav {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .lang-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 8px 16px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .lang-link.active {
+            background: #667eea;
+            color: white;
+        }
+
+        .lang-link:not(.active) {
+            background: #f8f9fa;
+            color: #666;
+        }
+
+        .lang-link:not(.active):hover {
+            background: #e9ecef;
+        }
+
+        .book-buttons {
+            margin-bottom: 3rem;
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 25px;
+            font-weight: bold;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .btn-amazon {
+            background: linear-gradient(45deg, #ff6b35, #f7931e);
+            color: white;
+        }
+
+        .btn-amazon:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 107, 53, 0.3);
+        }
+
+        /* Chapter Content */
+        .chapter-content {
+            text-align: left;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #444;
+            margin-top: 2rem;
+            border-top: 2px solid #667eea;
+            padding-top: 2rem;
+        }
+
+        .chapter-title {
+            font-size: 1.8rem;
+            color: #667eea;
+            margin-bottom: 2rem;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .chapter-content p {
+            margin-bottom: 1.2rem;
+            text-align: justify;
+            text-indent: 1.5em;
+        }
+
+        .chapter-content p:first-child {
+            text-indent: 0;
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(44, 62, 80, 0.9);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .main-content {
+                margin: 1rem;
+                padding: 2rem 1rem;
+            }
+
+            .book-title {
+                font-size: 2rem;
+            }
+
+            .book-cover {
+                width: 150px;
+                height: 225px;
+            }
+
+            .book-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .language-nav {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .chapter-content {
+                font-size: 1rem;
+                line-height: 1.6;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="https://hw543.github.io/helmuts-wortwelten/index.html" class="logo">Helmut Wegner's Word Worlds</a>
+                <nav>
+                    <ul class="nav-menu">
+                        <li><a href="https://hw543.github.io/helmuts-wortwelten/index.html" class="nav-link">Home</a></li>
+                        <li><a href="https://hw543.github.io/helmuts-wortwelten/kinderbuecher.html" class="nav-link">Children's Books</a></li>
+                        <li><a href="https://hw543.github.io/helmuts-wortwelten/krimis.html" class="nav-link">Crime</a></li>
+                        <li><a href="#" class="nav-link">Chronicles</a></li>
+                        <li><a href="#" class="nav-link">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="main-content">
+            <a href="https://hw543.github.io/helmuts-wortwelten/krimis.html" class="back-link">← Back to Crime</a>
+            
+            <img src="schattenderdoerfer.jpg" alt="The Shadows of the Villages" class="book-cover">
+            
+            <h1 class="book-title">The Shadows of the Villages</h1>
+            <p class="book-subtitle">A Socially Critical Thriller</p>
+            
+            <div class="language-nav">
+                <a href="schattenderdoerfer-lesen.html" class="lang-link">
+                    🇩🇪 Deutsch
+                </a>
+                <a href="schattenderdoerfer-english.html" class="lang-link active">
+                    🇬🇧 English
+                </a>
+            </div>
+            
+            <div class="book-buttons">
+                <a href="#" class="btn btn-primary">📖 Read</a>
+                <a href="https://www.amazon.com/dp/B0ABCDEFGH" class="btn btn-amazon">🛒 Buy on Amazon</a>
+            </div>
+
+            <div class="chapter-content">
+                <h2 class="chapter-title">Chapter 1: The First Shadows</h2>
+
+                <p>The first rays of sunlight crept over the gentle hills of the small village, which lay in the twilight like a precious secret. The air was fresh and pure, and a gentle mist hovered over the meadows while the birds began their morning concert. The village itself was a picture of idyll, with its small, lovingly maintained houses that lined the narrow, cobblestone streets. Each house was surrounded by colorful gardens where the first flowers bloomed and the scents of fresh bread and blooming herbs permeated the air.</p>
+
+                <p>In the center of the village stretched the square with the old well, whose water glittered in the morning light. Here the residents gathered to begin the day, and the lively conversations echoed between the walls of the small shops. Some women, dressed in their aprons, brought fresh vegetables from the market, while children ran around laughing and playing their games. It was a community that lived together harmoniously, where everyone had their place and cared for the welfare of others.</p>
+
+                <p>Among the newcomers was Erik, a young man who had recently moved to the village. With a suitcase in his hand and a mixture of nervousness and excitement in his heart, he took his first steps across the village square. His eyes sparkled with curiosity as he observed the scenes around him. He was looking for a new beginning, for a life that would distract him from the hustle and bustle of the city. The warm atmosphere that surrounded him gave him a feeling of hope. Erik imagined how he could put down roots in this little paradise, how he would become part of this community.</p>
+
+                <p>He paused to listen to a conversation between two old men who were discussing last year's harvest. The way they laughed and teased each other made him smile. Here he would find friends, he thought. But in the deep forests that surrounded the village, there was also a hint of mystery that he could not yet grasp.</p>
+
+                <p>His optimistic start to the day was abruptly interrupted when Erik stepped onto the square and saw something unusual. The group of villagers had gathered around the historic monument that stood proudly in the center of the square. A stone angel that had watched over the village for generations had been spray-painted with graffiti. The colorful letters stood out starkly against the pale stone relief and were a violation of the old traditions.</p>
+
+                <p>Erik approached the crowd, which was engaged in tense, worried discussions. Horror was reflected in the faces of the villagers. Some shook their heads, others looked stunned at the monument. "This can't be true! Who does such a thing?" cried a woman with a trembling voice. Her face was pale and her hands clenched into fists.</p>
+
+                <p>An older man who had known the village community for decades stepped forward and spoke in a serious voice: "This is not just an attack on our monument, it is an attack on our village. We must find out who is behind this!"</p>
+
+                <p>Emotions boiled over. Anger, fear and disbelief ran through the assembly as the first suspicions formed. Some whispered about strangers who had been seen recently, others suspected young people who just wanted to cause mischief. Erik felt carried away by the rising wave of excitement. His initial hope of being integrated into this community faded as he observed the different reactions of the people around him.</p>
+
+                <p>During the morning, the villagers gathered in the inn to discuss the incident. The walls were filled with tense energy, and the voices of those present overlapped. Erik sat in a corner and listened carefully. He didn't want to interfere, but his curiosity drove him to learn more about the community he would soon consider his own.</p>
+
+                <p>"We can't just ignore this! We must act immediately!" cried a woman whose eyes sparkled wildly. Her passion infected the others, but the uncertainty was palpable. Who was responsible for this outrage? Rumors about neighbors and even about the immigrants began to make the rounds, and Erik felt how the tensions in the air became thick, barely tangible fear.</p>
+
+                <p>An older farmer who had already fought many battles for the welfare of the village shook his head. "These are just acts of frustration. Perhaps we should give the young people the chance to explain themselves before we condemn them." But these words were not heard by many; the anger was too great to react with reason.</p>
+
+                <p>Erik listened to the personal anecdotes that the others shared and observed how the community grouped around the incident. He felt a strange torn feeling: on the one hand he wanted to belong, on the other hand he was the newcomer who still had to learn how this village community functioned.</p>
+
+                <p>A deep feeling of mistrust spread through Erik as he followed the course of the discussion. Where once community joy had reigned, now the darkness of suspicion and fear had moved in. The incident would leave traces, not only on the monument, but also in the hearts of the villagers. While the conversations around him continued, Erik realized that the shadows that fell over the village came not only from outside, but also from the souls of the people themselves.</p>
+
+                <p>The chapter radiates a serious and tension-filled tone that contrasts the idyllic portrayal of the village with the creeping threat of vandalism. The contrast between the initial warmth and the subsequent coldness of suspicions is enhanced by vivid language that captures both the beauty of nature and the dark shadows of human emotions.</p>
+
+                <p>Erik has now arrived in a new world, one that is shaped not only by the colorful gardens and the laughter of children, but also by the coldness that can befall a community when it feels threatened. In the midst of all the change, his hope for acceptance remains, while the first shadows fall over the village.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Helmut Wegner - The Shadows of the Villages. A Socially Critical Thriller.</p>
+        </div>
+    </footer>
+</body>
+</html>
