@@ -80,6 +80,21 @@
             text-align: center;
         }
 
+        .back-link {
+            background: #6c757d;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+            display: inline-block;
+        }
+
+        .back-link:hover {
+            background: #5a6268;
+        }
+
         .book-cover {
             width: 200px;
             height: 300px;
@@ -100,8 +115,41 @@
         .book-subtitle {
             color: #667eea;
             font-style: italic;
-            margin-bottom: 2rem;
+            margin-bottom: 1rem;
             font-size: 1.2rem;
+        }
+
+        /* Language Navigation */
+        .language-nav {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .lang-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 8px 16px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .lang-link.active {
+            background: #667eea;
+            color: white;
+        }
+
+        .lang-link:not(.active) {
+            background: #f8f9fa;
+            color: #666;
+        }
+
+        .lang-link:not(.active):hover {
+            background: #e9ecef;
         }
 
         .book-buttons {
@@ -134,26 +182,14 @@
             box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
         }
 
-        .btn-secondary {
-            background: #6c757d;
+        .btn-amazon {
+            background: linear-gradient(45deg, #ff6b35, #f7931e);
             color: white;
-            opacity: 0.7;
-            cursor: not-allowed;
         }
 
-        .back-link {
-            background: #6c757d;
-            color: white;
-            padding: 8px 16px;
-            border-radius: 20px;
-            text-decoration: none;
-            font-size: 0.9rem;
-            margin-bottom: 2rem;
-            display: inline-block;
-        }
-
-        .back-link:hover {
-            background: #5a6268;
+        .btn-amazon:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 107, 53, 0.3);
         }
 
         /* Chapter Content */
@@ -219,6 +255,11 @@
                 align-items: center;
             }
 
+            .language-nav {
+                flex-direction: column;
+                align-items: center;
+            }
+
             .chapter-content {
                 font-size: 1rem;
                 line-height: 1.6;
@@ -253,9 +294,18 @@
             <h1 class="book-title">Der Geist der Heide</h1>
             <p class="book-subtitle">Mysterien der Heide</p>
             
+            <div class="language-nav">
+                <a href="geistderheide-lesen.html" class="lang-link active">
+                    🇩🇪 Deutsch
+                </a>
+                <a href="geistderheide-english.html" class="lang-link">
+                    🇬🇧 English
+                </a>
+            </div>
+            
             <div class="book-buttons">
                 <a href="#" class="btn btn-primary">📖 Lesen</a>
-                <span class="btn btn-secondary">🛒 Bald verfügbar bei Amazon</span>
+                <a href="https://www.amazon.de/dp/B0ABCDEFGH" class="btn btn-amazon">🛒 Bei Amazon kaufen</a>
             </div>
 
             <div class="chapter-content">
