@@ -1,1 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Moor of Forgetting - Read | Helmut Wegner's Word Worlds</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #2c3e50;
+            text-decoration: none;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-link {
+            color: #2c3e50;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover {
+            background: #f8f9fa;
+            color: #667eea;
+        }
+
+        /* Main Content */
+        .main-content {
+            background: white;
+            border-radius: 20px;
+            margin: 2rem auto;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            max-width: 800px;
+            text-align: center;
+        }
+
+        .back-link {
+            background: #6c757d;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+            display: inline-block;
+        }
+
+        .back-link:hover {
+            background: #5a6268;
+        }
+
+        .book-cover {
+            width: 200px;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            margin: 0 auto 2rem auto;
+            display: block;
+        }
+
+        .book-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: #2c3e50;
+        }
+
+        .book-subtitle {
+            color: #667eea;
+            font-style: italic;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        /* Language Navigation */
+        .language-nav {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .lang-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 8px 16px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .lang-link.active {
+            background: #667eea;
+            color: white;
+        }
+
+        .lang-link:not(.active) {
+            background: #f8f9fa;
+            color: #666;
+        }
+
+        .lang-link:not(.active):hover {
+            background: #e9ecef;
+        }
+
+        .book-buttons {
+            margin-bottom: 3rem;
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 25px;
+            font-weight: bold;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .btn-amazon {
+            background: linear-gradient(45deg, #ff6b35, #f7931e);
+            color: white;
+        }
+
+        .btn-amazon:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 107, 53, 0.3);
+        }
+
+        /* Chapter Content */
+        .chapter-content {
+            text-align: left;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #444;
+            margin-top: 2rem;
+            border-top: 2px solid #667eea;
+            padding-top: 2rem;
+        }
+
+        .chapter-title {
+            font-size: 1.8rem;
+            color: #667eea;
+            margin-bottom: 2rem;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .chapter-content p {
+            margin-bottom: 1.2rem;
+            text-align: justify;
+            text-indent: 1.5em;
+        }
+
+        .chapter-content p:first-child {
+            text-indent: 0;
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(44, 62, 80, 0.9);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .main-content {
+                margin: 1rem;
+                padding: 2rem 1rem;
+            }
+
+            .book-title {
+                font-size: 2rem;
+            }
+
+            .book-cover {
+                width: 150px;
+                height: 225px;
+            }
+
+            .book-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .language-nav {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .chapter-content {
+                font-size: 1rem;
+                line-height: 1.6;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="https://hw543.github.io/helmuts-wortwelten/index.html" class="logo">Helmut Wegner's Word Worlds</a>
+                <nav>
+                    <ul class="nav-menu">
+                        <li><a href="https://hw543.github.io/helmuts-wortwelten/index.html" class="nav-link">Home</a></li>
+                        <li><a href="https://hw543.github.io/helmuts-wortwelten/kinderbuecher.html" class="nav-link">Children's Books</a></li>
+                        <li><a href="https://hw543.github.io/helmuts-wortwelten/krimis.html" class="nav-link">Crime</a></li>
+                        <li><a href="#" class="nav-link">Chronicles</a></li>
+                        <li><a href="#" class="nav-link">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="main-content">
+            <a href="https://hw543.github.io/helmuts-wortwelten/krimis.html" class="back-link">← Back to Crime</a>
+            
+            <img src="moordesvergessens.jpg" alt="The Moor of Forgetting" class="book-cover">
+            
+            <h1 class="book-title">The Moor of Forgetting</h1>
+            <p class="book-subtitle">A Heath Psycho-Thriller</p>
+            
+            <div class="language-nav">
+                <a href="moordesvergessens-lesen.html" class="lang-link">
+                    🇩🇪 Deutsch
+                </a>
+                <a href="moordesvergessens-english.html" class="lang-link active">
+                    🇬🇧 English
+                </a>
+            </div>
+            
+            <div class="book-buttons">
+                <a href="#" class="btn btn-primary">📖 Read</a>
+                <a href="https://www.amazon.com/dp/B0ABCDEFGH" class="btn btn-amazon">🛒 Buy on Amazon</a>
+            </div>
+
+            <div class="chapter-content">
+                <h2 class="chapter-title">Chapter 1: The Discovery in the Moor</h2>
+
+                <p>It was a gray, foggy morning in the small village of Eldermoor, hidden in the midst of an endless moorland landscape. The light of the early sun struggled in vain against the dense fog cover that lay like an impenetrable veil over the landscape. The damp cold crept through the alleys and penetrated even the smallest cracks of the old, weathered houses. Their facades were marked by time, the windows often covered with heavy curtains, as if the inhabitants wanted to keep away the evil that might rise from the moor.</p>
+
+                <p>Jakob, an old hunter and early riser, trudged with firm steps through the muddy paths that led to the lightless depths of the moor. He knew the area inside and out and often stayed away from the beaten paths to enjoy the rare sight of wild animals. But this morning the silence of the moor was different. An eerie feeling had crept into his chest that he could not ignore. Something was in the air, a dark premonition that made him slow his pace.</p>
+
+                <p>Suddenly Jakob stopped. A movement, a shimmer between the dense reeds, had caught his attention. He went closer, the silence around him pressing like a heavy cloth on his chest. Then, as he approached, he recognized the horrible. A scream stuck in his throat as he saw the figure in the moor. A corpse, motionless and weathered, lay in the slippery mud. The facial features were disfigured, the skin pale and marked by time, so that he could barely recognize more than a breath of humanity.</p>
+
+                <p>Jakob staggered back, his heart racing as he turned his gaze away from the gruesome discovery. The cold that emanated from the corpse seemed to penetrate him and suffocate him. "What the hell happened here?" he murmured as he hastily made his way back to the village. His head was full of thoughts, and the urge to warn the villagers became an irrepressible need. The news spread like wildfire. When the police, led by Commissioner Anna Hartmann, arrived in the village, the atmosphere was already charged. Anna knew Eldermoor, the stories and legends that surrounded the moor. Her visits here had always been accompanied by a certain oppression, and today was no different.</p>
+
+                <p>The villagers watched her with suspicious looks as she got out of her service car. Anna was a middle-aged woman with a determined expression on her face. Her eyes, sharp and empathetic, scanned the surroundings. The foggy morning enveloped her like a protective cloak as she walked along the narrow path toward the moor. She remembered the many stories about the "Moor of Forgetting," about the curses that were supposed to torment the souls of the villagers. These stories were not just traditions, but seemed to hang in the air, heavy and oppressive.</p>
+
+                <p>When Anna reached the site, the putrid smell of the moor rose to her nose, a mixture of earth, decay and something that was hard to describe. The fog wrapped around her, and the cold made her limbs shiver. A paramedic had already covered the corpse with a white cloth, but the sight remained horribly anchored in her memory.</p>
+
+                <p>The surroundings were eerily quiet, and the only sounds were the soft splashing of water in the moor and the occasional rustling of the wind. Anna knelt down and carefully lifted the cloth. The corpse was weathered, the face no longer recognizable, but it was clear that it had been lying here for a long time. The clothing was torn, the hands were dirty and marked by countless touches of the moor. "Who are you?" she murmured softly as a shiver ran down her spine.</p>
+
+                <p>The first investigations began, and Anna knew that this was no ordinary murder case. The traces in the moor were not clear, and the corpse seemed as if it had been carefully placed. Was it a staged murder? The unrest in her stomach increased. She turned to her team and gave instructions to secure the crime scene and search for further evidence. In the distance she could feel the first curious glances of the villagers who had gathered in a small group. Their faces were worried, but also dismissive.</p>
+
+                <p>Most of the older residents stayed near their houses and watched the police from a distance, while the younger ones among them huddled together as if a shadow had fallen over their souls. "They should rather take care of their own affairs," she heard an old man mutter. "The moor has its own laws."</p>
+
+                <p>The reactions were varied, and Anna felt how the atmosphere of mistrust thickened around her. The people here had learned to remain silent. A silence filled with secrets—secrets that lived in the darkness of the moor and protected the villagers. What had they known about the corpse? What would she not tell? As she looked around, Anna noticed the old children's home that stood on the edge of the village. The windows were blind and empty, the walls marked by decay. The home was a reminder of the past, of a time when children still laughed in the village. Now it was a place of shadows and forgetting. Anna involuntarily flinched. "Should I not have kept a better eye on the moor?" she asked herself. The thoughts of the stories about lost children and dark rituals came up in her.</p>
+
+                <p>With one last look at the corpse lying in the gloomy shadows of the moor, Anna knew that this was only the beginning. A new puzzle had unfolded, and she was determined to bring the truth to light, even if the moor and its secrets would do everything to prevent her from doing so.</p>
+
+                <p>A new puzzle had unfolded, and she was determined to bring the truth to light, even if the moor and its secrets would do everything to prevent her from doing so. Anna was aware that she was moving on dangerous terrain. The moor had its own rules and seemed to be alive, as if it preserved the history of the people trapped within it.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Helmut Wegner - The Moor of Forgetting. A Heath Psycho-Thriller.</p>
+        </div>
+    </footer>
+</body>
+</html>
