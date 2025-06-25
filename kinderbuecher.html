@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kinderbücher - Helmut Wegners Wortwelten</title>
+    <title>Kinderbücher - Vorlesen - Helmut Wegners Wortwelten</title>
     <style>
         * {
             margin: 0;
@@ -13,366 +13,588 @@
 
         body {
             font-family: 'Georgia', serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            line-height: 1.8;
+            color: #2c3e50;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 30%, #f093fb 70%, #f5576c 100%);
             min-height: 100vh;
-            line-height: 1.6;
-        }
-
-        .header {
-            background: rgba(255, 255, 255, 0.95);
-            padding: 1rem 0;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 2rem;
-        }
-
-        .logo {
-            font-size: 1.8rem;
-            font-weight: bold;
-            color: #333;
-        }
-
-        .nav-menu {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-
-        .nav-menu a {
-            text-decoration: none;
-            color: #333;
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-
-        .nav-menu a:hover, .nav-menu a.active {
-            color: #667eea;
-        }
-
-        .back-button {
-            display: inline-block;
-            margin: 2rem auto;
-            padding: 0.8rem 2rem;
-            background: rgba(255, 255, 255, 0.2);
-            color: white;
-            text-decoration: none;
-            border-radius: 50px;
-            transition: all 0.3s ease;
-            text-align: center;
-        }
-
-        .back-button:hover {
-            background: rgba(255, 255, 255, 0.3);
-            transform: translateY(-2px);
+            padding: 20px;
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 900px;
             margin: 0 auto;
-            padding: 2rem;
-            text-align: center;
-        }
-
-        .hero {
-            color: white;
-            margin-bottom: 3rem;
-        }
-
-        .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            opacity: 0.9;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .author-circle {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            margin: 2rem auto;
-            background: url('helmut.jpg') center/cover;
-            border: 4px solid rgba(255, 255, 255, 0.3);
-        }
-
-        .intro-text {
-            color: white;
-            font-size: 1.1rem;
-            max-width: 800px;
-            margin: 2rem auto;
-            opacity: 0.95;
-        }
-
-        .books-section {
-            margin-top: 3rem;
-        }
-
-        .section-title {
-            color: white;
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
-
-        .books-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .book-card {
             background: rgba(255, 255, 255, 0.95);
             border-radius: 20px;
-            padding: 2rem;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            transition: transform 0.3s ease;
-        }
-
-        .book-card:hover {
-            transform: translateY(-10px);
-        }
-
-        .book-cover {
-            width: 200px;
-            height: 300px;
-            margin: 0 auto 1.5rem;
-            border-radius: 10px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
             overflow: hidden;
         }
 
-        .book-cover img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .book-title {
-            font-size: 1.4rem;
-            font-weight: bold;
-            color: #333;
-            margin-bottom: 0.5rem;
-        }
-
-        .book-subtitle {
-            color: #e74c3c;
-            font-style: italic;
-            margin-bottom: 1rem;
-            font-size: 0.95rem;
-        }
-
-        .book-description {
-            color: #666;
-            margin-bottom: 1.5rem;
-            font-size: 0.95rem;
-            text-align: left;
-        }
-
-        .age-tag {
-            display: inline-block;
-            background: #667eea;
+        .header {
+            background: linear-gradient(135deg, #667eea, #764ba2);
             color: white;
-            padding: 0.3rem 1rem;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            margin-bottom: 1rem;
+            padding: 30px;
+            text-align: center;
         }
 
-        .button-group {
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+            font-style: italic;
+        }
+
+        .controls {
+            background: linear-gradient(135deg, #f093fb, #f5576c);
+            padding: 20px;
+            border-bottom: 3px solid #e91e63;
+            position: fixed;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            max-width: 900px;
+            width: calc(100% - 40px);
+            border-radius: 0 0 20px 20px;
+        }
+
+        .control-buttons {
             display: flex;
-            gap: 1rem;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 15px;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            min-width: 120px;
+            color: white;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+
+        .btn-play {
+            background: linear-gradient(135deg, #28a745, #20c997);
+        }
+
+        .btn-stop {
+            background: linear-gradient(135deg, #dc3545, #e83e8c);
+        }
+
+        .btn-continue {
+            background: linear-gradient(135deg, #17a2b8, #6f42c1);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+
+        .book-navigation {
+            display: flex;
+            gap: 8px;
             justify-content: center;
             flex-wrap: wrap;
         }
 
-        .btn {
-            padding: 0.8rem 1.5rem;
-            border: none;
-            border-radius: 25px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: all 0.3s ease;
+        .btn-book {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 10px 16px;
+            border: 2px solid transparent;
+            font-size: 0.9em;
+        }
+
+        .btn-book.active {
+            border-color: #FFD700;
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            color: #2c3e50;
+        }
+
+        .content {
+            padding: 30px;
+            font-size: 1.1em;
+            line-height: 1.8;
+            margin-top: 140px;
+        }
+
+        .book-section {
+            margin-bottom: 40px;
+        }
+
+        .book-header {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 3px solid #f093fb;
+        }
+
+        .book-cover {
+            width: 120px;
+            height: 180px;
+            border-radius: 10px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+            object-fit: cover;
+        }
+
+        .book-info h2 {
+            color: #667eea;
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+
+        .chapter-title {
+            color: #e91e63;
+            font-size: 1.3em;
+            font-style: italic;
+        }
+
+        .text-content {
+            text-align: justify;
+            margin-bottom: 30px;
+            background: rgba(102, 126, 234, 0.05);
+            padding: 20px;
+            border-radius: 15px;
+            border-left: 5px solid #667eea;
+        }
+
+        .word {
             cursor: pointer;
-            font-size: 0.9rem;
+            transition: all 0.2s ease;
+            padding: 1px 2px;
+            border-radius: 3px;
         }
 
-        .btn-read {
-            background: #667eea;
+        .word:hover {
+            background-color: rgba(102, 126, 234, 0.2);
+        }
+
+        .word-highlight {
+            background: linear-gradient(135deg, #667eea, #764ba2);
             color: white;
+            padding: 3px 6px;
+            border-radius: 6px;
+            box-shadow: 0 3px 10px rgba(102, 126, 234, 0.4);
         }
 
-        .btn-read:hover {
-            background: #5a67d8;
-            transform: translateY(-2px);
-        }
-
-        .btn-amazon {
-            background: #ff9500;
-            color: white;
-        }
-
-        .btn-amazon:hover {
-            background: #e88500;
-            transform: translateY(-2px);
-        }
-
-        .btn-unavailable {
-            background: #ccc;
-            color: #666;
-            cursor: not-allowed;
-        }
-
-        .footer {
-            background: rgba(0, 0, 0, 0.8);
-            color: white;
+        .back-link {
             text-align: center;
-            padding: 2rem 0;
-            margin-top: 4rem;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px solid #f093fb;
         }
 
-        @media (max-width: 768px) {
-            .nav-container {
-                flex-direction: column;
-                gap: 1rem;
+        .btn-back {
+            background: linear-gradient(135deg, #6c757d, #495057);
+            color: white;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        @media (max-width: 600px) {
+            .control-buttons {
+                gap: 10px;
+            }
+            
+            .btn {
+                min-width: 100px;
+                font-size: 0.9em;
+                padding: 10px 16px;
+            }
+            
+            .book-navigation {
+                gap: 5px;
+            }
+            
+            .btn-book {
+                padding: 8px 12px;
+                font-size: 0.8em;
+            }
+            
+            .content {
+                padding: 20px;
+                font-size: 1em;
+                margin-top: 160px;
+            }
+            
+            .header h1 {
+                font-size: 2em;
             }
 
-            .nav-menu {
+            .book-header {
                 flex-direction: column;
                 text-align: center;
-                gap: 1rem;
             }
 
-            .hero h1 {
-                font-size: 2rem;
+            .book-cover {
+                width: 100px;
+                height: 150px;
             }
 
-            .books-grid {
-                grid-template-columns: 1fr;
+            .book-info h2 {
+                font-size: 1.5em;
             }
 
-            .button-group {
-                flex-direction: column;
+            .controls {
+                padding: 15px;
+                border-radius: 0;
             }
         }
     </style>
 </head>
 <body>
-    <header class="header">
-        <nav class="nav-container">
-            <div class="logo">Helmut Wegners Wortwelten</div>
-            <ul class="nav-menu">
-                <li><a href="index.html">Startseite</a></li>
-                <li><a href="kinderbuecher.html" class="active">Kinderbücher</a></li>
-                <li><a href="#">Chroniken</a></li>
-                <li><a href="#">Kontakte</a></li>
-            </ul>
-        </nav>
-    </header>
-
     <div class="container">
-        <a href="index.html" class="back-button">← Zurück zur Startseite</a>
-        
-        <div class="hero">
-            <h1>Kinderbücher</h1>
-            <p>Abenteuer, die bilden – Geschichten, die begeistern</p>
+        <div class="header">
+            <h1>📚 Kinderbücher Vorlesen</h1>
+            <p>Spannende Abenteuer zum Anhören - Geschichten, die begeistern!</p>
         </div>
 
-        <div class="author-circle"></div>
-
-        <div class="intro-text">
-            Als 82-jähriger Autor mit über 30 Jahren Lehrerfahrung bringe ich eine besondere pädagogische Perspektive in meine Kinderbücher ein. Von liebevollen Kindergeschichten bis hin zu tiefgreifenden Chroniken und spannenden Thrillern – hier finden Sie Geschichten, die berühren, bilden und begeistern.
+        <div class="controls">
+            <div class="control-buttons">
+                <button class="btn btn-play" onclick="startReading()">🎵 Vorlesen</button>
+                <button class="btn btn-continue" onclick="continueReading()">▶️ Weiterlesen</button>
+                <button class="btn btn-stop" onclick="stopReading()">⏹️ Stop</button>
+            </div>
+            <div class="book-navigation">
+                <button class="btn btn-book active" onclick="showBook(1)">Buch 1</button>
+                <button class="btn btn-book" onclick="showBook(2)">Buch 2</button>
+                <button class="btn btn-book" onclick="showBook(3)">Buch 3</button>
+                <button class="btn btn-book" onclick="showBook(4)">Buch 4</button>
+            </div>
         </div>
 
-        <div class="books-section">
-            <h2 class="section-title">Meine Kinderbücher</h2>
-            
-            <div class="books-grid">
-                <!-- Der verborgene Wald -->
-                <div class="book-card">
-                    <div class="book-cover">
-                        <img src="verborgener-wald.jpg" alt="Der verborgene Wald">
+        <div class="content">
+            <!-- Buch 1: Das Geheimnis des verborgenen Waldes -->
+            <div id="book1" class="book-content">
+                <div class="book-section">
+                    <div class="book-header">
+                        <img src="buch1.jpg" alt="Das Geheimnis des verborgenen Waldes" class="book-cover">
+                        <div class="book-info">
+                            <h2>Das Geheimnis des verborgenen Waldes</h2>
+                            <div class="chapter-title">Kapitel 1: Die geheimnisvolle Karte</div>
+                        </div>
                     </div>
-                    <h3 class="book-title">Der verborgene Wald</h3>
-                    <p class="book-subtitle">Ein magisches Abenteuer für mutige Entdecker</p>
-                    <div class="age-tag">Ab 8 Jahren</div>
-                    <div class="book-description">
-                        Begleite Maria und ihrer aufregenden Reise in einen geheimnisvollen Wald voller Wunder und Geheimnisse. Ein Buch über Mut, Freundschaft und die Kraft der Fantasie.
-                    </div>
-                    <div class="button-group">
-                        <a href="verborgenerwald-lesen.html" class="btn btn-read">📖 Lesen</a>
-                        <span class="btn btn-unavailable">Bei Amazon (bald verfügbar)</span>
-                    </div>
-                </div>
+                    <div class="text-content" id="textContent1">
+                        <p>Die Sonne neigte sich dem Horizont entgegen und tauchte den Himmel in ein sanftes Orange. Max und Lisa standen auf dem alten Marktplatz ihrer Stadt und schauten sich neugierig um. Der Platz war leer, die meisten Geschäfte hatten bereits geschlossen, und nur das entfernte Kichern der Kinder, die auf dem Heimweg waren, war zu hören. Aber Max und Lisa waren nicht in die Richtung nach Hause gegangen. Sie hatten etwas anderes im Kopf.</p>
 
-                <!-- Rätseldetektivclub -->
-                <div class="book-card">
-                    <div class="book-cover">
-                        <img src="raetseldetektivclub.jpg" alt="Der Rätseldetektivclub">
-                    </div>
-                    <h3 class="book-title">Rätseldetektivclub</h3>
-                    <p class="book-subtitle">Spannende Fälle für clevere Köpfe</p>
-                    <div class="age-tag">Ab 10 Jahren</div>
-                    <div class="book-description">
-                        Vier Freunde gründen einen Detektivclub und lösen die kniffligsten Rätsel ihrer Stadt. Ein Buch, das logisches Denken fördert und Teamgeist stärkt.
-                    </div>
-                    <div class="button-group">
-                        <a href="raetseldetektivclub-lesen.html" class="btn btn-read">📖 Lesen</a>
-                        <a href="https://amazon.de/dp/B0F8Q3LQ6K" class="btn btn-amazon" target="_blank">Bei Amazon</a>
-                    </div>
-                </div>
+                        <p>"Glaubst du, es ist wirklich der Verborgene Wald?", fragte Max aufgeregt. Er sprang von einem Bein auf das andere und klopfte sich mit der Hand auf die Tasche, in der er eine kleine Notiz versteckt hatte, die sie den ganzen Nachmittag über verfolgt hatte.</p>
 
-                <!-- Der Zeitnarr -->
-                <div class="book-card">
-                    <div class="book-cover">
-                        <img src="zeitnarr.jpg" alt="Der Zeitnarr">
-                    </div>
-                    <h3 class="book-title">Der Zeitnarr</h3>
-                    <p class="book-subtitle">Eine Reise durch vergangene Epochen</p>
-                    <div class="age-tag">Ab 12 Jahren</div>
-                    <div class="book-description">
-                        Ein geheimnisvoller Zeitreisender nimmt junge Leser mit auf eine faszinierende Reise durch die Geschichte. Lehrreich und spannend zugleich.
-                    </div>
-                    <div class="button-group">
-                        <a href="zeitnarr-lesen.html" class="btn btn-read">📖 Lesen</a>
-                        <a href="https://amazon.de/dp/B0F8HY1P5G" class="btn btn-amazon" target="_blank">Bei Amazon</a>
-                    </div>
-                </div>
+                        <p>"Vielleicht..." antwortete Lisa nachdenklich. Sie drehte sich langsam um, um nach dem geheimen Hinweis zu suchen, den sie erhalten hatten. Max hatte die Nachricht in einem alten Buch gefunden, das sie im Antiquariat der Stadt entdeckt hatten. Sie hatte sie verwirrt, aber auch neugierig gemacht.</p>
 
-                <!-- Die Zauberakademie -->
-                <div class="book-card">
-                    <div class="book-cover">
-                        <img src="die zauberakademie.jpg" alt="Die Zauberakademie von Morgenstern">
-                    </div>
-                    <h3 class="book-title">Die Zauberakademie von Morgenstern</h3>
-                    <p class="book-subtitle">Magie, Freundschaft und große Träume</p>
-                    <div class="age-tag">Ab 9 Jahren</div>
-                    <div class="book-description">
-                        Leona erhält eine Einladung zur berühmtesten Zauberakademie des Landes. Eine Geschichte über Selbstvertrauen, wahre Freundschaft und die Magie in uns allen.
-                    </div>
-                    <div class="button-group">
-                        <a href="zauberakademie-lesen.html" class="btn btn-read">📖 Lesen</a>
-                        <a href="https://amazon.de/dp/B0F8V7TLVT" class="btn btn-amazon" target="_blank">Bei Amazon</a>
+                        <p>Die Nachricht sprach von einem alten Mann, der sie zur geheimen Karte führen würde -- eine Karte, die zu einem versteckten Ort voller Magie und Abenteuer führte. Max hatte sofort entschieden, dass sie sich auf den Weg machen sollten, aber Lisa hatte etwas mehr Zeit gebraucht, um sich zu überlegen, ob es wirklich sicher war.</p>
+
+                        <p>"Schau mal da!", rief Max plötzlich und zeigte auf einen schmalen, fast verborgenen Weg zwischen den Häusern. Am Ende des Weges stand ein alter Mann in einem langen, grauen Umhang. Seine Augen leuchteten wie zwei funkelnde Sterne. Lisa spürte sofort eine seltsame Energie in seiner Nähe -- als ob der Wald, von dem sie gehört hatten, in ihm lebte.</p>
+
+                        <p>Der Mann bemerkte sie sofort und winkte mit einer einladenden Geste. "Ah, du bist gekommen", sagte er mit einer Stimme, die sich wie das Flüstern des Windes anhörte. "Ich habe gewusst, dass ihr es seid."</p>
+
+                        <p>"W-wir?", fragte Max überrascht. "Wie können Sie das wissen?" Der Mann lächelte geheimnisvoll. "Ich kenne viele Dinge, die andere nicht wissen. Die Karte, die ihr sucht, wird euch den Weg zeigen, aber nur, wenn ihr mutig genug seid, ihn zu gehen."</p>
+
+                        <p>Er zog eine alte, zusammengerollte Karte aus seinem Mantel und überreichte sie Max. Die Karte war mit seltsamen Symbolen und bunten, geheimen Markierungen verziert. Der Rand war mit goldenen Schnörkeln geschmückt, die in der Dämmerung im Schein des Mondes schimmerten.</p>
+
+                        <p>Max öffnete die Karte und hielt sie neugierig in der Hand. Es war, als ob die Karte lebendig wurde. Sie schien zu flimmern und zu pulsieren, als ob sie aufgeregt darauf wartete, dass er sie entdeckte.</p>
+
+                        <p>"Was bedeutet das?", fragte Lisa und deutete auf einen merkwürdigen, leuchtenden Punkt in der Mitte der Karte. "Der Verborgene Wald", erklärte der Mann. "Er wartet auf euch. Wenn ihr ihm begegnet, werdet ihr ein Geheimnis erfahren, das schon viele Jahre verborgen ist. Doch nur die, die das Herz eines Abenteurers haben, können es finden."</p>
+
+                        <p>Max' Augen glänzten vor Aufregung. "Das hört sich nach einem echten Abenteuer an!", rief er und drückte die Karte fest an sich. Lisa hingegen schaute sich die Karte und den alten Mann misstrauisch an. "Aber was passiert, wenn wir nicht zurückkommen?", fragte sie leise.</p>
+
+                        <p>Der Mann schaute sie mit einem wissenden Blick an. "Ihr werdet zurückkommen", sagte er sanft. "Doch nicht so, wie ihr gegangen seid. Ihr werdet stärker, weiser und vielleicht auch ein wenig anders sein. Aber das ist das Abenteuer."</p>
+
+                        <p>Max zog Lisa etwas ungeduldig am Ärmel. "Komm schon, Lisa! Wir können es doch wenigstens versuchen!" Lisa seufzte, doch in ihren Augen funkelte die Neugier. "Okay", sagte sie schließlich. "Aber nur, wenn du uns auch hilfst, den Weg zu finden."</p>
+
+                        <p>Der alte Mann nickte und verschwand dann im Schatten der Gasse, als ob er nie da gewesen wäre. Max und Lisa standen einen Moment lang unschlüssig da, dann drehten sie sich gemeinsam in Richtung des Waldes. Es war bereits Abend, und die ersten Sterne waren am Himmel zu sehen. Die Karte in Max' Händen leuchtete schwach, als ob sie ihnen den Weg wies.</p>
+
+                        <p>"Lass uns aufbrechen", sagte Max entschlossen. Lisa zögerte kurz, dann nickte sie. "Ja, aufbrechen, aber vorsichtig", murmelte sie, während sie Bruno, ihren Hund, der freudig neben ihnen herlief, ansah. Mit einem letzten Blick zurück auf die Stadt, die langsam in der Dunkelheit verschwand, traten Max, Lisa und Bruno in den geheimen Wald ein, und das Abenteuer begann.</p>
                     </div>
                 </div>
+            </div>
+
+            <!-- Buch 2: Der Rätseldetektivclub -->
+            <div id="book2" class="book-content hidden">
+                <div class="book-section">
+                    <div class="book-header">
+                        <img src="buch2.jpg" alt="Der Rätseldetektivclub" class="book-cover">
+                        <div class="book-info">
+                            <h2>Der Rätseldetektivclub</h2>
+                            <div class="chapter-title">Kapitel 1: Ein neuer Fall beginnt</div>
+                        </div>
+                    </div>
+                    <div class="text-content" id="textContent2">
+                        <p>Die Nachmittagssonne schien durch die hohen Fenster der Schulbibliothek, und Max blätterte gelangweilt in einem alten Buch. Sein Blick wanderte über die staubigen Regale, als er plötzlich einen alten, vergilbten Umschlag bemerkte, der aus einem zerlesenen Band hervorstand. Neugierig zog er den Umschlag heraus und öffnete ihn vorsichtig. Innen befand sich eine Notiz in geschwungener Handschrift: "Suche dort, wo die Schatten Geschichten erzählen, und finde den ersten Schlüssel."</p>
+
+                        <p>Max' Herz schlug schneller. Das klang nach einem Rätsel, das nur darauf wartete, gelöst zu werden. Ohne zu zögern, steckte er den Umschlag ein und eilte aus der Bibliothek. Der Club versammelte sich in ihrem geheimen Hauptquartier: dem alten Baumhaus im Garten von Jonas. Die Wände des Baumhauses waren mit Landkarten, Zeitungsausschnitten und Fotos dekoriert, die sie von ihren bisherigen Abenteuern gesammelt hatten.</p>
+
+                        <p>"Was hast du da, Max?", fragte Emma neugierig, als er den Umschlag auf den Tisch legte. "Das ist ein Rätsel!" Max erklärte aufgeregt, was er in der Bibliothek gefunden hatte. Jonas lehnte sich nach vorn, die Stirn gerunzelt. "Wo die Schatten Geschichten erzählen ... Das klingt wie das alte Theater in der Stadt."</p>
+
+                        <p>"Oder vielleicht das Museum?", warf Lena ein. "Dort gibt es doch diese Abteilung mit alten Märchenfiguren." Die Gruppe diskutierte lebhaft, bis sie sich schließlich darauf einigte, zuerst das Theater zu untersuchen.</p>
+
+                        <p>Am Abend schlichen sich die vier Freunde in das alte, längst geschlossene Theater. Der große Saal war dunkel, und Staub tanzte in den Lichtstrahlen ihrer Taschenlampen. Überall standen alte Kulissen und Requisiten. "Hier erzählen die Schatten wirklich Geschichten", murmelte Lena und zeigte auf die seltsamen Schatten, die die Kulissen auf die Wände warfen.</p>
+
+                        <p>Emma entdeckte schließlich eine unscheinbare Holztruhe, die halb unter einer Bühne verborgen war. Sie kniete sich hin und zog sie hervor. "Hier! Das könnte der Schlüssel sein!" Mit klopfendem Herzen öffneten sie die Truhe und fanden darin eine kleine Karte und eine weitere Nachricht: "Der Weg beginnt mit einem Schritt ins Ungewisse. Folge den Sternen, und du wirst den zweiten Hinweis finden."</p>
+
+                        <p>Jonas hielt die Karte hoch. "Das ist ein Plan von unserer Stadt ... und diese Markierung zeigt den alten Uhrenturm. Das ist unser nächster Halt." Als die Kinder das Theater verließen, bemerkten sie, dass sie nicht allein waren. Ein dunkler Schatten bewegte sich hinter einem der Fenster, und draußen auf der Straße war das leise Summen eines Motors zu hören.</p>
+
+                        <p>"Jemand beobachtet uns", flüsterte Emma, während sie sich an Jonas klammerte. "Weg hier!", rief Max und rannte los, die anderen dicht hinter ihm. In letzter Sekunde schlüpften sie in eine schmale Gasse und versteckten sich hinter einem Stapel alter Kisten. Keuchend lauschten sie, wie schwere Schritte näherkamen und dann wieder verschwanden.</p>
+
+                        <p>"Das war knapp", sagte Lena atemlos. "Aber jetzt wissen wir, dass wir nicht die Einzigen sind, die hinter diesem Rätsel her sind." Max nickte. "Das macht es nur noch spannender. Morgen gehen wir zum Uhrenturm." Die Freunde trennten sich schließlich, jeder in Gedanken versunken. Max lag in seinem Bett und starrte an die Decke. Wer könnte noch hinter dem Rätsel her sein? Und was würde sie am Uhrenturm erwarten?</p>
+
+                        <p>Max wusste, dass dies kein gewöhnliches Abenteuer werden würde -- und der wahre Schlüssel im Verborgenen lag.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Buch 3: Der Zeitnarr -->
+            <div id="book3" class="book-content hidden">
+                <div class="book-section">
+                    <div class="book-header">
+                        <img src="buch3.jpg" alt="Der Zeitnarr" class="book-cover">
+                        <div class="book-info">
+                            <h2>Der Zeitnarr</h2>
+                            <div class="chapter-title">Kapitel 1: Der Flohmarktfund</div>
+                        </div>
+                    </div>
+                    <div class="text-content" id="textContent3">
+                        <p>Der Flohmarkt war eine Welt für sich. Reihen von Ständen zogen sich über den kleinen Marktplatz, jeder beladen mit einer kunterbunten Mischung aus Altem, Kuriosem und Wertvollem. Max schob sich durch die Menschenmenge, die Hände tief in den Taschen seiner abgetragenen Jeans vergraben. Seine Mutter hatte ihn mitgeschleppt, obwohl er eigentlich lieber zu Hause geblieben wäre.</p>
+
+                        <p>"Hier, Max! Schau mal, alte Bücher!" rief seine Mutter und verschwand zwischen den Ständen. Max seufzte. Bücher waren nicht sein Ding. Er streifte ziellos durch die Gassen, bis sein Blick an einem kleinen Stand hängen blieb. Er war unscheinbar -- ein alter Mann mit einem zerknitterten Gesicht saß auf einem wackeligen Stuhl hinter einem Tisch, auf dem eine Ansammlung von scheinbar wertlosem Kram lag.</p>
+
+                        <p>Doch etwas auf diesem Tisch zog Max magisch an. Eine Taschenuhr. Die Uhr war aus Messing, verziert mit filigranen Gravuren, die sich wie ein Labyrinth über die Oberfläche zogen. Ihr Glas war leicht zerkratzt, und der Deckel lag halb offen. Max griff danach, zögerte kurz, doch dann nahm er sie in die Hand. Sie fühlte sich überraschend schwer an, und als er sie öffnete, schlugen die Zeiger wie von selbst einen wilden Tanz.</p>
+
+                        <p>"Interessierst du dich für alte Dinge?" fragte der Mann mit heiserer Stimme. Seine Augen funkelten auf eine Art, die Max nicht einordnen konnte -- irgendwo zwischen Neugier und Geheimnis. "Vielleicht. Was kostet sie?" Max drehte die Uhr in seiner Hand, während das Zifferblatt im Licht der Nachmittagssonne aufblitzte.</p>
+
+                        <p>Der Mann schien kurz nachzudenken. "Für dich? Zehn Euro. Aber sei vorsichtig mit ihr. Diese Uhr hat mehr Geschichte, als du dir vorstellen kannst." Max zog sein Taschengeld hervor und legte es auf den Tisch. Der Mann nickte knapp, nahm das Geld und lächelte, als Max sich mit der Uhr in der Hand entfernte.</p>
+
+                        <p>Zuhause setzte sich Max an seinen Schreibtisch. Er klappte die Uhr auf und betrachtete das Zifferblatt genauer. Es schien fast zu leben -- die Gravuren bewegten sich leicht, als ob sie atmeten. Ohne lange nachzudenken, zog er die kleine Krone an der Seite auf. Plötzlich schien die Luft im Raum zu vibrieren. Ein tiefes Summen erfüllte seine Ohren, und die Wände um ihn herum verschwammen.</p>
+
+                        <p>Max riss die Augen auf, wollte die Uhr fallen lassen, doch sie klebte wie festgewachsen an seiner Hand. Ein grelles Licht flammte auf, und für einen Moment schien die Welt stillzustehen. Dann war es vorbei. Als Max blinzelte, fand er sich nicht mehr in seinem Zimmer wieder. Er stand in einer engen, kopfsteingepflasterten Gasse.</p>
+
+                        <p>Die Gebäude zu beiden Seiten waren alt und schief, aus grobem Holz und Stein gebaut. Menschen in seltsamen Kleidern eilten an ihm vorbei, manche warfen ihm irritierte Blicke zu. Max schnappte nach Luft. "Wo bin ich?" murmelte er, doch seine Stimme klang fremd, fast erstickt. Er spürte die Uhr in seiner Hand pulsieren, wie ein Herzschlag.</p>
+
+                        <p>Und dann hörte er eine Stimme hinter sich, leise und bedrohlich: "Na, Zeitnarr? Du hast keine Ahnung, was du da angerichtet hast." Max drehte sich ruckartig um, doch die Gasse war leer. Sein Herz raste. Wer hatte gesprochen? Und vor allem -- wie würde er hier wieder herauskommen?</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Buch 4: Die Zauberakademie von Morgenstern -->
+            <div id="book4" class="book-content hidden">
+                <div class="book-section">
+                    <div class="book-header">
+                        <img src="buch4.jpg" alt="Die Zauberakademie von Morgenstern" class="book-cover">
+                        <div class="book-info">
+                            <h2>Die Zauberakademie von Morgenstern</h2>
+                            <div class="chapter-title">Kapitel 1: Die geheimnisvolle Einladung</div>
+                        </div>
+                    </div>
+                    <div class="text-content" id="textContent4">
+                        <p>Die Morgenluft war kühl und klar, als Leonas Grünfeld seinen Schulranzen über die Schulter schwang und den staubigen Weg zur Schule einschlug. Der Pfad schlängelte sich zwischen alten Eichen hindurch, deren Äste sich wie schützende Arme über ihm verwoben und Schatten auf den ausgetretenen Weg warfen. Sein Dorf, eingebettet in weite Felder und dichte Wälder, erwachte langsam zum Leben.</p>
+
+                        <p>Leonas war ein schüchterner Junge von zwölf Jahren mit strohblonden Haaren, die ihm ständig in die Stirn fielen, und grünen Augen, die oft nachdenklich und ein wenig melancholisch in die Ferne blickten. Die anderen Kinder in der Schule verstanden ihn nicht, und er verstand sie genauso wenig. Während sie sich für Ballspiele und laute Scherze begeisterten, fand Leonas Trost in der stillen Beobachtung von Käfern, die über die raue Baumrinde krochen, oder Vögeln, die geschickt ihre Nester aus Zweigen und Moos bauten.</p>
+
+                        <p>Oft wurde er deshalb verspottet, besonders von Jasper und seiner Clique, einer Gruppe von fünf Jungen, die sich für die Könige des Schulhofs hielten. Sie nannten ihn den "Waldgeist", den "Tier-Tuschler" oder den "Baum-Kuschler", Spitznamen, die bei jedem Aussprechen wie kleine Messerstiche in sein Herz drangen.</p>
+
+                        <p>Heute war keine Ausnahme. Als Leonas die Schule erreichte, war es nur eine Frage von Minuten, bevor sie ihn umringten. "Hey, Grünfeld! Hast du wieder mit deinen Eichhörnchen geplaudert?", fragte Jasper mit einem breiten Grinsen und stieß Leonas an die Schulter. Die anderen Kinder lachten, während Leonas stumm blieb und den Boden betrachtete.</p>
+
+                        <p>Nach einem langen Tag voller peinlicher Momente eilte Leonas nach Hause. Er verbrachte den Nachmittag wie gewohnt in seinem Lieblingsversteck, einer kleinen Lichtung im Wald, wo ein alter Baum mit knorrigen Wurzeln stand. Hier war er nicht der seltsame Junge, der nicht in die Schule passte. Hier war er einfach nur Leonas, ein Teil der natürlichen Welt, die ihn ohne Vorurteile akzeptierte.</p>
+
+                        <p>Doch heute war etwas anders. Die Luft schien gespannter, elektrischer, als läge ein Gewitter in der Luft, obwohl der Himmel klar und blau war. Als er die Augen öffnete, bemerkte er eine seltsame Gestalt, die neben dem Stamm des alten Baumes stand. Es war ein Mann, hochgewachsen und von edler, königlicher Haltung, in einen schimmernden, dunkelblauen Mantel gehüllt, der im gedämpften Licht des Waldes zu funkeln schien wie der Nachthimmel voller Sterne.</p>
+
+                        <p>"Leonas Grünfeld, nehme ich an?", fragte der Mann mit einer warmen und ruhigen Stimme. "Ja, das bin ich", stammelte Leonas. "Wer sind Sie? Und woher wissen Sie, wer ich bin?" Der Mann lächelte. "Mein Name ist Elias Nachtflug. Ich bin ein Bote der Zauberakademie von Morgenstern. Und ich habe eine besondere Einladung für dich, junger Leonas."</p>
+
+                        <p>Mit diesen Worten zog er eine Pergamentrolle aus seinem Mantel. Das Pergament schimmerte in einem sanften goldenen Licht, als wäre es von Magie durchdrungen. Leonas starrte den Mann ungläubig an. "Eine Zauberakademie?", flüsterte er. "Aber... aber das gibt es doch gar nicht. Das sind nur Märchen."</p>
+
+                        <p>Elias' Lächeln wurde breiter. "Märchen, sagst du? Schau dich um, Leonas. Siehst du nicht die Magie, die dich jeden Tag umgibt? Die Art, wie die Tiere zu dir kommen, wie die Pflanzen unter deinen Händen zu gedeihen scheinen? Du hast schon immer gewusst, dass du anders bist."</p>
+
+                        <p>Leonas nahm die Rolle mit zitternden Händen entgegen. Als er sie entrollte, schienen die Buchstaben auf dem Papier zu tanzen: "An Leonas Grünfeld, das Schicksal hat dich auserwählt, ein Schüler der Zauberakademie von Morgenstern zu werden. Deine Gabe ist einzigartig und verdient es, gefördert zu werden."</p>
+
+                        <p>Als Elias zu verschwinden begann, fügte er hinzu: "Die Entscheidung liegt bei dir, Leonas. Aber denk daran: Manchmal führen uns die Wege, die uns am meisten Angst machen, zu den schönsten Zielen." Mit zitternden, aber entschlossenen Händen packte Leonas eine kleine Tasche. Am nächsten Morgen stand eine prachtvolle Kutsche vor dem Haus, gezogen von zwei schneeweißen, geflügelten Pferden. Das Abenteuer zu einem neuen Leben hatte begonnen.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="back-link">
+                <a href="kinderbuecher.html" class="btn btn-back">← Zurück zu Kinderbücher</a>
             </div>
         </div>
     </div>
 
-    <footer class="footer">
-        <p>&copy; 2025 Helmut Wegner - Helmut Wegners Wortwelten. Geschichten mit Tiefe, Herz und Haltung.</p>
-    </footer>
+    <script>
+        let utterance;
+        let words = [];
+        let currentWordIndex = 0;
+        let lastMarkedWordIndex = 0;
+        let isReading = false;
+        let currentBook = 1;
+
+        function initializeWords() {
+            const textContent = document.getElementById('textContent' + currentBook);
+            const paragraphs = textContent.querySelectorAll('p');
+            words = [];
+
+            paragraphs.forEach((paragraph, pIndex) => {
+                const text = paragraph.textContent;
+                const wordArray = text.split(/\s+/);
+                let wordHTML = '';
+
+                wordArray.forEach((word, wIndex) => {
+                    const globalIndex = words.length;
+                    words.push({
+                        element: null,
+                        text: word,
+                        paragraph: pIndex
+                    });
+                    wordHTML += `<span class="word" data-word-index="${globalIndex}" onclick="startFromWord(${globalIndex})">${word}</span> `;
+                });
+
+                paragraph.innerHTML = wordHTML.trim();
+            });
+
+            // Update word elements references
+            document.querySelectorAll('.word').forEach((element, index) => {
+                const wordIndex = parseInt(element.getAttribute('data-word-index'));
+                if (words[wordIndex]) {
+                    words[wordIndex].element = element;
+                }
+            });
+        }
+
+        function showBook(bookNumber) {
+            // Stop current reading
+            speechSynthesis.cancel();
+            isReading = false;
+            clearHighlights();
+
+            // Hide all books
+            for (let i = 1; i <= 4; i++) {
+                document.getElementById('book' + i).classList.add('hidden');
+            }
+
+            // Show selected book
+            document.getElementById('book' + bookNumber).classList.remove('hidden');
+
+            // Update navigation
+            document.querySelectorAll('.btn-book').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            // Set current book and initialize words
+            currentBook = bookNumber;
+            currentWordIndex = 0;
+            lastMarkedWordIndex = 0;
+
+            // Initialize words for the new book
+            setTimeout(() => {
+                initializeWords();
+            }, 100);
+        }
+
+        function startReading() {
+            if (isReading) {
+                speechSynthesis.cancel();
+            }
+            currentWordIndex = 0;
+            lastMarkedWordIndex = 0;
+            clearHighlights();
+            readFromCurrentWord();
+        }
+
+        function continueReading() {
+            if (isReading) {
+                speechSynthesis.cancel();
+            }
+            currentWordIndex = lastMarkedWordIndex;
+            readFromCurrentWord();
+        }
+
+        function stopReading() {
+            speechSynthesis.cancel();
+            isReading = false;
+            clearHighlights();
+        }
+
+        function startFromWord(wordIndex) {
+            if (isReading) {
+                speechSynthesis.cancel();
+            }
+            currentWordIndex = wordIndex;
+            lastMarkedWordIndex = wordIndex;
+            clearHighlights();
+            readFromCurrentWord();
+        }
+
+        function readFromCurrentWord() {
+            if (currentWordIndex >= words.length) {
+                isReading = false;
+                clearHighlights();
+                return;
+            }
+
+            const textToRead = words.slice(currentWordIndex).map(w => w.text).join(' ');
+            utterance = new SpeechSynthesisUtterance(textToRead);
+            utterance.lang = 'de-DE';
+            utterance.rate = 1.0;
+            utterance.pitch = 1;
+            utterance.volume = 1;
+
+            let wordCount = 0;
+
+            utterance.onboundary = function(event) {
+                if (event.name === 'word') {
+                    const globalWordIndex = currentWordIndex + wordCount;
+                    if (globalWordIndex < words.length && words[globalWordIndex].element) {
+                        clearHighlights();
+                        words[globalWordIndex].element.classList.add('word-highlight');
+                        lastMarkedWordIndex = globalWordIndex;
+
+                        words[globalWordIndex].element.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'center'
+                        });
+                    }
+                    wordCount++;
+                }
+            };
+
+            utterance.onend = function() {
+                isReading = false;
+                if (currentWordIndex + wordCount >= words.length) {
+                    clearHighlights();
+                }
+            };
+
+            utterance.onerror = function() {
+                isReading = false;
+            };
+
+            isReading = true;
+            speechSynthesis.speak(utterance);
+        }
+
+        function clearHighlights() {
+            document.querySelectorAll('.word-highlight').forEach(element => {
+                element.classList.remove('word-highlight');
+            });
+        }
+
+        // Initialize when page loads
+        window.addEventListener('load', function() {
+            initializeWords();
+        });
+    </script>
 </body>
 </html>
