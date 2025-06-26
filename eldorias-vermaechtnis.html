@@ -1,1 +1,1110 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eldorias Vermächtnis - Helmut Wegners Wortwelten</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            background: linear-gradient(135deg, #2d1b4e 0%, #1a1a2e 25%, #16213e 50%, #0f0f23 75%, #2d1b4e 100%);
+            color: #fff;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+            background: rgba(0,0,0,0.5);
+            padding: 40px;
+            border-radius: 20px;
+            backdrop-filter: blur(15px);
+            border: 2px solid rgba(138,99,210,0.4);
+        }
+
+        .header h1 {
+            font-size: 3.2rem;
+            background: linear-gradient(45deg, #8a63d2, #6f42c1, #8a63d2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+            margin-bottom: 15px;
+        }
+
+        .header .subtitle {
+            font-size: 1.3rem;
+            color: #e6ddc4;
+            font-style: italic;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
+        }
+
+        .navigation {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .nav-breadcrumb {
+            display: inline-flex;
+            align-items: center;
+            background: rgba(255,255,255,0.1);
+            padding: 18px 30px;
+            border-radius: 30px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(138,99,210,0.3);
+        }
+
+        .nav-breadcrumb span {
+            color: #8a63d2;
+            font-weight: bold;
+            margin: 0 12px;
+        }
+
+        .nav-breadcrumb .arrow {
+            color: #e6ddc4;
+            margin: 0 18px;
+            font-size: 1.3rem;
+        }
+
+        .intro-section {
+            max-width: 900px;
+            margin: 0 auto 60px;
+            text-align: center;
+            background: rgba(0,0,0,0.4);
+            padding: 40px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(138,99,210,0.3);
+        }
+
+        .intro-section h2 {
+            color: #8a63d2;
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+        }
+
+        .intro-section p {
+            font-size: 1.2rem;
+            line-height: 1.7;
+            color: #e6ddc4;
+        }
+
+        .books-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            padding: 40px 0;
+        }
+
+        .book-card {
+            background: rgba(45,27,78,0.6);
+            border-radius: 20px;
+            padding: 30px;
+            backdrop-filter: blur(15px);
+            border: 3px solid rgba(138,99,210,0.4);
+            text-align: center;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .book-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(138,99,210,0.3);
+        }
+
+        .book-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, transparent 0%, rgba(138,99,210,0.1) 50%, transparent 100%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .book-card:hover::before {
+            opacity: 1;
+        }
+
+        .book-cover {
+            width: 200px;
+            height: 300px;
+            background: #444;
+            border-radius: 10px;
+            margin: 0 auto 20px;
+            position: relative;
+            z-index: 2;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+            background-size: cover;
+            background-position: center;
+        }
+
+        .book-cover.cover1 { background-image: url('buch1.jpg'); }
+        .book-cover.cover2 { background-image: url('buch2.jpg'); }
+        .book-cover.cover3 { background-image: url('buch3.jpg'); }
+        .book-cover.cover4 { background-image: url('buch4.jpg'); }
+        .book-cover.cover5 { background-image: url('buch5.jpg'); }
+        .book-cover.cover6 { background-image: url('buch6.jpg'); }
+
+        .book-title {
+            font-size: 1.5rem;
+            color: #8a63d2;
+            margin-bottom: 10px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+            position: relative;
+            z-index: 2;
+        }
+
+        .book-subtitle {
+            font-size: 1rem;
+            color: #e6ddc4;
+            margin-bottom: 15px;
+            font-style: italic;
+            position: relative;
+            z-index: 2;
+        }
+
+        .book-description {
+            font-size: 0.95rem;
+            line-height: 1.5;
+            color: #d4d4d4;
+            margin-bottom: 25px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .button-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .btn {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-soon {
+            background: linear-gradient(45deg, #8a63d2, #6f42c1);
+            color: white;
+            box-shadow: 0 6px 20px rgba(138, 99, 210, 0.3);
+        }
+
+        .btn-soon:hover {
+            background: linear-gradient(45deg, #6f42c1, #8a63d2);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(138, 99, 210, 0.4);
+        }
+
+        .btn-sample {
+            background: linear-gradient(45deg, #c9b037, #d4af37);
+            color: #2d1b4e;
+            box-shadow: 0 6px 20px rgba(201, 176, 55, 0.3);
+        }
+
+        .btn-sample:hover {
+            background: linear-gradient(45deg, #d4af37, #c9b037);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(201, 176, 55, 0.4);
+        }
+
+        /* Modal für Leseproben mit Blätterfunktion */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.8);
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, #2d1b4e, #1a1a2e);
+            margin: 5% auto;
+            padding: 40px;
+            border-radius: 20px;
+            width: 85%;
+            max-width: 800px;
+            max-height: 80vh;
+            overflow-y: auto;
+            border: 2px solid rgba(138,99,210,0.4);
+            position: relative;
+        }
+
+        .close {
+            color: #8a63d2;
+            float: right;
+            font-size: 35px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .close:hover {
+            color: #6f42c1;
+        }
+
+        .modal h3 {
+            color: #8a63d2;
+            font-size: 2rem;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .page-content {
+            display: none;
+            color: #e6ddc4;
+            line-height: 1.8;
+            font-size: 1.1rem;
+            text-align: justify;
+        }
+
+        .page-content.active {
+            display: block;
+        }
+
+        .page-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(138,99,210,0.3);
+        }
+
+        .page-btn {
+            background: linear-gradient(45deg, #8a63d2, #6f42c1);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .page-btn:hover {
+            background: linear-gradient(45deg, #6f42c1, #8a63d2);
+            transform: translateY(-2px);
+        }
+
+        .page-btn:disabled {
+            background: #666;
+            color: #999;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .page-info {
+            color: #8a63d2;
+            font-weight: bold;
+        }
+
+        .back-link {
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .back-link a {
+            color: #8a63d2;
+            text-decoration: none;
+            font-size: 1.2rem;
+            padding: 15px 30px;
+            border: 2px solid #8a63d2;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+
+        .back-link a:hover {
+            background: #8a63d2;
+            color: #2d1b4e;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(138,99,210,0.3);
+        }
+
+        @media (max-width: 768px) {
+            .books-container {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .header h1 {
+                font-size: 2.5rem;
+            }
+
+            .book-card {
+                padding: 25px 20px;
+            }
+
+            .modal-content {
+                width: 95%;
+                margin: 2% auto;
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Eldorias Vermächtnis</h1>
+        <div class="subtitle">Die epische Saga voller Magie und Prophezeiungen</div>
+    </div>
+
+    <div class="navigation">
+        <div class="nav-breadcrumb">
+            <span>High Fantasy</span>
+            <div class="arrow">→</div>
+            <span>Serie erkunden</span>
+            <div class="arrow">→</div>
+            <span style="color: #e6ddc4;">Eldorias Vermächtnis</span>
+        </div>
+    </div>
+
+    <div class="intro-section">
+        <h2>Die Geschichte von Kael und Eldoria</h2>
+        <p>Tauche ein in eine epische Welt voller Magie, Heldenmut und uralter Prophezeiungen. Die Eldorias-Saga entführt dich in ein Reich, wo das Schicksal der Welt in den Händen weniger liegt und jede Entscheidung über Leben und Tod entscheidet. Mystische Kreaturen treffen auf heldenhafte Charaktere in einer Welt voller Geheimnisse, wo jede Entscheidung das Schicksal des gesamten Reiches beeinflussen kann.</p>
+    </div>
+
+    <div class="books-container">
+        <!-- Band 1 -->
+        <div class="book-card">
+            <div class="book-cover cover1"></div>
+            <h3 class="book-title">Die Prophezeiung von Eldoria</h3>
+            <div class="book-subtitle">Band 1 der Eldorias Vermächtnis Saga</div>
+            <div class="book-description">
+                Der Beginn der legendären Saga. Als eine uralte Prophezeiung erwacht, wird ein junger Held in ein Abenteuer gestoßen, das das Schicksal des gesamten Reiches bestimmen wird. Magie, Mut und Mysterium verstehen sich in diesem epischen Auftakt.
+            </div>
+            <div class="button-group">
+                <button class="btn btn-soon">🔜 Bald verfügbar</button>
+                <button class="btn btn-sample" onclick="openModal('sample1')">📄 Leseprobe blättern</button>
+            </div>
+        </div>
+
+        <!-- Band 2 -->
+        <div class="book-card">
+            <div class="book-cover cover2"></div>
+            <h3 class="book-title">Der Beginn des Friedens</h3>
+            <div class="book-subtitle">Band 2 der Eldorias Vermächtnis Saga</div>
+            <div class="book-description">
+                Die Saga intensiviert sich. Nach den ersten Prüfungen muss unser Held lernen, dass wahrer Frieden oft den schwersten Weg erfordert. Neue Verbündete und gefährliche Feinde treten auf den Plan.
+            </div>
+            <div class="button-group">
+                <button class="btn btn-soon">🔜 Bald verfügbar</button>
+                <button class="btn btn-sample" onclick="openModal('sample2')">📄 Leseprobe blättern</button>
+            </div>
+        </div>
+
+        <!-- Band 3 -->
+        <div class="book-card">
+            <div class="book-cover cover3"></div>
+            <h3 class="book-title">Die Schatten des Vergessenen</h3>
+            <div class="book-subtitle">Band 3 der Eldorias Vermächtnis Saga</div>
+            <div class="book-description">
+                Dunkle Geheimnisse der Vergangenheit kehren zurück. Die Schatten vergessener Zeiten bedrohen das Reich, und nur durch das Verstehen der alten Wahrheiten kann das Licht bestehen bleiben.
+            </div>
+            <div class="button-group">
+                <button class="btn btn-soon">🔜 Bald verfügbar</button>
+                <button class="btn btn-sample" onclick="openModal('sample3')">📄 Leseprobe blättern</button>
+            </div>
+        </div>
+
+        <!-- Band 4 -->
+        <div class="book-card">
+            <div class="book-cover cover4"></div>
+            <h3 class="book-title">Die Welt jenseits von Eldoria</h3>
+            <div class="book-subtitle">Band 4 der Eldorias Vermächtnis Saga</div>
+            <div class="book-description">
+                Die Reise führt über die bekannten Grenzen hinaus. Neue Welten eröffnen sich, während die Protagonisten erkennen, dass Eldorias Schicksal mit dem ganzen Universum verknüpft ist.
+            </div>
+            <div class="button-group">
+                <button class="btn btn-soon">🔜 Bald verfügbar</button>
+                <button class="btn btn-sample" onclick="openModal('sample4')">📄 Leseprobe blättern</button>
+            </div>
+        </div>
+
+        <!-- Band 5 -->
+        <div class="book-card">
+            <div class="book-cover cover5"></div>
+            <h3 class="book-title">Band 5</h3>
+            <div class="book-subtitle">Eldorias Vermächtnis Saga</div>
+            <div class="book-description">
+                Die Geheimnisse vertiefen sich weiter, als unbekannte Saga-Elemente die Geschichte leiten zusammen, während sich die finale Konfrontation zwischen den Mächten des Lichts und der Dunkelheit abzeichnet.
+            </div>
+            <div class="button-group">
+                <button class="btn btn-soon">🔜 Bald verfügbar</button>
+                <button class="btn btn-sample" onclick="openModal('sample5')">📄 Leseprobe blättern</button>
+            </div>
+        </div>
+
+        <!-- Band 6 -->
+        <div class="book-card">
+            <div class="book-cover cover6"></div>
+            <h3 class="book-title">Das letzte Licht</h3>
+            <div class="book-subtitle">Finaler Band der Eldorias Vermächtnis Saga</div>
+            <div class="book-description">
+                Der epische Finale! Alle Prophezeiungen erfüllen sich, als Geschichten finden das Ende. In der letzten Schlacht um Eldorias entscheidet sich das Schicksal aller Welten für die Ewigkeit.
+            </div>
+            <div class="button-group">
+                <button class="btn btn-soon">🔜 Bald verfügbar</button>
+                <button class="btn btn-sample" onclick="openModal('sample6')">📄 Leseprobe blättern</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modals für Leseproben -->
+    <!-- Modal Band 1 -->
+    <div id="sample1" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('sample1')">&times;</span>
+            <h3>Die Prophezeiung von Eldoria - Leseprobe</h3>
+            
+            <div class="page-content active" data-page="1">
+                <h4>Kapitel 1: Das Erwachen der Prophezeiung</h4>
+                <p>Der Nebel hing schwer über den alten Ruinen von Aethermoor, als Kael durch die zerbrochenen Steinbögen schritt. Seit Wochen hatte ihn derselbe Traum geplagt - Visionen von glühenden Symbolen und einer Stimme, die seinen Namen rief. Heute endlich hatte er den Mut gefasst, den Legenden zu folgen und diesen verfluchten Ort aufzusuchen.</p>
+                <p>Die Ruinen waren älter als das Gedächtnis der Menschen. Manche sagten, sie stammten aus der Zeit der ersten Magier, andere behaupteten, sie seien von den Göttern selbst errichtet worden. Kael glaubte an keine dieser Geschichten - bis heute.</p>
+                <p>Ein kalter Wind pfiff durch die Überreste der uralten Säulen, und Kael zog seinen Umhang enger um die Schultern. Als einfacher Schmied aus dem Dorf Millhaven hatte er nie geglaubt, dass er einmal hier stehen würde, in einem Ort, den selbst die mutigsten Abenteurer mieden.</p>
+            </div>
+
+            <div class="page-content" data-page="2">
+                <h4>Kapitel 1: Das Erwachen der Prophezeiung (Fortsetzung)</h4>
+                <p>Doch die Träume hatten ihm keine Ruhe gelassen. Nacht für Nacht sah er die Symbole vor sich, hörte die Stimme, die in einer Sprache zu ihm sprach, die er nicht kannte und doch verstand. "Kael von Millhaven", hatte sie geflüstert, "die Zeit des Erwachens ist gekommen."</p>
+                <p>Plötzlich blieb er stehen. Vor ihm lag ein perfekter Kreis aus schwarzem Stein, in dessen Zentrum ein alter Altar stand. Die Luft über dem Altar schimmerte, als würde Hitze von glühenden Kohlen aufsteigen, doch Kael spürte keine Wärme.</p>
+                <p>"Du bist gekommen", sagte eine Stimme hinter ihm.</p>
+                <p>Kael wirbelte herum, die Hand am Schwertgriff. Eine alte Frau stand zwischen den Ruinen, gekleidet in ein langes, graues Gewand. Ihre Augen waren weiß wie Milch, doch sie schien ihn genau zu sehen.</p>
+                <p>"Wer seid Ihr?", fragte Kael, seine Stimme rauer als beabsichtigt.</p>
+            </div>
+
+            <div class="page-content" data-page="3">
+                <h4>Kapitel 1: Das Erwachen der Prophezeiung (Fortsetzung)</h4>
+                <p>"Ich bin Lyralei, die letzte Seherin von Aethermoor", antwortete die Alte. "Seit siebzig Jahren warte ich hier auf dich, Kael von Millhaven."</p>
+                <p>"Das ist unmöglich", stammelte Kael. "Ihr kennt mich nicht. Niemand weiß, dass ich hier bin."</p>
+                <p>Die Seherin lächelte, ein Ausdruck, der seltsam traurig wirkte. "Die Prophezeiung kennt dich, junger Schmied. Sie hat deinen Namen in die Sterne geschrieben, lange bevor du geboren wurdest."</p>
+                <p>Als würde ihre Stimme ein unsichtbares Signal geben, begannen die Symbole auf dem Altar zu glühen. Erst schwach, wie das erste Licht der Morgendämmerung, dann immer heller, bis sie die gesamten Ruinen in ein goldenes Licht tauchten.</p>
+                <p>Kael wich einen Schritt zurück, doch die Seherin legte ihm eine überraschend kräftige Hand auf die Schulter.</p>
+            </div>
+
+            <div class="page-content" data-page="4">
+                <h4>Kapitel 1: Das Erwachen der Prophezeiung (Fortsetzung)</h4>
+                <p>"Hab keine Angst", sagte Lyralei. "Was du hier siehst, ist das Erwachen deiner wahren Bestimmung. Tausend Jahre lang haben die Mächte der Dunkelheit in den Schattenlanden geschlummert. Doch nun rühren sie sich wieder, und die Welt braucht einen Helden."</p>
+                <p>"Ich bin kein Held", protestierte Kael. "Ich bin nur ein Schmied. Ich kann mit dem Hammer umgehen und ein Schwert schmieden, aber ich bin kein Krieger, kein Magier, kein..."</p>
+                <p>"Du bist der Auserwählte", unterbrach ihn die Seherin mit fester Stimme. "Das Blut der alten Könige fließt in deinen Adern, auch wenn du es nicht weißt. Dein Großvater war mehr als nur ein einfacher Bauer, Kael. Er war ein Nachkomme von König Aldric dem Gerechten, dem letzten Herrscher des vereinten Eldoria."</p>
+                <p>Die Symbole auf dem Altar pulsierten nun in einem rhythmischen Licht, und Kael spürte, wie etwas in seinem Inneren auf diesen Rhythmus antwortete. Es war, als würde ein lange schlafender Teil seiner Seele zum Leben erwachen.</p>
+            </div>
+
+            <div class="page-content" data-page="5">
+                <h4>Kapitel 1: Das Erwachen der Prophezeiung (Fortsetzung)</h4>
+                <p>"Die Prophezeiung ist uralt", fuhr Lyralei fort, während sie langsam auf den Altar zuging. "Sie besagt: 'Wenn die Schatten sich regen und die Dunkelheit erwacht, wird der Erbe des Lichts seinen Weg finden. Mit dem Schwert der Wahrheit und dem Schild der Hoffnung wird er die zerbrochenen Königreiche einen und das letzte Bollwerk gegen die Nacht errichten.'"</p>
+                <p>Kael starrte die alte Frau an. "Ihr redet in Rätseln. Was hat das mit mir zu tun?"</p>
+                <p>"Alles", antwortete sie und hob ihre Hände. Die Luft um sie herum begann zu schimmern, und Kael sah Bilder, die wie Schatten durch den Nebel tanzten. Er sah brennende Städte, Armeen von Kreaturen, die er nie zuvor gesehen hatte, und über allem einen dunklen Turm, der wie ein Dolch in den Himmel stach.</p>
+                <p>"Das sind Visionen der Zukunft", erklärte Lyralei. "Visionen dessen, was geschehen wird, wenn der Auserwählte versagt."</p>
+            </div>
+
+            <div class="page-content" data-page="6">
+                <h4>Kapitel 1: Das Erwachen der Prophezeiung (Fortsetzung)</h4>
+                <p>Die Bilder verschwanden, und Kael taumelte. Seine Beine zitterten, und er musste sich an einem der zerbrochenen Steinblöcke abstützen.</p>
+                <p>"Das kann nicht wahr sein", flüsterte er. "Ich bin niemand. Ich lebe in einem kleinen Dorf, schmieden Hufeisen und Nägel. Ich habe nie ein Schwert im Kampf geführt, nie Magie gewirkt, nie..."</p>
+                <p>"Und doch bist du hier", sagte die Seherin sanft. "Die Träume haben dich gerufen, und du bist gekommen. Dein Herz kennt die Wahrheit, auch wenn dein Verstand sich dagegen sträubt."</p>
+                <p>Als würde sie seine Worte bestätigen, begann das Symbol auf Kaels linkem Handgelenk zu brennen - eine Markierung, die er seit seiner Geburt trug und die seine Mutter immer als Muttermal bezeichnet hatte. Nun leuchtete sie in demselben goldenen Licht wie die Symbole auf dem Altar.</p>
+                <p>"Das Zeichen der königlichen Linie", murmelte Lyralei ehrfürchtig. "Es zeigt sich nur in der Stunde der größten Not."</p>
+            </div>
+
+            <div class="page-content" data-page="7">
+                <h4>Kapitel 1: Das Erwachen der Prophezeiung (Fortsetzung)</h4>
+                <p>Plötzlich erzitterte der Boden unter ihren Füßen. In der Ferne hörte Kael ein tiefes, grollendes Geräusch, als würde die Erde selbst aufbrechen. Der Himmel über ihnen verdunkelte sich, obwohl es erst früher Nachmittag war.</p>
+                <p>"Sie haben es gespürt", sagte Lyralei, und zum ersten Mal seit ihrem Erscheinen klang Angst in ihrer Stimme mit. "Die Dunklen Herren wissen nun, dass der Auserwählte erwacht ist. Sie werden ihre Diener aussenden, um dich zu finden."</p>
+                <p>"Was soll ich tun?", fragte Kael verzweifelt. "Ich weiß nicht, wie man gegen solche Mächte kämpft."</p>
+                <p>Die Seherin trat zu dem Altar und legte ihre Hände auf die glühenden Symbole. Das Licht wurde noch heller, und mit einem Klang wie singender Stahl materialisierte sich ein Schwert über dem Stein. Es war wunderschön und furchteinflößend zugleich - die Klinge schimmerte wie flüssiges Mondlicht, und der Griff war mit Runen verziert, die Kael irgendwie vertraut vorkamen.</p>
+            </div>
+
+            <div class="page-content" data-page="8">
+                <h4>Kapitel 1: Das Erwachen der Prophezeiung (Fortsetzung)</h4>
+                <p>"Das ist Lichtklinge", sagte Lyralei. "Das Schwert deines Ahnen, König Aldric. Es wurde geschmiedet in den ersten Tagen der Welt, als Licht und Dunkelheit noch im Gleichgewicht standen."</p>
+                <p>Zögernd streckte Kael die Hand nach dem Schwert aus. Sobald seine Finger den Griff berührten, durchflutete ihn eine Welle von Kraft und Wissen. Er sah die Geschichte Eldorias vor sich ausgebreitet - die goldenen Jahre des vereinten Königreichs, den großen Krieg gegen die Dunklen Herren, den Fall der alten Ordnung und die langen Jahre des Chaos, die folgten.</p>
+                <p>"Du trägst nicht nur das Blut der Könige in dir", sagte Lyralei, als Kael das Schwert hob und das Gewicht spürte - überraschend leicht, als wäre es für seine Hand gemacht. "Du trägst auch ihre Erinnerungen, ihr Wissen und ihre Kraft. Aber das allein wird nicht genügen."</p>
+                <p>Ein weiteres Beben erschütterte die Ruinen, diesmal stärker. In der Ferne hörte Kael das Heulen von Kreaturen, die keine irdischen Stimmen besaßen.</p>
+            </div>
+
+            <div class="page-content" data-page="9">
+                <h4>Kapitel 1: Das Erwachen der Prophezeiung (Fortsetzung)</h4>
+                <p>"Du musst die Verbündeten finden", sagte die Seherin dringend. "Der Waldläufer Theron in den Wäldern von Silverdale - er trägt das Erbe der Elfen in sich. Die Kriegerin Mira aus den Bergfestungen - in ihr fließt das Blut der Zwerge. Und der junge Magier Finn - er ist der letzte Schüler der Weißen Türme."</p>
+                <p>"Wie soll ich sie finden?", fragte Kael, während er das Schwert an seinem Gürtel befestigte. Es fühlte sich seltsam richtig an, als hätte er schon immer ein Schwert getragen.</p>
+                <p>"Das Schwert wird dich führen", antwortete Lyralei. "Es kennt die Wege der Macht und wird dich zu denen bringen, die dir bestimmt sind zu helfen."</p>
+                <p>Das Heulen kam näher, und zwischen den äußeren Ruinen sah Kael Schatten bewegen, die sich gegen die natürliche Ordnung des Lichts bewegten.</p>
+                <p>"Geh jetzt", drängte die Seherin. "Der Weg nach Silverdale führt durch das Tal der Nebel. Folge dem alten Königsweg, aber verlasse ihn nie - die Nebel verbergen Gefahren, die älter sind als die Erinnerung."</p>
+            </div>
+
+            <div class="page-content" data-page="10">
+                <h4>Kapitel 1: Das Erwachen der Prophezeiung (Schluss)</h4>
+                <p>Kael wollte noch mehr fragen, doch die Schatten kamen schnell näher. Er konnte nun ihre Gestalt erkennen - krumme, verzerrte Wesen mit glühenden roten Augen und Klauen wie schwarze Dolche.</p>
+                <p>"Die Schattenwölfe", murmelte Lyralei. "Die Vorhut der Dunklen Herren. Sie wittern das erwachte Blut der Könige."</p>
+                <p>Instinktiv zog Kael das Schwert. Lichtklinge sang, als es die Scheide verließ, und die näherkommenden Schatten zuckten zurück, als hätte das Licht sie verbrannt.</p>
+                <p>"Du lernst schnell", sagte die Seherin mit einem stolzen Lächeln. "Aber jetzt musst du gehen. Ich werde sie so lange aufhalten, wie ich kann."</p>
+                <p>"Kommt mit mir", bat Kael. "Ihr dürft nicht allein hier bleiben."</p>
+                <p>Lyralei schüttelte den Kopf. "Mein Weg endet hier, junger König. Deiner beginnt erst. Geh, und mögen die alten Götter deine Schritte lenken."</p>
+                <p>Mit einem letzten Blick auf die tapfere alte Frau wandte sich Kael um und rannte in die Nacht hinaus, während hinter ihm der erste Kampf der neuen Zeit begann...</p>
+            </div>
+
+            <div class="page-nav">
+                <button class="page-btn" id="prevBtn1" onclick="changePage('sample1', -1)">← Vorherige</button>
+                <span class="page-info">Seite <span id="currentPage1">1</span> von 10</span>
+                <button class="page-btn" id="nextBtn1" onclick="changePage('sample1', 1)">Nächste →</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Band 2 -->
+    <div id="sample2" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('sample2')">&times;</span>
+            <h3>Der Beginn des Friedens - Leseprobe</h3>
+            
+            <div class="page-content active" data-page="1">
+                <h4>Kapitel 1: Zwischen den Welten</h4>
+                <p>Drei Monate waren vergangen seit jenem schicksalhaften Tag in den Ruinen von Aethermoor. Kael saß am Lagerfeuer und starrte in die tanzenden Flammen, während um ihn herum das Lager der Widerstandskämpfer allmählich zur Ruhe kam. Die Reise nach Silverdale hatte länger gedauert als erwartet, und der Krieg gegen die Dunklen Herren hatte bereits begonnen.</p>
+                <p>Lichtklinge lag neben ihm auf dem Boden, die Rune auf dem Griff glimmte schwach im Feuerschein. Das Schwert hatte ihn nicht nur zu Theron, dem Waldläufer geführt, sondern auch zu Dutzenden anderer, die bereit waren, für Eldorias Freiheit zu kämpfen. Doch der Frieden fühlte sich trügerisch an.</p>
+                <p>"Du grübelst wieder", sagte eine vertraute Stimme hinter ihm. Theron trat aus dem Schatten der Bäume, leise wie immer. Der Elf war groß und schlank, mit silbernem Haar und Augen wie flüssiges Mondlicht. In seiner Hand hielt er seinen Bogen aus Yew-Holz, geschnitzt aus einem Baum, der tausend Jahre alt war.</p>
+            </div>
+
+            <div class="page-content" data-page="2">
+                <h4>Kapitel 1: Zwischen den Welten (Fortsetzung)</h4>
+                <p>"Ich denke an die Vision der Seherin", antwortete Kael leise. "Sie sprach von brennenden Städten und einer Dunkelheit, die alles verschlingen würde. Was, wenn wir zu spät sind? Was, wenn der Friede, für den wir kämpfen, nur eine Illusion ist?"</p>
+                <p>Theron setzte sich neben ihn und legte den Bogen zur Seite. "Frieden ist nie eine Illusion, Kael. Aber er ist auch nie permanent. Mein Volk hat das vor langer Zeit gelernt. Die Elfen von Silverdale kämpften jahrhundertelang gegen die Orks der Schwarzfelsen. Als der Krieg endlich endete, dachten wir, wir hätten den Frieden gewonnen. Doch wir hatten nur eine Pause erkämpft."</p>
+                <p>In der Ferne heulte ein Wolf, und beide Männer verstummten. Doch es war kein gewöhnlicher Wolf - in diesem Heulen lag etwas Unnatürliches, etwas Dunkles.</p>
+                <p>"Sie sind wieder da", murmelte Theron und griff nach seinem Bogen.</p>
+                <p>Kael erhob sich und schnallte Lichtklinge um. "Die Schattenwölfe?"</p>
+            </div>
+
+            <div class="page-content" data-page="3">
+                <h4>Kapitel 1: Zwischen den Welten (Fortsetzung)</h4>
+                <p>"Schlimmer", antwortete Theron. "Das klingt nach einem Rudel Schattenbestien. Sie jagen nur im Auftrag der Dunklen Herren."</p>
+                <p>Das Lager erwachte schlagartig zum Leben. Krieger sprangen von ihren Schlafplätzen auf, griffen nach Waffen und Rüstungen. Mira, die Zwergenkämpferin aus den Bergfestungen, erschien mit ihrer gewaltigen Doppelaxe in der Hand. Ihr rotes Haar flatterte im Wind, und ihre grünen Augen funkelten kampfeslustig.</p>
+                <p>"Wie viele?", rief sie zu Theron hinüber, während sie die Schneide ihrer Axt prüfte.</p>
+                <p>"Zu viele", antwortete der Elf. "Mindestens ein Dutzend, vielleicht mehr. Sie umkreisen uns."</p>
+                <p>Kael spürte, wie das königliche Blut in seinen Adern zu singen begann. Es war ein Gefühl, das er erst seit dem Erwachen seiner Kräfte kannte - eine Mischung aus Kraft und Verantwortung, die ihn sowohl stärkte als auch belastete.</p>
+            </div>
+
+            <div class="page-content" data-page="4">
+                <h4>Kapitel 1: Zwischen den Welten (Fortsetzung)</h4>
+                <p>"Finn!", rief Kael zu dem jungen Magier hinüber, der bereits seine Hände zu Zauberformeln formte. "Kannst du einen Schutzkreis um das Lager errichten?"</p>
+                <p>Der rothaarige Zauberer nickte. "Ich kann es versuchen, aber gegen Schattenbestien hält er nicht lange. Ihre Magie ist älter und dunkler als meine."</p>
+                <p>Das Heulen kam näher, und zwischen den Bäumen blitzten rote Augen auf. Die Schattenbestien waren größer als Wölfe, ihre Körper schienen aus reiner Dunkelheit geformt zu sein, und ihre Krallen glänzten wie schwarzes Eis.</p>
+                <p>"Wir können nicht alle Kämpfer verlieren", sagte Kael zu Theron. "Diese Leute haben Familien, Hoffnungen. Sie sind nicht für einen aussichtslosen Kampf hierher gekommen."</p>
+                <p>"Dann schlägst du vor, dass wir fliehen?", fragte Mira mit einem Blick, der deutlich machte, was sie von dieser Idee hielt.</p>
+            </div>
+
+            <div class="page-content" data-page="5">
+                <h4>Kapitel 1: Zwischen den Welten (Fortsetzung)</h4>
+                <p>"Nein", sagte Kael entschieden. "Ich schlage vor, dass wir klug kämpfen. Theron, wie gut kennst du diesen Wald?"</p>
+                <p>"Wie meine eigene Tasche", antwortete der Elf. "Hier bin ich aufgewachsen, bevor mein Volk nach Silverdale zog."</p>
+                <p>"Dann führe die Zivilisten zu dem versteckten Pfad, von dem du erzählt hast. Mira, Finn und ich halten die Bestien auf."</p>
+                <p>"Das ist Wahnsinn", protestierte Theron. "Ihr seid zu dritt gegen ein ganzes Rudel!"</p>
+                <p>Kael zog Lichtklinge, und die Rune auf dem Griff begann hell zu leuchten. Das Licht schien die näherkommenden Schatten zurückzudrängen. "Ich habe das Schwert der Könige und das Blut meiner Ahnen. Mira hat die Stärke der Berge, und Finn beherrscht die Magie der Weißen Türme. Wir sind nicht nur zu dritt - wir tragen die Macht unserer Völker in uns."</p>
+            </div>
+
+            <div class="page-content" data-page="6">
+                <h4>Kapitel 1: Zwischen den Welten (Fortsetzung)</h4>
+                <p>Die erste Schattenbestie sprang aus der Dunkelheit hervor. Sie war riesig, größer als ein Pferd, mit Reißzähnen wie Dolche und Augen wie glühende Kohlen. Kael reagierte instinktiv, Lichtklinge zischte durch die Luft und traf die Kreatur mitten in der Brust. Das gesegnete Metall durchschnitt die Dunkelheit wie einen Vorhang, und die Bestie löste sich mit einem schrillen Schrei in Rauch auf.</p>
+                <p>"Bei meinem Bart!", rief Mira bewundernd. "Das Schwert ist wirklich so mächtig, wie die Legenden besagen!"</p>
+                <p>Doch es war nur die erste von vielen. Aus allen Richtungen kamen weitere Schattenbestien, ihre Augen leuchteten wie Sterne in der Nacht. Finn begann zu chanten, seine Hände glühten mit blauem Licht, und Blitze zuckten zwischen seinen Fingern hervor.</p>
+                <p>Mira stürmte mit einem Kriegsschrei der Zwerge vorwärts, ihre Axt wirbelte in tödlichen Bögen durch die Luft. Wo sie traf, explodierten die Schatten in Fetzen dunklen Rauchs.</p>
+            </div>
+
+            <div class="page-content" data-page="7">
+                <h4>Kapitel 1: Zwischen den Welten (Fortsetzung)</h4>
+                <p>Der Kampf tobte heftig, aber kurz. Die drei Gefährten kämpften mit einer Harmonie, als hätten sie ihr ganzes Leben lang zusammen gekämpft. Kaels Schwert schnitt durch die Dunkelheit, Miras Axt zerschmetterte alles, was sich ihr in den Weg stellte, und Finns Zauber beleuchteten die Nacht mit magischem Feuer.</p>
+                <p>Als die letzte Schattenbestie vernichtet war, standen sie inmitten eines Kreises aus schwarzem Rauch, der langsam im Wind verwehte. Kael atmete schwer, das Schwert noch immer in der Hand, die Rune auf dem Griff glühte noch schwach nach.</p>
+                <p>"Das war zu einfach", sagte Theron, der aus dem Dickicht zurückgekehrt war. "Schattenbestien sind normalerweise viel schwerer zu töten."</p>
+                <p>"Es war ein Test", erkannte Kael plötzlich. "Die Dunklen Herren wollten unsere Stärke messen. Sie wissen jetzt, dass wir eine Bedrohung sind."</p>
+            </div>
+
+            <div class="page-content" data-page="8">
+                <h4>Kapitel 1: Zwischen den Welten (Fortsetzung)</h4>
+                <p>Finn nickte nachdenklich. "Das würde erklären, warum sie so koordiniert angegriffen haben. Normalerweise sind Schattenbestien reine Instinktwesen."</p>
+                <p>"Was bedeutet das für uns?", fragte Mira, während sie ihre Axt reinigte.</p>
+                <p>"Es bedeutet, dass wir uns beeilen müssen", antwortete Kael. "Wenn sie einen Test geschickt haben, dann wird als nächstes die echte Armee kommen. Wir müssen die anderen Widerstandszellen erreichen und uns vereinen, bevor es zu spät ist."</p>
+                <p>Theron zog eine Karte aus seinem Beutel und breitete sie auf einem Baumstumpf aus. "Die nächste Zelle ist in den Ruinen von Drakmoor, drei Tagesreisen von hier. Aber der Weg führt durch das Tal der Nebel."</p>
+                <p>"Das Tal, von dem die Seherin sprach", murmelte Kael. "Sie warnte mich, den alten Königsweg nicht zu verlassen."</p>
+            </div>
+
+            <div class="page-content" data-page="9">
+                <h4>Kapitel 1: Zwischen den Welten (Schluss)</h4>
+                <p>"Der Königsweg ist alt und gefährlich", sagte Theron. "Aber er ist auch der schnellste Weg. Und wenn die Seherin recht hatte, dann ist er auch der sicherste."</p>
+                <p>Kael nickte und steckte Lichtklinge zurück in die Scheide. "Dann brechen wir bei Sonnenaufgang auf. Finn, kannst du einen Botschaftszauber zu den anderen Zellen schicken? Sie müssen wissen, dass die Dunklen Herren sich rühren."</p>
+                <p>"Schon dabei", antwortete der junge Magier und begann, komplizierte Runen in die Luft zu zeichnen.</p>
+                <p>Als Kael in den Himmel blickte, sah er die ersten Strahlen der Morgendämmerung am Horizont. Ein neuer Tag brach an, und mit ihm würde eine neue Phase ihres Kampfes beginnen. Der Frieden, den sie zu erkämpfen suchten, lag noch in weiter Ferne, aber zum ersten Mal seit dem Erwachen der Prophezeiung glaubte Kael wirklich daran, dass sie eine Chance hatten.</p>
+                <p>Die Reise nach Drakmoor würde gefährlich werden, aber sie würden sie gemeinsam antreten. Und vielleicht, so dachte Kael, während er seine Gefährten beim Packen beobachtete, lag darin bereits der erste Keim des wahren Friedens...</p>
+            </div>
+
+            <div class="page-nav">
+                <button class="page-btn" id="prevBtn2" onclick="changePage('sample2', -1)">← Vorherige</button>
+                <span class="page-info">Seite <span id="currentPage2">1</span> von 9</span>
+                <button class="page-btn" id="nextBtn2" onclick="changePage('sample2', 1)">Nächste →</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Band 3 -->
+    <div id="sample3" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('sample3')">&times;</span>
+            <h3>Die Schatten des Vergessenen - Leseprobe</h3>
+            
+            <div class="page-content active" data-page="1">
+                <h4>Kapitel 1: Die Rückkehr der Schatten</h4>
+                <p>Die Ruinen von Drakmoor ragten wie gebrochene Zähne aus der nebelverhangenen Ebene empor. Kael stand am Rand des Abgrunds und blickte hinunter in die Überreste der einst mächtigsten Bibliothek Eldorias. Hier, so hatten die Legenden erzählt, war das Wissen der Welt gesammelt worden, bevor der Große Krieg alles zerstört hatte.</p>
+                <p>"Die Schatten hier sind anders", murmelte Finn neben ihm. Der junge Magier hatte seit ihrer Ankunft unruhig gewirkt, seine Hände zitterten leicht, wann immer er einen Zauber wirken wollte. "Sie flüstern. Ich höre Stimmen von Menschen, die vor Jahrhunderten gestorben sind."</p>
+                <p>Theron nickte grimm. "Mein Volk meidet diesen Ort. Die Elfen sagen, hier wandeln die Geister derer, die starben, bevor sie ihr Wissen weitergeben konnten. Ihre unvollendeten Geheimnisse halten sie an diese Welt gebunden."</p>
+                <p>Mira spuckte aus. "Geister hin oder her, wir müssen da runter. Die Botschaft war eindeutig - die Widerstandszelle versteckt sich in den unteren Gewölben."</p>
+            </div>
+
+            <div class="page-content" data-page="2">
+                <h4>Kapitel 1: Die Rückkehr der Schatten (Fortsetzung)</h4>
+                <p>Kael zog Lichtklinge und spürte sofort, wie das Schwert auf die dunkle Magie der Ruinen reagierte. Die Rune auf dem Griff glühte heller als je zuvor, als würde sie versuchen, die Dunkelheit um sie herum zu durchdringen.</p>
+                <p>"Das Schwert spürt etwas", sagte er zu seinen Gefährten. "Hier unten ist mehr als nur eine Widerstandszelle. Es ist etwas Altes hier, etwas Mächtiges."</p>
+                <p>Sie begannen den gefährlichen Abstieg über die zerbrochenen Steintreppen. Mit jedem Schritt wurde die Luft kälter und dichter. Der Nebel, der über den Ruinen hing, schien lebendig zu sein - er wand sich um ihre Beine wie unsichtbare Hände und flüsterte Worte in Sprachen, die seit Jahrhunderten vergessen waren.</p>
+                <p>"Da", sagte Theron plötzlich und deutete auf einen schwachen Lichtschein zwischen den Trümmern. "Fackellicht. Menschen."</p>
+                <p>Sie bewegten sich vorsichtig auf das Licht zu, ihre Waffen bereit. Doch statt der erwarteten Widerstandskämpfer fanden sie etwas völlig anderes.</p>
+            </div>
+
+            <div class="page-content" data-page="3">
+                <h4>Kapitel 1: Die Rückkehr der Schatten (Fortsetzung)</h4>
+                <p>Ein alter Mann kniete vor einem riesigen, aufgeschlagenen Buch. Seine Haut war bleich wie Pergament, sein Haar weiß wie frisch gefallener Schnee. Er murmelte Worte in der alten Sprache und schien sie gar nicht zu bemerken, obwohl sie direkt vor ihm standen.</p>
+                <p>"Meister Aldwin?", fragte Finn ungläubig. "Aber das ist unmöglich. Ihr seid vor fünfzig Jahren gestorben!"</p>
+                <p>Der alte Mann hob langsam den Kopf. Seine Augen waren weiß und blind, doch er schien direkt durch Finn hindurch zu blicken. "Gestorben? Ja, mein Körper ist vor langer Zeit gestorben. Aber mein Geist... mein Geist hatte noch Arbeit zu verrichten."</p>
+                <p>Kael trat einen Schritt näher. "Ihr seid ein Geist? Aber Ihr seht so... lebendig aus."</p>
+                <p>Aldwin lächelte traurig. "Die Macht der Vergessenen Bücher hält mich hier. Ich war der letzte Hüter der Bibliothek von Drakmoor. Als die Dunklen Herren kamen, schwor ich, dass das Wissen nicht verloren gehen würde. Dieser Schwur bindet mich an diesen Ort."</p>
+            </div>
+
+            <div class="page-content" data-page="4">
+                <h4>Kapitel 1: Die Rückkehr der Schatten (Fortsetzung)</h4>
+                <p>"Vergessene Bücher?", fragte Finn. "Ihr meint die Sammlung der verbotenen Magie?"</p>
+                <p>"Nicht verboten", korrigierte Aldwin. "Vergessen. Es gibt einen Unterschied. Diese Bücher enthalten das Wissen der ersten Magier, derer, die die Welt schufen, bevor die Trennung zwischen Licht und Dunkelheit entstand."</p>
+                <p>Mira runzelte die Stirn. "Und was hat das mit uns zu tun? Wir suchen die Widerstandskämpfer, nicht alte Bücher."</p>
+                <p>Theron legte ihr die Hand auf die Schulter. "Warte, Mira. Lass ihn sprechen."</p>
+                <p>Aldwin erhob sich langsam, das aufgeschlagene Buch in den Händen. "Die Widerstandskämpfer sind tot, Zwergentochter. Die Schatten kamen vor drei Tagen. Aber sie waren nicht hier für die Menschen. Sie suchten dasselbe wie ihr - das Wissen der Alten."</p>
+                <p>Ein kalter Schauer lief Kael über den Rücken. "Sie wissen von den Büchern?"</p>
+            </div>
+
+            <div class="page-content" data-page="5">
+                <h4>Kapitel 1: Die Rückkehr der Schatten (Fortsetzung)</h4>
+                <p>"Die Dunklen Herren wissen alles, junger König", sagte Aldwin mit einem Blick auf Lichtklinge. "Sie waren einst auch Magier, bevor sie der Dunkelheit verfielen. Sie kennen die Macht der Vergessenen Bücher, und sie wissen, dass diese Macht sowohl ihre größte Waffe als auch ihre größte Bedrohung sein kann."</p>
+                <p>Finn trat näher an den Geist heran. "Welche Art von Magie ist in diesen Büchern?"</p>
+                <p>"Schöpfungsmagie", antwortete Aldwin ehrfürchtig. "Die Kraft, Welten zu erschaffen und zu zerstören. Die Macht, Leben zu geben und zu nehmen. Die Fähigkeit, die Grenzen zwischen den Dimensionen zu überwinden."</p>
+                <p>Das Buch in seinen Händen begann zu glühen, und die Seiten blätterten sich wie von Geisterhand um. Auf den Pergamentseiten erschienen Symbole und Runen, die sich ständig bewegten und veränderten.</p>
+                <p>"Aber diese Macht hat ihren Preis", warnte Aldwin. "Jeder, der sie verwendet, riskiert, das zu verlieren, was ihn menschlich macht."</p>
+            </div>
+
+            <div class="page-content" data-page="6">
+                <h4>Kapitel 1: Die Rückkehr der Schatten (Fortsetzung)</h4>
+                <p>Plötzlich ertönte ein tiefes Grollen aus den Tiefen der Ruinen. Die Wände erzitterten, und Staub rieselte von der Decke. Die Fackeln flackerten, als würde ein unsichtbarer Wind durch die Gänge fegen.</p>
+                <p>"Sie kommen", flüsterte Aldwin, und zum ersten Mal schwang Angst in seiner Stimme mit. "Die Schatten der Vergessenen. Sie haben gespürt, dass jemand die Bücher berührt hat."</p>
+                <p>"Schatten der Vergessenen?", fragte Kael, während er Lichtklinge fester umfasste.</p>
+                <p>"Die Geister der Magier, die einst diese Bücher geschrieben haben", erklärte Aldwin hastig. "Sie sind wahnsinnig geworden von ihrer eigenen Macht. Sie dulden niemanden in ihrer Nähe, der nicht ihrer Art ist."</p>
+                <p>Aus den dunklen Gängen um sie herum krochen Gestalten aus reinem Schatten hervor. Sie hatten einst menschliche Form besessen, doch ihre Konturen waren verzerrt und unmöglich. Ihre Augen glühten mit einem kalten, blauen Licht, und ihre Stimmen klangen wie das Rauschen von Wind durch tote Blätter.</p>
+            </div>
+
+            <div class="page-content" data-page="7">
+                <h4>Kapitel 1: Die Rückkehr der Schatten (Fortsetzung)</h4>
+                <p>"Wer wagt es, unsere Ruhe zu stören?", zischten die Schatten im Chor. "Wer maßt sich an, unsere Geheimnisse zu berühren?"</p>
+                <p>Kael trat vor, Lichtklinge erhoben. Das Schwert sang in einer hohen, klaren Tonlage, und sein Licht trieb die Schatten einen Schritt zurück. "Ich bin Kael von Millhaven, Erbe der Königslinie Eldorias. Ich komme nicht als Dieb, sondern als Beschützer."</p>
+                <p>Die Schatten lachten, ein Klang wie zerbrochenes Glas. "Königslinie? Die Könige sind tot, Jüngling. Ihre Zeit ist vorbei. Nur die Macht bleibt, nur das Wissen überlebt."</p>
+                <p>Finn begann zu chanten, seine Hände glühten mit magischem Licht. Doch als sein Zauber die Schatten traf, absorbierten sie ihn einfach und wurden sogar noch größer.</p>
+                <p>"Normale Magie ist wirkungslos gegen sie", warnte Aldwin. "Nur das Licht der Könige kann sie berühren."</p>
+            </div>
+
+            <div class="page-content" data-page="8">
+                <h4>Kapitel 1: Die Rückkehr der Schatten (Fortsetzung)</h4>
+                <p>Kael konzentrierte sich auf das königliche Blut in seinen Adern. Er spürte, wie die Kraft seiner Ahnen durch ihn hindurchfloss, und Lichtklinge begann in einem blendenden, weißen Licht zu erstrahlen. Das Licht war so hell, dass es die gesamte Ruine erleuchtete und jeden Schatten vertrieb.</p>
+                <p>Die Schatten der Vergessenen wichen zurück, ihre Formen wurden durchsichtiger. "Das Licht... das uralte Licht der Schöpfung", flüsterten sie ehrfürchtig. "Du trägst wirklich das Erbe in dir."</p>
+                <p>"Ich trage mehr als das", sagte Kael mit fester Stimme. "Ich trage die Hoffnung meines Volkes und den Willen, die Dunkelheit zu vertreiben. Lasst uns passieren, und euer Wissen wird nicht missbraucht werden."</p>
+                <p>Der größte der Schatten trat vor. "Wenn du wirklich der Erbe bist, dann beweise es. Beantworte diese Frage: Was ist mächtiger - Wissen oder Weisheit?"</p>
+            </div>
+
+            <div class="page-content" data-page="9">
+                <h4>Kapitel 1: Die Rückkehr der Schatten (Schluss)</h4>
+                <p>Kael dachte einen Moment nach. Er erinnerte sich an die Worte der Seherin, an die Lehren seines Mentors, an alles, was er auf seiner Reise gelernt hatte.</p>
+                <p>"Wissen ist Macht", sagte er schließlich. "Aber Weisheit ist die Kraft, zu wissen, wann man diese Macht nicht einsetzen sollte. Ein König, der alles weiß, aber nicht weise ist, wird sein Reich zerstören. Ein König, der weise ist, auch ohne alles zu wissen, wird sein Volk retten."</p>
+                <p>Die Schatten der Vergessenen neigten ihre Köpfe. "Du hast verstanden", sagten sie. "Du bist würdig. Nimm ein Buch, aber nur eines. Und denke daran - das Wissen, das du erlangst, wird dich verändern. Sei sicher, dass du bereit bist für diese Veränderung."</p>
+                <p>Aldwin reichte Kael das Buch, das er gehalten hatte. "Das Buch der Ersten Flamme", sagte er. "Es lehrt die Magie der Schöpfung. Aber verwende es weise, junger König. Die Macht, Leben zu erschaffen, ist auch die Macht, es zu zerstören."</p>
+                <p>Als Kael das Buch berührte, durchflutete ihn eine Welle von Visionen und Wissen. Er sah die Entstehung der Welt, die ersten Magier, den Ursprung der Dunkelheit. Und er verstand, dass der Kampf, den sie führten, älter war als alle Königreiche und größer als alle Armeen...</p>
+            </div>
+
+            <div class="page-nav">
+                <button class="page-btn" id="prevBtn3" onclick="changePage('sample3', -1)">← Vorherige</button>
+                <span class="page-info">Seite <span id="currentPage3">1</span> von 9</span>
+                <button class="page-btn" id="nextBtn3" onclick="changePage('sample3', 1)">Nächste →</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Band 4 -->
+    <div id="sample4" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('sample4')">&times;</span>
+            <h3>Die Welt jenseits von Eldoria - Leseprobe</h3>
+            
+            <div class="page-content active" data-page="1">
+                <h4>Kapitel 1: Jenseits der Grenzen</h4>
+                <p>Das Portal schimmerte wie eine Oberfläche aus flüssigem Silber vor ihnen. Kael stand an der Schwelle zwischen zwei Welten und spürte, wie die Magie des Buches der Ersten Flamme in seinem Geist pulsierte. Die vergangenen Wochen hatten sie alle verändert, doch nichts hatte sie auf das vorbereitet, was sie hinter diesem Portal erwartete.</p>
+                <p>"Bist du sicher, dass das der richtige Weg ist?", fragte Mira und blickte skeptisch auf die wirbelnde Energiemasse. "Wer weiß, wohin uns dieses Ding führt."</p>
+                <p>Finn nickte nervös. "Die Berechnungen aus dem Buch sind eindeutig. Das Portal führt nach Aethros, der Welt der ersten Magier. Dort sollen wir die Antworten finden, die wir brauchen."</p>
+                <p>Theron prüfte noch einmal seine Ausrüstung. "Mein Volk erzählt Geschichten von Aethros. Es ist eine Welt, in der Zeit und Raum andere Gesetze befolgen. Wir wissen nicht, wie lange wir dort bleiben werden oder ob wir überhaupt zurückkehren können."</p>
+            </div>
+
+            <div class="page-content" data-page="2">
+                <h4>Kapitel 1: Jenseits der Grenzen (Fortsetzung)</h4>
+                <p>Kael berührte das Buch der Ersten Flamme, das an seinem Gürtel hing. Seit er es aus den Ruinen von Drakmoor mitgenommen hatte, sprach es ständig zu ihm. Nicht in Worten, sondern in Visionen und Gefühlen. Es zeigte ihm Bilder von Aethros - kristallene Türme, die bis in die Sterne ragten, Städte, die in der Luft schwebten, und Magier von unvorstellbarer Macht.</p>
+                <p>"Wir haben keine Wahl", sagte Kael schließlich. "Die Dunklen Herren werden stärker. Ihre Armeen wachsen täglich, und normale Waffen können ihnen nicht lange standhalten. Wenn wir eine Chance haben wollen, müssen wir die Quelle ihrer Macht verstehen."</p>
+                <p>"Und diese Quelle liegt in Aethros?", fragte Mira.</p>
+                <p>"Das Buch sagt, dass die Dunklen Herren einst Magier von Aethros waren. Sie fanden einen Weg, zwischen den Welten zu reisen, und brachten ihre verdorbene Magie nach Eldoria. Um sie zu besiegen, müssen wir dorthin gehen, wo alles begann."</p>
+            </div>
+
+            <div class="page-content" data-page="3">
+                <h4>Kapitel 1: Jenseits der Grenzen (Fortsetzung)</h4>
+                <p>Das Portal pulsierte stärker, als würde es ihre Zögern spüren. Plötzlich ertönte in der Ferne das Horn der Wache - das Signal, dass Feinde nahen. Die Dunklen Herren hatten sie gefunden.</p>
+                <p>"Entscheidet euch schnell", drängte Finn. "Das Portal ist instabil. Ich kann es nicht viel länger offen halten."</p>
+                <p>Kael zog Lichtklinge und spürte, wie das Schwert auf die Nähe des Portals reagierte. Die Rune auf dem Griff leuchtete in einem seltsamen, bläulichen Licht - völlig anders als das warme Gold, das er gewohnt war.</p>
+                <p>"Das Schwert erkennt die Magie von Aethros", murmelte er. "Es war schon einmal dort."</p>
+                <p>Theron spitzte die Ohren. "Sie kommen näher. Mindestens fünfzig Reiter, vielleicht mehr."</p>
+                <p>Ohne weiter zu zögern, trat Kael durch das Portal. "Für Eldoria", rief er, und seine Gefährten folgten ihm.</p>
+            </div>
+
+            <div class="page-content" data-page="4">
+                <h4>Kapitel 1: Jenseits der Grenzen (Fortsetzung)</h4>
+                <p>Die Überquerung war wie das Durchqueren eines Sturms aus reiner Energie. Kael spürte, wie jede Faser seines Körpers vibrierte, als würde er auseinandergerissen und wieder zusammengesetzt werden. Für einen Moment verlor er jedes Gefühl für Zeit und Raum, dann stürzte er auf festen Boden.</p>
+                <p>Als er aufblickte, stockte ihm der Atem. Sie standen auf einer Plattform aus weißem Kristall, die hoch über einer unendlich scheinenden Landschaft schwebte. Unter ihnen erstreckte sich eine Welt aus Wundern - schwebende Inseln, verbunden durch Brücken aus gefrorenem Licht, Wasserfälle, die nach oben flossen, und Bäume mit Blättern aus reinem Silber.</p>
+                <p>"Bei allen Göttern", flüsterte Mira. "Das ist unglaublich."</p>
+                <p>Finn hatte bereits begonnen, die magischen Energien um sie herum zu analysieren. "Die Magie hier ist mindestens zehnmal stärker als in Eldoria. Und sie ist... anders. Reiner irgendwie."</p>
+                <p>Theron deutete auf den Himmel. "Seht dort oben."</p>
+            </div>
+
+            <div class="page-content" data-page="5">
+                <h4>Kapitel 1: Jenseits der Grenzen (Fortsetzung)</h4>
+                <p>Über ihnen kreisten drei Sonnen um einen zentralen Punkt, ihre Farben wechselten von Gold über Silber bis hin zu einem tiefen Blau. Der Himmel selbst schimmerte in Farbtönen, für die es in ihrer Welt keine Namen gab.</p>
+                <p>"Willkommen in Aethros, Reisende aus der Sterblichen Welt."</p>
+                <p>Die Stimme kam von überall und nirgendwo zugleich. Plötzlich materialisierte sich vor ihnen eine Gestalt - groß, schlank und von einer inneren Helligkeit erfüllt, die ihre Konturen verschwimmen ließ. Es war eindeutig einmal ein Mensch gewesen, doch die Jahrhunderte in Aethros hatten ihn in etwas anderes verwandelt.</p>
+                <p>"Ich bin Zephyr, Hüter der Schwelle. Ihr seid die ersten Sterblichen seit tausend Jahren, die den Mut hatten, hierher zu kommen."</p>
+                <p>Kael verbeugte sich respektvoll. "Wir kommen, um Antworten zu suchen. Unsere Welt ist in Gefahr."</p>
+            </div>
+
+            <div class="page-content" data-page="6">
+                <h4>Kapitel 1: Jenseits der Grenzen (Fortsetzung)</h4>
+                <p>Zephyr nickte langsam. "Ich weiß. Wir haben die Schatten gespürt, die sich über Eldoria ausbreiten. Die Verbannten sind zurückgekehrt."</p>
+                <p>"Die Verbannten?", fragte Finn.</p>
+                <p>"Jene, die einst unsere Brüder waren", erklärte Zephyr mit trauriger Stimme. "Vor langer Zeit gab es Magier in Aethros, die glaubten, dass Macht das Recht gäbe zu herrschen. Sie experimentierten mit verbotener Magie, versuchten, die Grenzen zwischen Leben und Tod zu überwinden."</p>
+                <p>Das Buch der Ersten Flamme an Kaels Gürtel begann zu glühen, und Visionen durchfluteten seinen Geist. Er sah eine prächtige Stadt aus Kristall und Gold, sah Magier in weißen Gewändern, die machtvolle Zauber wirkten. Dann sah er, wie alles in Chaos und Zerstörung endete, als eine Gruppe von Magiern einen Riss ins Gefüge der Realität selbst schlug.</p>
+                <p>"Sie öffneten ein Portal zur Leere", fuhr Zephyr fort. "Dort fanden sie Macht, doch diese Macht korrumpierte sie. Sie wurden zu dem, was ihr heute die Dunklen Herren nennt."</p>
+            </div>
+
+            <div class="page-content" data-page="7">
+                <h4>Kapitel 1: Jenseits der Grenzen (Fortsetzung)</h4>
+                <p>"Warum habt Ihr sie nicht aufgehalten?", fragte Mira direkt.</p>
+                <p>Zephyrs Gestalt wurde noch durchsichtiger. "Wir versuchten es. Der Krieg zwischen den Reinen und den Korrumpierten zerriss Aethros fast auseinander. Am Ende hatten wir keine Wahl, als sie in eure Dimension zu verbannen, wo ihre Macht begrenzt wäre."</p>
+                <p>"Aber sie werden stärker", sagte Kael. "Sie haben gelernt, ihre Macht zu fokussieren."</p>
+                <p>"Ja", bestätigte Zephyr. "Und bald werden sie stark genug sein, um nach Aethros zurückzukehren. Dann wird das gesamte Multiversum in Gefahr sein."</p>
+                <p>Theron trat vor. "Was können wir tun? Wir sind nur vier Sterbliche gegen Mächte, die Welten zerstören können."</p>
+                <p>Zephyr lächelte zum ersten Mal seit ihrem Erscheinen. "Ihr unterschätzt euch. Ihr habt etwas, was die Verbannten verloren haben - ihr habt noch eure Menschlichkeit."</p>
+            </div>
+
+            <div class="page-content" data-page="8">
+                <h4>Kapitel 1: Jenseits der Grenzen (Fortsetzung)</h4>
+                <p>"Es gibt eine Waffe", sagte Zephyr. "Ein Artefakt, das geschaffen wurde, um die Macht der Leere zu neutralisieren. Wir nennen es den Herzstein der Schöpfung. Er liegt verborgen in den Hallen der Ewigen Weisheit."</p>
+                <p>Finn zog aufgeregt sein Notizbuch hervor. "Die Hallen der Ewigen Weisheit? Die existieren wirklich?"</p>
+                <p>"Sie existieren außerhalb von Zeit und Raum", antwortete Zephyr. "Nur jene, die wahrhaft reinen Herzens sind, können sie betreten. Aber der Weg dorthin führt durch die Prüfungen der drei Sphären."</p>
+                <p>Kael spürte, wie das königliche Blut in seinen Adern zu singen begann. "Welche Prüfungen?"</p>
+                <p>"Die Sphäre der Stärke prüft euren Mut. Die Sphäre der Weisheit prüft euer Verständnis. Und die Sphäre der Reinheit prüft eure Seelen. Viele haben versucht, diese Prüfungen zu bestehen. Keiner ist je zurückgekehrt."</p>
+            </div>
+
+            <div class="page-content" data-page="9">
+                <h4>Kapitel 1: Jenseits der Grenzen (Schluss)</h4>
+                <p>Die vier Gefährten tauschten Blicke aus. Sie alle wussten, dass dies möglicherweise eine Reise ohne Wiederkehr war. Doch sie dachten auch an ihre Heimat, an die Menschen, die auf ihre Rückkehr warteten, an die Dunkelheit, die sich über Eldoria ausbreitete.</p>
+                <p>"Wir werden es tun", sagte Kael schließlich. "Wie erreichen wir diese Sphären?"</p>
+                <p>Zephyr hob die Hand, und die Kristallplattform unter ihren Füßen begann zu leuchten. "Ich werde euch zur ersten Sphäre bringen. Aber denkt daran - in Aethros sind die Gesetze der Physik nur Vorschläge. Vertraut nicht nur euren Augen, sondern auch euren Herzen."</p>
+                <p>Das Licht wurde heller, und Kael spürte, wie sie erneut durch Raum und Zeit gereist wurden. Als das Licht verblasste, standen sie vor einem gewaltigen Tor aus schwarzem Obsidian, in das Runen eingraviert waren, die vor Macht pulsierten.</p>
+                <p>"Die erste Sphäre", sagte Zephyr. "Die Prüfung der Stärke wartet. Mögen die Götter euch beistehen."</p>
+                <p>Und mit diesen Worten verschwand er, ließ die vier Gefährten allein vor dem Tor stehen, hinter dem ihr Schicksal - und das Schicksal aller Welten - wartete...</p>
+            </div>
+
+            <div class="page-nav">
+                <button class="page-btn" id="prevBtn4" onclick="changePage('sample4', -1)">← Vorherige</button>
+                <span class="page-info">Seite <span id="currentPage4">1</span> von 9</span>
+                <button class="page-btn" id="nextBtn4" onclick="changePage('sample4', 1)">Nächste →</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Band 5 -->
+    <div id="sample5" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('sample5')">&times;</span>
+            <h3>Band 5 - Leseprobe</h3>
+            
+            <div class="page-content active" data-page="1">
+                <h4>Kapitel 1: Die Vertiefung des Geheimnisses</h4>
+                <p>Der Herzstein der Schöpfung lag vor ihnen wie eine kleine Sonne aus purem Licht. Kael streckte zögernd die Hand danach aus, doch als seine Finger das kristalline Artefakt berührten, durchflutete ihn eine Welle von Visionen, die seinen Geist fast zerriss. Er sah die Entstehung des Universums, die ersten Götter, die Geburt der Magie und - am erschreckendsten - die wahre Natur der Dunklen Herren.</p>
+                <p>"Sie sind nicht nur korrumpierte Magier", flüsterte er, während er den Herzstein umfasste. "Sie sind Fragmente einer zerstörten Gottheit. Einer Gottheit der Leere und des Vergessens."</p>
+                <p>Finn kniete neben ihm nieder, sein Gesicht blass vor Anstrengung. Die Prüfungen der drei Sphären hatten sie alle gezeichnet, doch der junge Magier hatte am meisten gelitten. Seine Kräfte waren durch die reine Magie von Aethros exponentiell gewachsen, doch mit dieser Macht kam auch eine schreckliche Verantwortung.</p>
+                <p>"Was bedeutet das für uns?", fragte er. "Wenn sie Teile einer Gottheit sind, wie können wir sie dann besiegen?"</p>
+            </div>
+
+            <div class="page-content" data-page="2">
+                <h4>Kapitel 1: Die Vertiefung des Geheimnisses (Fortsetzung)</h4>
+                <p>Theron und Mira traten näher, ihre Gesichter von der ewigen Dämmerung der Hallen der Ewigen Weisheit gezeichnet. Hier, außerhalb von Zeit und Raum, hatten sie Wahrheiten erfahren, die das Fundament ihres Verständnisses der Realität erschüttert hatten.</p>
+                <p>"Der Herzstein zeigt mir mehr", sagte Kael mit geschlossenen Augen. "Die zerstörte Gottheit... sie hieß Nihilus, der Gott der Unschöpfung. Er wurde einst von den anderen Göttern besiegt und in die Leere verbannt. Doch seine Essenz zersplitterte in tausend Fragmente."</p>
+                <p>"Und die Dunklen Herren sind diese Fragmente?", fragte Mira, ihre Axt noch immer fest umklammert.</p>
+                <p>"Einige davon", bestätigte Kael. "Aber nicht alle. Es gibt noch andere Splitter, verstreut über das gesamte Multiversum. Wenn sie alle wieder vereint werden..."</p>
+                <p>Er öffnete die Augen, und seine Gefährten sahen darin eine Furcht, die sie nie zuvor bei ihm gesehen hatten.</p>
+            </div>
+
+            <div class="page-content" data-page="3">
+                <h4>Kapitel 1: Die Vertiefung des Geheimnisses (Fortsetzung)</h4>
+                <p>"Wenn sie alle vereint werden, kehrt Nihilus zurück", vollendete Finn den Gedanken. "Und dann wird er nicht nur Eldoria oder Aethros zerstören. Er wird die gesamte Schöpfung auslöschen."</p>
+                <p>Theron schüttelte den Kopf. "Das erklärt vieles. Die wachsende Macht der Dunklen Herren, ihre Besessenheit davon, alle Magiequellen zu kontrollieren. Sie sammeln nicht nur Macht - sie sammeln ihre eigenen verlorenen Teile."</p>
+                <p>Der Herzstein in Kaels Händen pulsierte stärker, und neue Visionen strömten in seinen Geist. Er sah eine große Schlacht, die sich über mehrere Dimensionen erstreckte. Er sah Armeen aus Licht gegen Armeen aus Schatten kämpfen. Und er sah sich selbst, älter und von Narben gezeichnet, wie er ein Schwert hob, das nicht mehr Lichtklinge war, sondern etwas viel Mächtigeres.</p>
+                <p>"Es gibt einen Weg", sagte er langsam. "Aber der Preis..."</p>
+                <p>Seine Stimme brach ab, als er die volle Tragweite dessen erkannte, was von ihm verlangt werden würde.</p>
+            </div>
+
+            <div class="page-content" data-page="4">
+                <h4>Kapitel 1: Die Vertiefung des Geheimnisses (Fortsetzung)</h4>
+                <p>Mira legte ihm die Hand auf die Schulter. "Egal welcher Preis es ist, wir zahlen ihn gemeinsam."</p>
+                <p>Kael lächelte traurig. "Das ist das Problem, Mira. Ich muss ihn allein zahlen. Der Herzstein zeigt mir den Weg der Transzendenz. Ich kann mich mit der Essenz der Schöpfung selbst verbinden, stark genug werden, um Nihilus zu besiegen. Aber dafür muss ich aufhören, menschlich zu sein."</p>
+                <p>Stille senkte sich über die Gruppe. In der Ferne hörten sie das Echo uralter Stimmen, die Weisheiten in längst vergessenen Sprachen flüsterten.</p>
+                <p>"Es muss einen anderen Weg geben", sagte Finn verzweifelt. "Wir haben so viel gelernt, so viel Macht erlangt. Es muss..."</p>
+                <p>"Die Macht liegt nicht in der Stärke eines Einzelnen", unterbrach ihn eine neue Stimme. Aus dem Nichts materialisierte sich eine Gestalt - alt und weise, mit Augen, die das Licht von tausend Sternen widerspiegelten.</p>
+            </div>
+
+            <div class="page-content" data-page="5">
+                <h4>Kapitel 1: Die Vertiefung des Geheimnisses (Fortsetzung)</h4>
+                <p>"Ich bin Chronos, der Erste der Götter", sagte die Gestalt. "Und ich bin hier, um euch eine Alternative zu zeigen."</p>
+                <p>Kael erhob sich ehrfürchtig. "Ein Gott? Aber ich dachte, die Götter hätten sich aus den Angelegenheiten der Sterblichen zurückgezogen."</p>
+                <p>"Das taten wir, bis Nihilus' Fragmente zu stark wurden", antwortete Chronos. "Nun haben wir keine Wahl, als zu handeln. Aber wir können nicht direkt eingreifen. Das würde das Gleichgewicht des Universums zerstören."</p>
+                <p>Er deutete auf den Herzstein in Kaels Händen. "Dieses Artefakt kann nicht nur Macht verleihen. Es kann auch Macht teilen. Wenn ihr vier es gemeinsam nutzt, könnt ihr zu etwas werden, das größer ist als die Summe eurer Teile."</p>
+                <p>Theron runzelte die Stirn. "Ihr meint eine Art... Verschmelzung?"</p>
+            </div>
+
+            <div class="page-content" data-page="6">
+                <h4>Kapitel 1: Die Vertiefung des Geheimnisses (Fortsetzung)</h4>
+                <p>"Nicht Verschmelzung", korrigierte Chronos. "Harmonie. Jeder von euch behält seine Individualität, aber eure Seelen werden miteinander verwoben. Ihr werdet zu einem perfekten Team, fähig zu Taten, die kein Einzelner vollbringen könnte."</p>
+                <p>Mira nickte langsam. "Das klingt besser als Kaels Opfer."</p>
+                <p>"Aber es ist nicht ohne Risiko", warnte Chronos. "Wenn einer von euch fällt, leiden alle. Wenn einer von euch der Dunkelheit verfällt, könnten alle verloren sein. Und die Bindung kann niemals rückgängig gemacht werden."</p>
+                <p>Die vier Freunde blickten einander an. Sie hatten so viel zusammen durchgestanden, so viele Gefahren gemeinsam überwunden. Der Gedanke, ihre Seelen miteinander zu verweben, fühlte sich nicht wie ein Opfer an, sondern wie eine natürliche Entwicklung ihrer Freundschaft.</p>
+                <p>"Wir tun es", sagte Kael ohne Zögern. "Wir sind bereits in allem anderen Partner. Warum nicht auch darin?"</p>
+            </div>
+
+            <div class="page-content" data-page="7">
+                <h4>Kapitel 1: Die Vertiefung des Geheimnisses (Fortsetzung)</h4>
+                <p>Chronos lächelte. "Dann legt eure Hände auf den Herzstein. Sprecht die Worte der Ewigen Bindung."</p>
+                <p>Als sie alle ihre Hände auf den kristallenen Herzstein legten, begann dieser in einem blendenden Licht zu erstrahlen. Kael spürte, wie die Essenz seiner Freunde in seinen Geist strömte - Therons ruhige Weisheit, Miras unerschütterliche Entschlossenheit, Finns brennende Neugier und Intelligenz.</p>
+                <p>"In Licht und Schatten", sprachen sie im Chor, die Worte kamen ihnen instinktiv in den Sinn. "In Freude und Leid. In Leben und Tod. Wir sind Eins im Kampf gegen die Dunkelheit."</p>
+                <p>Das Licht explodierte um sie herum, und für einen Moment existierten sie als reine Energie, miteinander verwoben in einem Tanz aus Seelen. Als das Licht verblasste, standen sie noch immer als vier getrennte Personen da, doch sie alle spürten die Veränderung.</p>
+                <p>Sie waren noch immer sie selbst, doch gleichzeitig waren sie mehr. Sie spürten die Gedanken und Gefühle der anderen, teilten ihre Stärken und kompensierten ihre Schwächen.</p>
+            </div>
+
+            <div class="page-content" data-page="8">
+                <h4>Kapitel 1: Die Vertiefung des Geheimnisses (Schluss)</h4>
+                <p>"Es ist Zeit", sagte Chronos. "Die finale Schlacht naht. Nihilus' Fragmente haben begonnen, sich zu sammeln. Wenn sie sich vereinen, habt ihr nur wenige Stunden, bevor er zu seiner vollen Macht zurückkehrt."</p>
+                <p>Kael hob Lichtklinge, doch das Schwert hatte sich verändert. Es war noch immer dasselbe Schwert, doch nun spiegelte es die Kraft aller vier Freunde wider. Die Klinge schimmerte mit dem blauen Licht von Finns Magie, der Griff war verstärkt mit dem Metall von Miras Heimatbergen, und der Schwertknauf war verziert mit einem Edelstein aus den Wäldern von Theron.</p>
+                <p>"Das Schwert der Vier", murmelte er ehrfürchtig.</p>
+                <p>"Geht nun", sagte Chronos, während die Hallen der Ewigen Weisheit um sie herum zu verblassen begannen. "Eure Welt braucht euch. Und denkt daran - ihr kämpft nicht nur für Eldoria oder Aethros. Ihr kämpft für das Recht der Schöpfung selbst, zu existieren."</p>
+                <p>Als die Realität um sie herum wieder Form annahm, standen sie auf einem Hügel oberhalb ihrer Heimat. Doch die Welt, die sie sahen, war nicht mehr dieselbe, die sie verlassen hatten. Der Himmel war schwarz von dunkler Magie, und in der Ferne erhob sich ein Turm aus reinem Schatten - das Zeichen, dass Nihilus' Wiedergeburt begonnen hatte...</p>
+            </div>
+
+            <div class="page-nav">
+                <button class="page-btn" id="prevBtn5" onclick="changePage('sample5', -1)">← Vorherige</button>
+                <span class="page-info">Seite <span id="currentPage5">1</span> von 8</span>
+                <button class="page-btn" id="nextBtn5" onclick="changePage('sample5', 1)">Nächste →</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Band 6 -->
+    <div id="sample6" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('sample6')">&times;</span>
+            <h3>Das letzte Licht - Leseprobe</h3>
+            
+            <div class="page-content active" data-page="1">
+                <h4>Kapitel 1: Die finale Stunde</h4>
+                <p>Das letzte Licht von Eldoria flackerte wie eine Kerze im Sturm. Kael stand auf den Zinnen der Festung Aethermoor und blickte über ein Land, das er kaum noch erkannte. Wo einst grüne Felder und friedliche Dörfer gewesen waren, erstreckte sich nun eine Ödnis aus schwarzem Glas und verdrehtem Metall. Der Schatten von Nihilus' Turm fiel über das gesamte Königreich.</p>
+                <p>"Es ist fast vorbei", sagte Theron leise neben ihm. Der Elf sah Jahre älter aus, als wären die vergangenen Monate Jahrzehnte gewesen. "Die letzten freien Städte sind gefallen. Nur noch Aethermoor hält stand."</p>
+                <p>Mira kletterte die Stufen zur Turmspitze hinauf, ihr Gesicht voller Ruß und Erschöpfung. "Die Verteidigung bricht zusammen. Finns Zauber halten die Schattenarmeen zurück, aber nicht mehr lange. Wir haben vielleicht noch eine Stunde."</p>
+                <p>Kael berührte das Schwert der Vier an seiner Seite. Durch die Seelenbindung spürte er die Erschöpfung seiner Freunde wie seine eigene, doch er spürte auch ihre ungebrochene Entschlossenheit. Sie hatten zu viel erlebt, zu viel geopfert, um jetzt aufzugeben.</p>
+            </div>
+
+            <div class="page-content" data-page="2">
+                <h4>Kapitel 1: Die finale Stunde (Fortsetzung)</h4>
+                <p>"Der Herzstein zeigt mir immer noch den Weg", sagte Kael. "Aber es ist ein Weg, der durch Nihilus' Turm führt. Wir müssen ins Herz seiner Macht vordringen."</p>
+                <p>Finn materialisierte sich neben ihnen, seine Gestalt flackerte leicht - ein Zeichen dafür, dass er seine Teleportationsmagie bis an die Grenzen strapaziert hatte. "Die Berechnungen sind klar", sagte er mit müder Stimme. "Wenn wir Nihilus in seinem Turm angreifen, während er noch dabei ist, seine Fragmente zu integrieren, haben wir eine Chance. Aber..."</p>
+                <p>Er ließ den Satz unvollendet, doch alle wussten, was er meinte. Es war eine Selbstmordmission. Der Turm war von unvorstellbaren Schrecken bewacht, und Nihilus selbst war bereits mächtiger als je zuvor.</p>
+                <p>"Dann gehen wir jetzt", sagte Mira und hob ihre Axt. "Wenn das unser letzter Kampf ist, dann soll er legendär werden."</p>
+            </div>
+
+            <div class="page-content" data-page="3">
+                <h4>Kapitel 1: Die finale Stunde (Fortsetzung)</h4>
+                <p>Sie verließen die Festung durch einen geheimen Tunnel, während über ihnen die Schlacht tobte. Die verbliebenen Verteidiger von Aethermoor kämpften verzweifelt gegen Wellen von Schattenkriegern, die wie eine schwarze Flut über die Mauern strömten.</p>
+                <p>Der Weg zum Turm führte durch das verwüstete Herz Eldorias. Überall um sie herum zeugten zerbrochene Statuen und verkohlte Bäume von der Macht der Dunklen Herren. Doch das Schrecklichste waren die Menschen - oder das, was von ihnen übrig war. Nihilus' Macht hatte sie in kristalline Hüllen verwandelt, ihre Seelen gefangen in ewiger Qual.</p>
+                <p>"Wir werden sie befreien", schwor Kael, als sie an einer besonders großen Ansammlung der kristallenen Gefangenen vorbeikamen. "Alle."</p>
+                <p>Der Turm erhob sich vor ihnen wie ein Dolch aus reiner Dunkelheit. Er schien die gesamte Realität um sich herum zu verzerren, und je näher sie kamen, desto schwerer wurde es zu atmen.</p>
+            </div>
+
+            <div class="page-content" data-page="4">
+                <h4>Kapitel 1: Die finale Stunde (Fortsetzung)</h4>
+                <p>"Die Wächter", flüsterte Theron und deutete auf die Gestalten, die um den Turm patrouillierten. Es waren die ursprünglichen Dunklen Herren, doch Nihilus' Macht hatte sie in etwas noch Schrecklicheres verwandelt. Sie waren reine Schatten geworden, Leere in menschlicher Form.</p>
+                <p>Finn begann zu chanten, seine Hände glühten mit der vereinten Macht aller vier Freunde. "Ich kann uns unsichtbar machen, aber nur für kurze Zeit. Die Magie hier ist zu stark."</p>
+                <p>Sie bewegten sich wie Schatten zwischen Schatten, ihre Seelenbindung ermöglichte es ihnen, perfekt koordiniert zu handeln, ohne ein Wort sprechen zu müssen. Als sie das Tor des Turms erreichten, spürte Kael, wie das Schwert der Vier in seiner Hand zu vibrieren begann.</p>
+                <p>"Es erkennt die Nähe seines ultimativen Feindes", murmelte er.</p>
+                <p>Das Tor bestand aus derselben seltsamen Substanz wie der Rest des Turms - weder Stein noch Metall, sondern etwas, das aussah wie materialisierte Dunkelheit. Als Kael es berührte, öffnete es sich mit einem Klang wie zerreißende Realität.</p>
+            </div>
+
+            <div class="page-content" data-page="5">
+                <h4>Kapitel 1: Die finale Stunde (Fortsetzung)</h4>
+                <p>Das Innere des Turms war eine Perversion aller natürlichen Gesetze. Treppen führten in alle Richtungen, auch nach unten ins Nichts. Türen öffneten sich in Wände, die gar nicht da waren. Und überall war das Flüstern - tausende von Stimmen, die in der Sprache der Leere sprachen.</p>
+                <p>"Folgt dem Herzstein", sagte Kael, das Artefakt in seiner freien Hand. Es zeigte ihnen den Weg nach oben, zur Spitze des Turms, wo Nihilus auf sie wartete.</p>
+                <p>Mit jedem Schritt nach oben wurden die Verzerrungen stärker. Finn alterte und verjüngte sich abwechselnd, Therons Gestalt flackerte zwischen Elf und Mensch hin und her, und Miras Axt verwandelte sich in einen Hammer aus Licht, dann wieder zurück.</p>
+                <p>"Widersteht der Verzerrung", rief Kael. "Denkt daran, wer ihr seid!"</p>
+                <p>Durch ihre Seelenbindung stabilisierten sie sich gegenseitig, ihre gemeinsame Identität ein Anker in dem Chaos um sie herum.</p>
+            </div>
+
+            <div class="page-content" data-page="6">
+                <h4>Kapitel 1: Die finale Stunde (Fortsetzung)</h4>
+                <p>Endlich erreichten sie die Turmspitze. Der Raum war riesig, seine Wände schienen sich ins Unendliche zu erstrecken. In der Mitte schwebte eine Gestalt, die einst ein Mensch gewesen war, doch nun war sie zu etwas Göttlichem und gleichzeitig Abscheulichem geworden.</p>
+                <p>Nihilus drehte sich zu ihnen um. Sein Gesicht war eine Leere in der Form eines Menschen, seine Augen waren Löcher ins Nichts selbst. Als er sprach, erzitterte die Realität.</p>
+                <p>"Die kleinen Helden sind gekommen, um den Gott herauszufordern", sagte er mit einer Stimme wie das Echo sterbender Sterne. "Wie... amüsant."</p>
+                <p>Kael zog das Schwert der Vier, und sein Licht kämpfte gegen die Dunkelheit um sie herum. "Du bist kein Gott, Nihilus. Du bist eine Krankheit, ein Parasit, der die Schöpfung verschlingt."</p>
+                <p>Nihilus lachte, und das Lachen ließ die Wände des Turms bersten. "Schöpfung? Ich bin die Befreiung von der Last der Existenz. Bald wird alles enden, und es wird Frieden geben. Ewiger, vollkommener Frieden."</p>
+            </div>
+
+            <div class="page-content" data-page="7">
+                <h4>Kapitel 1: Die finale Stunde (Fortsetzung)</h4>
+                <p>Der Kampf begann ohne Warnung. Nihilus hob die Hand, und Wellen purer Vernichtung rasten auf sie zu. Finn konterte mit Schilden aus kristallisierter Zeit, Theron feuerte Pfeile ab, die aus komprimiertem Licht bestanden, und Mira stürmte vor, ihre Axt glühte mit der Kraft aller Berge Eldorias.</p>
+                <p>Doch Nihilus war fast allmächtig. Jeder ihrer Angriffe wurde absorbiert, jede Verteidigung durchbrochen. Binnen Minuten waren sie alle schwer verwundet, ihre Kraft schwand rapide.</p>
+                <p>"Es ist hoffnungslos", keuchte Finn, Blut rann aus seinem Mund. "Er ist zu mächtig."</p>
+                <p>Doch dann spürte Kael etwas durch ihre Seelenbindung - nicht nur die Kraft seiner drei Freunde, sondern die Kraft aller Menschen, die sie je gerettet hatten, aller Seelen, die noch an die Hoffnung glaubten. Der Herzstein in seiner Hand begann zu singen, und das Schwert der Vier loderte auf wie eine neue Sonne.</p>
+                <p>"Wir sind nicht allein", sagte er und erhob sich. "Wir kämpfen nicht nur für uns. Wir kämpfen für jeden, der je geliebt hat, der je gehofft hat, der je geträumt hat."</p>
+            </div>
+
+            <div class="page-content" data-page="8">
+                <h4>Kapitel 1: Die finale Stunde (Fortsetzung)</h4>
+                <p>Die vier Freunde erhoben sich gemeinsam, ihre Wunden heilten durch die reine Kraft ihres Willens. Ihre Seelen verschmolzen noch tiefer, bis sie zu einem einzigen Bewusstsein wurden, das in vier Körpern existierte.</p>
+                <p>Nihilus' Augen weiteten sich zum ersten Mal seit seiner Verwandlung. "Unmöglich. Ihr seid Sterbliche!"</p>
+                <p>"Nein", sagte Kael, und seine Stimme war die Stimme aller vier. "Wir sind etwas, das du nie verstehen wirst. Wir sind Freunde."</p>
+                <p>Das Schwert der Vier explodierte in einem Licht, das heller war als tausend Sonnen. Kael stieß es in Nihilus' Brust, und der Gott der Leere schrie auf, als die reine Kraft der Schöpfung durch seinen Körper raste.</p>
+                <p>"Nein!", brüllte er. "Ich bin ewig! Ich bin unvermeidlich!"</p>
+                <p>"Du bist nichts", sagten die vier Freunde im Chor. "Und ins Nichts kehrst du zurück."</p>
+            </div>
+
+            <div class="page-content" data-page="9">
+                <h4>Kapitel 1: Die finale Stunde (Fortsetzung)</h4>
+                <p>Nihilus' Körper begann sich aufzulösen, seine Macht strömte zurück in die Leere, aus der sie gekommen war. Der Turm erzitterte und begann zu kollabieren, doch das Licht des Schwertes schützte die vier Freunde.</p>
+                <p>"Es ist vorbei", flüsterte Finn ungläubig.</p>
+                <p>Doch als der Turm einstürzte und sie zurück auf den Boden Eldorias fielen, sahen sie das wahre Wunder. Überall um sie herum erwachte das Land zu neuem Leben. Die kristallenen Gefangenen zerbrachen auf und enthüllten die Menschen darunter, lebendig und unversehrt. Die verdorrten Bäume sprossen neue Blätter, die verkohlte Erde wurde wieder grün.</p>
+                <p>Die Dunkelheit war besiegt, doch mehr als das - sie war durch etwas ersetzt worden, das reiner und schöner war als alles, was zuvor existiert hatte.</p>
+            </div>
+
+            <div class="page-content" data-page="10">
+                <h4>Kapitel 1: Die finale Stunde (Schluss)</h4>
+                <p>Jahre später saß Kael in seinem Garten und beobachtete seine Kinder beim Spielen. Theron unterrichtete sie in der Kunst des Bogenschießens, Mira lehrte sie die alten Handwerke der Zwerge, und Finn zeigte ihnen einfache Zauber, die Blumen zum Blühen brachten.</p>
+                <p>Ihre Seelenbindung war schwächer geworden mit der Zeit, doch sie war nie ganz verschwunden. Sie würden immer verbunden bleiben, die vier Freunde, die die Welt gerettet hatten.</p>
+                <p>Das Schwert der Vier hing über dem Kamin in Kaels Haus, doch es wurde nie wieder gebraucht. Die Dunkelheit war besiegt, nicht nur in Eldoria, sondern in allen Welten. Das Gleichgewicht war wiederhergestellt.</p>
+                <p>Manchmal, in stillen Nächten, wenn der Wind durch die Bäume wehte, konnte Kael schwören, dass er Chronos' Stimme hörte, die ihm zuflüsterte: "Gut gemacht, mein Sohn. Gut gemacht."</p>
+                <p>Und in diesen Momenten lächelte er und wusste, dass alles Opfer, aller Schmerz, alle Kämpfe es wert gewesen waren. Denn sie hatten nicht nur die Welt gerettet - sie hatten bewiesen, dass Liebe und Freundschaft stärker sind als jede Macht der Dunkelheit.</p>
+                <p>Das letzte Licht von Eldoria war nicht erloschen. Es hatte sich in ein ewiges Leuchten verwandelt, das für alle Zeiten brennen würde...</p>
+            </div>
+
+            <div class="page-nav">
+                <button class="page-btn" id="prevBtn6" onclick="changePage('sample6', -1)">← Vorherige</button>
+                <span class="page-info">Seite <span id="currentPage6">1</span> von 10</span>
+                <button class="page-btn" id="nextBtn6" onclick="changePage('sample6', 1)">Nächste →</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="back-link">
+        <a href="high-fantasy.html">← Zurück zur High Fantasy Übersicht</a>
+    </div>
+
+    <script>
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = 'block';
+            // Reset zur ersten Seite
+            showPage(modalId, 1);
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+        }
+
+        function changePage(modalId, direction) {
+            const modal = document.getElementById(modalId);
+            const currentPageElement = modal.querySelector('[id^="currentPage"]');
+            const currentPage = parseInt(currentPageElement.textContent);
+            const totalPages = modal.querySelectorAll('.page-content').length;
+            
+            let newPage = currentPage + direction;
+            
+            if (newPage < 1) newPage = 1;
+            if (newPage > totalPages) newPage = totalPages;
+            
+            showPage(modalId, newPage);
+        }
+
+        function showPage(modalId, pageNumber) {
+            const modal = document.getElementById(modalId);
+            const pages = modal.querySelectorAll('.page-content');
+            const currentPageElement = modal.querySelector('[id^="currentPage"]');
+            const prevBtn = modal.querySelector('[id^="prevBtn"]');
+            const nextBtn = modal.querySelector('[id^="nextBtn"]');
+            
+            // Hide all pages
+            pages.forEach(page => page.classList.remove('active'));
+            
+            // Show target page
+            pages[pageNumber - 1].classList.add('active');
+            
+            // Update page counter
+            currentPageElement.textContent = pageNumber;
+            
+            // Update buttons
+            prevBtn.disabled = pageNumber === 1;
+            nextBtn.disabled = pageNumber === pages.length;
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modals = document.querySelectorAll('.modal');
+            modals.forEach(modal => {
+                if (event.target === modal) {
+                    modal.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>
