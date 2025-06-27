@@ -19,6 +19,33 @@
             padding: 20px;
         }
 
+        .back-button {
+            margin-bottom: 30px;
+            text-align: left;
+            padding: 20px;
+        }
+
+        .back-button a {
+            color: #8a63d2;
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: bold;
+            padding: 15px 30px;
+            border: 2px solid #8a63d2;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+            background: rgba(138,99,210,0.2);
+            display: inline-block;
+        }
+
+        .back-button a:hover {
+            background: #8a63d2;
+            color: #2d1b4e;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(138,99,210,0.3);
+        }
+
         .header {
             text-align: center;
             margin-bottom: 50px;
@@ -30,7 +57,7 @@
         }
 
         .header h1 {
-            font-size: 3.2rem;
+            font-size: 3.5rem;
             background: linear-gradient(45deg, #8a63d2, #6f42c1, #8a63d2);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -40,7 +67,7 @@
         }
 
         .header .subtitle {
-            font-size: 1.3rem;
+            font-size: 1.4rem;
             color: #e6ddc4;
             font-style: italic;
             text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
@@ -86,7 +113,7 @@
 
         .intro-section h2 {
             color: #8a63d2;
-            font-size: 2.2rem;
+            font-size: 2.4rem;
             margin-bottom: 20px;
             text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
         }
@@ -95,7 +122,7 @@
             font-size: 1.2rem;
             line-height: 1.7;
             color: #e6ddc4;
-            margin-bottom: 1.5rem;
+            margin-bottom: 15px;
         }
 
         .series-container {
@@ -117,6 +144,7 @@
             transition: all 0.4s ease;
             position: relative;
             overflow: hidden;
+            min-height: 500px;
         }
 
         .series-card:hover {
@@ -143,7 +171,6 @@
         .series-icon {
             font-size: 4rem;
             margin-bottom: 20px;
-            display: block;
             position: relative;
             z-index: 2;
         }
@@ -152,13 +179,13 @@
             font-size: 2rem;
             color: #8a63d2;
             margin-bottom: 15px;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
             position: relative;
             z-index: 2;
         }
 
         .series-subtitle {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             color: #e6ddc4;
             margin-bottom: 20px;
             font-style: italic;
@@ -167,29 +194,32 @@
         }
 
         .series-description {
-            font-size: 1.1rem;
+            font-size: 1rem;
             line-height: 1.6;
             color: #d4d4d4;
-            margin-bottom: 25px;
+            margin-bottom: 30px;
             position: relative;
             z-index: 2;
+            text-align: justify;
         }
 
-        .book-count {
-            background: linear-gradient(45deg, #8a63d2, #6f42c1);
-            color: white;
-            padding: 8px 16px;
-            border-radius: 20px;
+        .series-status {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            position: relative;
+            z-index: 2;
+            margin-top: auto;
+        }
+
+        .status-text {
+            font-size: 0.9rem;
+            color: #8a63d2;
             font-weight: bold;
-            margin-bottom: 25px;
-            display: inline-block;
-            position: relative;
-            z-index: 2;
+            margin-bottom: 15px;
         }
 
-        .series-btn {
-            background: linear-gradient(45deg, #c9b037, #d4af37);
-            color: #2d1b4e;
+        .btn {
             padding: 15px 30px;
             border: none;
             border-radius: 25px;
@@ -199,40 +229,41 @@
             transition: all 0.3s ease;
             text-decoration: none;
             display: inline-block;
-            position: relative;
-            z-index: 2;
-            box-shadow: 0 6px 20px rgba(201, 176, 55, 0.3);
         }
 
-        .series-btn:hover {
+        .btn-primary {
+            background: linear-gradient(45deg, #c9b037, #d4af37);
+            color: #2d1b4e;
+            box-shadow: 0 8px 25px rgba(201, 176, 55, 0.3);
+        }
+
+        .btn-primary:hover {
             background: linear-gradient(45deg, #d4af37, #c9b037);
             transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(201, 176, 55, 0.4);
-            color: #2d1b4e;
-            text-decoration: none;
+            box-shadow: 0 12px 30px rgba(201, 176, 55, 0.4);
         }
 
-        .back-link {
-            text-align: center;
-            margin-top: 60px;
+        .btn-secondary {
+            background: linear-gradient(45deg, #8a63d2, #6f42c1);
+            color: white;
+            box-shadow: 0 8px 25px rgba(138, 99, 210, 0.3);
         }
 
-        .back-link a {
-            color: #8a63d2;
-            text-decoration: none;
-            font-size: 1.2rem;
-            padding: 15px 30px;
-            border: 2px solid #8a63d2;
-            border-radius: 25px;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(5px);
+        .btn-secondary:hover {
+            background: linear-gradient(45deg, #6f42c1, #8a63d2);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(138, 99, 210, 0.4);
         }
 
-        .back-link a:hover {
-            background: #8a63d2;
-            color: #2d1b4e;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(138,99,210,0.3);
+        .btn-disabled {
+            background: linear-gradient(45deg, #666, #888);
+            color: #ccc;
+            cursor: not-allowed;
+            box-shadow: 0 8px 25px rgba(102, 102, 102, 0.2);
+        }
+
+        .btn-disabled:hover {
+            transform: none;
         }
 
         @media (max-width: 768px) {
@@ -242,16 +273,21 @@
             }
 
             .header h1 {
-                font-size: 2.5rem;
+                font-size: 2.8rem;
             }
 
             .series-card {
                 padding: 30px 25px;
+                min-height: 450px;
             }
         }
     </style>
 </head>
 <body>
+    <div class="back-button">
+        <a href="index.html">← Zurück zur Startseite</a>
+    </div>
+
     <div class="header">
         <h1>High Fantasy</h1>
         <div class="subtitle">Epische Welten voller Magie und Abenteuer</div>
@@ -267,42 +303,40 @@
 
     <div class="intro-section">
         <h2>Fantastische Welten entdecken</h2>
-        <p>Tauche ein in die faszinierenden Welten der High Fantasy, wo Magie alltäglich ist, Helden gegen das Böse kämpfen und epische Abenteuer auf dich warten. Hier erschaffe ich Universen voller mystischer Kreaturen, alter Prophezeiungen und heldenhafter Charaktere.</p>
+        <p>Tauche ein in die faszinierenden Welten der High Fantasy, wo Magie alltäglich ist, Helden gegen das Böse kämpfen und epische Abenteuer auf dich warten. Hier erschaffst du Universen voller mystischer Kreaturen, alter Prophezeiungen und heldenhafter Charaktere.</p>
         <p>Jede Serie ist eine komplette Welt für sich - mit eigenen Gesetzen der Magie, komplexen Charakteren und Geschichten, die von Band zu Band an Tiefe gewinnen. Perfekt für Leser, die sich gerne in andere Welten entführen lassen.</p>
     </div>
 
     <div class="series-container">
-        <!-- Eldorias Vermächtnis Serie -->
+        <!-- Eldorias Vermächtnis -->
         <div class="series-card">
-            <span class="series-icon">⚔️✨</span>
+            <div class="series-icon">⚔️✨</div>
             <h3 class="series-title">Eldorias Vermächtnis</h3>
             <div class="series-subtitle">Die epische Saga von Kael und seinen Gefährten</div>
             <div class="series-description">
-                Eine legendäre Saga über einen jungen Schmied, der zum Helden wider Willen wird. Als eine uralte Prophezeiung erwacht und die Dunklen Herren zurückkehren, muss Kael sein wahres Erbe annehmen. Mit seinen treuen Gefährten Theron, Mira und Finn kämpft er gegen Mächte, die älter sind als die Zeit selbst.
+                Eine legendäre Saga über einen jungen Schmied, der zum Helden wider Willen wird. Als uralte Prophezeiungen erwacht und die Dunklen Herren zurückkehren, muss Kael sein wahres Erbe annehmen. Mit seinen treuen Gefährten Theron, Mira und Finn kämpft er gegen Mächte, die älter sind als die Zeit selbst.
                 <br><br>
                 Von den mystischen Ruinen von Aethermoor bis zu den kristallenen Türmen von Aethros führt diese epische Reise durch Welten voller Magie, Freundschaft und dem ewigen Kampf zwischen Licht und Dunkelheit.
             </div>
-            <span class="book-count">6 Bände verfügbar</span>
-            <br><br>
-            <a href="eldorias-vermaechtnis.html" class="series-btn">📚 Serie entdecken</a>
+            <div class="series-status">
+                <div class="status-text">6 Bände verfügbar</div>
+                <a href="eldorias-vermaechtnis.html" class="btn btn-primary">Serie entdecken</a>
+            </div>
         </div>
 
-        <!-- Platz für zukünftige Fantasy-Serien -->
-        <div class="series-card" style="opacity: 0.6; border-style: dashed;">
-            <span class="series-icon">🐉</span>
+        <!-- Weitere Fantasy-Serie -->
+        <div class="series-card">
+            <div class="series-icon">🌙✨</div>
             <h3 class="series-title">Weitere Fantasy-Serie</h3>
             <div class="series-subtitle">Neue magische Welten erwarten dich</div>
             <div class="series-description">
-                Hier entstehen neue fantastische Universen mit eigenen Helden, Magiersystemen und epischen Abenteuern. Jede Serie wird ihre eigene einzigartige Welt mit besonderen Regeln und Charakteren erschaffen.
+                Hier entstehen neue fantastische Universen mit eigenen Helden, Magiersystemen und epischen Abenteuern. Jede Serie wird eine einzigartige Welt mit besonderen Regeln und Charakteren erschaffen.
             </div>
-            <span class="book-count" style="background: #6c757d;">Bald verfügbar</span>
-            <br><br>
-            <button class="series-btn" style="background: #6c757d; cursor: not-allowed;" disabled>🔜 In Planung</button>
+            <div class="series-status">
+                <div class="status-text">Bald verfügbar</div>
+                <button class="btn btn-disabled">In Planung</button>
+            </div>
         </div>
-    </div>
-
-    <div class="back-link">
-        <a href="index.html">← Zurück zur Startseite</a>
     </div>
 </body>
 </html>
