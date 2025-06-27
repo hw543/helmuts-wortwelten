@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Die Verborgenen Kammern - Romantische Serie | Helmuts Wortwelten</title>
-    <meta name="description" content="Geheimnisse, Leidenschaft und verbotene Kunst - Folgen Sie Elena Winters in die mysteriösen Tiefen des Castellano-Museums.">
+    <title>Verlangen der Herzen - Alle Bände | Helmut Wegners Wortwelten</title>
+    <meta name="description" content="Entdecken Sie alle vier Bände der romantischen Serie 'Verlangen der Herzen' von Helmut Wegner - eine bewegende Liebesgeschichte aus Adelaide">
     <style>
         * {
             margin: 0;
@@ -13,93 +13,112 @@
         }
 
         body {
-            font-family: 'Georgia', serif;
-            line-height: 1.6;
-            color: #2c3e50;
+            font-family: 'Georgia', 'Times New Roman', serif;
             background: linear-gradient(135deg, #FFE5E5 0%, #FFD4B8 50%, #FFCFCF 100%);
             min-height: 100vh;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
             padding: 20px;
         }
 
-        .header {
-            text-align: center;
-            background: linear-gradient(135deg, #FF8A80 0%, #FFB74D 100%);
-            color: white;
-            padding: 60px 30px;
-            border-radius: 20px;
-            margin-bottom: 40px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
         }
 
-        .header img {
+        .header {
+            background: linear-gradient(135deg, #FF8A80 0%, #FFB74D 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .back-button {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 25px;
+            text-decoration: none;
+            display: inline-block;
+            margin-bottom: 20px;
+            font-size: 14px;
+            transition: background 0.3s ease;
+        }
+
+        .back-button:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .profile-pic {
             width: 80px;
             height: 80px;
             border-radius: 50%;
-            margin-bottom: 20px;
-            border: 4px solid white;
+            margin: 0 auto 20px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
         }
 
-        .header h1 {
-            font-size: 2.5em;
-            margin-bottom: 15px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        .series-title {
+            font-size: 3em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         }
 
-        .header p {
+        .series-subtitle {
             font-size: 1.2em;
+            margin-bottom: 10px;
             opacity: 0.9;
+        }
+
+        .series-description {
+            font-size: 1.1em;
             max-width: 600px;
             margin: 0 auto;
+            line-height: 1.6;
+            opacity: 0.8;
         }
 
         .books-section {
-            background: white;
-            border-radius: 20px;
             padding: 40px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            margin-bottom: 30px;
         }
 
         .section-title {
             text-align: center;
-            font-size: 2em;
-            color: #2c3e50;
+            font-size: 2.2em;
+            color: #333;
             margin-bottom: 40px;
-            padding-bottom: 15px;
-            border-bottom: 3px solid #FF8A80;
         }
 
-        .book-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 30px;
-            margin-bottom: 50px;
-            padding: 30px;
-            background: #f8f9fa;
+        .book-card {
+            background: white;
             border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        .book-item:hover {
+        .book-card:hover {
             transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .book-content {
+            display: flex;
+            padding: 30px;
+            gap: 30px;
+            align-items: center;
         }
 
         .book-cover {
-            flex-shrink: 0;
-        }
-
-        .book-cover img {
             width: 180px;
             height: 270px;
-            object-fit: cover;
             border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            object-fit: cover;
+            flex-shrink: 0;
         }
 
         .book-info {
@@ -108,7 +127,7 @@
 
         .book-title {
             font-size: 1.8em;
-            color: #2c3e50;
+            color: #333;
             margin-bottom: 10px;
             font-weight: bold;
         }
@@ -121,31 +140,40 @@
         }
 
         .book-description {
-            font-size: 1.1em;
+            font-size: 1em;
+            color: #666;
             line-height: 1.6;
-            color: #555;
             margin-bottom: 20px;
         }
 
-        .book-meta {
+        .language-flags {
             display: flex;
             align-items: center;
-            gap: 20px;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
+            gap: 10px;
+        }
+
+        .language-flags span {
+            font-size: 0.9em;
+            color: #777;
         }
 
         .availability {
-            font-size: 0.9em;
-            color: #666;
+            background: #4CAF50;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.8em;
+            display: inline-block;
+            margin-bottom: 20px;
         }
 
-        .flags {
-            display: flex;
-            gap: 8px;
+        .availability.ebook-only {
+            background: #2196F3;
         }
 
-        .flag {
-            font-size: 1.5em;
+        .availability.coming-soon {
+            background: #FF9800;
         }
 
         .book-buttons {
@@ -158,74 +186,75 @@
             padding: 12px 25px;
             border: none;
             border-radius: 25px;
+            text-decoration: none;
             font-size: 1em;
             font-weight: bold;
-            text-decoration: none;
             cursor: pointer;
             transition: all 0.3s ease;
             display: inline-block;
         }
 
-        .btn-primary {
-            background: linear-gradient(135deg, #4285f4, #34a853);
+        .btn-read {
+            background: #4285f4;
             color: white;
         }
 
-        .btn-primary:hover {
+        .btn-read:hover {
+            background: #3367d6;
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(66, 133, 244, 0.4);
         }
 
-        .btn-secondary {
-            background: linear-gradient(135deg, #ff6b35, #f7931e);
+        .btn-buy {
+            background: #ff6b35;
             color: white;
         }
 
-        .btn-secondary:hover {
+        .btn-buy:hover {
+            background: #e55a30;
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(255, 107, 53, 0.4);
+        }
+
+        .btn-ebook {
+            background: #2196F3;
+            color: white;
+        }
+
+        .btn-ebook:hover {
+            background: #1976D2;
+            transform: translateY(-2px);
         }
 
         .btn-disabled {
-            background: #cccccc;
+            background: #bbb;
             color: #666;
             cursor: not-allowed;
         }
 
-        .back-button {
-            display: inline-block;
-            margin-top: 30px;
-            padding: 15px 30px;
-            background: linear-gradient(135deg, #6c757d, #495057);
-            color: white;
-            text-decoration: none;
-            border-radius: 25px;
-            font-size: 1.1em;
-            transition: all 0.3s ease;
-        }
-
-        .back-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(108, 117, 125, 0.4);
+        .btn-disabled:hover {
+            transform: none;
         }
 
         @media (max-width: 768px) {
-            .book-item {
+            .book-content {
                 flex-direction: column;
                 text-align: center;
             }
             
-            .book-cover img {
+            .book-cover {
                 width: 150px;
                 height: 225px;
             }
             
-            .header h1 {
-                font-size: 2em;
+            .series-title {
+                font-size: 2.2em;
             }
             
             .book-title {
                 font-size: 1.5em;
+            }
+            
+            .book-buttons {
+                justify-content: center;
             }
         }
     </style>
@@ -233,84 +262,111 @@
 <body>
     <div class="container">
         <div class="header">
-            <img src="https://via.placeholder.com/80x80/FF8A80/FFFFFF?text=HW" alt="Helmut Wegner">
-            <h1>Die Verborgenen Kammern</h1>
-            <p>Geheimnisse, Leidenschaft und verbotene Kunst - Folgen Sie Elena Winters in die mysteriösen Tiefen des Castellano-Museums. In den verborgenen Kammern erwarten sie nicht nur jahrtausendealte Kunstschätze, sondern auch gefährliche Geheimnisse und eine leidenschaftliche Verbindung zu dem rätselhaften Marcus Castellano.</p>
+            <a href="romantik-fiktion.html" class="back-button">← Zurück zu Romantik-Fiktion</a>
+            <img src="helmut.jpg" alt="Helmut Wegner" class="profile-pic">
+            <h1 class="series-title">Verlangen der Herzen</h1>
+            <p class="series-subtitle">Eine Liebesgeschichte aus der Altmark bis nach Adelaide</p>
+            <p class="series-description">
+                Begleiten Sie Clara und Alex auf ihrer emotionalen Reise durch Höhen und Tiefen der Liebe. 
+                Von den ersten zarten Gefühlen bis hin zu einer starken, reifen Partnerschaft - 
+                eine Geschichte über Vertrauen, Hingabe und die Kraft wahrer Liebe.
+            </p>
         </div>
-
+        
         <div class="books-section">
             <h2 class="section-title">Alle Bände der Serie</h2>
-
-            <div class="book-item">
-                <div class="book-cover">
-                    <img src="hinter-verschlossenen-tueren.jpg" alt="Hinter verschlossenen Türen">
-                </div>
-                <div class="book-info">
-                    <h3 class="book-title">Band 1: Hinter verschlossenen Türen</h3>
-                    <p class="book-subtitle">Wo das Geheimnis beginnt</p>
-                    <p class="book-description">Elena Winters entdeckt als neue Kuratorin im renommierten Castellano-Museum mehr als nur alte Kunstwerke. Hinter verschlossenen Türen verbirgt sich eine Welt voller Geheimnisse, und Marcus Castellano scheint der Schlüssel zu allem zu sein.</p>
-                    <div class="book-meta">
-                        <span class="availability">Verfügbar in:</span>
-                        <div class="flags">
-                            <span class="flag">🇩🇪</span>
-                            <span class="flag">🇬🇧</span>
-                            <span class="flag">🇪🇸</span>
+            
+            <!-- Band 1 -->
+            <div class="book-card">
+                <div class="book-content">
+                    <img src="unter-dem-sternenhimmel.jpg" alt="Band 1: Unter dem Sternenhimmel" class="book-cover">
+                    <div class="book-info">
+                        <h3 class="book-title">Band 1: Unter dem Sternenhimmel</h3>
+                        <p class="book-subtitle">Ein magischer Neubeginn unter dem Himmel von Adelaide</p>
+                        <p class="book-description">
+                            Ein magischer Neubeginn unter dem Himmel von Adelaide. Sophie beginnt ihr neues 
+                            Leben in Australien und findet dabei nicht nur einen Ort zum Leben – sie findet ihr Herz.
+                        </p>
+                        <div class="language-flags">
+                            <span>Verfügbar in:</span> 🇩🇪🇬🇧🇪🇸
                         </div>
-                    </div>
-                    <div class="book-buttons">
-                        <a href="hinter-verschlossenen-tueren-lesen.html" class="btn btn-primary">📖 Lesen</a>
-                        <a href="https://www.amazon.de/dp/B0F1YC3J79" class="btn btn-secondary" target="_blank">🛒 Bei Amazon kaufen</a>
+                        <div class="availability">✓ Taschenbuch & eBook</div>
+                        <div class="book-buttons">
+                            <a href="unter-dem-sternenhimmel-lesen.html" class="btn btn-read">📖 Lesen</a>
+                            <a href="https://amazon.de/dp/B0F9Y4L5LK" class="btn btn-buy">🛒 Bei Amazon kaufen</a>
+                        </div>
                     </div>
                 </div>
             </div>
-
-            <div class="book-item">
-                <div class="book-cover">
-                    <img src="die-kunst-der-hingabe.jpg" alt="Die Kunst der Hingabe">
-                </div>
-                <div class="book-info">
-                    <h3 class="book-title">Band 2: Die Kunst der Hingabe</h3>
-                    <p class="book-subtitle">Leidenschaft und Gefahr</p>
-                    <p class="book-description">Die Verbindung zwischen Elena und Marcus vertieft sich, während sie tiefer in die Geheimnisse des Museums eintauchen. Doch mit jedem Schritt werden die Gefahren größer und die Leidenschaft intensiver.</p>
-                    <div class="book-meta">
-                        <span class="availability">Verfügbar in:</span>
-                        <div class="flags">
-                            <span class="flag">🇩🇪</span>
-                            <span class="flag">🇬🇧</span>
+            
+            <!-- Band 2 -->
+            <div class="book-card">
+                <div class="book-content">
+                    <img src="im-netz-der-liebe.jpg" alt="Band 2: Im Netz der Liebe" class="book-cover">
+                    <div class="book-info">
+                        <h3 class="book-title">Band 2: Im Netz der Liebe</h3>
+                        <p class="book-subtitle">Wenn sich Herzen in Adelaide begegnen</p>
+                        <p class="book-description">
+                            Clara und Alex treffen sich zum ersten Mal in Adelaide. Aus der anfänglichen Begegnung beginnt, 
+                            entscheidet sich zu einer tieferen Verbindung voller Brillanz und Träume.
+                        </p>
+                        <div class="language-flags">
+                            <span>Verfügbar in:</span> 🇩🇪🇬🇧
                         </div>
-                    </div>
-                    <div class="book-buttons">
-                        <span class="btn btn-disabled">📖 Bald verfügbar</span>
-                        <span class="btn btn-disabled">🛒 Bald verfügbar</span>
+                        <div class="availability">✓ Taschenbuch & eBook</div>
+                        <div class="book-buttons">
+                            <a href="im-netz-der-liebe-lesen.html" class="btn btn-read">📖 Lesen</a>
+                            <a href="https://amazon.de/dp/B0FBL167H5" class="btn btn-buy">🛒 Bei Amazon kaufen</a>
+                        </div>
                     </div>
                 </div>
             </div>
-
-            <div class="book-item">
-                <div class="book-cover">
-                    <img src="die-tiefe-der-begierde.jpg" alt="Die Tiefe der Begierde">
-                </div>
-                <div class="book-info">
-                    <h3 class="book-title">Band 3: Die Tiefe der Begierde</h3>
-                    <p class="book-subtitle">Verbotene Wahrheiten</p>
-                    <p class="book-description">Elena und Marcus stehen vor der größten Herausforderung ihrer Beziehung. Die Wahrheit über die verborgenen Kammern droht alles zu zerstören, was sie aufgebaut haben - oder sie für immer zu vereinen.</p>
-                    <div class="book-meta">
-                        <span class="availability">Verfügbar in:</span>
-                        <div class="flags">
-                            <span class="flag">🇩🇪</span>
-                            <span class="flag">🇬🇧</span>
+            
+            <!-- Band 3 -->
+            <div class="book-card">
+                <div class="book-content">
+                    <img src="ankommen-im-neuen-leben.jpg" alt="Band 3: Ankommen im neuen Leben" class="book-cover">
+                    <div class="book-info">
+                        <h3 class="book-title">Band 3: Ankommen im neuen Leben</h3>
+                        <p class="book-subtitle">Berufliche Konflikte und private Träume</p>
+                        <p class="book-description">
+                            Die Jobsituation für aufrechtliche Pläne, in der berufliche Herausforderungen und persönliche 
+                            Träume aufeinandertreffen und neue Wege entstehen können.
+                        </p>
+                        <div class="language-flags">
+                            <span>Verfügbar in:</span> 🇩🇪🇬🇧
                         </div>
-                    </div>
-                    <div class="book-buttons">
-                        <span class="btn btn-disabled">📖 Bald verfügbar</span>
-                        <span class="btn btn-disabled">🛒 Bald verfügbar</span>
+                        <div class="availability ebook-only">💻 Nur als eBook</div>
+                        <div class="book-buttons">
+                            <a href="ankommen-im-neuen-leben-lesen.html" class="btn btn-read">📖 Lesen</a>
+                            <a href="https://amazon.de/dp/B0FBKKW3HF" class="btn btn-ebook">💻 eBook kaufen</a>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-
-        <div style="text-align: center;">
-            <a href="romantik-fiktion.html" class="back-button">← Zurück zur Romantik-Übersicht</a>
+            
+            <!-- Band 4 -->
+            <div class="book-card">
+                <div class="book-content">
+                    <img src="gemeinsam-in-die-zukunft.jpg" alt="Band 4: Gemeinsam in die Zukunft" class="book-cover">
+                    <div class="book-info">
+                        <h3 class="book-title">Band 4: Gemeinsam in die Zukunft</h3>
+                        <p class="book-subtitle">Ein Übergang zu Zweit</p>
+                        <p class="book-description">
+                            Der bewegende Abschluss der Serie, in dem alle Charaktere ihre Frieden finden und 
+                            gemeinsam in eine hoffnungsvolle Zukunft blicken.
+                        </p>
+                        <div class="language-flags">
+                            <span>Verfügbar in:</span> 🇩🇪🇬🇧
+                        </div>
+                        <div class="availability coming-soon">📅 Bald bei Amazon</div>
+                        <div class="book-buttons">
+                            <a href="gemeinsam-in-die-zukunft-lesen.html" class="btn btn-read">📖 Lesen</a>
+                            <span class="btn btn-disabled">📅 Bald verfügbar</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </body>
