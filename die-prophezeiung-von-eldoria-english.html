@@ -29,7 +29,7 @@
         .back-button {
             position: absolute;
             top: 20px;
-            left: 20px;
+            right: 20px;
             z-index: 100;
         }
 
@@ -56,26 +56,29 @@
         .language-nav {
             position: absolute;
             top: 20px;
-            right: 20px;
+            left: 20px;
             z-index: 100;
         }
 
         .language-nav a {
             color: #fff;
             text-decoration: none;
-            font-size: 1.5rem;
-            margin-left: 10px;
-            padding: 10px;
-            border-radius: 50%;
+            font-size: 1rem;
+            margin-right: 15px;
+            padding: 12px 20px;
+            border-radius: 25px;
             transition: all 0.3s ease;
             display: inline-block;
             backdrop-filter: blur(10px);
             background: rgba(255,255,255,0.1);
+            border: 2px solid rgba(255,255,255,0.3);
+            font-weight: bold;
         }
 
         .language-nav a:hover {
             background: rgba(255,255,255,0.2);
-            transform: scale(1.1);
+            border-color: rgba(255,255,255,0.5);
+            transform: translateY(-2px);
         }
 
         .language-nav .active {
@@ -181,13 +184,13 @@
 </head>
 <body>
     <div class="header">
-        <div class="back-button">
-            <a href="eldorias-vermaechtnis.html">← Back to Series</a>
+        <div class="language-nav">
+            <a href="die-prophezeiung-von-eldoria-lesen.html">🇩🇪 German</a>
+            <a href="die-prophezeiung-von-eldoria-english.html" class="active">🇬🇧 English</a>
         </div>
 
-        <div class="language-nav">
-            <a href="die-prophezeiung-von-eldoria-lesen.html">🇩🇪</a>
-            <a href="die-prophezeiung-von-eldoria-english.html" class="active">🇬🇧</a>
+        <div class="back-button">
+            <a href="eldorias-vermaechtnis.html">← Back to Series</a>
         </div>
 
         <h1 class="book-title">The Prophecy of Eldoria</h1>
