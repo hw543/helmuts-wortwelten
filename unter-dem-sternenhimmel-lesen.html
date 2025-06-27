@@ -28,28 +28,36 @@
             overflow: hidden;
         }
 
+        .nav-bar {
+            padding: 20px 30px 0;
+        }
+
+        .back-button {
+            background: linear-gradient(135deg, #2c3e50, #34495e);
+            color: white;
+            padding: 12px 25px;
+            border: 2px solid #2c3e50;
+            border-radius: 20px;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 1em;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 16px rgba(44, 62, 80, 0.4);
+        }
+
+        .back-button:hover {
+            background: linear-gradient(135deg, #34495e, #2c3e50);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(44, 62, 80, 0.5);
+        }
+
         .header {
             background: linear-gradient(135deg, #FF8A80 0%, #FFB74D 100%);
             color: white;
             padding: 30px;
             text-align: center;
-        }
-
-        .back-button {
-            background: rgba(255, 255, 255, 0.2);
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 25px;
-            text-decoration: none;
-            display: inline-block;
-            margin-bottom: 20px;
-            font-size: 14px;
-            transition: background 0.3s ease;
-        }
-
-        .back-button:hover {
-            background: rgba(255, 255, 255, 0.3);
+            position: relative;
         }
 
         .book-title {
@@ -65,26 +73,48 @@
         }
 
         .language-nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
             margin-top: 20px;
         }
 
-        .language-nav a {
-            color: white;
+        .language-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
             text-decoration: none;
-            margin: 0 10px;
+            color: white;
             padding: 8px 15px;
             border-radius: 20px;
             background: rgba(255, 255, 255, 0.2);
-            transition: background 0.3s ease;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
         }
 
-        .language-nav a:hover {
+        .language-item:hover {
             background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
         }
 
-        .language-nav a.active {
+        .language-item.active {
             background: rgba(255, 255, 255, 0.4);
             font-weight: bold;
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+
+        .cover-thumbnail {
+            width: 32px;
+            height: 48px;
+            border-radius: 4px;
+            object-fit: cover;
+            border: 2px solid rgba(255, 255, 255, 0.6);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .flag {
+            font-size: 1.2em;
         }
 
         .chapter-content {
@@ -125,18 +155,38 @@
             .chapter-content p:first-child::first-letter {
                 font-size: 3em;
             }
+
+            .language-nav {
+                flex-wrap: wrap;
+                gap: 10px;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="header">
+        <div class="nav-bar">
             <a href="verlangen-der-herzen.html" class="back-button">← Zurück zur Serie</a>
+        </div>
+        <div class="header">
             <h1 class="book-title">Unter dem Sternenhimmel</h1>
             <h2 class="chapter-title">Kapitel 1: Begegnung</h2>
             <div class="language-nav">
-                <a href="ankommen-im-neuen-leben-lesen.html" class="active">🇩🇪 Deutsch</a>
-                <a href="ankommen-im-neuen-leben-english.html">🇬🇧 English</a>
+                <a href="unter-dem-sternenhimmel-lesen.html" class="language-item active">
+                    <img src="hinter-verschlossenen-tueren.jpg" alt="Deutsch Cover" class="cover-thumbnail">
+                    <span class="flag">🇩🇪</span>
+                    <span>Deutsch</span>
+                </a>
+                <a href="unter-dem-sternenhimmel-english.html" class="language-item">
+                    <img src="elena-winters-en.jpg" alt="English Cover" class="cover-thumbnail">
+                    <span class="flag">🇬🇧</span>
+                    <span>English</span>
+                </a>
+                <a href="unter-dem-sternenhimmel-spanish.html" class="language-item">
+                    <img src="elena-winters-es.jpg" alt="Español Cover" class="cover-thumbnail">
+                    <span class="flag">🇪🇸</span>
+                    <span>Español</span>
+                </a>
             </div>
         </div>
         
