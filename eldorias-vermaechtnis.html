@@ -230,6 +230,18 @@
             box-shadow: 0 8px 25px rgba(255, 107, 53, 0.4);
         }
 
+        .btn-amazon-disabled {
+            background: linear-gradient(45deg, #666, #888);
+            color: #ccc;
+            cursor: not-allowed;
+            box-shadow: 0 6px 20px rgba(102, 102, 102, 0.2);
+        }
+
+        .btn-amazon-disabled:hover {
+            transform: none;
+            box-shadow: 0 6px 20px rgba(102, 102, 102, 0.2);
+        }
+
         .btn-coming-soon {
             background: linear-gradient(45deg, #666, #888);
             color: #ccc;
@@ -240,6 +252,30 @@
         .btn-coming-soon:hover {
             transform: none;
             box-shadow: 0 6px 20px rgba(102, 102, 102, 0.2);
+        }
+
+        .languages {
+            margin-top: 15px;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .lang-label {
+            font-size: 0.9rem;
+            color: #e6ddc4;
+            margin-right: 8px;
+        }
+
+        .flag {
+            font-size: 1.2rem;
+            margin: 0 4px;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+
+        .flag:hover {
+            transform: scale(1.2);
         }
 
         @media (max-width: 768px) {
@@ -284,7 +320,13 @@
             </div>
             <div class="button-group">
                 <a href="die-prophezeiung-von-eldoria-lesen.html" class="btn btn-read">📖 Lesen</a>
-                <a href="#" class="btn btn-amazon" target="_blank">🛒 Bei Amazon kaufen</a>
+                <button class="btn btn-amazon-disabled">🚫 Bei Amazon noch nicht verfügbar</button>
+            </div>
+            <div class="languages">
+                <span class="lang-label">Verfügbar:</span>
+                <span class="flag">🇩🇪</span>
+                <span class="flag">🇬🇧</span>
+                <div style="margin-top: 5px; font-size: 0.8rem; color: #d4d4d4;">German, English</div>
             </div>
         </div>
 
@@ -298,7 +340,13 @@
             </div>
             <div class="button-group">
                 <a href="der-beginn-des-friedens-lesen.html" class="btn btn-read">📖 Lesen</a>
-                <a href="#" class="btn btn-amazon" target="_blank">🛒 Bei Amazon kaufen</a>
+                <button class="btn btn-amazon-disabled">🚫 Bei Amazon noch nicht verfügbar</button>
+            </div>
+            <div class="languages">
+                <span class="lang-label">Verfügbar:</span>
+                <span class="flag">🇩🇪</span>
+                <span class="flag">🇬🇧</span>
+                <div style="margin-top: 5px; font-size: 0.8rem; color: #d4d4d4;">German, English</div>
             </div>
         </div>
 
@@ -312,7 +360,13 @@
             </div>
             <div class="button-group">
                 <a href="die-schatten-des-vergessenen-lesen.html" class="btn btn-read">📖 Lesen</a>
-                <a href="#" class="btn btn-amazon" target="_blank">🛒 Bei Amazon kaufen</a>
+                <button class="btn btn-amazon-disabled">🚫 Bei Amazon noch nicht verfügbar</button>
+            </div>
+            <div class="languages">
+                <span class="lang-label">Verfügbar:</span>
+                <span class="flag">🇩🇪</span>
+                <span class="flag">🇬🇧</span>
+                <div style="margin-top: 5px; font-size: 0.8rem; color: #d4d4d4;">German, English</div>
             </div>
         </div>
 
@@ -326,7 +380,13 @@
             </div>
             <div class="button-group">
                 <a href="das-vermachtnis-der-wachter-lesen.html" class="btn btn-read">📖 Lesen</a>
-                <a href="#" class="btn btn-amazon" target="_blank">🛒 Bei Amazon kaufen</a>
+                <button class="btn btn-amazon-disabled">🚫 Bei Amazon noch nicht verfügbar</button>
+            </div>
+            <div class="languages">
+                <span class="lang-label">Verfügbar:</span>
+                <span class="flag">🇩🇪</span>
+                <span class="flag">🇬🇧</span>
+                <div style="margin-top: 5px; font-size: 0.8rem; color: #d4d4d4;">German, English</div>
             </div>
         </div>
 
@@ -340,7 +400,13 @@
             </div>
             <div class="button-group">
                 <a href="die-welt-jenseits-von-eldoria-lesen.html" class="btn btn-read">📖 Lesen</a>
-                <a href="#" class="btn btn-amazon" target="_blank">🛒 Bei Amazon kaufen</a>
+                <button class="btn btn-amazon-disabled">🚫 Bei Amazon noch nicht verfügbar</button>
+            </div>
+            <div class="languages">
+                <span class="lang-label">Verfügbar:</span>
+                <span class="flag">🇩🇪</span>
+                <span class="flag">🇬🇧</span>
+                <div style="margin-top: 5px; font-size: 0.8rem; color: #d4d4d4;">German, English</div>
             </div>
         </div>
 
@@ -354,7 +420,7 @@
             </div>
             <div class="button-group">
                 <button class="btn btn-coming-soon">🔜 In Vorbereitung</button>
-                <a href="#" class="btn btn-amazon" target="_blank">🛒 Bei Amazon kaufen</a>
+                <button class="btn btn-amazon-disabled">🚫 Bei Amazon noch nicht verfügbar</button>
             </div>
         </div>
     </div>
