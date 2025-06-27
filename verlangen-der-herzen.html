@@ -28,28 +28,35 @@
             overflow: hidden;
         }
 
+        .nav-bar {
+            padding: 20px 40px 0;
+        }
+
+        .back-button {
+            background: linear-gradient(135deg, #6c757d, #495057);
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 20px;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 1em;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(108, 117, 125, 0.3);
+        }
+
+        .back-button:hover {
+            background: linear-gradient(135deg, #495057, #6c757d);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(108, 117, 125, 0.4);
+        }
+
         .header {
             background: linear-gradient(135deg, #FF8A80 0%, #FFB74D 100%);
             color: white;
             padding: 40px;
             text-align: center;
-        }
-
-        .back-button {
-            background: rgba(255, 255, 255, 0.2);
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 25px;
-            text-decoration: none;
-            display: inline-block;
-            margin-bottom: 20px;
-            font-size: 14px;
-            transition: background 0.3s ease;
-        }
-
-        .back-button:hover {
-            background: rgba(255, 255, 255, 0.3);
         }
 
         .profile-pic {
@@ -261,8 +268,10 @@
 </head>
 <body>
     <div class="container">
-        <div class="header">
+        <div class="nav-bar">
             <a href="romantik-fiktion.html" class="back-button">← Zurück zu Romantik-Fiktion</a>
+        </div>
+        <div class="header">
             <img src="helmut.jpg" alt="Helmut Wegner" class="profile-pic">
             <h1 class="series-title">Verlangen der Herzen</h1>
             <p class="series-subtitle">Eine Liebesgeschichte aus der Altmark bis nach Adelaide</p>
