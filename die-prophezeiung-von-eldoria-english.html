@@ -1,1 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Prophecy of Eldoria - Chapter 1 | Helmut Wegner's Word Worlds</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            background: linear-gradient(135deg, #2d1b4e 0%, #1a1a2e 25%, #16213e 50%, #0f0f23 75%, #2d1b4e 100%);
+            color: #fff;
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #8a63d2 0%, #6f42c1 100%);
+            padding: 40px 20px;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+
+        .back-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            z-index: 100;
+        }
+
+        .back-button a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: bold;
+            padding: 12px 25px;
+            border: 2px solid rgba(255,255,255,0.3);
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            background: rgba(255,255,255,0.1);
+            display: inline-block;
+        }
+
+        .back-button a:hover {
+            background: rgba(255,255,255,0.2);
+            border-color: rgba(255,255,255,0.5);
+            transform: translateY(-2px);
+        }
+
+        .language-nav {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 100;
+        }
+
+        .language-nav a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.5rem;
+            margin-left: 10px;
+            padding: 10px;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            display: inline-block;
+            backdrop-filter: blur(10px);
+            background: rgba(255,255,255,0.1);
+        }
+
+        .language-nav a:hover {
+            background: rgba(255,255,255,0.2);
+            transform: scale(1.1);
+        }
+
+        .language-nav .active {
+            background: rgba(255,255,255,0.3);
+            border: 2px solid rgba(255,255,255,0.5);
+        }
+
+        .book-title {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            color: #fff;
+        }
+
+        .chapter-title {
+            font-size: 1.5rem;
+            color: #e6ddc4;
+            font-style: italic;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .chapter-content {
+            background: rgba(0,0,0,0.4);
+            padding: 50px;
+            border-radius: 20px;
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(138,99,210,0.3);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .chapter-content h3 {
+            color: #8a63d2;
+            font-size: 1.8rem;
+            margin: 40px 0 20px 0;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+            border-bottom: 2px solid rgba(138,99,210,0.3);
+            padding-bottom: 10px;
+        }
+
+        .chapter-content h4 {
+            color: #a876e8;
+            font-size: 1.4rem;
+            margin: 30px 0 15px 0;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+
+        .chapter-content p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            color: #e6ddc4;
+            text-align: justify;
+        }
+
+        .chapter-content p:first-of-type::first-letter {
+            font-size: 4em;
+            line-height: 1;
+            float: left;
+            margin: 0.1em 0.1em 0 0;
+            color: #8a63d2;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .divider {
+            text-align: center;
+            margin: 40px 0;
+            color: #8a63d2;
+            font-size: 1.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .book-title {
+                font-size: 2.2rem;
+            }
+
+            .container {
+                padding: 40px 15px;
+            }
+
+            .chapter-content {
+                padding: 30px 25px;
+            }
+
+            .back-button,
+            .language-nav {
+                position: static;
+                text-align: center;
+                margin: 20px 0;
+            }
+
+            .header {
+                padding: 80px 20px 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="back-button">
+            <a href="eldorias-vermaechtnis.html">← Back to Series</a>
+        </div>
+
+        <div class="language-nav">
+            <a href="die-prophezeiung-von-eldoria-lesen.html">🇩🇪</a>
+            <a href="die-prophezeiung-von-eldoria-english.html" class="active">🇬🇧</a>
+        </div>
+
+        <h1 class="book-title">The Prophecy of Eldoria</h1>
+        <div class="chapter-title">Chapter 1: Introduction to Eldoria and the Prophecy</div>
+    </div>
+
+    <div class="container">
+        <div class="chapter-content">
+            <h3>The Royal House</h3>
+            <p>The Kingdom of Eldoria stretched across vast plains, dense forests, and rugged mountain ranges, framed by a shimmering ocean to the west. At the heart of the land stood the Royal House: a massive structure of white stone that had endured for centuries. The walls bore scars from sieges and wars, silent witnesses to Eldoria's turbulent history. Great towers reached toward the sky, crowned with flags bearing the kingdom's coat of arms -- a golden phoenix surrounded by flame, symbol of rebirth and immortality.</p>
+
+            <p>King Aldemar sat upon his stone throne in the great hall, which was flooded with light from tall windows. Yet the sun's rays could not dispel the shadows on his face. His eyes were clouded with worry, and his shoulders bore the weight not only of the kingdom, but also of the prophecy that hung over his family.</p>
+
+            <p>His faithful advisor Orin stood beside him, a man with gray hair and a keen gaze, who always maintained his composure even when the world around him threatened to break apart. "My King," Orin began, noticing how Aldemar stared thoughtfully at the wall painting depicting the founding of Eldoria. "You must not let these signs overwhelm you. The people need your strength."</p>
+
+            <p>"And what if my strength is not enough?" Aldemar rose slowly. His voice was deep and heavy, like thunderous echo in the hall. "The omens are clear, Orin. The fog, the reports of creatures in the forests, the unrest among the people -- all of this points to the prophecy coming true."</p>
+
+            <p>Orin placed a hand on the king's arm. "There have always been times of darkness, and each time the Phoenix bloodline has survived. We must decipher the prophecy, that is true, but not act in desperation."</p>
+
+            <h3>The People</h3>
+            <p>In the streets of Eldoria's capital, the cobbled lanes that led down from the Royal House, there was bustling activity. Merchants loudly hawked their wares while children ran laughing between market stalls. Yet behind the facade of daily life slumbered a growing unrest. The old wise ones whispered of the prophecy stories, a foretelling that predicted either the end or salvation of Eldoria. Many believed that the strange events -- the unnatural fog, the disappearance of villagers -- were the beginnings of the dark prediction.</p>
+
+            <p>"Have you heard?" asked a peasant woman while offering a basket of apples for sale. "The night was so quiet, not a single bird chirped. And my husband says he saw eyes in the fog!"</p>
+
+            <p>An old man sitting at the edge of the well nodded gravely. "Times are changing. We have angered the gods, and now we will pay the price."</p>
+
+            <p>But not everyone was ruled by fear. In the taverns, bards continued to sing songs of heroic deeds, and some younger citizens mocked the stories of the elders. Nevertheless, the fear was palpable, like distant thunder on the horizon, waiting to unleash itself.</p>
+
+            <h3>The Prophecy</h3>
+            <p>Deep beneath the Royal House, hidden behind heavy iron doors, lay the royal library, a labyrinth of shelves stretching into darkness. At its center stood a golden chest, protected by ancient runes and spells. Within it lay the Book of Prophecy. Aldemar, Orin, and the wise Eldrin stood before the chest while flickering torches illuminated the ancient runes. Eldrin, whose long robe dragged in the dust of the floor, murmured incantations to break the magical seal.</p>
+
+            <p>"My King, once we open the book, there is no turning back," warned Eldrin without taking his eyes off the chest.</p>
+
+            <p>"I know that," Aldemar replied resolutely. "But time is pressing. We must know what the prophecy demands."</p>
+
+            <p>With a final word, the chest opened, and Eldrin carefully withdrew a leather-bound book. The pages appeared brittle, yet the writing upon them pulsed as if alive.</p>
+
+            <p>"Here it is," said Eldrin as he opened the first page. "The signs that herald the end. And the path that leads to salvation."</p>
+
+            <h3>Ominous Portents</h3>
+            <p>Before Eldrin could speak further, a deafening crash echoed from the distance. The earth trembled, and an unnatural wind swept through the catacombs. Aldemar drew his sword while Orin positioned himself protectively before the king.</p>
+
+            <p>"What was that?" cried Orin.</p>
+
+            <p>Eldrin looked at the book, whose writing suddenly faded as if it had spoken its warning. "Something has awakened," he said with trembling voice.</p>
+
+            <p>At the surface, people streamed from their houses. The sky above Eldoria had darkened, and a massive rift stretched like an open wound through the clouds. From the fog at the forest's edge came rumbling sounds that made people's hearts tremble with fear.</p>
+
+            <p>A warrior stationed at the kingdom's border rode into the city. His face was ashen, and his voice shook as he cried out: "The creatures from the stories are real! They are coming!"</p>
+
+            <div class="divider">⚔️ ✨ ⚔️</div>
+
+            <p>The Kingdom of Eldoria stood before its darkest hour, and the prophecy had begun to cast its shadows over the land. The warrior's words echoed across the marketplace where more and more people gathered. Some whispered in panic while others loudly voiced their displeasure, yet all shared the same fear.</p>
+
+            <p>"What kind of creatures?" called an old merchant, clinging to his wooden stall. "Are they wolves? Shadow beings? Or something worse?"</p>
+
+            <p>The warrior wiped sweat from his brow and raised his trembling hand to calm the crowd. "I don't know exactly. They move like shadows, yet their eyes glow red, and they seem to emerge from the mists themselves." His voice trembled. "Our men tried to fight them, but... they were too fast. We had no chance."</p>
+
+            <p>A man in the crowd stepped forward and grabbed the warrior by the arm. "You must warn the king! We need protection before they reach the city!"</p>
+
+            <p>But at that moment, before the warrior could answer, a distant howl rang out -- deep and penetrating, like the lament of an ancient being. It made the air tremble and sent an icy chill through the streets. People froze, some fell to their knees while others fled into their houses and barred the doors behind them.</p>
+
+            <h4>The Wise One</h4>
+            <p>In the throne room, King Aldemar, Orin, and Eldrin felt the land's tremor like an ominous warning. The Book of Prophecy that Eldrin held in his hands began to pulse as if it were alive. Its surface shimmered restlessly, and the writing that had been so clear before blurred into an impenetrable mist.</p>
+
+            <p>"It is too early," whispered Eldrin as he stared at the book. "Time presses, and we are not ready."</p>
+
+            <p>Aldemar drew his sword, which he always carried, and turned to Orin. "The enemy has already reached the border. We must act. Whatever the prophecy demands of us -- we must know it now."</p>
+
+            <p>"Your Majesty," Orin began carefully, "we cannot act rashly. If these creatures are truly nourished by darkness itself, then strength alone is not enough. We need the knowledge of the prophecy. Eldrin, can you not decipher the words?"</p>
+
+            <p>Eldrin closed his eyes and breathed deeply. "The book speaks in riddles, and it takes time to unravel them. But I will do my best." He opened the book again, his fingers trembling slightly as he turned to the next page. The words formed slowly, as if materializing from the mist: "The Phoenix flame will burn only where starlight pierces the shadow. The Guardians of the four elements will show the path, yet only the Chosen One can banish the darkness."</p>
+
+            <p>The battle for Eldoria was not yet lost, but the true challenge -- the riddle of the elements and the Chosen One -- still lay before them. And as darkness fell over the land, no one knew if they would be strong enough to withstand what was to come.</p>
+        </div>
+    </div>
+</body>
+</html>
