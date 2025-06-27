@@ -1,1 +1,485 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thriller - Helmut Wegners Wortwelten</title>
+    <style>
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #1a1a1a, #2c2c2c, #1a1a1a);
+            margin: 0;
+            padding: 20px;
+            color: #333;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #f9f9f9;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 3px solid #dc143c;
+            padding-bottom: 20px;
+        }
+        .header h1 {
+            color: #1a1a1a;
+            font-size: 2.5em;
+            margin: 0 0 10px 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        .header p {
+            color: #666;
+            font-style: italic;
+            margin: 0;
+            font-size: 1.1em;
+        }
+        .series-banner {
+            background: linear-gradient(135deg, #dc143c, #b22222);
+            color: white;
+            text-align: center;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 20px rgba(220, 20, 60, 0.3);
+        }
+        .series-banner h2 {
+            margin: 0 0 10px 0;
+            font-size: 2em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        .series-banner p {
+            margin: 0;
+            font-style: italic;
+            opacity: 0.9;
+        }
+        .book {
+            display: flex;
+            margin-bottom: 40px;
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            border-left: 5px solid #dc143c;
+            transition: transform 0.3s ease;
+        }
+        .book:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 35px rgba(0,0,0,0.2);
+        }
+        .book-cover {
+            width: 120px;
+            height: 180px;
+            margin-right: 25px;
+            border-radius: 8px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease;
+        }
+        .book-cover:hover {
+            transform: scale(1.05);
+        }
+        .book-info {
+            flex: 1;
+        }
+        .book-title {
+            color: #dc143c;
+            font-size: 1.8em;
+            font-weight: bold;
+            margin: 0 0 10px 0;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+        .book-subtitle {
+            color: #666;
+            font-style: italic;
+            margin: 0 0 15px 0;
+            font-size: 1.1em;
+        }
+        .book-description {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-size: 1.05em;
+            text-align: justify;
+        }
+        .button-container {
+            margin-top: 15px;
+        }
+        /* Button Styles */
+        .btn {
+            display: inline-block;
+            padding: 8px 16px;
+            margin: 5px 5px 5px 0;
+            border: none;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: bold;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        .btn-soon {
+            background: linear-gradient(135deg, #7f8c8d, #95a5a6);
+            color: white;
+        }
+        .btn-soon:hover {
+            background: linear-gradient(135deg, #6c7b7d, #7f8c8d);
+            transform: translateY(-2px);
+        }
+        .btn-sample {
+            background: linear-gradient(135deg, #dc143c, #b22222);
+            color: white;
+        }
+        .btn-sample:hover {
+            background: linear-gradient(135deg, #b22222, #8b0000);
+            transform: translateY(-2px);
+        }
+        /* Pop-up Styles */
+        .popup-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        .popup-content {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            max-width: 700px;
+            max-height: 80vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            margin: 20px;
+        }
+        .popup-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #dc143c;
+            padding-bottom: 15px;
+        }
+        .popup-cover {
+            width: 60px;
+            height: 90px;
+            margin-right: 15px;
+            border-radius: 5px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+        }
+        .popup-title {
+            flex: 1;
+        }
+        .popup-title h3 {
+            color: #dc143c;
+            margin: 0 0 5px 0;
+            font-size: 1.4em;
+        }
+        .popup-title p {
+            color: #666;
+            margin: 0;
+            font-style: italic;
+        }
+        .popup-close {
+            background: #e74c3c;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .popup-text {
+            color: #2c3e50;
+            line-height: 1.8;
+            font-size: 1.1em;
+            text-align: justify;
+            margin-bottom: 20px;
+        }
+        .popup-navigation {
+            text-align: center;
+            padding-top: 15px;
+            border-top: 1px solid #ecf0f1;
+        }
+        .popup-page-info {
+            color: #666;
+            font-style: italic;
+            margin-bottom: 15px;
+        }
+        .btn-nav {
+            background: linear-gradient(135deg, #dc143c, #b22222);
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: bold;
+            margin: 0 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 3px 10px rgba(220, 20, 60, 0.3);
+        }
+        .btn-nav:hover {
+            background: linear-gradient(135deg, #b22222, #8b0000);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(220, 20, 60, 0.4);
+        }
+        .btn-nav:disabled {
+            background: #bdc3c7;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+        .back-link {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 2px solid #ecf0f1;
+        }
+        .back-link a {
+            display: inline-block;
+            padding: 12px 25px;
+            background: linear-gradient(135deg, #3498db, #5dade2);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 3px 10px rgba(52, 152, 219, 0.3);
+        }
+        .back-link a:hover {
+            background: linear-gradient(135deg, #2980b9, #3498db);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
+        }
+        @media (max-width: 600px) {
+            .book {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .book-cover {
+                margin: 0 auto 20px auto;
+            }
+            .popup-content {
+                margin: 10px;
+                padding: 20px;
+                max-height: 90vh;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Thriller</h1>
+            <p>Psychologisch intensive Geschichten über menschliche Abgründe, Obsessionen und die dunklen Seiten der Seele</p>
+        </div>
+        
+        <div class="series-banner">
+            <h2>PSYCHO-THRILLER</h2>
+            <p>Wenn die Grenze zwischen Helfer und Täter verschwimmt</p>
+        </div>
+        
+        <!-- Flammen des Verrats -->
+        <div class="book">
+            <img src="flammendesverrats.jpg" alt="Flammen des Verrats Cover" class="book-cover">
+            <div class="book-info">
+                <h3 class="book-title">Flammen des Verrats</h3>
+                <p class="book-subtitle">Ein Psycho-Thriller über Obsession und Zerstörung</p>
+                <div class="book-description">
+                    Lukas hatte sein Leben der Feuerwehr gewidmet, um Brände zu löschen und Leben zu retten. Doch eine dunkle Faszination für das Feuer wächst in ihm – eine gefährliche Obsession, die ihn dazu drängt, selbst Flammen zu entfachen.<br><br>
+                    
+                    Als Feuerwehrmann steht er an vorderster Front im Kampf gegen die Flammen, aber innerlich kämpft er gegen seine eigenen, zerstörerischen Impulse. Ein psychologisch intensiver Thriller über die schmale Grenze zwischen Retter und Täter, zwischen Kontrolle und Chaos.<br><br>
+                    
+                    Eine Geschichte über menschliche Abgründe, Schuld und die Macht der Versuchung, die niemanden kalt lassen wird.
+                </div>
+                
+                <div class="button-container">
+                    <span class="btn btn-soon">📅 Bald verfügbar</span>
+                    <span class="btn btn-soon">📖 Taschenbuch folgt</span>
+                    <span class="btn btn-soon">📱 Kindle folgt</span>
+                    <button class="btn btn-sample" onclick="openSample('flammen', 1)">👁 Leseprobe</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="back-link">
+            <a href="index.html">← Zurück zur Startseite</a>
+        </div>
+    </div>
+    
+    <!-- Pop-up für Leseproben -->
+    <div id="popup-overlay" class="popup-overlay">
+        <div class="popup-content">
+            <div class="popup-header">
+                <img id="popup-cover" class="popup-cover" src="" alt="Book Cover">
+                <div class="popup-title">
+                    <h3 id="popup-book-title"></h3>
+                    <p id="popup-chapter-title"></p>
+                </div>
+                <button class="popup-close" onclick="closePopup()">&times;</button>
+            </div>
+            
+            <div id="popup-text" class="popup-text"></div>
+            
+            <div class="popup-navigation">
+                <p id="popup-page-info" class="popup-page-info"></p>
+                <button id="btn-prev" class="btn-nav" onclick="previousPage()" disabled>← Vorherige Seite</button>
+                <button id="btn-next" class="btn-nav" onclick="nextPage()">Nächste Seite →</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Vollständiges Thriller-Kapitel "Flammen des Verrats"
+        const samples = {
+            flammen: {
+                title: "Flammen des Verrats",
+                chapter: "Kapitel 1: Ein neues Leben bei der Feuerwehr",
+                cover: "flammendesverrats.jpg",
+                pages: [
+                    // Seite 1
+                    `<p><strong>Ein neues Leben bei der Feuerwehr</strong></p>
+                    <p>Lukas stand da, unsicher, mit einem Anflug von Nervosität, während die Flammen vor seinem inneren Auge in scharfer Erinnerung aufflackerten. Seit seiner Kindheit hatte das Feuer eine seltsame Faszination auf ihn ausgeübt -- eine mächtige, alles verzehrende Kraft, die ihn zugleich anzog und einschüchterte.</p>
+                    <p>In seiner rauen Umgebung, in der ihn oft eine bedrückende Einsamkeit umfing, war das Feuer das Einzige, was ihm intensiv und lebendig erschien. Hier, in der Feuerwehr, glaubte Lukas, endlich eine Möglichkeit gefunden zu haben, diese gewaltige Energie zu zähmen und in eine kontrollierte, sinnvolle Richtung zu lenken.</p>`,
+                    
+                    // Seite 2
+                    `<p>Als er zum ersten Mal die Wache betrat, verspürte er den kühlen Betonboden unter seinen neuen Stiefeln und atmete den charakteristischen Geruch von Rauch, Metall und Motoröl ein, der ihm fast wie ein Versprechen vorkam. Die Geräuschkulisse war geschäftig und doch beruhigend; Männer und Frauen, die sich konzentriert auf ihren nächsten Einsatz vorbereiteten, Werkzeuge prüften und die Fahrzeuge für den Ernstfall inspizierten.</p>
+                    <p>Hier gehörte er hin, dachte Lukas. Ein neuer Anfang. Seine Kollegen musterten ihn kurz, nickten ihm zu und gingen wieder ihrer Arbeit nach. Niemand kannte seine Geschichte, die Leere, die ihn umgab, und das Leben, aus dem er kam.</p>`,
+                    
+                    // Seite 3
+                    `<p>Lukas war nie gut darin gewesen, sich anderen zu öffnen oder enge Freundschaften zu knüpfen, aber hier zählte das nicht. Hier wurde er nicht nach seiner Vergangenheit beurteilt, sondern nur danach, ob er im Ernstfall die Nerven behielt und seinen Aufgaben gewachsen war.</p>
+                    <p>Die ersten Tage vergingen schnell. Lukas lernte, wie man die schwere Ausrüstung bedient, und absolvierte schweißtreibende Übungen. Jeder Handgriff musste sitzen; Präzision und Ausdauer waren gefragt. Schon bald entdeckte er eine neue Art von Erfüllung, die ihm die Arbeit gab.</p>`,
+                    
+                    // Seite 4
+                    `<p>Die Routine, das harte Training und die Disziplin -- all das gab ihm ein Gefühl der Zugehörigkeit und der Kontrolle, das ihm bisher gefehlt hatte. Er fühlte sich endlich als Teil einer Gemeinschaft, die durch eine gemeinsame Aufgabe verbunden war.</p>
+                    <p>Doch in stillen Momenten, wenn das Tageslicht durch die Fenster der Wache fiel und sich die Hitze eines gerade überstandenen Einsatzes legte, spürte Lukas, wie die Flamme seiner inneren Leidenschaft wieder aufflammte. Das Feuer ließ ihn nicht los; es zog ihn wie einen stillen Ruf in seinen Bann.</p>`,
+                    
+                    // Seite 5
+                    `<p>Eines Abends, nach einem besonders fordernden Training, blieb Lukas in der Fahrzeughalle zurück. Die anderen waren bereits gegangen, und die Stille legte sich wie eine Decke über die leeren Einsatzfahrzeuge. Er ging umher, betrachtete die Ausrüstung und ließ die Eindrücke auf sich wirken.</p>
+                    <p>Er wusste, dass er in der Feuerwehr eine neue Richtung gefunden hatte -- und doch war da etwas, das tief in ihm noch immer nagte. Es war wie ein Flüstern, das in den stillen Momenten zwischen den Einsätzen an Stärke gewann.</p>`,
+                    
+                    // Seite 6
+                    `<p>Lukas hatte gehofft, dass seine Arbeit als Feuerwehrmann dieses Verlangen, das ihn seit Jahren begleitete, zum Schweigen bringen würde. Doch je mehr er sich an das Leben bei der Feuerwehr gewöhnte, desto stärker wurde das unerklärliche, brennende Verlangen, dem Feuer ganz nah zu sein -- nicht nur als Helfer, sondern als jemand, der es tatsächlich beherrschen konnte.</p>
+                    <p>Mit jedem Einsatz, bei dem die Flammen zurückgedrängt wurden, spürte Lukas eine ambivalente Mischung aus Stolz und Enttäuschung. Stolz, weil er Teil der Feuerwehr war, die die Ordnung wiederherstellte und das Chaos bändigte.</p>`,
+                    
+                    // Seite 7
+                    `<p>Doch auch Enttäuschung, weil das Feuer stets nur von außen auf ihn wirkte, während es tief in ihm auf eine Art pulsierte, die niemand verstand -- er selbst kaum.</p>
+                    <p>Eines Nachts, als er nach einem langen Tag müde und gedankenverloren den Rückweg zur Feuerwache antrat, entdeckte er an einer kleinen, verlassenen Hütte am Stadtrand einen schwelenden Glut-Rest. Es war offensichtlich, dass das Feuer nur knapp nicht zum Inferno ausgebrochen war, möglicherweise durch einen Zufall frühzeitig erstickt.</p>`,
+                    
+                    // Seite 8
+                    `<p>Lukas blieb stehen, den Blick fest auf den glimmenden Ort gerichtet, und spürte, wie sein Herz unruhig zu pochen begann. Sein Atem ging flach, als er in die tiefe Dunkelheit der Hütte starrte. Er hatte das unwiderstehliche Bedürfnis, die letzten Glut-Reste zu berühren, zu fühlen, wie nah er dem Feuer sein konnte, ohne es zu löschen.</p>
+                    <p>Er konnte sich kaum dazu zwingen, den Ort zu verlassen. Es war, als würde ein unsichtbares Band ihn an die Glut fesseln, ihm ins Ohr flüstern und ihn auffordern, sich dem Feuer ganz hinzugeben.</p>`,
+                    
+                    // Seite 9
+                    `<p>Doch mit aller Kraft löste er sich schließlich aus dieser merkwürdigen Starre und kehrte zur Wache zurück. Die Gedanken an die Flammen, die so nah gewesen waren, ließen ihn die ganze Nacht wach liegen.</p>
+                    <p>Am nächsten Morgen bemerkte Lukas, dass sich etwas in ihm verändert hatte. Die stille Faszination für das Feuer, die bisher nur ein unterschwelliger Teil seines Wesens gewesen war, fühlte sich plötzlich stärker an, als hätte das Glimmen der Hütte es entfacht. Bei den nächsten Einsätzen wirkte er angespannter als sonst.</p>`,
+                    
+                    // Seite 10
+                    `<p>Seine Kollegen, die die Veränderung an ihm spürten, fragten besorgt, ob es ihm gut geht. Lukas versicherte ihnen, dass alles in Ordnung sei, und bemühte sich, die innere Unruhe zu verbergen. Aber innerlich spürte er eine Macht, die immer stärker an ihn zog.</p>
+                    <p>Ein Gedanke keimte in ihm auf, so scheu und verstohlen wie eine Flamme, die sich unter einem Aschenhaufen verbarg. Was wäre, wenn er selbst einen Brand entfachen könnte, um zu sehen, wie es sich anfühlte, ein Feuer aus nächster Nähe zu beobachten, das ihm gänzlich unterstand?</p>
+                    <p><strong>Wie weit wird Lukas gehen? Die dunkle Faszination wächst... Bald verfügbar.</strong></p>`
+                ]
+            }
+        };
+
+        let currentSample = null;
+        let currentPage = 0;
+
+        function openSample(book, page) {
+            if (!samples[book]) return;
+            
+            currentSample = book;
+            currentPage = page - 1;
+            
+            const sample = samples[book];
+            document.getElementById('popup-book-title').textContent = sample.title;
+            document.getElementById('popup-chapter-title').textContent = sample.chapter;
+            document.getElementById('popup-cover').src = sample.cover;
+            
+            updatePopupContent();
+            
+            document.getElementById('popup-overlay').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function updatePopupContent() {
+            const sample = samples[currentSample];
+            const totalPages = sample.pages.length;
+            
+            document.getElementById('popup-text').innerHTML = sample.pages[currentPage];
+            document.getElementById('popup-page-info').textContent = `Seite ${currentPage + 1} von ${totalPages}`;
+            
+            // Navigation buttons
+            document.getElementById('btn-prev').disabled = currentPage === 0;
+            
+            if (currentPage === totalPages - 1) {
+                document.getElementById('btn-next').textContent = 'Leseprobe beenden';
+            } else {
+                document.getElementById('btn-next').textContent = 'Nächste Seite →';
+            }
+        }
+
+        function nextPage() {
+            const sample = samples[currentSample];
+            if (currentPage < sample.pages.length - 1) {
+                currentPage++;
+                updatePopupContent();
+            } else {
+                closePopup();
+            }
+        }
+
+        function previousPage() {
+            if (currentPage > 0) {
+                currentPage--;
+                updatePopupContent();
+            }
+        }
+
+        function closePopup() {
+            document.getElementById('popup-overlay').style.display = 'none';
+            document.body.style.overflow = 'auto';
+            currentSample = null;
+            currentPage = 0;
+        }
+
+        // Close popup when clicking outside
+        document.getElementById('popup-overlay').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closePopup();
+            }
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (currentSample) {
+                if (e.key === 'ArrowRight' || e.key === 'Space') {
+                    e.preventDefault();
+                    nextPage();
+                } else if (e.key === 'ArrowLeft') {
+                    e.preventDefault();
+                    previousPage();
+                } else if (e.key === 'Escape') {
+                    closePopup();
+                }
+            }
+        });
+    </script>
+</body>
+</html>
 
