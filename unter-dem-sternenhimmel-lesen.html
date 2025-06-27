@@ -85,23 +85,27 @@
             align-items: center;
             gap: 8px;
             text-decoration: none;
-            color: white;
+            color: #666;
             padding: 8px 15px;
             border-radius: 20px;
-            background: rgba(255, 255, 255, 0.2);
+            background: linear-gradient(135deg, #e8e8e8, #d5d5d5);
             transition: all 0.3s ease;
-            border: 2px solid transparent;
+            border: 2px solid #ff6b6b;
         }
 
         .language-item:hover {
-            background: rgba(255, 255, 255, 0.3);
+            background: linear-gradient(135deg, #f0f0f0, #e8e8e8);
             transform: translateY(-2px);
+            border-color: #ff4757;
+            box-shadow: 0 4px 12px rgba(255, 107, 107, 0.3);
         }
 
         .language-item.active {
-            background: rgba(255, 255, 255, 0.4);
+            background: linear-gradient(135deg, #d5d5d5, #c8c8c8);
             font-weight: bold;
-            border-color: rgba(255, 255, 255, 0.5);
+            border-color: #ff4757;
+            color: #444;
+            box-shadow: 0 4px 12px rgba(255, 107, 107, 0.4);
         }
 
         .cover-thumbnail {
