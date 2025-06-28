@@ -1,1 +1,321 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bajo el Cielo Estrellado - Capítulo 1 | Mundos de Palabras de Helmut Wegner</title>
+    <meta name="description" content="Lee el primer capítulo de 'Bajo el Cielo Estrellado' - Volumen 1 de la serie 'Deseos del Corazón' de Helmut Wegner">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            background: linear-gradient(135deg, #FFE5E5 0%, #FFD4B8 50%, #FFCFCF 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .nav-bar {
+            padding: 20px 30px 0;
+        }
+
+        .back-button {
+            background: linear-gradient(135deg, #2c3e50, #34495e);
+            color: white;
+            padding: 12px 25px;
+            border: 2px solid #2c3e50;
+            border-radius: 20px;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 1em;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 16px rgba(44, 62, 80, 0.4);
+        }
+
+        .back-button:hover {
+            background: linear-gradient(135deg, #34495e, #2c3e50);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(44, 62, 80, 0.5);
+        }
+
+        .header {
+            background: linear-gradient(135deg, #FF8A80 0%, #FFB74D 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+            position: relative;
+        }
+
+        .book-title {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .chapter-title {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .language-nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .language-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            color: #666;
+            padding: 8px 15px;
+            border-radius: 20px;
+            background: linear-gradient(135deg, #e8e8e8, #d5d5d5);
+            transition: all 0.3s ease;
+            border: 2px solid #ff6b6b;
+        }
+
+        .language-item:hover {
+            background: linear-gradient(135deg, #f0f0f0, #e8e8e8);
+            transform: translateY(-2px);
+            border-color: #ff4757;
+            box-shadow: 0 4px 12px rgba(255, 107, 107, 0.3);
+        }
+
+        .language-item.active {
+            background: linear-gradient(135deg, #d5d5d5, #c8c8c8);
+            font-weight: bold;
+            border-color: #ff4757;
+            color: #444;
+            box-shadow: 0 4px 12px rgba(255, 107, 107, 0.4);
+        }
+
+        .cover-thumbnail {
+            width: 32px;
+            height: 48px;
+            border-radius: 4px;
+            object-fit: cover;
+            border: 2px solid rgba(255, 255, 255, 0.6);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .flag {
+            font-size: 1.2em;
+        }
+
+        .chapter-content {
+            padding: 40px;
+            line-height: 1.8;
+            font-size: 18px;
+            color: #333;
+        }
+
+        .chapter-content p {
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+
+        .chapter-content p:first-child::first-letter {
+            float: left;
+            font-size: 4em;
+            line-height: 0.8;
+            margin: 0.1em 0.1em 0.1em 0;
+            color: #FF8A80;
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .book-title {
+                font-size: 2em;
+            }
+            
+            .chapter-content {
+                padding: 20px;
+                font-size: 16px;
+            }
+            
+            .chapter-content p:first-child::first-letter {
+                font-size: 3em;
+            }
+
+            .language-nav {
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="nav-bar">
+            <a href="verlangen-der-herzen.html" class="back-button">← Volver a la Serie</a>
+        </div>
+        <div class="header">
+            <h1 class="book-title">Bajo el Cielo Estrellado</h1>
+            <h2 class="chapter-title">Capítulo 1: Encuentro</h2>
+            <div class="language-nav">
+                <a href="unter-dem-sternenhimmel-lesen.html" class="language-item">
+                    <img src="unter-dem-sternenhimmel.jpg" alt="Portada Alemán" class="cover-thumbnail">
+                    <span class="flag">🇩🇪</span>
+                    <span>Deutsch</span>
+                </a>
+                <a href="unter-dem-sternenhimmel-english.html" class="language-item">
+                    <img src="unter-dem-sternenhimmel.jpg" alt="Portada Inglés" class="cover-thumbnail">
+                    <span class="flag">🇬🇧</span>
+                    <span>English</span>
+                </a>
+                <a href="unter-dem-sternenhimmel-spanish.html" class="language-item active">
+                    <img src="unter-dem-sternenhimmel.jpg" alt="Portada Español" class="cover-thumbnail">
+                    <span class="flag">🇪🇸</span>
+                    <span>Español</span>
+                </a>
+            </div>
+        </div>
+        
+        <div class="chapter-content">
+            <p>Era una de esas tardes de Adelaide cuando el aire aún conservaba la calidez del sol del día y el cielo se transformaba lentamente en un violeta profundo. Clara Williams caminaba por la bulliciosa Rundle Mall, sus pasos un poco más apresurados de lo habitual. Llegaba tarde a una cena con amigos, pero algo la hacía detenerse constantemente para examinar los escaparates de las pequeñas galerías de arte escondidas entre las tiendas más grandes.</p>
+
+            <p>Como curadora de arte independiente, Clara había desarrollado un ojo para lo especial, y esta tarde, una pequeña galería en una calle lateral la atrajo magnéticamente. A través del gran escaparate podía ver una exposición que la cautivó inmediatamente: pinturas abstractas que capturaban movimiento y emoción de una manera que rara vez había visto.</p>
+
+            <p>Sin dudarlo, entró en la galería. El espacio era pequeño pero elegantemente iluminado, y los pocos visitantes se movían silenciosamente entre las obras. Clara dejó que su mirada vagara sobre las pinturas, y cuanto más miraba, más se sentía atraída hacia esos mundos de color.</p>
+
+            <p>"¿Le gustan?" Una voz profunda y cálida la hizo levantar la vista.</p>
+
+            <p>Ante ella estaba un hombre de unos treinta años, con cabello oscuro y ojos verdes intensos. Llevaba un suéter negro ligero y había olvidado un pincel detrás de la oreja, un detalle que Clara encontró inmediatamente encantador.</p>
+
+            <p>"Son... extraordinarias", respondió Clara honestamente. "La forma en que los colores se fusionan entre sí, pero cada uno mantiene su propia identidad, es impresionante."</p>
+
+            <p>El hombre sonrió, y Clara notó cómo se formaban pequeñas arrugas alrededor de sus ojos. "Probablemente ese es el cumplido más hermoso que he recibido esta semana. Soy Alexander Morrison, por cierto, Alex. Y sí, esas son mis pinturas."</p>
+
+            <p>Clara sintió que su corazón daba un pequeño salto. Era raro que conociera a un artista cuyo trabajo la emocionara tan inmediatamente. "Clara Williams. Soy curadora de arte, y debo decir que su trabajo es verdaderamente notable."</p>
+
+            <p>Los ojos de Alex se iluminaron. "¿Una curadora? Eso es interesante. Pensé que tenía un ojo profesional para el arte. La forma en que mira las pinturas..."</p>
+
+            <p>"¿Cómo las miro?" preguntó Clara con curiosidad.</p>
+
+            <p>"No solo con los ojos", dijo Alex, acercándose a una de las pinturas más grandes. "También ve con el corazón. Se nota. La mayoría de las personas miran una pintura y ven colores y formas. Usted ve la historia detrás."</p>
+
+            <p>Clara se sorprendió por su perspicacia. "¿Y qué historia ve en esta pintura?" preguntó, señalando la obra de arte frente a ellos.</p>
+
+            <p>Alex contempló su propia obra como si la viera por primera vez. "Es una historia sobre movimiento y quietud al mismo tiempo. Sobre el momento en que todo cambia, pero el tiempo parece detenerse. La pinté después de un momento en mi vida cuando supe que nada volvería a ser igual."</p>
+
+            <p>La honestidad en su voz conmovió a Clara. "Suena como una experiencia intensa."</p>
+
+            <p>"Lo fue", confirmó Alex. "Pero a veces las obras de arte más honestas emergen de los momentos más intensos."</p>
+
+            <p>Clara asintió pensativamente. "Puedo entender eso. En mi trabajo, a menudo me encuentro con artistas que ponen sus emociones más profundas en sus obras. Es esta autenticidad lo que me fascina del arte."</p>
+
+            <p>"¿Y qué trae a una curadora como usted a una pequeña galería como esta en una tarde de martes?" preguntó Alex con una sonrisa traviesa.</p>
+
+            <p>Clara se rió. "En realidad voy camino a cenar con amigos, pero..." Se encogió de hombros. "El buen arte tiene una forma de detenerte y hacerte olvidar todo lo demás."</p>
+
+            <p>"Entonces probablemente no debería quitarle más tiempo", dijo Alex, aunque su tono sugería que no quería terminar la conversación.</p>
+
+            <p>"En realidad", dijo Clara espontáneamente, "¿le importaría si tomo algunas fotos de sus obras? Estoy trabajando en un proyecto sobre artistas emergentes en Adelaide, y su trabajo encajaría perfectamente."</p>
+
+            <p>El rostro de Alex se iluminó. "Eso sería fantástico. Le estaría muy agradecido si incluyera mi trabajo en su proyecto."</p>
+
+            <p>Mientras Clara fotografiaba las pinturas, mantuvieron una conversación animada sobre arte, sobre Adelaide y sobre sus respectivos sueños. Alex le contó sobre su deseo de algún día exponer en una galería importante, y Clara habló sobre su visión de proporcionar una plataforma para artistas jóvenes.</p>
+
+            <p>"Sabe", dijo Alex cuando Clara guardó su cámara nuevamente, "hay un pequeño café a la vuelta de la esquina que hace un café excelente. Si le apetece, podríamos continuar nuestra conversación allí, quiero decir, si sus amigos pueden esperar."</p>
+
+            <p>Clara dudó por un momento. No era típico de ella cambiar planes espontáneos, pero algo sobre Alex y la forma en que hablaba de su arte la atraía. "¿Sabe qué? Mis amigos sobrevivirán. Muéstreme ese café."</p>
+
+            <p>El pequeño café era acogedor e íntimo, con iluminación tenue y el aroma de café recién tostado en el aire. Clara y Alex encontraron una mesa junto a la ventana desde donde podían observar a las personas que pasaban apresuradamente.</p>
+
+            <p>"Hábleme de su proyecto", dijo Alex mientras revolvía su capuchino.</p>
+
+            <p>Clara se recostó y sonrió. "Aún está en fase de desarrollo, pero la idea es crear una plataforma que ayude a los artistas emergentes a presentar su trabajo a un público más amplio. Demasiadas personas talentosas permanecen sin descubrir simplemente porque no tienen los contactos adecuados."</p>
+
+            <p>"Esa es una idea maravillosa", dijo Alex con entusiasmo. "Conozco a tantos artistas que son increíblemente talentosos pero simplemente no saben cómo mostrar su trabajo."</p>
+
+            <p>"Exactamente de eso se trata", confirmó Clara. "El arte debería ser accesible para todos, tanto para los artistas como para el público."</p>
+
+            <p>Hablaron durante horas, y Clara apenas se dio cuenta de cómo pasaba el tiempo. Alex no era solo un artista talentoso, sino también un compañero de conversación interesante con una comprensión profunda del mundo del arte y una pasión contagiosa.</p>
+
+            <p>"Realmente debería irme", dijo Clara finalmente cuando miró su reloj. "Ya son casi las once."</p>
+
+            <p>Alex también miró sorprendido su reloj. "El tiempo realmente voló. Fue una tarde hermosa, Clara."</p>
+
+            <p>"Realmente lo fue", estuvo de acuerdo. "Y gracias por mostrarme su arte. Definitivamente será incluido en mi proyecto."</p>
+
+            <p>"¿Puedo preguntar", dijo Alex vacilando mientras salían del café, "si le gustaría hacer esto más a menudo? Quiero decir, no como una entrevista profesional, sino..."</p>
+
+            <p>Clara sonrió. "Me gustaría eso, Alex."</p>
+
+            <p>Intercambiaron números de teléfono, y cuando Clara finalmente caminó hacia su coche, no podía borrar la sonrisa de su rostro. Era raro conocer a alguien que compartiera su pasión por el arte tan completamente, y ya sentía que esto podría ser el comienzo de algo especial.</p>
+
+            <p>En el camino a casa, Clara pensó en la tarde. No se había imaginado que una visita espontánea a una pequeña galería pudiera cambiar su vida, pero eso era exactamente lo que había pasado. Alex no era solo un artista impresionante, sino también una persona que compartía su visión del mundo.</p>
+
+            <p>En los días siguientes, Clara y Alex apenas podían dejar de enviarse mensajes. Sus conversaciones giraban en torno al arte, pero también sobre la vida, los sueños y las pequeñas cosas que los hacían reír. Clara notó que esperaba cada uno de sus mensajes y que Alex traía una calidez a su vida que no había esperado.</p>
+
+            <p>Una semana después se encontraron de nuevo, esta vez en otra galería donde tenía lugar una exposición de fotografía contemporánea. Mientras caminaban entre las imágenes, mantuvieron conversaciones profundas sobre el poder del arte visual y cómo una sola imagen puede contar toda una historia.</p>
+
+            <p>"¿Ve esa imagen allí?" preguntó Alex, señalando una fotografía en blanco y negro de una anciana sentada en un banco del parque. "¿Qué historia le cuenta?"</p>
+
+            <p>Clara miró la imagen pensativamente. "Veo soledad, pero también fortaleza. Esta mujer probablemente ha experimentado mucho, muchas pérdidas y triunfos. Pero está sentada ahí con una dignidad que muestra que ha sobrevivido a todo."</p>
+
+            <p>Alex asintió con admiración. "Eso es lo que amo de usted: su capacidad de reconocer las capas más profundas de una obra de arte."</p>
+
+            <p>La palabra "amo" quedó suspendida en el aire entre ellos por un momento, y ambos se quedaron en silencio. Era demasiado pronto para tales palabras, pero el significado aún era palpable.</p>
+
+            <p>"Perdón", dijo Alex rápidamente. "Quise decir..."</p>
+
+            <p>"Sé lo que quiso decir", lo interrumpió Clara suavemente y sonrió. "Y está bien."</p>
+
+            <p>Después de la galería, fueron a su pequeño café otra vez, que ya se había convertido en "su" lugar. Esta vez se quedaron hasta la hora de cierre y hablaron de todo y nada. Clara notó que Alex no solo compartía su pasión por el arte, sino también sus valores y su visión de la vida.</p>
+
+            <p>Cuando finalmente se despidieron, Alex le dio espontáneamente un beso en la mejilla. Fue un momento pequeño y tierno que hizo que el corazón de Clara latiera más rápido.</p>
+
+            <p>"Hasta pronto", dijo en voz baja.</p>
+
+            <p>"Hasta pronto", repitió Clara, sabiendo que ya esperaba la próxima vez.</p>
+
+            <p>En las semanas siguientes, sus encuentros se volvieron más regulares. Visitaron exposiciones, fueron al cine, dieron largos paseos por los parques de Adelaide y descubrieron juntos nuevos lugares en la ciudad. Con cada día que pasaban juntos, su conexión crecía.</p>
+
+            <p>Clara comenzó a reconocer que Alex no era solo un artista talentoso, sino también una persona amorosa y atenta. Recordaba pequeños detalles de sus conversaciones, le traía flores que combinaban con sus colores favoritos, y la escuchaba cuando hablaba sobre su trabajo o sus sueños.</p>
+
+            <p>Una tarde, mientras estaban sentados juntos en un banco en el Jardín Botánico viendo la puesta de sol, Alex tomó su mano.</p>
+
+            <p>"Clara", dijo en voz baja, "quiero que sepas que estas semanas contigo han sido las más felices de mi vida."</p>
+
+            <p>Clara lo miró, y en sus ojos verdes vio una profundidad y honestidad que le quitó el aliento. "Siento lo mismo, Alex."</p>
+
+            <p>"Creo que me estoy enamorando de ti", confesó, su voz apenas más que un susurro.</p>
+
+            <p>Clara sintió que su corazón daba un salto. Había sentido los mismos sentimientos pero no se había atrevido a expresarlos. "Creo que yo también", respondió honestamente.</p>
+
+            <p>En ese momento, bajo el cielo naranja de Adelaide, se besaron por primera vez. Fue un beso lleno de ternura y promesas, y Clara supo que este era el comienzo de algo maravilloso.</p>
+
+            <p>Las estrellas centelleaban sobre ellos mientras caminaban a casa tomados de la mano, ambos sabiendo que sus vidas habían tomado un nuevo y emocionante rumbo. Lo que había comenzado como un encuentro casual en una pequeña galería había crecido hasta convertirse en una conexión profunda y significativa que cambiaría sus vidas para siempre.</p>
+        </div>
+        
+        <div style="text-align: center; margin: 30px 0; padding: 20px; background: rgba(255,255,255,0.1); border-radius: 10px;">
+            <p style="color: #666; margin-bottom: 15px; font-size: 16px;">Volumen 1 "Bajo el Cielo Estrellado" en Amazon:</p>
+            <a href="https://amazon.de/dp/B0F37NJD39" style="display: inline-block; margin: 0 10px; padding: 12px 25px; background: #FF8A80; color: white; text-decoration: none; border-radius: 25px; transition: all 0.3s ease;" target="_blank">📖 Comprar Libro</a>
+        </div>
+    </div>
+</body>
+</html>
