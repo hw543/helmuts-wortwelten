@@ -1,1 +1,320 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mysterien der Heide - Versuchsreihe - Helmut Wegners Wortwelten</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            color: #2c1810;
+            background: linear-gradient(135deg, #8B4513 0%, #A0522D 30%, #D2B48C 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: #FFF8DC;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #8B4513, #A0522D);
+            color: #FFF8DC;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 3em;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            font-size: 1.3em;
+            opacity: 0.9;
+            font-style: italic;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .series-intro {
+            text-align: center;
+            margin-bottom: 50px;
+            padding: 30px;
+            background: #F5DEB3;
+            border-radius: 10px;
+            border: 2px solid #D2B48C;
+        }
+
+        .series-intro h2 {
+            color: #8B4513;
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        .series-intro p {
+            font-size: 1.2em;
+            color: #5d4037;
+            margin-bottom: 20px;
+        }
+
+        .vorlesen-button {
+            background: linear-gradient(135deg, #4CAF50, #45a049);
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.2em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+        }
+
+        .vorlesen-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(76, 175, 80, 0.4);
+        }
+
+        .books-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .book-card {
+            background: #FAEBD7;
+            border-radius: 15px;
+            padding: 25px;
+            border: 2px solid #D2B48C;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .book-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        .book-cover {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .book-cover img {
+            width: 200px;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .book-info h3 {
+            color: #8B4513;
+            font-size: 1.5em;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .book-series {
+            color: #A0522D;
+            font-style: italic;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .book-description {
+            color: #5d4037;
+            line-height: 1.6;
+            text-align: justify;
+            margin-bottom: 20px;
+        }
+
+        .book-features {
+            background: #F5DEB3;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .book-features h4 {
+            color: #8B4513;
+            margin-bottom: 10px;
+        }
+
+        .book-features ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .book-features li {
+            color: #5d4037;
+            margin-bottom: 5px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .book-features li:before {
+            content: "📖";
+            position: absolute;
+            left: 0;
+        }
+
+        .back-navigation {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 2px solid #D2B48C;
+        }
+
+        .back-button {
+            background: linear-gradient(135deg, #6c757d, #495057);
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 20px;
+            font-size: 1.1em;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        .back-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.2em;
+            }
+            
+            .header p {
+                font-size: 1.1em;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            .books-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Mysterien der Heide</h1>
+            <p>Düstere Geheimnisse der Lüneburger Heide - Eine Krimi-Serie voller Spannung</p>
+        </div>
+
+        <div class="content">
+            <div class="series-intro">
+                <h2>🎧 Neu: Lesen & Vorlesen-System</h2>
+                <p>Werter Interessent! Mit einem Klick auf "Lesen & Vorlesen" erhalten Sie Zugang zu revolutionären Funktionen:</p>
+                <p><strong>Alle 3 Bände</strong> zum Lesen und Vorlesen lassen • <strong>Wort-für-Wort Markierung</strong> beim Vorlesen • <strong>Interaktive Steuerung</strong> • <strong>Zwischen Bändern wechseln</strong></p>
+                <a href="versuchsreihe-mysterien-vorlesen.html" class="vorlesen-button">
+                    🎧 Lesen & Vorlesen - Alle 3 Bände
+                </a>
+            </div>
+
+            <div class="books-grid">
+                <!-- Band 1 -->
+                <div class="book-card">
+                    <div class="book-cover">
+                        <img src="geistderheide.jpg" alt="Der Geist der Heide">
+                    </div>
+                    <div class="book-info">
+                        <h3>Band 1: Der Geist der Heide</h3>
+                        <p class="book-series">Mysterien der Heide - Serie</p>
+                        <p class="book-description">
+                            Geschichtslehrer Elias Hoffmann entdeckt einen mysteriösen Brief bei seinem morgendlichen Spaziergang. Was als ruhiger Tag in der Lüneburger Heide beginnt, wird zu einem Alptraum aus uralten Legenden und dunklen Geheimnissen. Der Geist der Heide erwacht.
+                        </p>
+                        <div class="book-features">
+                            <h4>In diesem Band:</h4>
+                            <ul>
+                                <li>Mysteriöse Briefe und uralte Symbole</li>
+                                <li>Die Legenden der Lüneburger Heide</li>
+                                <li>Elias' gefährliche Entdeckungen</li>
+                                <li>Übernatürliche Ereignisse</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Band 2 -->
+                <div class="book-card">
+                    <div class="book-cover">
+                        <img src="moordesvergessens.jpg" alt="Das Moor des Vergessens">
+                    </div>
+                    <div class="book-info">
+                        <h3>Band 2: Das Moor des Vergessens</h3>
+                        <p class="book-series">Mysterien der Heide - Serie</p>
+                        <p class="book-description">
+                            Kommissarin Anna Hartmann steht vor einem grauenhaften Fund: Ein perfekt konservierter Körper im Moor, der dreißig Jahre alt sein soll, aber aussieht wie gestern gestorben. Mysteriöse Symbole und weitere Gräber machen deutlich - das Moor hütet düstere Geheimnisse.
+                        </p>
+                        <div class="book-features">
+                            <h4>In diesem Band:</h4>
+                            <ul>
+                                <li>Grauenhafte Moorleichen-Funde</li>
+                                <li>Kommissarin Hartmanns Ermittlungen</li>
+                                <li>Mysteriöse Symbole und Rituale</li>
+                                <li>Das Dorf Eldermoor und seine Geheimnisse</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Band 3 -->
+                <div class="book-card">
+                    <div class="book-cover">
+                        <img src="schattenderdoerfer.jpg" alt="Die Schatten der Dörfer">
+                    </div>
+                    <div class="book-info">
+                        <h3>Band 3: Die Schatten der Dörfer</h3>
+                        <p class="book-series">Mysterien der Heide - Serie</p>
+                        <p class="book-description">
+                            Bürgermeister Erik Müller entdeckt Graffiti am Kriegerdenkmal seines friedlichen Dorfes. Was als Vandalismus beginnt, entpuppt sich als der Beginn einer Welle des Hasses, die das Dorf zu zerreißen droht. Fremdenfeindlichkeit und alte Vorurteile erwachen zu neuem Leben.
+                        </p>
+                        <div class="book-features">
+                            <h4>In diesem Band:</h4>
+                            <ul>
+                                <li>Fremdenfeindlichkeit im idyllischen Dorf</li>
+                                <li>Bürgermeister Müllers Kampf um Zusammenhalt</li>
+                                <li>Die Familie Al-Rahman und ihre Integration</li>
+                                <li>Gesellschaftliche Spannungen und Vorurteile</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="back-navigation">
+                <a href="mysterien-der-heide.html" class="back-button">← Zurück zur normalen Ansicht</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
