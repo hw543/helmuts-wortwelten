@@ -183,6 +183,50 @@
             font-weight: bold;
         }
 
+        /* Versuchsreihe Banner */
+        .versuchsreihe-banner {
+            background: linear-gradient(135deg, #FF6B35, #F7931E);
+            color: white;
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 3rem 0;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.3);
+        }
+
+        .versuchsreihe-banner h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .versuchsreihe-banner p {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            opacity: 0.9;
+        }
+
+        .versuchsreihe-btn {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            color: white;
+            padding: 15px 30px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 25px;
+            font-weight: bold;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+        }
+
+        .versuchsreihe-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            color: white;
+            text-decoration: none;
+        }
+
         /* Genre Grid */
         .genres-section {
             margin: 4rem 0;
@@ -281,6 +325,13 @@
             background: #f39c12;
         }
 
+        .genre-buttons {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
         .genre-btn {
             background: linear-gradient(45deg, #667eea, #764ba2);
             color: white;
@@ -299,6 +350,15 @@
             box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
             color: white;
             text-decoration: none;
+        }
+
+        .genre-btn.experimental {
+            background: linear-gradient(45deg, #FF6B35, #F7931E);
+            border: 2px solid transparent;
+        }
+
+        .genre-btn.experimental:hover {
+            box-shadow: 0 5px 15px rgba(255, 107, 53, 0.3);
         }
 
         .genre-btn.disabled {
@@ -369,6 +429,19 @@
             .stats-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
+
+            .genre-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .versuchsreihe-banner h2 {
+                font-size: 1.5rem;
+            }
+
+            .versuchsreihe-banner p {
+                font-size: 1rem;
+            }
         }
     </style>
 </head>
@@ -423,6 +496,12 @@
             <p>Jedes meiner Bücher ist sorgfältig konzipiert, um nicht nur zu unterhalten, sondern auch wichtige Lebenslektionen zu vermitteln. <span class="highlight">Es ist nie zu spät, etwas Neues zu beginnen</span> -- das ist die Botschaft, die ich mit meinen Geschichten teile.</p>
         </section>
 
+        <section class="versuchsreihe-banner">
+            <h2>🧪 Neu: Revolutionäres Lesen & Vorlesen-System!</h2>
+            <p>Entdecke eine völlig neue Art, Bücher zu erleben! Mit unserem innovativen System kannst du alle Kapitel lesen UND dir vorlesen lassen - mit Wort-für-Wort Markierung und interaktiver Steuerung.</p>
+            <a href="versuchsreihe-mysterien-der-heide.html" class="versuchsreihe-btn">🎧 Jetzt ausprobieren - Mysterien der Heide</a>
+        </section>
+
         <section class="genres-section">
             <h2 class="section-title">Meine Buchgenres</h2>
             <div class="genres-grid">
@@ -473,7 +552,10 @@
                     <p class="genre-description">Spannungsgeladene Krimis aus der Lüneburger Heide und anderen düsteren Schauplätzen.</p>
                     <span class="book-count available">3 Bücher verfügbar</span>
                     <br><br>
-                    <a href="mysterien-der-heide.html" class="genre-btn">Krimis entdecken</a>
+                    <div class="genre-buttons">
+                        <a href="mysterien-der-heide.html" class="genre-btn">🔍 Krimis entdecken</a>
+                        <a href="versuchsreihe-mysterien-der-heide.html" class="genre-btn experimental">🧪 Vorlese-Version</a>
+                    </div>
                 </div>
 
                 <div class="genre-card">
