@@ -3,152 +3,216 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>New Adult - Helmut Wegners Wortwelten</title>
+    <title>New Adult - Emotionale Reisen - Helmut Wegners Wortwelten</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
             font-family: 'Georgia', serif;
-            background: linear-gradient(135deg, #1a1a1a, #2c2c2c, #1a1a1a);
-            margin: 0;
-            padding: 20px;
-            color: #333;
             line-height: 1.6;
+            color: #2c1810;
+            background: linear-gradient(135deg, #FFE5E5 0%, #FFD4B8 50%, #FFCFCF 100%);
+            min-height: 100vh;
+            padding: 20px;
         }
+
         .container {
             max-width: 1000px;
             margin: 0 auto;
-            background: #f9f9f9;
-            border-radius: 15px;
-            padding: 30px;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            overflow: hidden;
         }
+
         .header {
+            background: linear-gradient(135deg, #FF8A80 0%, #FFB74D 100%);
+            color: white;
+            padding: 40px 20px;
             text-align: center;
-            margin-bottom: 40px;
-            border-bottom: 3px solid #e91e63;
-            padding-bottom: 20px;
+            position: relative;
         }
+
         .header h1 {
-            color: #1a1a1a;
-            font-size: 2.5em;
-            margin: 0 0 10px 0;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            font-size: 2.8em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
+
         .header p {
-            color: #666;
+            font-size: 1.3em;
+            opacity: 0.95;
             font-style: italic;
-            margin: 0;
-            font-size: 1.1em;
-        }
-        .series-section {
-            margin-bottom: 50px;
-            background: white;
-            border-radius: 15px;
-            padding: 30px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-            border-left: 5px solid #e91e63;
-            transition: transform 0.3s ease;
-        }
-        .series-section:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 35px rgba(0,0,0,0.15);
-        }
-        .series-header {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-        .series-title {
-            color: #e91e63;
-            font-size: 2.2em;
-            font-weight: bold;
-            margin: 0 0 10px 0;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
-        }
-        .series-subtitle {
-            color: #666;
-            font-style: italic;
-            font-size: 1.2em;
             margin-bottom: 20px;
         }
-        .series-description {
-            color: #2c3e50;
-            font-size: 1.1em;
-            text-align: justify;
-            line-height: 1.8;
-            margin-bottom: 25px;
+
+        .versuchsreihe-info {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 20px;
+            margin: 20px;
+            border-radius: 15px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
         }
-        .series-info {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: #f8f9fa;
-            padding: 15px 20px;
-            border-radius: 10px;
-            margin-bottom: 25px;
-        }
-        .series-stats {
-            color: #666;
-            font-size: 0.95em;
-        }
-        .series-status {
-            background: linear-gradient(135deg, #28a745, #20c997);
-            color: white;
-            padding: 8px 15px;
-            border-radius: 20px;
-            font-size: 0.9em;
-            font-weight: bold;
-        }
-        .button-container {
+
+        .versuchsreihe-info h3 {
+            color: #FFD700;
+            font-size: 1.4em;
+            margin-bottom: 10px;
             text-align: center;
         }
-        .btn-series {
-            display: inline-block;
-            padding: 15px 30px;
-            background: linear-gradient(135deg, #e91e63, #ad1457);
-            color: white;
-            text-decoration: none;
-            border-radius: 25px;
+
+        .versuchsreihe-info p {
+            text-align: center;
             font-size: 1.1em;
+            line-height: 1.5;
+        }
+
+        .lesen-vorlesen-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #4CAF50, #45a049);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 25px;
+            text-decoration: none;
             font-weight: bold;
+            font-size: 1.1em;
+            margin: 20px auto;
+            display: block;
+            width: fit-content;
             transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(76, 175, 80, 0.3);
+        }
+
+        .lesen-vorlesen-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(76, 175, 80, 0.4);
+        }
+
+        .series-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+            padding: 30px;
+        }
+
+        .series-card {
+            background: #FFF8F0;
+            border-radius: 15px;
+            padding: 25px;
+            border: 3px solid #FF8A80;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+
+        .series-title {
+            color: #E91E63;
+            font-size: 2.2em;
+            text-align: center;
+            margin-bottom: 10px;
+            border-bottom: 2px solid #FFB74D;
+            padding-bottom: 10px;
+        }
+
+        .series-subtitle {
+            color: #666;
+            font-size: 1.2em;
+            text-align: center;
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+
+        .series-description {
+            font-size: 1.1em;
+            line-height: 1.7;
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+
+        .series-info {
+            background: rgba(255, 138, 128, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+            border-left: 4px solid #FF8A80;
+        }
+
+        .series-info strong {
+            color: #E91E63;
+        }
+
+        .series-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #E91E63, #AD1457);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 15px auto;
+            display: block;
+            width: fit-content;
+            transition: all 0.3s ease;
+        }
+
+        .series-button:hover {
+            transform: translateY(-2px);
             box-shadow: 0 5px 15px rgba(233, 30, 99, 0.3);
         }
-        .btn-series:hover {
-            background: linear-gradient(135deg, #ad1457, #880e4f);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(233, 30, 99, 0.4);
-            text-decoration: none;
+
+        .status-badge {
+            display: inline-block;
+            background: #4CAF50;
             color: white;
+            padding: 5px 15px;
+            border-radius: 15px;
+            font-size: 0.9em;
+            font-weight: bold;
+            margin: 10px 5px;
         }
+
+        .in-progress {
+            background: #FF9800;
+        }
+
         .back-link {
             text-align: center;
-            margin-top: 40px;
-            padding-top: 20px;
-            border-top: 2px solid #ecf0f1;
+            padding: 30px;
+            background: #F5F5F5;
         }
-        .back-link a {
-            display: inline-block;
-            padding: 12px 25px;
-            background: linear-gradient(135deg, #3498db, #5dade2);
+
+        .btn-back {
+            background: linear-gradient(135deg, #6c757d, #495057);
             color: white;
-            text-decoration: none;
+            padding: 12px 25px;
             border-radius: 25px;
+            text-decoration: none;
             font-weight: bold;
             transition: all 0.3s ease;
-            box-shadow: 0 3px 10px rgba(52, 152, 219, 0.3);
         }
-        .back-link a:hover {
-            background: linear-gradient(135deg, #2980b9, #3498db);
+
+        .btn-back:hover {
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
+            box-shadow: 0 5px 15px rgba(108, 117, 125, 0.3);
         }
+
         @media (max-width: 768px) {
-            .series-info {
-                flex-direction: column;
-                gap: 10px;
-                text-align: center;
+            .header h1 {
+                font-size: 2.2em;
             }
+            
+            .header p {
+                font-size: 1.1em;
+            }
+            
             .series-title {
                 font-size: 1.8em;
+            }
+            
+            .series-grid {
+                padding: 20px;
             }
         }
     </style>
@@ -158,56 +222,56 @@
         <div class="header">
             <h1>New Adult</h1>
             <p>Emotionale Reisen junger Erwachsener zwischen Identitätsfindung, Liebe und persönlicher Entwicklung</p>
+            
+            <div class="versuchsreihe-info">
+                <h3>🧪 New Lesen & Vorlesen-System</h3>
+                <p>Wertes Interessent! Mit einem Klick auf "Lesen & Vorlesen" erhalten Sie Zugang zu revolutionären Funktionen:</p>
+                <p><strong>Alle Serien zum Lesen und Vorlesen lassen • Wort-für-Wort Markierung beim Vorlesen • Interaktive Steuerung • Zwischen Serien wechseln</strong></p>
+                
+                <a href="versuchsreihe-zwischen-herz-verstand-vorlesen.html" class="lesen-vorlesen-button">
+                    📖 Lesen & Vorlesen - Alle 3 Bände
+                </a>
+            </div>
         </div>
-        
-        <!-- Serie 1: Zwischen Herz und Verstand -->
-        <div class="series-section">
-            <div class="series-header">
+
+        <div class="series-grid">
+            <div class="series-card">
                 <h2 class="series-title">Zwischen Herz und Verstand</h2>
                 <p class="series-subtitle">Eine emotionale Reise der Selbstfindung</p>
-            </div>
-            
-            <div class="series-description">
-                Die Serie "Zwischen Herz und Verstand" erzählt die Geschichte junger Menschen, die sich in der komplexen Welt zwischen Studium, ersten intensiven Liebeserfahrungen und der Suche nach ihrer wahren Identität zurechtfinden müssen. Lena Winter, eine introvertierte Literaturstudentin, entdeckt durch geheimnisvolle Notizen in Bibliotheksbüchern eine tiefe Verbindung zu einem Unbekannten - eine Verbindung, die ihr Leben für immer verändern wird.
-            </div>
-            
-            <div class="series-info">
-                <div class="series-stats">
-                    <strong>3 Bände</strong> • Deutsch & Englisch • Universitätssetting
+                
+                <div class="series-description">
+                    Die Serie "Zwischen Herz und Verstand" erzählt die Geschichte junger Menschen, die sich in der komplexen Welt zwischen Studium, ersten intensiven Liebeserfahrungen und der Suche nach ihrer wahren Identität zurechtfinden müssen. Lena Winter, eine introvertierte Literaturstudentin, entdeckt durch geheimnisvolle Notizen in Bibliotheksbüchern eine tiefe Verbindung zu einem Unbekannten - eine Verbindung, die ihr Leben für immer verändern wird.
                 </div>
-                <div class="series-status">Verfügbar</div>
+
+                <div class="series-info">
+                    <strong>3 Bände • Deutsch & Englisch • Universitätssetting</strong><br>
+                    Themen: Erste Liebe, Selbstfindung, Literatur, Introversion vs. Gesellschaft
+                </div>
+
+                <span class="status-badge in-progress">In Vorbereitung</span>
+                <a href="zwischen-herz-und-verstand.html" class="series-button">📚 Serie entdecken</a>
             </div>
-            
-            <div class="button-container">
-                <a href="zwischen-herz-und-verstand.html" class="btn-series">📚 Serie entdecken</a>
-            </div>
-        </div>
-        
-        <!-- Serie 2: Masken des Lebens -->
-        <div class="series-section">
-            <div class="series-header">
+
+            <div class="series-card">
                 <h2 class="series-title">Masken des Lebens</h2>
                 <p class="series-subtitle">Authentizität in der digitalen Welt</p>
-            </div>
-            
-            <div class="series-description">
-                In "Masken des Lebens" stehen junge Erwachsene im Mittelpunkt, die zwischen ihrer digitalen Persona und ihrer wahren Identität navigieren müssen. Diese Serie erforscht die Herausforderungen der Generation Social Media - den Druck zur Perfektion, die Sehnsucht nach echter Verbindung und den Mut, hinter den Filtern das wahre Selbst zu zeigen. Eine Geschichte über Liebe, Freundschaft und den Kampf um Authentizität im 21. Jahrhundert.
-            </div>
-            
-            <div class="series-info">
-                <div class="series-stats">
-                    <strong>2 Bände</strong> • Moderne Themen • Social Media Kontext
+                
+                <div class="series-description">
+                    In "Masken des Lebens" stehen junge Erwachsene im Mittelpunkt, die zwischen ihrer digitalen Persona und ihrer wahren Identität navigieren müssen. Diese Serie erforscht die Herausforderungen der Generation Social Media - den Druck zur Perfektion, die Sehnsucht nach echter Verbindung und den Mut, hinter den Filtern das wahre Selbst zu zeigen. Eine Geschichte über Liebe, Freundschaft und den Kampf um Authentizität im 21. Jahrhundert.
                 </div>
-                <div class="series-status">In Vorbereitung</div>
-            </div>
-            
-            <div class="button-container">
-                <a href="masken-des-lebens.html" class="btn-series">📱 Serie entdecken</a>
+
+                <div class="series-info">
+                    <strong>2 Bände • Moderne Themen • Social Media Kontext</strong><br>
+                    Themen: Digitale Identität, Authentizität, Online vs. Offline, Selbstakzeptanz
+                </div>
+
+                <span class="status-badge in-progress">In Vorbereitung</span>
+                <a href="masken-des-lebens.html" class="series-button">📚 Serie entdecken</a>
             </div>
         </div>
-        
+
         <div class="back-link">
-            <a href="index.html">← Zurück zur Startseite</a>
+            <a href="index.html" class="btn-back">← Zurück zur Übersicht</a>
         </div>
     </div>
 </body>
