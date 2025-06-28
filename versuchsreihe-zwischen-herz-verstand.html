@@ -1,1 +1,297 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zwischen Herz und Verstand - Versuchsreihe - Helmut Wegners Wortwelten</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            color: #0D4F5C;
+            background: linear-gradient(135deg, #00ACC1 0%, #0097A7 30%, #80DEEA 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: #E0F7FA;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #00ACC1, #0097A7);
+            color: #E0F7FA;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 3em;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            font-size: 1.3em;
+            opacity: 0.9;
+            font-style: italic;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .series-intro {
+            text-align: center;
+            margin-bottom: 50px;
+            padding: 30px;
+            background: #B2EBF2;
+            border-radius: 10px;
+            border: 2px solid #80DEEA;
+        }
+
+        .series-intro h2 {
+            color: #00838F;
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        .series-intro p {
+            font-size: 1.2em;
+            color: #00695C;
+            margin-bottom: 20px;
+        }
+
+        .vorlesen-button {
+            background: linear-gradient(135deg, #4CAF50, #45a049);
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.2em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+        }
+
+        .vorlesen-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(76, 175, 80, 0.4);
+        }
+
+        .books-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .book-card {
+            background: #F1F8E9;
+            border-radius: 15px;
+            padding: 25px;
+            border: 2px solid #80DEEA;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .book-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        .book-cover {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .book-cover img {
+            width: 200px;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .book-info h3 {
+            color: #00838F;
+            font-size: 1.5em;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .book-series {
+            color: #0097A7;
+            font-style: italic;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .book-description {
+            color: #00695C;
+            line-height: 1.6;
+            text-align: justify;
+            margin-bottom: 20px;
+        }
+
+        .book-features {
+            background: #B2EBF2;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .book-features h4 {
+            color: #00838F;
+            margin-bottom: 10px;
+        }
+
+        .book-features ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .book-features li {
+            color: #00695C;
+            margin-bottom: 5px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .book-features li:before {
+            content: "💙";
+            position: absolute;
+            left: 0;
+        }
+
+        .back-navigation {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 2px solid #80DEEA;
+        }
+
+        .back-button {
+            background: linear-gradient(135deg, #6c757d, #495057);
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 20px;
+            font-size: 1.1em;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        .back-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.2em;
+            }
+            
+            .header p {
+                font-size: 1.1em;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            .books-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Zwischen Herz und Verstand</h1>
+            <p>New Adult Serie - Moderne Liebe zwischen Authentizität und Erwartung</p>
+        </div>
+
+        <div class="content">
+            <div class="series-intro">
+                <h2>🎧 Neu: Lesen & Vorlesen-System</h2>
+                <p>Werter Interessent! Mit einem Klick auf "Lesen & Vorlesen" erhalten Sie Zugang zu revolutionären Funktionen:</p>
+                <p><strong>Beide Bände</strong> zum Lesen und Vorlesen lassen • <strong>Wort-für-Wort Markierung</strong> beim Vorlesen • <strong>Interaktive Steuerung</strong> • <strong>Zwischen Bändern wechseln</strong></p>
+                <a href="versuchsreihe-zwischen-herz-vorlesen.html" class="vorlesen-button">
+                    🎧 Lesen & Vorlesen - Alle 2 Bände
+                </a>
+            </div>
+
+            <div class="books-grid">
+                <!-- Band 1 -->
+                <div class="book-card">
+                    <div class="book-cover">
+                        <img src="verborgene-gefuehle.jpg" alt="Verborgene Gefühle Cover">
+                    </div>
+                    <div class="book-info">
+                        <h3>Band 1: Verborgene Gefühle</h3>
+                        <p class="book-series">Zwischen Herz und Verstand - Serie</p>
+                        <p class="book-description">
+                            Lena Winter ist 21 und hat noch nie einen richtigen Freund gehabt. In der Universitätsbibliothek entdeckt sie eine handgeschriebene Notiz in "Effi Briest" - der Beginn einer literarischen Liebesgeschichte, die ihr Leben für immer verändern wird.
+                        </p>
+                        <div class="book-features">
+                            <h4>In diesem Band:</h4>
+                            <ul>
+                                <li>Lenas Entdeckung der mysteriösen Buchnotiz</li>
+                                <li>Die Suche nach dem unbekannten "J."</li>
+                                <li>Erste zögernde Annäherungen</li>
+                                <li>Literatur als Brücke zwischen Herzen</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Band 2 -->
+                <div class="book-card">
+                    <div class="book-cover">
+                        <img src="enthuellte-wahrheiten.jpg" alt="Enthüllte Wahrheiten Cover">
+                    </div>
+                    <div class="book-info">
+                        <h3>Band 2: Enthüllte Wahrheiten</h3>
+                        <p class="book-series">Zwischen Herz und Verstand - Serie</p>
+                        <p class="book-description">
+                            Drei Monate nach dem ersten Kuss: Lena und Julian leben zusammen, doch die Nähe wird zur Herausforderung. Eine intime Geschichte über die Komplexität moderner Beziehungen, wenn aus Romantik Alltag wird.
+                        </p>
+                        <div class="book-features">
+                            <h4>In diesem Band:</h4>
+                            <ul>
+                                <li>Das Zusammenleben und seine Herausforderungen</li>
+                                <li>Lenas Ringen mit Nähe und Distanz</li>
+                                <li>Ein Wochenende am See als Wendepunkt</li>
+                                <li>Die Suche nach Authentizität in der Liebe</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="back-navigation">
+                <a href="new-adult.html" class="back-button">← Zurück zur normalen Ansicht</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
