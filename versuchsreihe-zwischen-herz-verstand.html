@@ -14,8 +14,8 @@
         body {
             font-family: 'Georgia', serif;
             line-height: 1.6;
-            color: #0D4F5C;
-            background: linear-gradient(135deg, #00ACC1 0%, #0097A7 30%, #80DEEA 100%);
+            color: #2c1810;
+            background: linear-gradient(135deg, #FFE5E5 0%, #FFD4B8 50%, #FFCFCF 100%);
             min-height: 100vh;
             padding: 20px;
         }
@@ -23,17 +23,44 @@
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            background: #E0F7FA;
+            background: #FFF8F0;
             border-radius: 15px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.3);
             overflow: hidden;
         }
 
         .header {
-            background: linear-gradient(135deg, #00ACC1, #0097A7);
-            color: #E0F7FA;
+            background: linear-gradient(135deg, #FF8A80 0%, #FFB74D 100%);
+            color: white;
             padding: 40px;
             text-align: center;
+            position: relative;
+        }
+
+        .back-button-header {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+        }
+
+        .back-button {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 10px 20px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 20px;
+            font-size: 1em;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            font-weight: bold;
+        }
+
+        .back-button:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
         }
 
         .header h1 {
@@ -56,20 +83,20 @@
             text-align: center;
             margin-bottom: 50px;
             padding: 30px;
-            background: #B2EBF2;
+            background: #FFE5E5;
             border-radius: 10px;
-            border: 2px solid #80DEEA;
+            border: 2px solid #FFB74D;
         }
 
         .series-intro h2 {
-            color: #00838F;
+            color: #E91E63;
             font-size: 2em;
             margin-bottom: 20px;
         }
 
         .series-intro p {
             font-size: 1.2em;
-            color: #00695C;
+            color: #AD1457;
             margin-bottom: 20px;
         }
 
@@ -101,10 +128,10 @@
         }
 
         .book-card {
-            background: #F1F8E9;
+            background: #FFF0F0;
             border-radius: 15px;
             padding: 25px;
-            border: 2px solid #80DEEA;
+            border: 2px solid #FFB74D;
             transition: all 0.3s ease;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
@@ -128,35 +155,35 @@
         }
 
         .book-info h3 {
-            color: #00838F;
+            color: #E91E63;
             font-size: 1.5em;
             margin-bottom: 10px;
             text-align: center;
         }
 
         .book-series {
-            color: #0097A7;
+            color: #FF8A80;
             font-style: italic;
             text-align: center;
             margin-bottom: 15px;
         }
 
         .book-description {
-            color: #00695C;
+            color: #5D4037;
             line-height: 1.6;
             text-align: justify;
             margin-bottom: 20px;
         }
 
         .book-features {
-            background: #B2EBF2;
+            background: #FFE5E5;
             padding: 15px;
             border-radius: 8px;
             margin-bottom: 20px;
         }
 
         .book-features h4 {
-            color: #00838F;
+            color: #E91E63;
             margin-bottom: 10px;
         }
 
@@ -166,41 +193,16 @@
         }
 
         .book-features li {
-            color: #00695C;
+            color: #5D4037;
             margin-bottom: 5px;
             padding-left: 20px;
             position: relative;
         }
 
         .book-features li:before {
-            content: "💙";
+            content: "💕";
             position: absolute;
             left: 0;
-        }
-
-        .back-navigation {
-            text-align: center;
-            margin-top: 50px;
-            padding-top: 30px;
-            border-top: 2px solid #80DEEA;
-        }
-
-        .back-button {
-            background: linear-gradient(135deg, #6c757d, #495057);
-            color: white;
-            padding: 12px 25px;
-            border: none;
-            border-radius: 20px;
-            font-size: 1.1em;
-            cursor: pointer;
-            text-decoration: none;
-            display: inline-block;
-            transition: all 0.3s ease;
-        }
-
-        .back-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
         }
 
         @media (max-width: 768px) {
@@ -220,12 +222,22 @@
                 grid-template-columns: 1fr;
                 gap: 20px;
             }
+
+            .back-button-header {
+                position: relative;
+                top: 0;
+                left: 0;
+                margin-bottom: 20px;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
+            <div class="back-button-header">
+                <a href="new-adult.html" class="back-button">← Zurück zur Übersicht</a>
+            </div>
             <h1>Zwischen Herz und Verstand</h1>
             <p>New Adult Serie - Moderne Liebe zwischen Authentizität und Erwartung</p>
         </div>
@@ -234,9 +246,9 @@
             <div class="series-intro">
                 <h2>🎧 Neu: Lesen & Vorlesen-System</h2>
                 <p>Werter Interessent! Mit einem Klick auf "Lesen & Vorlesen" erhalten Sie Zugang zu revolutionären Funktionen:</p>
-                <p><strong>Beide Bände</strong> zum Lesen und Vorlesen lassen • <strong>Wort-für-Wort Markierung</strong> beim Vorlesen • <strong>Interaktive Steuerung</strong> • <strong>Zwischen Bändern wechseln</strong></p>
+                <p><strong>Alle 3 Bände</strong> zum Lesen und Vorlesen lassen • <strong>Wort-für-Wort Markierung</strong> beim Vorlesen • <strong>Interaktive Steuerung</strong> • <strong>Zwischen Bändern wechseln</strong></p>
                 <a href="versuchsreihe-zwischen-herz-vorlesen.html" class="vorlesen-button">
-                    🎧 Lesen & Vorlesen - Alle 2 Bände
+                    🎧 Lesen & Vorlesen - Alle 3 Bände
                 </a>
             </div>
 
@@ -286,10 +298,29 @@
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="back-navigation">
-                <a href="new-adult.html" class="back-button">← Zurück zur normalen Ansicht</a>
+                <!-- Band 3 -->
+                <div class="book-card">
+                    <div class="book-cover">
+                        <img src="wo-liebe-wachsen-darf.jpg" alt="Wo Liebe wachsen darf Cover">
+                    </div>
+                    <div class="book-info">
+                        <h3>Band 3: Wo Liebe wachsen darf</h3>
+                        <p class="book-series">Zwischen Herz und Verstand - Serie</p>
+                        <p class="book-description">
+                            Die emotionale Vollendung von Lena und Julians Geschichte. Nach den Herausforderungen der ersten beiden Bände finden sie endlich zu einer tiefen, authentischen Verbindung, die beiden Raum zum Wachsen gibt.
+                        </p>
+                        <div class="book-features">
+                            <h4>In diesem Band:</h4>
+                            <ul>
+                                <li>Die Auflösung der emotionalen Spannungen</li>
+                                <li>Lenas Weg zur Selbstakzeptanz</li>
+                                <li>Eine Liebe, die Raum zum Atmen lässt</li>
+                                <li>Der Mut zur gemeinsamen Zukunft</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
