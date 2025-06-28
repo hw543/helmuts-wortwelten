@@ -1,1 +1,290 @@
-
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zwischen Herz und Verstand - Helmuts Wortwelten</title>
+    <style>
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #1a1a1a, #2c2c2c, #1a1a1a);
+            margin: 0;
+            padding: 20px;
+            color: #333;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, #ffe5f1, #fdf2f8, #ffe5f1);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            border-bottom: 3px solid #e91e63;
+            padding-bottom: 20px;
+        }
+        .header h1 {
+            color: #1a1a1a;
+            font-size: 2.5em;
+            margin: 0 0 10px 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        .header p {
+            color: #666;
+            font-style: italic;
+            margin: 0;
+            font-size: 1.1em;
+        }
+        .books-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        .book-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            border-left: 5px solid #e91e63;
+        }
+        .book-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 35px rgba(0,0,0,0.15);
+        }
+        .book-cover {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .book-cover img {
+            max-width: 200px;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        .book-title {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #e91e63;
+            text-align: center;
+            margin: 15px 0;
+        }
+        .book-series {
+            text-align: center;
+            color: #666;
+            font-style: italic;
+            margin-bottom: 15px;
+        }
+        .book-description {
+            color: #2c3e50;
+            text-align: justify;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        .book-features {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .book-features h4 {
+            color: #e91e63;
+            margin: 0 0 10px 0;
+            font-size: 1.1em;
+        }
+        .book-features ul {
+            margin: 0;
+            padding-left: 20px;
+            color: #555;
+        }
+        .book-features li {
+            margin-bottom: 5px;
+        }
+        .book-actions {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .btn-read {
+            padding: 12px 20px;
+            background: linear-gradient(135deg, #e91e63, #ad1457);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 3px 10px rgba(233, 30, 99, 0.3);
+        }
+        .btn-read:hover {
+            background: linear-gradient(135deg, #ad1457, #880e4f);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(233, 30, 99, 0.4);
+            text-decoration: none;
+            color: white;
+        }
+        .btn-amazon {
+            padding: 12px 20px;
+            background: linear-gradient(135deg, #ff9800, #f57c00);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 3px 10px rgba(255, 152, 0, 0.3);
+        }
+        .btn-amazon:hover {
+            background: linear-gradient(135deg, #f57c00, #ef6c00);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 152, 0, 0.4);
+            text-decoration: none;
+            color: white;
+        }
+        .btn-coming-soon {
+            padding: 12px 20px;
+            background: linear-gradient(135deg, #bbb, #999);
+            color: white;
+            border-radius: 25px;
+            font-weight: bold;
+            cursor: not-allowed;
+            opacity: 0.7;
+        }
+        .back-link {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 2px solid #ecf0f1;
+        }
+        .back-link a {
+            display: inline-block;
+            padding: 12px 25px;
+            background: linear-gradient(135deg, #3498db, #5dade2);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 3px 10px rgba(52, 152, 219, 0.3);
+        }
+        .back-link a:hover {
+            background: linear-gradient(135deg, #2980b9, #3498db);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
+        }
+        @media (max-width: 768px) {
+            .books-container {
+                grid-template-columns: 1fr;
+            }
+            .book-actions {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Zwischen Herz und Verstand</h1>
+            <p>Eine emotionale Reise der Selbstfindung - Eine New Adult Serie voller Spannung</p>
+        </div>
+        
+        <div class="books-container">
+            <!-- Band 1: Verborgene Gefühle -->
+            <div class="book-card">
+                <div class="book-cover">
+                    <img src="verborgene-gefuehle.jpg" alt="Verborgene Gefühle">
+                </div>
+                <h3 class="book-title">Band 1: Verborgene Gefühle</h3>
+                <p class="book-series">Zwischen Herz und Verstand - Serie</p>
+                <p class="book-description">
+                    Literaturstudentin Lena Winter entdeckt einen mysteriösen Brief bei ihrem täglichen Spaziergang. Was als 
+                    ruhiger Tag in der Lüneburger Heide beginnt, entwickelt sich zu einem Abenteuer voller unerwarteter 
+                    Wendungen und dunkler Geheimnisse. Der Geist der Heide erwacht.
+                </p>
+                
+                <div class="book-features">
+                    <h4>In diesem Band:</h4>
+                    <ul>
+                        <li>Mysteriöse Briefe und rätselhafte Symbole</li>
+                        <li>Die Legenden der Lüneburger Heide</li>
+                        <li>Elias' gefährliche Entdeckungen</li>
+                        <li>Übernatürliche Ereignisse</li>
+                    </ul>
+                </div>
+                
+                <div class="book-actions">
+                    <a href="verborgene-gefuehle-lesen.html" class="btn-read">📖 Lesen</a>
+                    <a href="https://www.amazon.de/dp/ASIN1" class="btn-amazon">📚 Bei Amazon kaufen</a>
+                </div>
+            </div>
+            
+            <!-- Band 2: Enthüllte Wahrheiten -->
+            <div class="book-card">
+                <div class="book-cover">
+                    <img src="enthuellte-wahrheiten.jpg" alt="Enthüllte Wahrheiten">
+                </div>
+                <h3 class="book-title">Band 2: Enthüllte Wahrheiten</h3>
+                <p class="book-series">Zwischen Herz und Verstand - Serie</p>
+                <p class="book-description">
+                    Kommissarin Anna Hartmann steht vor einem grausamen Fund: Ein perfekt konservierter Körper im Moor, der Fragen 
+                    über die Geheimnisse der Vergangenheit aufwirft. Ehe sie es sich versieht, verstrickt sie sich in ein Netz 
+                    aus weiteren Gräbern machten deutlich - das Moor birgt düstere Geheimnisse.
+                </p>
+                
+                <div class="book-features">
+                    <h4>In diesem Band:</h4>
+                    <ul>
+                        <li>Grausame Moorleichen-Funde</li>
+                        <li>Kommissarin Hartmanns Ermittlungen</li>
+                        <li>Mysteriöse Symbole und Rituale</li>
+                        <li>Das Dorf Eldermont und seine Geheimnisse</li>
+                    </ul>
+                </div>
+                
+                <div class="book-actions">
+                    <a href="enthuellte-wahrheiten-lesen.html" class="btn-read">📖 Lesen</a>
+                    <a href="https://www.amazon.de/dp/ASIN2" class="btn-amazon">📚 Bei Amazon kaufen</a>
+                </div>
+            </div>
+            
+            <!-- Band 3: Wo Liebe wachsen darf -->
+            <div class="book-card">
+                <div class="book-cover">
+                    <img src="wo-liebe-wachsen-darf.jpg" alt="Wo Liebe wachsen darf">
+                </div>
+                <h3 class="book-title">Band 3: Wo Liebe wachsen darf</h3>
+                <p class="book-series">Zwischen Herz und Verstand - Serie</p>
+                <p class="book-description">
+                    Bürgermeister Erik Müller entdeckt Graffiti an öffentlichen Dörfern. Was als Vandalismus beginnt, entpuppt sich als 
+                    Fremdenfeindlichkeit und alte Vorurteile erwachen zu neuem Leben. Die Familie als Rahmen und ihre Integration in die 
+                    örtliche Gemeinschaft und gesellschaftliche Spannungen und Vorurteile werden zum brennenden Thema.
+                </p>
+                
+                <div class="book-features">
+                    <h4>In diesem Band:</h4>
+                    <ul>
+                        <li>Fremdenfeindlichkeit in ländlichen Dörfern</li>
+                        <li>Bürgermeister Müllers Kampf um Integration</li>
+                        <li>Die Familie Al-Rahman und ihre Geschichte</li>
+                        <li>Gesellschaftliche Spannungen und Wandel</li>
+                    </ul>
+                </div>
+                
+                <div class="book-actions">
+                    <span class="btn-coming-soon">📚 Erscheint demnächst</span>
+                    <span class="btn-coming-soon">🔄 In Bearbeitung</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="back-link">
+            <a href="new-adult.html">← Zurück zu New Adult</a>
+        </div>
+    </div>
+</body>
+</html>
