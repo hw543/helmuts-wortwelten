@@ -111,34 +111,38 @@
         /* Button Styles */
         .btn {
             display: inline-block;
-            padding: 8px 16px;
-            margin: 5px 5px 5px 0;
+            padding: 12px 20px;
+            margin: 8px 8px 8px 0;
             border: none;
-            border-radius: 20px;
-            font-size: 0.9em;
+            border-radius: 25px;
+            font-size: 1em;
             font-weight: bold;
             text-decoration: none;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-        }
-        .btn-soon {
-            background: linear-gradient(135deg, #7f8c8d, #95a5a6);
-            color: white;
-        }
-        .btn-soon:hover {
-            background: linear-gradient(135deg, #6c7b7d, #7f8c8d);
-            transform: translateY(-2px);
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
         }
         .btn-read {
-            background: linear-gradient(135deg, #dc143c, #b22222);
+            background: linear-gradient(135deg, #4285f4, #1976d2);
             color: white;
         }
         .btn-read:hover {
-            background: linear-gradient(135deg, #b22222, #8b0000);
+            background: linear-gradient(135deg, #1976d2, #1565c0);
             transform: translateY(-2px);
             text-decoration: none;
             color: white;
+            box-shadow: 0 5px 15px rgba(66, 133, 244, 0.4);
+        }
+        .btn-amazon {
+            background: linear-gradient(135deg, #ff6b35, #f7931e);
+            color: white;
+        }
+        .btn-amazon:hover {
+            background: linear-gradient(135deg, #f7931e, #ff8c00);
+            transform: translateY(-2px);
+            text-decoration: none;
+            color: white;
+            box-shadow: 0 5px 15px rgba(255, 107, 53, 0.4);
         }
         .back-link {
             text-align: center;
@@ -201,10 +205,8 @@
                 </div>
                 
                 <div class="button-container">
-                    <span class="btn btn-soon">📅 Bald verfügbar</span>
-                    <span class="btn btn-soon">📖 Taschenbuch folgt</span>
-                    <span class="btn btn-soon">📱 Kindle folgt</span>
                     <a href="flammen-des-verrats-lesen.html" class="btn btn-read">📖 Lesen</a>
+                    <a href="https://amazon.de/dp/PLACEHOLDER" class="btn btn-amazon">🛒 Bei Amazon kaufen</a>
                 </div>
             </div>
         </div>
