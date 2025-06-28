@@ -14,7 +14,7 @@
             line-height: 1.6;
         }
         .container {
-            max-width: 800px;
+            max-width: 1000px;
             margin: 0 auto;
             background: #f9f9f9;
             border-radius: 15px;
@@ -23,7 +23,7 @@
         }
         .header {
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 40px;
             border-bottom: 3px solid #e91e63;
             padding-bottom: 20px;
         }
@@ -39,215 +39,85 @@
             margin: 0;
             font-size: 1.1em;
         }
-        .series-banner {
-            background: linear-gradient(135deg, #e91e63, #ad1457);
-            color: white;
-            text-align: center;
-            padding: 20px;
-            border-radius: 10px;
-            margin-bottom: 30px;
-            box-shadow: 0 8px 20px rgba(233, 30, 99, 0.3);
-        }
-        .series-banner h2 {
-            margin: 0 0 10px 0;
-            font-size: 2em;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
-        .series-banner p {
-            margin: 0;
-            font-style: italic;
-            opacity: 0.9;
-        }
-        .book {
-            display: flex;
-            margin-bottom: 40px;
+        .series-section {
+            margin-bottom: 50px;
             background: white;
             border-radius: 15px;
-            padding: 25px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            padding: 30px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
             border-left: 5px solid #e91e63;
             transition: transform 0.3s ease;
         }
-        .book:hover {
+        .series-section:hover {
             transform: translateY(-5px);
-            box-shadow: 0 12px 35px rgba(0,0,0,0.2);
+            box-shadow: 0 12px 35px rgba(0,0,0,0.15);
         }
-        .book-cover {
-            width: 120px;
-            height: 180px;
-            margin-right: 25px;
-            border-radius: 8px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
-            transition: transform 0.3s ease;
+        .series-header {
+            text-align: center;
+            margin-bottom: 30px;
         }
-        .book-cover:hover {
-            transform: scale(1.05);
-        }
-        .book-info {
-            flex: 1;
-        }
-        .book-title {
+        .series-title {
             color: #e91e63;
-            font-size: 1.8em;
+            font-size: 2.2em;
             font-weight: bold;
             margin: 0 0 10px 0;
             text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
         }
-        .book-subtitle {
+        .series-subtitle {
             color: #666;
             font-style: italic;
-            margin: 0 0 15px 0;
-            font-size: 1.1em;
-        }
-        .book-description {
-            color: #2c3e50;
+            font-size: 1.2em;
             margin-bottom: 20px;
-            font-size: 1.05em;
+        }
+        .series-description {
+            color: #2c3e50;
+            font-size: 1.1em;
             text-align: justify;
+            line-height: 1.8;
+            margin-bottom: 25px;
         }
-        .button-container {
-            margin-top: 15px;
+        .series-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #f8f9fa;
+            padding: 15px 20px;
+            border-radius: 10px;
+            margin-bottom: 25px;
         }
-        .btn {
-            display: inline-block;
-            padding: 8px 16px;
-            margin: 5px 5px 5px 0;
-            border: none;
+        .series-stats {
+            color: #666;
+            font-size: 0.95em;
+        }
+        .series-status {
+            background: linear-gradient(135deg, #28a745, #20c997);
+            color: white;
+            padding: 8px 15px;
             border-radius: 20px;
             font-size: 0.9em;
             font-weight: bold;
-            text-decoration: none;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
         }
-        .btn-soon {
-            background: linear-gradient(135deg, #7f8c8d, #95a5a6);
-            color: white;
-        }
-        .btn-soon:hover {
-            background: linear-gradient(135deg, #6c7b7d, #7f8c8d);
-            transform: translateY(-2px);
-        }
-        .btn-working {
-            background: linear-gradient(135deg, #f39c12, #e67e22);
-            color: white;
-        }
-        .btn-working:hover {
-            background: linear-gradient(135deg, #e67e22, #d35400);
-            transform: translateY(-2px);
-        }
-        .btn-sample {
-            background: linear-gradient(135deg, #e91e63, #ad1457);
-            color: white;
-        }
-        .btn-sample:hover {
-            background: linear-gradient(135deg, #ad1457, #880e4f);
-            transform: translateY(-2px);
-        }
-        .popup-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.9);
-            z-index: 1000;
-            justify-content: center;
-            align-items: center;
-        }
-        .popup-content {
-            background: white;
-            border-radius: 15px;
-            padding: 30px;
-            max-width: 700px;
-            max-height: 80vh;
-            overflow-y: auto;
-            position: relative;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-            margin: 20px;
-        }
-        .popup-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 20px;
-            border-bottom: 2px solid #e91e63;
-            padding-bottom: 15px;
-        }
-        .popup-cover {
-            width: 60px;
-            height: 90px;
-            margin-right: 15px;
-            border-radius: 5px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
-        }
-        .popup-title {
-            flex: 1;
-        }
-        .popup-title h3 {
-            color: #e91e63;
-            margin: 0 0 5px 0;
-            font-size: 1.4em;
-        }
-        .popup-title p {
-            color: #666;
-            margin: 0;
-            font-style: italic;
-        }
-        .popup-close {
-            background: #e74c3c;
-            color: white;
-            border: none;
-            border-radius: 50%;
-            width: 30px;
-            height: 30px;
-            cursor: pointer;
-            font-size: 18px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .popup-text {
-            color: #2c3e50;
-            line-height: 1.8;
-            font-size: 1.1em;
-            text-align: justify;
-            margin-bottom: 20px;
-        }
-        .popup-navigation {
+        .button-container {
             text-align: center;
-            padding-top: 15px;
-            border-top: 1px solid #ecf0f1;
         }
-        .popup-page-info {
-            color: #666;
-            font-style: italic;
-            margin-bottom: 15px;
-        }
-        .btn-nav {
+        .btn-series {
+            display: inline-block;
+            padding: 15px 30px;
             background: linear-gradient(135deg, #e91e63, #ad1457);
             color: white;
-            padding: 12px 25px;
-            border: none;
+            text-decoration: none;
             border-radius: 25px;
-            cursor: pointer;
-            font-size: 1em;
+            font-size: 1.1em;
             font-weight: bold;
-            margin: 0 10px;
             transition: all 0.3s ease;
-            box-shadow: 0 3px 10px rgba(233, 30, 99, 0.3);
+            box-shadow: 0 5px 15px rgba(233, 30, 99, 0.3);
         }
-        .btn-nav:hover {
+        .btn-series:hover {
             background: linear-gradient(135deg, #ad1457, #880e4f);
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(233, 30, 99, 0.4);
-        }
-        .btn-nav:disabled {
-            background: #bdc3c7;
-            cursor: not-allowed;
-            transform: none;
-            box-shadow: none;
+            box-shadow: 0 8px 25px rgba(233, 30, 99, 0.4);
+            text-decoration: none;
+            color: white;
         }
         .back-link {
             text-align: center;
@@ -271,18 +141,14 @@
             transform: translateY(-2px);
             box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
         }
-        @media (max-width: 600px) {
-            .book {
+        @media (max-width: 768px) {
+            .series-info {
                 flex-direction: column;
+                gap: 10px;
                 text-align: center;
             }
-            .book-cover {
-                margin: 0 auto 20px auto;
-            }
-            .popup-content {
-                margin: 10px;
-                padding: 20px;
-                max-height: 90vh;
+            .series-title {
+                font-size: 1.8em;
             }
         }
     </style>
@@ -290,85 +156,53 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>💫 New Adult</h1>
-            <p>Geschichten über das Erwachsenwerden, erste große Liebe und die Suche nach dem eigenen Weg</p>
+            <h1>New Adult</h1>
+            <p>Emotionale Reisen junger Erwachsener zwischen Identitätsfindung, Liebe und persönlicher Entwicklung</p>
         </div>
         
-        <div class="series-banner">
-            <h2>ZWISCHEN HERZ UND VERSTAND</h2>
-            <p>Eine romantische Serie über Liebe, Zweifel und das Finden der eigenen Identität</p>
-        </div>
-        
-        <!-- Band 1: Verborgene Gefühle -->
-        <div class="book">
-            <img src="verborgene-gefuehle.jpg" alt="Verborgene Gefühle Cover" class="book-cover">
-            <div class="book-info">
-                <h3 class="book-title">Verborgene Gefühle</h3>
-                <p class="book-subtitle">Band 1 - Zwischen Herz und Verstand</p>
-                <div class="book-description">
-                    Lena Winter ist eine introvertierte Literaturstudentin, die sich lieber in Bücher vertieft als mit Menschen zu reden. Bis sie eine geheimnisvolle Notiz in einem Bibliotheksbuch entdeckt – geschrieben von einem mysteriösen "J."<br><br>
-                    
-                    Was als anonymer Gedankenaustausch über Fontanes "Effi Briest" beginnt, entwickelt sich zu einer tiefen Verbindung zwischen zwei Menschen, die sich nie begegnet sind. Doch als Lena herausfindet, wer sich hinter dem rätselhaften "J." verbirgt, ändert sich alles.<br><br>
-                    
-                    Eine Geschichte über die ersten zarten Gefühle der Liebe, über Mut und Selbstfindung, und darüber, dass manchmal die schönsten Verbindungen entstehen, wenn man sie am wenigsten erwartet.
+        <!-- Serie 1: Zwischen Herz und Verstand -->
+        <div class="series-section">
+            <div class="series-header">
+                <h2 class="series-title">Zwischen Herz und Verstand</h2>
+                <p class="series-subtitle">Eine emotionale Reise der Selbstfindung</p>
+            </div>
+            
+            <div class="series-description">
+                Die Serie "Zwischen Herz und Verstand" erzählt die Geschichte junger Menschen, die sich in der komplexen Welt zwischen Studium, ersten intensiven Liebeserfahrungen und der Suche nach ihrer wahren Identität zurechtfinden müssen. Lena Winter, eine introvertierte Literaturstudentin, entdeckt durch geheimnisvolle Notizen in Bibliotheksbüchern eine tiefe Verbindung zu einem Unbekannten - eine Verbindung, die ihr Leben für immer verändern wird.
+            </div>
+            
+            <div class="series-info">
+                <div class="series-stats">
+                    <strong>3 Bände</strong> • Deutsch & Englisch • Universitätssetting
                 </div>
-                
-                <div class="button-container">
-                    <span class="btn btn-soon">📅 Bald verfügbar</span>
-                    <span class="btn btn-soon">📖 Taschenbuch folgt</span>
-                    <span class="btn btn-soon">📱 Kindle folgt</span>
-                    <button class="btn btn-sample" onclick="openSample('verborgene', 1)">👁 Leseprobe</button>
-                </div>
+                <div class="series-status">Verfügbar</div>
+            </div>
+            
+            <div class="button-container">
+                <a href="zwischen-herz-und-verstand.html" class="btn-series">📚 Serie entdecken</a>
             </div>
         </div>
         
-        <!-- Band 2: Enthüllte Wahrheiten / Revealed Truths -->
-        <div class="book">
-            <div style="display: flex; gap: 15px; margin-right: 25px;">
-                <img src="enthuellte-wahrheiten.jpg" alt="Enthüllte Wahrheiten Cover" class="book-cover" style="width: 90px; height: 135px;">
-                <img src="revealed-truths.jpg" alt="Revealed Truths Cover" class="book-cover" style="width: 90px; height: 135px;">
+        <!-- Serie 2: Masken des Lebens -->
+        <div class="series-section">
+            <div class="series-header">
+                <h2 class="series-title">Masken des Lebens</h2>
+                <p class="series-subtitle">Authentizität in der digitalen Welt</p>
             </div>
-            <div class="book-info">
-                <h3 class="book-title">Enthüllte Wahrheiten / Revealed Truths</h3>
-                <p class="book-subtitle">Band 2 - Zwischen Herz und Verstand / Between Heart and Mind</p>
-                <div class="book-description">
-                    Drei Monate sind vergangen, seit Lena und Julian zusammengefunden haben. Was als märchenhafte Romanze begann, ist zur Realität des Alltags geworden. Doch je näher sie sich kommen, desto mehr spürt Lena eine seltsame Leere.<br><br>
-                    
-                    Ist es normal, sich in einer Beziehung zu verlieren? Ein Wochenende am See soll Klarheit bringen – doch wird es ihre Liebe retten oder die verborgenen Wahrheiten ans Licht bringen?<br><br>
-                    
-                    <strong>Available in German and English</strong> - Eine berührende Geschichte über die Herausforderungen einer echten Beziehung und die Erkenntnis, dass wahre Liebe bedeutet, sich selbst nicht zu verlieren.
-                </div>
-                
-                <div class="button-container">
-                    <span class="btn btn-soon">📅 Bald verfügbar</span>
-                    <span class="btn btn-soon">📖 Taschenbuch folgt</span>
-                    <span class="btn btn-soon">📱 Kindle folgt</span>
-                    <button class="btn btn-sample" onclick="openSample('enthuellte', 1)">🇩🇪 Deutsche Leseprobe</button>
-                    <button class="btn btn-sample" onclick="openSample('revealed', 1)">🇬🇧 English Sample</button>
-                </div>
+            
+            <div class="series-description">
+                In "Masken des Lebens" stehen junge Erwachsene im Mittelpunkt, die zwischen ihrer digitalen Persona und ihrer wahren Identität navigieren müssen. Diese Serie erforscht die Herausforderungen der Generation Social Media - den Druck zur Perfektion, die Sehnsucht nach echter Verbindung und den Mut, hinter den Filtern das wahre Selbst zu zeigen. Eine Geschichte über Liebe, Freundschaft und den Kampf um Authentizität im 21. Jahrhundert.
             </div>
-        </div>
-        
-        <!-- Band 3: Wo Liebe wachsen darf -->
-        <div class="book">
-            <img src="wo-liebe-wachsen-darf.jpg" alt="Wo Liebe wachsen darf Cover" class="book-cover">
-            <div class="book-info">
-                <h3 class="book-title">Wo Liebe wachsen darf</h3>
-                <p class="book-subtitle">Band 3 - Zwischen Herz und Verstand</p>
-                <div class="book-description">
-                    Lena und Julian haben gelernt, Nähe und Eigenständigkeit miteinander zu verbinden. Ihre Liebe ist gereift, stabiler geworden. Doch das Leben hält neue Herausforderungen bereit, die sie auf eine völlig neue Probe stellen werden.<br><br>
-                    
-                    Können sie ihre Träume verwirklichen, ohne die Verbindung zueinander zu verlieren? Wie verändert sich ihre Beziehung, wenn neue Verantwortungen und Entscheidungen auf sie zukommen?<br><br>
-                    
-                    Der bewegende Abschluss der Serie über eine Liebe, die alle Hindernisse überwindet und zeigt, dass echte Verbundenheit wächst, wenn man den Mut hat, gemeinsam in die Zukunft zu blicken.
+            
+            <div class="series-info">
+                <div class="series-stats">
+                    <strong>2 Bände</strong> • Moderne Themen • Social Media Kontext
                 </div>
-                
-                <div class="button-container">
-                    <span class="btn btn-working">✍ In Arbeit</span>
-                    <span class="btn btn-soon">📖 Taschenbuch folgt</span>
-                    <span class="btn btn-soon">📱 Kindle folgt</span>
-                    <span class="btn btn-soon">👁 Leseprobe folgt</span>
-                </div>
+                <div class="series-status">In Vorbereitung</div>
+            </div>
+            
+            <div class="button-container">
+                <a href="masken-des-lebens.html" class="btn-series">📱 Serie entdecken</a>
             </div>
         </div>
         
@@ -376,176 +210,5 @@
             <a href="index.html">← Zurück zur Startseite</a>
         </div>
     </div>
-    
-    <!-- Pop-up für Leseproben -->
-    <div id="popup-overlay" class="popup-overlay">
-        <div class="popup-content">
-            <div class="popup-header">
-                <img id="popup-cover" class="popup-cover" src="" alt="Book Cover">
-                <div class="popup-title">
-                    <h3 id="popup-book-title"></h3>
-                    <p id="popup-chapter-title"></p>
-                </div>
-                <button class="popup-close" onclick="closePopup()">&times;</button>
-            </div>
-            
-            <div id="popup-text" class="popup-text"></div>
-            
-            <div class="popup-navigation">
-                <p id="popup-page-info" class="popup-page-info"></p>
-                <button id="btn-prev" class="btn-nav" onclick="previousPage()" disabled>← Vorherige Seite</button>
-                <button id="btn-next" class="btn-nav" onclick="nextPage()">Nächste Seite →</button>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        const samples = {
-            verborgene: {
-                title: "Verborgene Gefühle",
-                chapter: "Kapitel 1: Die Nachricht, die alles veränderte",
-                cover: "verborgene-gefuehle.jpg",
-                pages: [
-                    `<p><strong>Die Nachricht, die alles veränderte</strong></p>
-                    <p>Die Bibliothek war wie immer ein Zufluchtsort. Lena Winter atmete tief den vertrauten Geruch nach altem Papier ein, während ihr Blick durch den Raum schweifte. Die Stille eines Donnerstagnachmittags war ein angenehmer Kontrast zum lauten Trubel draußen, wo die anderen Studenten in Gruppen zusammenstanden, lachten und redeten - ein soziales Spiel, bei dem sie nie die richtigen Karten in der Hand hatte.</p>
-                    <p>"Warum fällt es mir so schwer, mit anderen zu reden?", fragte sie sich zum hundertsten Mal.</p>`,
-                    
-                    `<p>Sie strich über die Buchrücken in der Abteilung für deutsche Literatur, ihr Herzschlag beruhigte sich allmählich. Professor Kleinschmidt hatte ihnen für das Seminar „Realismus und gesellschaftliche Strömungen" eine Liste mit Primärliteratur gegeben.</p>
-                    <p>Das war einer der Gründe, warum sie sich für Literaturwissenschaften entschieden hatte - hier konnte sie mit Menschen kommunizieren, die längst gestorben waren, ohne zu stottern oder rot zu werden.</p>`,
-                    
-                    `<p>"Du verschwendest deine besten Jahre zwischen verstaubten Büchern", hatte ihre Mutter beim letzten Besuch gesagt. Der Ton besorgt, die Augen voller Unverständnis.</p>
-                    <p>Lena biss sich auf die Lippe. Es war ihr drittes Semester, und während ihre Mitbewohnerin vom letzten Wochenende schwärmte, verbrachte sie ihre Freitagabende mit fiktiven Charakteren.</p>`,
-                    
-                    `<p>"Ich bin einundzwanzig und habe noch nie einen richtigen Freund gehabt", flüsterte sie so leise, dass niemand es hören konnte. War das normal?</p>
-                    <p>„Entschuldige", flüsterte jemand neben ihr, und Lena zuckte zusammen, als hätte man sie aus einem Traum gerissen.</p>`,
-                    
-                    `<p>Ein junger Mann mit kurzen dunklen Haaren und einer randlosen Brille stand dort. Seine Augen - dunkelbraun mit einem interessanten goldenen Schimmer - trafen ihre, und für einen Moment vergaß sie zu atmen.</p>
-                    <p>„Ich muss mal an das Regal." Seine Stimme war tief und angenehm, mit einer Wärme, die sie nicht erwartet hatte.</p>`,
-                    
-                    `<p>Als sie zu Kapitel fünf kam, blieb ihr Blick an etwas Ungewöhnlichem hängen. Am Rand der Seite 27 stand eine handschriftliche Notiz in blauer Tinte:</p>
-                    <p><em>"Ist es nicht merkwürdig, wie Effi zwischen gesellschaftlichen Erwartungen und eigenen Wünschen zerrieben wird? Manche Dinge ändern sich nie, nicht wahr? -- J."</em></p>`,
-                    
-                    `<p>Ein plötzlicher Impuls überkam sie. Dieser unbekannte J. hatte etwas in ihr berührt. Bevor sie ihren Mut verlieren konnte, holte sie ihren Kugelschreiber heraus und schrieb direkt unter die Notiz:</p>
-                    <p><em>"Die Formen ändern sich, aber der Druck bleibt. Heute zerreiben wir uns zwischen Authentizität und Selbstoptimierung. Fortschritt? -- L."</em></p>`,
-                    
-                    `<p>Eine Welle von Schuldgefühlen überkam sie, gefolgt von einem unerwarteten Kribbeln der Aufregung. Es fühlte sich an wie ein Geheimnis, ein intimer Moment zwischen zwei Fremden.</p>
-                    <p><strong>Was wird aus dieser geheimnisvollen Begegnung? Die Geschichte nimmt ihren Lauf... Bald verfügbar.</strong></p>`
-                ]
-            },
-            enthuellte: {
-                title: "Enthüllte Wahrheiten",
-                chapter: "Kapitel 1: Nähe, die flieht",
-                cover: "enthuellte-wahrheiten.jpg",
-                pages: [
-                    `<p><strong>Nähe, die flieht</strong></p>
-                    <p>Lena erwachte mit dem Gefühl, dass etwas fehlte. Die Wärme neben ihr war spürbar, körperlich präsent, atmend, real. Julians Arm lag schwer über ihrer Mitte, sein Atem gleichmäßig und tief an ihrem Nacken. Und doch existierte eine seltsame Leere, die sie nicht greifen konnte.</p>`,
-                    
-                    `<p>Alles hatte sich so natürlich entwickelt, so mühelos, als wäre es eine Geschichte, die nur darauf gewartet hatte, erzählt zu werden. Julian murmelte etwas im Schlaf, zog sie näher an sich.</p>
-                    <p>Sie sollte glücklich sein. Sie war glücklich. Warum also dieses nagende Gefühl der Unvollständigkeit?</p>`,
-                    
-                    `<p>"Woran denkst du?" Julians Frage unterbrach ihre Gedanken. "Nichts Besonderes", log sie und hasste sich ein wenig dafür. Es war eine kleine Lüge, harmlos. Und doch spürte sie, wie sich eine Mauer zwischen ihnen aufbaute, Stein für Stein, Tag für Tag.</p>`,
-                    
-                    `<p>Julian akzeptierte ihre Antwort mit einem Nicken, keine Nachfrage, keine Insistenz. War das Respekt für ihre Grenzen oder Gleichgültigkeit?</p>
-                    <p>Sie tranken ihren Kaffee schweigend, jeder in Gedanken versunken.</p>`,
-                    
-                    `<p>Sie liebte Julian, daran zweifelte sie nicht. Aber sie hatte begonnen, sich in ihrer Beziehung zu verlieren, die Konturen ihres Selbst zu verwischen, bis sie nicht mehr sicher war, wo sie aufhörte und er begann.</p>`,
-                    
-                    `<p>War das normal? War es das, was Liebe bedeutete - diese graduelle Auflösung der Grenzen, dieses Verschmelzen? Oder sollte es anders sein - zwei vollständige Menschen, die zusammenkamen, ohne sich aufzugeben?</p>
-                    <p><strong>Wird Lena den Mut finden, über ihre Zweifel zu sprechen? Die Reise geht weiter... Bald verfügbar.</strong></p>`
-                ]
-            },
-            revealed: {
-                title: "Revealed Truths",
-                chapter: "Chapter 1: Proximity that flees",
-                cover: "revealed-truths.jpg",
-                pages: [
-                    `<p><strong>Proximity that flees</strong></p>
-                    <p>Lena awoke with the feeling that something was missing. The warmth next to her was tangible, physically present, breathing, real. Julian's arm lay heavy across her middle, his breathing steady and deep on her neck. And yet a strange emptiness existed that she couldn't grasp.</p>`,
-                    
-                    `<p>Everything had unfolded so naturally, so effortlessly, as if it were a story just waiting to be told. Julian murmured something in his sleep, pulling her closer.</p>
-                    <p>She should be happy. She was happy. So why this gnawing feeling of incompleteness?</p>`,
-                    
-                    `<p>"What are you thinking about?" Julian's question interrupted her thoughts. "Nothing special," she lied, hating herself a little for it. It was a small lie, harmless. And yet she felt a wall building between them, brick by brick, day by day.</p>`,
-                    
-                    `<p>Julian accepted her answer with a nod, no questioning, no insistence. Was that respect for her boundaries or indifference?</p>
-                    <p>They drank their coffee in silence, each lost in thought.</p>`,
-                    
-                    `<p>She loved Julian, she had no doubt about that. But she had begun to lose herself in their relationship, blurring the contours of her self until she was no longer sure where she ended and he began.</p>`,
-                    
-                    `<p>Was this normal? Was this what love meant—this gradual dissolution of boundaries, this merging? Or should it be something else—two complete people coming together without giving themselves up?</p>
-                    <p><strong>Will Lena find the courage to speak about her doubts? The journey continues... Soon available.</strong></p>`
-                ]
-            }
-        };
-
-        let currentSample = null;
-        let currentPage = 0;
-
-        function openSample(book, page) {
-            if (!samples[book]) {
-                alert("Sample not found: " + book);
-                return;
-            }
-            
-            currentSample = book;
-            currentPage = page - 1;
-            
-            const sample = samples[book];
-            document.getElementById('popup-book-title').textContent = sample.title;
-            document.getElementById('popup-chapter-title').textContent = sample.chapter;
-            document.getElementById('popup-cover').src = sample.cover;
-            
-            updatePopupContent();
-            
-            document.getElementById('popup-overlay').style.display = 'flex';
-            document.body.style.overflow = 'hidden';
-        }
-
-        function updatePopupContent() {
-            const sample = samples[currentSample];
-            const totalPages = sample.pages.length;
-            
-            document.getElementById('popup-text').innerHTML = sample.pages[currentPage];
-            document.getElementById('popup-page-info').textContent = `Seite ${currentPage + 1} von ${totalPages}`;
-            
-            document.getElementById('btn-prev').disabled = currentPage === 0;
-            
-            if (currentPage === totalPages - 1) {
-                document.getElementById('btn-next').textContent = 'Leseprobe beenden';
-            } else {
-                document.getElementById('btn-next').textContent = 'Nächste Seite →';
-            }
-        }
-
-        function nextPage() {
-            const sample = samples[currentSample];
-            if (currentPage < sample.pages.length - 1) {
-                currentPage++;
-                updatePopupContent();
-            } else {
-                closePopup();
-            }
-        }
-
-        function previousPage() {
-            if (currentPage > 0) {
-                currentPage--;
-                updatePopupContent();
-            }
-        }
-
-        function closePopup() {
-            document.getElementById('popup-overlay').style.display = 'none';
-            document.body.style.overflow = 'auto';
-            currentSample = null;
-            currentPage = 0;
-        }
-
-        document.getElementById('popup-overlay').addEventListener('click', function(e) {
-            if (e.target === this) {
-                closePopup();
-            }
-        });
-    </script>
 </body>
 </html>
