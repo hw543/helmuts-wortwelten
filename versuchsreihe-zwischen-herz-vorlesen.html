@@ -1,1 +1,521 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zwischen Herz und Verstand - Lesen & Vorlesen - Versuchsreihe - Helmut Wegners Wortwelten</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.8;
+            color: #0D4F5C;
+            background: linear-gradient(135deg, #00ACC1 0%, #0097A7 30%, #80DEEA 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: #E0F7FA;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #00ACC1, #0097A7);
+            color: #E0F7FA;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+            font-style: italic;
+        }
+
+        .versuchsreihe-badge {
+            background: #FFD700;
+            color: #00838F;
+            padding: 5px 15px;
+            border-radius: 15px;
+            font-size: 0.9em;
+            font-weight: bold;
+            margin-top: 10px;
+            display: inline-block;
+        }
+
+        .controls {
+            background: #B2EBF2;
+            padding: 20px;
+            border-bottom: 3px solid #80DEEA;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .control-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 15px;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            min-width: 120px;
+        }
+
+        .btn-play {
+            background: linear-gradient(135deg, #28a745, #20c997);
+            color: white;
+        }
+
+        .btn-pause {
+            background: linear-gradient(135deg, #ffc107, #fd7e14);
+            color: white;
+        }
+
+        .btn-stop {
+            background: linear-gradient(135deg, #dc3545, #e83e8c);
+            color: white;
+        }
+
+        .btn-continue {
+            background: linear-gradient(135deg, #17a2b8, #6f42c1);
+            color: white;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .band-navigation, .language-navigation {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 10px;
+        }
+
+        .btn-band, .btn-lang {
+            background: linear-gradient(135deg, #00ACC1, #0097A7);
+            color: #E0F7FA;
+            padding: 10px 20px;
+            border: 2px solid transparent;
+        }
+
+        .btn-band.active, .btn-lang.active {
+            border-color: #FFD700;
+            box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+        }
+
+        .content {
+            padding: 30px;
+            font-size: 1.1em;
+            line-height: 1.8;
+        }
+
+        .book-title {
+            color: #00838F;
+            font-size: 2em;
+            margin-bottom: 10px;
+            text-align: center;
+            border-bottom: 2px solid #80DEEA;
+            padding-bottom: 15px;
+        }
+
+        .chapter-title {
+            color: #0097A7;
+            font-size: 1.5em;
+            margin: 30px 0 20px 0;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .text-content {
+            text-align: justify;
+            margin-bottom: 30px;
+        }
+
+        .word {
+            cursor: pointer;
+            transition: all 0.2s ease;
+            padding: 1px 2px;
+            border-radius: 3px;
+        }
+
+        .word:hover {
+            background-color: #E1F5FE;
+        }
+
+        .word-highlight {
+            background-color: #2196F3;
+            color: white;
+            padding: 2px 4px;
+            border-radius: 4px;
+            box-shadow: 0 2px 5px rgba(33, 150, 243, 0.3);
+        }
+
+        .back-link {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px solid #80DEEA;
+        }
+
+        .btn-back {
+            background: linear-gradient(135deg, #6c757d, #495057);
+            color: white;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        @media (max-width: 600px) {
+            .control-buttons, .band-navigation, .language-navigation {
+                gap: 10px;
+            }
+            
+            .btn {
+                min-width: 100px;
+                font-size: 0.9em;
+                padding: 10px 16px;
+            }
+            
+            .content {
+                padding: 20px;
+                font-size: 1em;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Zwischen Herz und Verstand</h1>
+            <p>Lesen & Vorlesen-System - Erleben Sie moderne Liebesgeschichten hautnah</p>
+            <div class="versuchsreihe-badge">VERSUCHSREIHE</div>
+        </div>
+
+        <div class="controls">
+            <div class="control-buttons">
+                <button class="btn btn-play" onclick="startReading()">🔴 Vorlesen</button>
+                <button class="btn btn-continue" onclick="continueReading()">▶️ Weiterlesen</button>
+                <button class="btn btn-pause" onclick="pauseReading()">⏸️ Pause</button>
+                <button class="btn btn-stop" onclick="stopReading()">⏹️ Stop</button>
+            </div>
+            <div class="language-navigation">
+                <button class="btn btn-lang active" onclick="switchLanguage('de')">🇩🇪 Deutsch</button>
+                <button class="btn btn-lang" onclick="switchLanguage('en')">🇬🇧 English</button>
+            </div>
+            <div class="band-navigation">
+                <button class="btn btn-band active" onclick="showBand(1)">Band 1</button>
+                <button class="btn btn-band" onclick="showBand(2)">Band 2</button>
+            </div>
+        </div>
+
+        <div class="content">
+            <!-- DEUTSCHE VERSIONEN -->
+            <div id="de-content" class="language-content">
+                <!-- Band 1: Verborgene Gefühle (Deutsch) -->
+                <div id="de-band1" class="band-content">
+                    <div class="book-title">Band 1: Verborgene Gefühle</div>
+                    <div class="chapter-title">Kapitel 1: Die Nachricht, die alles veränderte</div>
+                    <div class="text-content" id="de-textContent1">
+                        <p>Die Bibliothek war wie immer ein Zufluchtsort. Lena Winter atmete tief den vertrauten Geruch nach altem Papier ein, während ihr Blick durch den Raum schweifte. Die Stille eines Donnerstagnachmittags war ein angenehmer Kontrast zum lauten Trubel draußen, wo die anderen Studenten in Gruppen zusammenstanden, lachten und redeten - ein soziales Spiel, bei dem sie nie die richtigen Karten in der Hand hatte.</p>
+
+                        <p>"Warum fällt es mir so schwer, mit anderen zu reden?", fragte sie sich zum hundertsten Mal. Diese Frage nagte ständig an ihr, besonders wenn sie andere Studenten beobachtete, die nach gerade mal drei Monaten an der Uni bereits enge Freundschaften geschlossen hatten. Freundschaften, die nach etwas Echtem aussahen, nicht nach den oberflächlichen Bekanntschaften, die sie in der Schule gehabt hatte.</p>
+
+                        <p>Sie strich über die Buchrücken in der Abteilung für deutsche Literatur, ihr Herzschlag beruhigte sich allmählich. Professor Kleinschmidt hatte ihnen für das Seminar „Realismus und gesellschaftliche Strömungen" eine Liste mit Primärliteratur gegeben. Anders als ihre Kommilitonen, die alles digital lasen, brauchte Lena das Gefühl von Papier unter ihren Fingern - eine Verbindung zur Vergangenheit, die ihr Halt gab, wenn die Gegenwart zu kompliziert wurde.</p>
+
+                        <p>Das war einer der Gründe, warum sie sich für Literaturwissenschaften entschieden hatte - hier konnte sie mit Menschen kommunizieren, die längst gestorben waren, ohne zu stottern oder rot zu werden. Durch Literatur verstand sie die Welt besser als durch direkte Erfahrung. "Du verschwendest deine besten Jahre zwischen verstaubten Büchern", hatte ihre Mutter beim letzten Besuch gesagt. Der Ton besorgt, die Augen voller Unverständnis. "Das Leben passiert da draußen, nicht auf Papierseiten."</p>
+
+                        <p>Lena biss sich auf die Lippe. Es war ihr drittes Semester, und während ihre Mitbewohnerin vom letzten Wochenende schwärmte - irgendein Typ namens Marc und zu viel Wodka - und ihre ehemalige Schulfreundin Sophie jeden zweiten Tag Fotos von Dates postete, verbrachte sie ihre Freitagabende mit fiktiven Charakteren. "Ich bin einundzwanzig und habe noch nie einen richtigen Freund gehabt", flüsterte sie so leise, dass niemand es hören konnte.</p>
+                    </div>
+                </div>
+
+                <!-- Band 2: Enthüllte Wahrheiten (Deutsch) -->
+                <div id="de-band2" class="band-content hidden">
+                    <div class="book-title">Band 2: Enthüllte Wahrheiten</div>
+                    <div class="chapter-title">Kapitel 1: Nähe, die flieht</div>
+                    <div class="text-content" id="de-textContent2">
+                        <p>Lena erwachte mit dem Gefühl, dass etwas fehlte. Die Wärme neben ihr war spürbar, körperlich präsent, atmend, real. Julians Arm lag schwer über ihrer Mitte, sein Atem gleichmäßig und tief an ihrem Nacken. Und doch existierte eine seltsame Leere, die sie nicht greifen konnte. Sie blinzelte in das frühe Morgenlicht, das durch die nicht ganz geschlossenen Vorhänge fiel, und versuchte, die Empfindung zu lokalisieren. Es war wie ein Wort, das ihr auf der Zunge lag -- präsent, aber unerreichbar.</p>
+
+                        <p>Drei Monate waren seit dem ersten Kuss am Fluss vergangen. Drei Monate, in denen aus zögernden Berührungen Vertrautheit geworden war, aus geteilten Büchern ein geteiltes Bett, aus zwei separaten Leben ein gemeinsamer Alltag. Alles hatte sich so natürlich entwickelt, so mühelos, als wäre es eine Geschichte, die nur darauf gewartet hatte, erzählt zu werden.</p>
+
+                        <p>Julian murmelte etwas im Schlaf, zog sie näher an sich. Sie spürte seinen Herzschlag durch den dünnen Stoff ihres T-Shirts, beständig und beruhigend. Sie sollte glücklich sein. Sie war glücklich. Warum also dieses nagende Gefühl der Unvollständigkeit? Vorsichtig löste sie sich aus seiner Umarmung, darauf bedacht, ihn nicht zu wecken. Auf Zehenspitzen schlich sie aus dem Schlafzimmer, durchquerte den schmalen Flur seiner Wohnung und betrat die Küche. Seine Küche. Nicht ihre.</p>
+
+                        <p>Sie verbrachte mittlerweile mehr Zeit hier als in ihrer eigenen Wohnung, aber sie hatte ihre nicht aufgegeben. Noch nicht. Eine kleine, eigenartige Resistenz, die sie selbst nicht ganz verstand. Sie setzte Kaffee auf und beobachtete, wie das Wasser tropfenweise und geduldig durch das Kaffeepulver sickerte. Es gab einen Trost in diesen morgendlichen Ritualen, etwas Verlässliches.</p>
+
+                        <p>Der Geruch von frischem Kaffee erfüllte den Raum, verdrängte für einen Moment die unbestimmte Unruhe in ihr. Sie öffnete das Küchenfenster. Draußen lag die Stadt noch im Halbschlaf, obwohl die ersten Autos bereits durch die Straßen fuhren, frühe Pendler, die dem Berufsverkehr voraus sein wollten. Der November hatte die Bäume fast kahl gefegt, nur einzelne hartnäckige Blätter klammerten sich noch an die Zweige. Ein wenig wie sie an ihre eigene Wohnung, dachte Lena und lächelte über den seltsamen Vergleich.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ENGLISCHE VERSIONEN -->
+            <div id="en-content" class="language-content hidden">
+                <!-- Band 1: Hidden Feelings (English) -->
+                <div id="en-band1" class="band-content">
+                    <div class="book-title">Band 1: Hidden Feelings</div>
+                    <div class="chapter-title">Chapter 1: The Message That Changed Everything</div>
+                    <div class="text-content" id="en-textContent1">
+                        <p>The library was, as always, a refuge. Lena Winter breathed in deeply the familiar smell of old paper as her gaze wandered through the room. The silence of a Thursday afternoon was a pleasant contrast to the loud bustle outside, where other students stood together in groups, laughing and talking - a social game in which she never had the right cards in her hand.</p>
+
+                        <p>"Why is it so hard for me to talk to others?" she asked herself for the hundredth time. This question constantly gnawed at her, especially when she observed other students who had already formed close friendships after just three months at university. Friendships that looked like something real, not like the superficial acquaintances she had had in school.</p>
+
+                        <p>She ran her hand over the spines in the German literature section, her heartbeat gradually calming. Professor Kleinschmidt had given them a list of primary literature for the seminar "Realism and Social Currents." Unlike her fellow students, who read everything digitally, Lena needed the feeling of paper under her fingers - a connection to the past that gave her support when the present became too complicated.</p>
+
+                        <p>That was one of the reasons why she had decided on literary studies - here she could communicate with people who had long since died, without stuttering or turning red. Through literature, she understood the world better than through direct experience. "You're wasting your best years between dusty books," her mother had said during her last visit. The tone worried, the eyes full of incomprehension. "Life happens out there, not on paper pages."</p>
+
+                        <p>Lena bit her lip. It was her third semester, and while her roommate raved about last weekend - some guy named Marc and too much vodka - and her former school friend Sophie posted photos of dates every other day, she spent her Friday evenings with fictional characters. "I'm twenty-one and have never had a real boyfriend," she whispered so quietly that no one could hear.</p>
+                    </div>
+                </div>
+
+                <!-- Band 2: Revealed Truths (English) -->
+                <div id="en-band2" class="band-content hidden">
+                    <div class="book-title">Band 2: Revealed Truths</div>
+                    <div class="chapter-title">Chapter 1: Proximity that flees</div>
+                    <div class="text-content" id="en-textContent2">
+                        <p>Lena awoke with the feeling that something was missing. The warmth next to her was tangible, physically present, breathing, real. Julian's arm lay heavy across her middle, his breathing steady and deep on her neck. And yet a strange emptiness existed that she couldn't grasp. She blinked in the early morning light filtering through the not-quite-closed curtains and tried to locate the sensation. It was like a word on the tip of her tongue---present, but unattainable.</p>
+
+                        <p>Three months had passed since their first kiss by the river. Three months in which hesitant touches had turned into familiarity, shared books into a shared bed, two separate lives into a shared everyday life. Everything had unfolded so naturally, so effortlessly, as if it were a story just waiting to be told.</p>
+
+                        <p>Julian murmured something in his sleep, pulling her closer. She felt his heartbeat through the thin fabric of her T-shirt, steady and reassuring. She should be happy. She was happy. So why this gnawing feeling of incompleteness? Cautiously, she pulled herself out of his embrace, careful not to wake him. On tiptoe, she crept out of the bedroom, crossed the narrow hallway of his apartment, and entered the kitchen. His kitchen. Not hers.</p>
+
+                        <p>She spent more time here than in her own apartment these days, but she hadn't given up on hers. Not yet. A small, peculiar resistance that she didn't quite understand. She made coffee and watched as the water patiently trickled through the grounds, drop by drop. There was a comfort in these morning rituals, something reliable.</p>
+
+                        <p>The smell of fresh coffee filled the room, momentarily dispelling the vague restlessness within her. She opened the kitchen window. Outside, the city was still half asleep, although the first cars were already driving through the streets, early commuters trying to get ahead of the rush hour. November had stripped the trees almost bare; only a few stubborn leaves still clung to the branches. A little like she remembers her own apartment, Lena thought, smiling at the strange comparison.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="back-link">
+                <a href="versuchsreihe-zwischen-herz-verstand.html" class="btn btn-back">← Zurück zur Übersicht</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentSpeech = null;
+        let currentBand = 1;
+        let currentLanguage = 'de';
+        let currentWordIndex = 0;
+        let allBandWords = {}; // Speichert Wörter für alle Bände und Sprachen
+        let isReading = false;
+        let lastHighlightedWord = null;
+
+        // Initialisiere alle Bände beim Seitenstart
+        function initializeAllBands() {
+            ['de', 'en'].forEach(lang => {
+                allBandWords[lang] = {};
+                for (let bandNumber = 1; bandNumber <= 2; bandNumber++) {
+                    const bandContent = document.querySelector(`#${lang}-band${bandNumber} .text-content`);
+                    if (bandContent && !bandContent.querySelector('.word')) {
+                        const paragraphs = bandContent.querySelectorAll('p');
+                        let wordCounter = 0;
+                        let bandWords = [];
+                        
+                        paragraphs.forEach((paragraph) => {
+                            const paragraphText = paragraph.textContent;
+                            const paragraphWords = paragraphText.split(/\s+/).filter(word => word.length > 0);
+                            
+                            let paragraphHTML = '';
+                            paragraphWords.forEach((word) => {
+                                paragraphHTML += `<span class="word" data-word-index="${wordCounter}" onclick="startFromWord(${wordCounter})">${word}</span> `;
+                                bandWords.push(word);
+                                wordCounter++;
+                            });
+                            
+                            paragraph.innerHTML = paragraphHTML;
+                        });
+                        
+                        // Speichere Wörter für diesen Band und Sprache
+                        allBandWords[lang][bandNumber] = bandWords;
+                    }
+                }
+            });
+        }
+
+        function switchLanguage(lang) {
+            // Stoppe aktuelles Vorlesen
+            pauseReading();
+            
+            // Verstecke alle Sprachen
+            document.querySelectorAll('.language-content').forEach(content => {
+                content.classList.add('hidden');
+            });
+            
+            // Zeige ausgewählte Sprache
+            document.getElementById(lang + '-content').classList.remove('hidden');
+            
+            // Update Sprachbuttons
+            document.querySelectorAll('.btn-lang').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            currentLanguage = lang;
+            currentWordIndex = 0;
+            clearHighlight();
+            showBand(currentBand); // Zeige aktuellen Band in neuer Sprache
+        }
+
+        function showBand(bandNumber) {
+            // Stoppe aktuelles Vorlesen
+            pauseReading();
+            
+            // Verstecke alle Bände in aktueller Sprache
+            for (let i = 1; i <= 2; i++) {
+                const bandElement = document.getElementById(`${currentLanguage}-band${i}`);
+                if (bandElement) {
+                    bandElement.classList.add('hidden');
+                }
+            }
+            
+            // Update Band-Buttons
+            document.querySelectorAll('.btn-band').forEach((btn, index) => {
+                btn.classList.remove('active');
+                if (index === bandNumber - 1) {
+                    btn.classList.add('active');
+                }
+            });
+            
+            // Zeige ausgewählten Band
+            const targetBand = document.getElementById(`${currentLanguage}-band${bandNumber}`);
+            if (targetBand) {
+                targetBand.classList.remove('hidden');
+            }
+            
+            currentBand = bandNumber;
+            currentWordIndex = 0;
+            clearHighlight();
+        }
+
+        function startReading() {
+            currentWordIndex = 0;
+            clearHighlight();
+            continueReading();
+        }
+
+        function continueReading() {
+            if (currentSpeech) {
+                currentSpeech.cancel();
+            }
+            
+            const currentWords = allBandWords[currentLanguage] && allBandWords[currentLanguage][currentBand];
+            if (currentWords && currentWords.length > 0) {
+                // Text ab der aktuellen Position
+                const remainingText = currentWords.slice(currentWordIndex).join(' ');
+                
+                currentSpeech = new SpeechSynthesisUtterance(remainingText);
+                currentSpeech.rate = 1.0;
+                currentSpeech.lang = currentLanguage === 'de' ? 'de-DE' : 'en-US';
+                
+                let wordCount = currentWordIndex;
+                
+                currentSpeech.onboundary = function(event) {
+                    if (event.name === 'word') {
+                        highlightCurrentWord(wordCount);
+                        wordCount++;
+                        currentWordIndex = wordCount;
+                    }
+                };
+                
+                currentSpeech.onend = function() {
+                    isReading = false;
+                };
+                
+                isReading = true;
+                speechSynthesis.speak(currentSpeech);
+            }
+        }
+
+        function startFromWord(wordIndex) {
+            currentWordIndex = wordIndex;
+            clearHighlight();
+            continueReading();
+        }
+
+        function highlightCurrentWord(wordIndex) {
+            // Entferne vorherige Highlights
+            if (lastHighlightedWord) {
+                lastHighlightedWord.classList.remove('word-highlight');
+            }
+            
+            // Highlights das entsprechende Wort im aktuellen Band und Sprache
+            const wordSpan = document.querySelector(`#${currentLanguage}-band${currentBand} [data-word-index="${wordIndex}"]`);
+            if (wordSpan) {
+                wordSpan.classList.add('word-highlight');
+                lastHighlightedWord = wordSpan;
+                
+                // Scroll to current word
+                wordSpan.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        }
+
+        function clearHighlight() {
+            document.querySelectorAll('.word-highlight').forEach(el => {
+                el.classList.remove('word-highlight');
+            });
+            lastHighlightedWord = null;
+        }
+
+        function pauseReading() {
+            if (currentSpeech) {
+                speechSynthesis.cancel();
+                currentSpeech = null;
+                isReading = false;
+                // BEHALTE die blaue Markierung!
+            }
+        }
+
+        function stopReading() {
+            if (currentSpeech) {
+                speechSynthesis.cancel();
+                currentSpeech = null;
+                isReading = false;
+            }
+            // Zurück zum Anfang + alle Markierungen löschen
+            currentWordIndex = 0;
+            clearHighlight();
+        }
+
+        // Initialisierung beim Seitenstart
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeAllBands(); // Initialisiere ALLE Bände und Sprachen
+            showBand(1); // Zeige Band 1
+        });
+    </script>
+</body>
+</html>
