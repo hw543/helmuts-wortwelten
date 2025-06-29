@@ -205,6 +205,13 @@
             opacity: 0.9;
         }
 
+        .versuchsreihe-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
         .versuchsreihe-btn {
             background: rgba(255, 255, 255, 0.2);
             backdrop-filter: blur(10px);
@@ -442,6 +449,11 @@
             .versuchsreihe-banner p {
                 font-size: 1rem;
             }
+
+            .versuchsreihe-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
         }
     </style>
 </head>
@@ -499,7 +511,11 @@
         <section class="versuchsreihe-banner">
             <h2>🧪 Neu: Revolutionäres Lesen & Vorlesen-System!</h2>
             <p>Entdecke eine völlig neue Art, Bücher zu erleben! Mit unserem innovativen System kannst du alle Kapitel lesen UND dir vorlesen lassen - mit Wort-für-Wort Markierung und interaktiver Steuerung.</p>
-            <a href="versuchsreihe-mysterien-der-heide.html" class="versuchsreihe-btn">🎧 Jetzt ausprobieren - Mysterien der Heide</a>
+            <div class="versuchsreihe-buttons">
+                <a href="versuchsreihe-kinderbuecher.html" class="versuchsreihe-btn">🎪 Kinderbücher-System</a>
+                <a href="versuchsreihe-zwischen-herz-verstand.html" class="versuchsreihe-btn">💫 New Adult System</a>
+                <a href="versuchsreihe-mysterien-der-heide.html" class="versuchsreihe-btn">🔍 Mysterien der Heide</a>
+            </div>
         </section>
 
         <section class="genres-section">
@@ -512,7 +528,10 @@
                     <p class="genre-description">Pädagogisch wertvolle Erzählungen für junge Leser von 6-14 Jahren. Interaktive Erlebnisse mit Vorlese-Funktion und direktem Zugang zu Amazon.</p>
                     <span class="book-count available">5 Bücher verfügbar</span>
                     <br><br>
-                    <a href="kinderbuecher.html" class="genre-btn">📖 Bücher entdecken</a>
+                    <div class="genre-buttons">
+                        <a href="kinderbuecher.html" class="genre-btn">📖 Bücher entdecken</a>
+                        <a href="versuchsreihe-kinderbuecher.html" class="genre-btn experimental">🧪 Vorlese-Version</a>
+                    </div>
                 </div>
 
                 <div class="genre-card">
@@ -532,7 +551,10 @@
                     <p class="genre-description">Geschichten über das Erwachsenwerden, erste große Liebe und die Suche nach dem eigenen Weg.</p>
                     <span class="book-count available">3 Bücher verfügbar</span>
                     <br><br>
-                    <a href="new-adult.html" class="genre-btn">Serie erkunden</a>
+                    <div class="genre-buttons">
+                        <a href="new-adult.html" class="genre-btn">Serie erkunden</a>
+                        <a href="versuchsreihe-zwischen-herz-verstand.html" class="genre-btn experimental">🧪 Vorlese-Version</a>
+                    </div>
                 </div>
 
                 <div class="genre-card">
