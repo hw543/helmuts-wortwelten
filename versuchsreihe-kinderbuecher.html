@@ -1,1 +1,459 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Versuchsreihe: Kinderbücher - Lesen & Vorlesen - Helmut Wegners Wortwelten</title>
+<style>
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
 
+body {
+font-family: 'Comic Sans MS', cursive, sans-serif;
+line-height: 1.6;
+color: #2c1810;
+background: linear-gradient(135deg, #FFB6C1 0%, #FFC0CB 25%, #FFE4E1 50%, #FFCCCB 75%, #FFB6C1 100%);
+min-height: 100vh;
+padding: 20px;
+}
+
+.container {
+max-width: 1000px;
+margin: 0 auto;
+background: rgba(255, 255, 255, 0.95);
+border-radius: 20px;
+box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+overflow: hidden;
+}
+
+.header {
+background: linear-gradient(135deg, #FF69B4, #FF1493, #DC143C);
+color: white;
+padding: 40px 30px;
+text-align: center;
+position: relative;
+}
+
+.back-button-header {
+position: absolute;
+top: 20px;
+left: 20px;
+}
+
+.back-button {
+background: rgba(255, 255, 255, 0.2);
+color: white;
+padding: 10px 20px;
+border: 2px solid rgba(255, 255, 255, 0.3);
+border-radius: 25px;
+font-size: 0.9em;
+cursor: pointer;
+text-decoration: none;
+display: inline-block;
+transition: all 0.3s ease;
+font-weight: bold;
+}
+
+.back-button:hover {
+background: rgba(255, 255, 255, 0.3);
+transform: translateY(-2px);
+}
+
+.header h1 {
+font-size: 2.8em;
+margin-bottom: 15px;
+text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.header p {
+font-size: 1.3em;
+opacity: 0.9;
+font-style: italic;
+}
+
+.versuchsreihe-badge {
+background: #FFD700;
+color: #FF1493;
+padding: 8px 20px;
+border-radius: 20px;
+font-size: 1em;
+font-weight: bold;
+margin-top: 15px;
+display: inline-block;
+box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.vorlese-highlight {
+background: rgba(255, 215, 0, 0.2);
+border: 3px solid #FFD700;
+border-radius: 15px;
+padding: 25px;
+margin: 30px;
+text-align: center;
+}
+
+.vorlese-highlight h2 {
+color: #FF1493;
+font-size: 1.8em;
+margin-bottom: 15px;
+}
+
+.vorlese-highlight p {
+font-size: 1.1em;
+color: #333;
+margin-bottom: 20px;
+}
+
+.vorlese-button {
+background: linear-gradient(135deg, #32CD32, #228B22);
+color: white;
+padding: 15px 30px;
+border: none;
+border-radius: 25px;
+font-size: 1.1em;
+font-weight: bold;
+cursor: pointer;
+text-decoration: none;
+display: inline-block;
+transition: all 0.3s ease;
+box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.vorlese-button:hover {
+transform: translateY(-3px);
+box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+.books-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+gap: 25px;
+padding: 30px;
+}
+
+.book-card {
+background: white;
+border-radius: 15px;
+padding: 20px;
+box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+transition: transform 0.3s ease;
+border: 3px solid #FFB6C1;
+}
+
+.book-card:hover {
+transform: translateY(-5px);
+box-shadow: 0 12px 30px rgba(0,0,0,0.2);
+}
+
+.book-cover {
+text-align: center;
+margin-bottom: 15px;
+}
+
+.book-cover img {
+width: 120px;
+height: 160px;
+object-fit: cover;
+border-radius: 10px;
+box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.book-title {
+font-size: 1.4em;
+font-weight: bold;
+color: #FF1493;
+margin-bottom: 10px;
+text-align: center;
+}
+
+.book-description {
+font-size: 0.95em;
+color: #555;
+margin-bottom: 15px;
+text-align: justify;
+line-height: 1.5;
+}
+
+.book-features {
+margin-bottom: 20px;
+}
+
+.book-features h4 {
+color: #FF69B4;
+font-size: 1em;
+margin-bottom: 8px;
+}
+
+.book-features ul {
+list-style: none;
+padding-left: 0;
+}
+
+.book-features li {
+font-size: 0.9em;
+color: #666;
+margin-bottom: 4px;
+padding-left: 20px;
+position: relative;
+}
+
+.book-features li:before {
+content: "🌟";
+position: absolute;
+left: 0;
+}
+
+.book-actions {
+display: flex;
+gap: 10px;
+justify-content: center;
+flex-wrap: wrap;
+}
+
+.btn {
+padding: 10px 16px;
+border: none;
+border-radius: 20px;
+font-size: 0.9em;
+font-weight: bold;
+cursor: pointer;
+text-decoration: none;
+display: inline-block;
+transition: all 0.3s ease;
+text-align: center;
+min-width: 80px;
+}
+
+.btn-read {
+background: linear-gradient(135deg, #4169E1, #1E90FF);
+color: white;
+}
+
+.btn-amazon {
+background: linear-gradient(135deg, #FF8C00, #FF6347);
+color: white;
+}
+
+.btn:hover {
+transform: translateY(-2px);
+box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.availability {
+margin-top: 10px;
+text-align: center;
+}
+
+.availability-tag {
+display: inline-block;
+padding: 4px 10px;
+border-radius: 12px;
+font-size: 0.8em;
+font-weight: bold;
+margin: 2px;
+}
+
+.available-print {
+background: #90EE90;
+color: #006400;
+}
+
+.available-ebook {
+background: #87CEEB;
+color: #000080;
+}
+
+@media (max-width: 768px) {
+.header h1 {
+font-size: 2.2em;
+}
+
+.header p {
+font-size: 1.1em;
+}
+
+.books-grid {
+grid-template-columns: 1fr;
+padding: 20px;
+}
+
+.back-button-header {
+position: relative;
+top: 0;
+left: 0;
+margin-bottom: 20px;
+}
+
+.book-actions {
+flex-direction: column;
+}
+
+.btn {
+width: 100%;
+}
+}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="header">
+<div class="back-button-header">
+<a href="kinderbuecher.html" class="back-button">← Zurück zu Kinderbücher</a>
+</div>
+<h1>🎪 Versuchsreihe: Kinderbücher</h1>
+<p>Spannende Abenteuer zum Anhören - Geschichten, die begeistern!</p>
+<div class="versuchsreihe-badge">VERSUCHSREIHE</div>
+</div>
+
+<div class="vorlese-highlight">
+<h2>🎧 Neu: Lesen & Vorlesen-System</h2>
+<p>Wertev Interesseev! Mit einem Klick auf "Lesen & Vorlesen" erhalten Sie Zugang zu revolutionären Funktionen:<br>
+<strong>Alle 5 Bücher zum Lesen und Vorlesen lassen • Wort-für-Wort Markierung beim Vorlesen • Interaktive Steuerung • Zwischen Bändern wechseln</strong></p>
+<a href="versuchsreihe-kinderbuecher-vorlesen.html" class="vorlese-button">🎭 Lesen & Vorlesen - Alle 5 Bücher</a>
+</div>
+
+<div class="books-grid">
+<!-- Buch 1: Rätseldetektivclub -->
+<div class="book-card">
+<div class="book-cover">
+<img src="raetseldetektivclub.jpg" alt="Rätseldetektivclub Cover">
+</div>
+<div class="book-title">Rätseldetektivclub</div>
+<div class="book-description">
+Tim, Emma, Jonas und Lara bilden den Rätseldetektivclub. Zusammen sind sie unschlagbar, wenn es darum geht, knifflige Rätsel zu lösen und spannende Abenteuer zu erleben. Jedes Mitglied bringt besondere Fähigkeiten mit: Tim ist ein Computer-Genie, Emma eine Spurenleserin, Jonas ein Geschichtsexperte und Lara eine Mathe-Expertin.
+</div>
+<div class="book-features">
+<h4>In diesem Buch:</h4>
+<ul>
+<li>Spannende Rätselabenteuer für junge Detektive</li>
+<li>Teamwork und Freundschaft im Mittelpunkt</li>
+<li>Logisches Denken wird spielerisch gefördert</li>
+<li>Perfekt für Kinder von 8-12 Jahren</li>
+</ul>
+</div>
+<div class="book-actions">
+<a href="raetseldetektivclub-lesen.html" class="btn btn-read">📖 Lesen</a>
+<a href="https://www.amazon.de/dp/B0F8Q3LQ6K" class="btn btn-amazon" target="_blank">🛒 Amazon</a>
+</div>
+<div class="availability">
+<span class="availability-tag available-print">📚 Taschenbuch</span>
+<span class="availability-tag available-ebook">📱 E-Book</span>
+</div>
+</div>
+
+<!-- Buch 2: Die Zauberakademie von Morgenstern -->
+<div class="book-card">
+<div class="book-cover">
+<img src="zauberakademie.jpg" alt="Zauberakademie Cover">
+</div>
+<div class="book-title">Die Zauberakademie von Morgenstern</div>
+<div class="book-description">
+Magie, Freundschaft und große Träume! Die Zauberakademie von Morgenstern ist ein Ort voller Wunder, an dem junge Zauberlehrlinge ihre Fähigkeiten entdecken und perfektionieren. Tauche ein in eine Welt voller magischer Abenteuer, wo Freundschaft die stärkste Magie von allen ist.
+</div>
+<div class="book-features">
+<h4>In diesem Buch:</h4>
+<ul>
+<li>Magische Welt voller Wunder und Geheimnisse</li>
+<li>Starke Charaktere mit besonderen Fähigkeiten</li>
+<li>Wichtige Werte wie Mut und Zusammenhalt</li>
+<li>Fantasievolle Abenteuer für große und kleine Träumer</li>
+</ul>
+</div>
+<div class="book-actions">
+<a href="zauberakademie-lesen.html" class="btn btn-read">📖 Lesen</a>
+<a href="https://www.amazon.de/dp/B0F8V7TLVT" class="btn btn-amazon" target="_blank">🛒 Amazon</a>
+</div>
+<div class="availability">
+<span class="availability-tag available-print">📚 Taschenbuch</span>
+<span class="availability-tag available-ebook">📱 E-Book</span>
+</div>
+</div>
+
+<!-- Buch 3: Der Zeitnarr -->
+<div class="book-card">
+<div class="book-cover">
+<img src="zeitnarr.jpg" alt="Der Zeitnarr Cover">
+</div>
+<div class="book-title">Der Zeitnarr</div>
+<div class="book-description">
+Eine Reise durch verschiedene Epochen! Mit Bildung und einem fabelhaften Zeitreisegerät wird ein Junge zu einem wahren Helden vieler Epochen. Er entdeckt, wie spannend Geschichte sein kann, wenn man sie selbst erlebt. Ein aufregendes Abenteuer durch Zeit und Raum erwartet dich!
+</div>
+<div class="book-features">
+<h4>In diesem Buch:</h4>
+<ul>
+<li>Zeitreisen durch faszinierende Epochen</li>
+<li>Geschichte wird lebendig und spannend</li>
+<li>Bildung verpackt in aufregende Abenteuer</li>
+<li>Perfekt für neugierige junge Entdecker</li>
+</ul>
+</div>
+<div class="book-actions">
+<a href="zeitnarr-lesen.html" class="btn btn-read">📖 Lesen</a>
+<a href="https://www.amazon.de/dp/B0F8HY1P5G" class="btn btn-amazon" target="_blank">🛒 Amazon</a>
+</div>
+<div class="availability">
+<span class="availability-tag available-print">📚 Taschenbuch</span>
+<span class="availability-tag available-ebook">📱 E-Book</span>
+</div>
+</div>
+
+<!-- Buch 4: Der verborgene Wald -->
+<div class="book-card">
+<div class="book-cover">
+<img src="verborgenerwald.jpg" alt="Der verborgene Wald Cover">
+</div>
+<div class="book-title">Der verborgene Wald</div>
+<div class="book-description">
+Max und Lisa finden eine geheimnisvolle Karte, die zu einem magischen Wald führt. Dort entdecken sie sprechende Tiere, mystische Wesen und ein großes Geheimnis, das den Wald bedroht. Eine aufregende Geschichte über Mut, Freundschaft und die Kraft des Wunders.
+</div>
+<div class="book-features">
+<h4>In diesem Buch:</h4>
+<ul>
+<li>Magischer Wald voller sprechender Tiere</li>
+<li>Umweltbewusstsein spielerisch vermittelt</li>
+<li>Mut und Teamgeist stehen im Mittelpunkt</li>
+<li>Naturverbundene Abenteuer für alle Altersgruppen</li>
+</ul>
+</div>
+<div class="book-actions">
+<a href="verborgenerwald-lesen.html" class="btn btn-read">📖 Lesen</a>
+<span class="btn" style="background: #ccc; color: #666; cursor: not-allowed;">🛒 Bald verfügbar</span>
+</div>
+<div class="availability">
+<span class="availability-tag available-ebook">📱 E-Book geplant</span>
+</div>
+</div>
+
+<!-- Buch 5: Das Geheimnis von Mondstein -->
+<div class="book-card">
+<div class="book-cover">
+<img src="geheimnisvonmondstein.jpg" alt="Das Geheimnis von Mondstein Cover">
+</div>
+<div class="book-title">Das Geheimnis von Mondstein</div>
+<div class="book-description">
+Leni, Tom und Julia entdecken das faszinierende Geheimis einer alten Stadt. Eine Entdeckung führt sie zu großem Wissen und unglaublichen Abenteuern. Sie erfahren, dass nicht alles Gold ist, was glänzt, und dass wahre Schätze oft im Herzen verborgen liegen.
+</div>
+<div class="book-features">
+<h4>In diesem Buch:</h4>
+<ul>
+<li>Geheimnisvolle Stadtlegenden und Schätze</li>
+<li>Wichtige Lebenslektionen über wahre Werte</li>
+<li>Spannende Entdeckertouren durch alte Gemäuer</li>
+<li>Freundschaft als wertvollster Schatz</li>
+</ul>
+</div>
+<div class="book-actions">
+<a href="geheimnisvonmondstein-lesen.html" class="btn btn-read">📖 Lesen</a>
+<span class="btn" style="background: #ccc; color: #666; cursor: not-allowed;">🛒 Bald verfügbar</span>
+</div>
+<div class="availability">
+<span class="availability-tag available-ebook">📱 E-Book geplant</span>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>
