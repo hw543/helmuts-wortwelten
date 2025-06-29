@@ -1,1 +1,314 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>High Fantasy - Versuchsreihe - Helmut Wegners Wortwelten</title>
+<style>
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
 
+body {
+font-family: 'Arial', sans-serif;
+line-height: 1.6;
+color: #1a1a1a;
+background: linear-gradient(135deg, #2D1B69 0%, #4A148C 50%, #6A1B9A 100%);
+min-height: 100vh;
+padding: 20px;
+}
+
+.container {
+max-width: 1000px;
+margin: 0 auto;
+background: rgba(255, 255, 255, 0.95);
+border-radius: 20px;
+box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+overflow: hidden;
+}
+
+.header {
+background: linear-gradient(135deg, #4A148C, #6A1B9A, #9C27B0);
+color: white;
+padding: 40px 30px;
+text-align: center;
+position: relative;
+}
+
+.back-button-header {
+position: absolute;
+top: 20px;
+left: 20px;
+}
+
+.back-button {
+background: rgba(255, 255, 255, 0.2);
+color: white;
+padding: 10px 20px;
+border: 2px solid rgba(255, 255, 255, 0.3);
+border-radius: 25px;
+font-size: 0.9em;
+cursor: pointer;
+text-decoration: none;
+display: inline-block;
+transition: all 0.3s ease;
+font-weight: bold;
+}
+
+.back-button:hover {
+background: rgba(255, 255, 255, 0.3);
+transform: translateY(-2px);
+}
+
+.header h1 {
+font-size: 2.8em;
+margin-bottom: 15px;
+text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
+}
+
+.header p {
+font-size: 1.3em;
+opacity: 0.9;
+font-style: italic;
+}
+
+.versuchsreihe-badge {
+background: #FFD700;
+color: #4A148C;
+padding: 8px 20px;
+border-radius: 20px;
+font-size: 1em;
+font-weight: bold;
+margin-top: 15px;
+display: inline-block;
+}
+
+.vorlese-highlight {
+background: rgba(255, 215, 0, 0.2);
+border: 3px solid #FFD700;
+border-radius: 15px;
+padding: 30px;
+margin: 30px;
+text-align: center;
+}
+
+.vorlese-highlight h2 {
+color: #4A148C;
+font-size: 2em;
+margin-bottom: 15px;
+}
+
+.vorlese-highlight p {
+font-size: 1.2em;
+color: #333;
+margin-bottom: 25px;
+font-weight: bold;
+}
+
+.vorlese-button {
+background: linear-gradient(135deg, #32CD32, #228B22);
+color: white;
+padding: 18px 35px;
+border: none;
+border-radius: 30px;
+font-size: 1.2em;
+font-weight: bold;
+cursor: pointer;
+text-decoration: none;
+display: inline-block;
+transition: all 0.3s ease;
+box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+}
+
+.vorlese-button:hover {
+transform: translateY(-4px);
+box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+
+.content-intro {
+text-align: center;
+padding: 30px;
+background: rgba(74, 20, 140, 0.1);
+margin: 0 30px 30px 30px;
+border-radius: 15px;
+border: 2px solid #4A148C;
+}
+
+.content-intro h2 {
+color: #4A148C;
+font-size: 1.8em;
+margin-bottom: 15px;
+}
+
+.content-intro p {
+font-size: 1.1em;
+color: #333;
+line-height: 1.6;
+}
+
+.books-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+gap: 30px;
+padding: 30px;
+}
+
+.book-card {
+background: white;
+border-radius: 20px;
+padding: 30px;
+box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+transition: transform 0.3s ease;
+border: 4px solid #4A148C;
+text-align: center;
+}
+
+.book-card:hover {
+transform: translateY(-10px);
+box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+}
+
+.book-cover {
+text-align: center;
+margin-bottom: 25px;
+}
+
+.book-cover img {
+width: 160px;
+height: 200px;
+object-fit: cover;
+border-radius: 15px;
+box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+
+.book-title {
+font-size: 1.6em;
+font-weight: bold;
+color: #4A148C;
+margin-bottom: 15px;
+}
+
+.book-subtitle {
+font-size: 1.1em;
+color: #6A1B9A;
+font-style: italic;
+margin-bottom: 20px;
+}
+
+.book-description {
+font-size: 1em;
+color: #666;
+margin-bottom: 25px;
+line-height: 1.6;
+text-align: justify;
+}
+
+.book-features {
+margin-bottom: 30px;
+text-align: left;
+}
+
+.book-features h4 {
+color: #4A148C;
+font-size: 1.1em;
+margin-bottom: 15px;
+text-align: center;
+}
+
+.book-features ul {
+list-style: none;
+padding-left: 0;
+}
+
+.book-features li {
+font-size: 0.95em;
+color: #666;
+margin-bottom: 8px;
+padding-left: 25px;
+position: relative;
+}
+
+.book-features li:before {
+content: "⚔️";
+position: absolute;
+left: 0;
+}
+
+@media (max-width: 768px) {
+.header h1 {
+font-size: 2.2em;
+}
+
+.header p {
+font-size: 1.1em;
+}
+
+.books-grid {
+grid-template-columns: 1fr;
+padding: 20px;
+}
+
+.back-button-header {
+position: relative;
+top: 0;
+left: 0;
+margin-bottom: 20px;
+}
+}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="header">
+<div class="back-button-header">
+<a href="high-fantasy.html" class="back-button">← Zurück zu High Fantasy</a>
+</div>
+<h1>⚔️ High Fantasy Versuchsreihe</h1>
+<p>Interaktives Lesen & Vorlesen-System - Epische Welten voller Magie und Abenteuer!</p>
+<div class="versuchsreihe-badge">VERSUCHSREIHE</div>
+</div>
+
+<div class="vorlese-highlight">
+<h2>🎧 Revolutionäres Vorlese-System</h2>
+<p>Erleben Sie die Zukunft des Lesens: Wort-für-Wort Markierung, interaktive Steuerung, 
+epische Fantasy in Deutsch & Englisch!</p>
+<a href="versuchsreihe-high-fantasy-vorlese.html" class="vorlese-button">🎭 Lesen & Vorlesen - High Fantasy</a>
+</div>
+
+<div class="content-intro">
+<h2>🏰 Was Sie erwartet</h2>
+<p>Ein völlig neues Lese-Erlebnis für epische High Fantasy! Jedes Wort wird beim Vorlesen markiert, 
+Sie können die Geschwindigkeit anpassen und in zwei Sprachen hören. Magische Abenteuer für alle Fantasy-Liebhaber!</p>
+</div>
+
+<div class="books-grid">
+<!-- Eldorius Vermächtnis Serie -->
+<div class="book-card">
+<div class="book-cover">
+<img src="prophezeiung-von-eldoria.jpg" alt="Eldorius Vermächtnis Cover">
+</div>
+<div class="book-title">Eldorius Vermächtnis</div>
+<div class="book-subtitle">Die epische Saga von Kael und seinen Gefährten</div>
+<div class="book-description">
+Eine legendäre Saga von Kael, der gegen innere Dämonen und epische Kräfte kämpft. 
+Von den mystischen Ruinen von Aetheron bis zu den kristallinen Höhlen der Drakheit: 
+Magie, Freundschaft und eine epische Reise zwischen Licht und Dunkelheit.
+</div>
+<div class="book-features">
+<h4>Highlights im Vorlese-System:</h4>
+<ul>
+<li>6 Bände verfügbar - komplette Saga</li>
+<li>Magische Welten zum Miterleben</li>
+<li>Epische Kämpfe zwischen Gut und Böse</li>
+<li>Pause an jeder spannenden Stelle</li>
+<li>Charakterentwicklung verstehen</li>
+<li>Immersive Fantasy-Erfahrung</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>
