@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Versuchsreihe: Kinderbücher - Lesen & Vorlesen - Helmut Wegners Wortwelten</title>
+<title>Kinderbücher - Lesen & Vorlesen - Versuchsreihe - Helmut Wegners Wortwelten</title>
 <style>
 * {
 margin: 0;
@@ -13,7 +13,7 @@ box-sizing: border-box;
 
 body {
 font-family: 'Comic Sans MS', cursive, sans-serif;
-line-height: 1.6;
+line-height: 1.8;
 color: #2c1810;
 background: linear-gradient(135deg, #FFB6C1 0%, #FFC0CB 25%, #FFE4E1 50%, #FFCCCB 75%, #FFB6C1 100%);
 min-height: 100vh;
@@ -21,34 +21,34 @@ padding: 20px;
 }
 
 .container {
-max-width: 1000px;
+max-width: 900px;
 margin: 0 auto;
-background: rgba(255, 255, 255, 0.95);
-border-radius: 20px;
-box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+background: #FFF8F0;
+border-radius: 15px;
+box-shadow: 0 10px 30px rgba(0,0,0,0.3);
 overflow: hidden;
 }
 
 .header {
 background: linear-gradient(135deg, #FF69B4, #FF1493, #DC143C);
-color: white;
-padding: 40px 30px;
+color: #FFF8F0;
+padding: 30px;
 text-align: center;
 position: relative;
 }
 
 .back-button-header {
 position: absolute;
-top: 20px;
-left: 20px;
+top: 15px;
+left: 15px;
 }
 
 .back-button {
 background: rgba(255, 255, 255, 0.2);
 color: white;
-padding: 10px 20px;
+padding: 8px 16px;
 border: 2px solid rgba(255, 255, 255, 0.3);
-border-radius: 25px;
+border-radius: 20px;
 font-size: 0.9em;
 cursor: pointer;
 text-decoration: none;
@@ -63,13 +63,13 @@ transform: translateY(-2px);
 }
 
 .header h1 {
-font-size: 2.8em;
-margin-bottom: 15px;
+font-size: 2.5em;
+margin-bottom: 10px;
 text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
 }
 
 .header p {
-font-size: 1.3em;
+font-size: 1.2em;
 opacity: 0.9;
 font-style: italic;
 }
@@ -77,222 +77,159 @@ font-style: italic;
 .versuchsreihe-badge {
 background: #FFD700;
 color: #FF1493;
-padding: 8px 20px;
-border-radius: 20px;
-font-size: 1em;
-font-weight: bold;
-margin-top: 15px;
-display: inline-block;
-box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-}
-
-.vorlese-highlight {
-background: rgba(255, 215, 0, 0.2);
-border: 3px solid #FFD700;
+padding: 5px 15px;
 border-radius: 15px;
-padding: 25px;
-margin: 30px;
-text-align: center;
-}
-
-.vorlese-highlight h2 {
-color: #FF1493;
-font-size: 1.8em;
-margin-bottom: 15px;
-}
-
-.vorlese-highlight p {
-font-size: 1.1em;
-color: #333;
-margin-bottom: 20px;
-}
-
-.vorlese-button {
-background: linear-gradient(135deg, #32CD32, #228B22);
-color: white;
-padding: 15px 30px;
-border: none;
-border-radius: 25px;
-font-size: 1.1em;
-font-weight: bold;
-cursor: pointer;
-text-decoration: none;
-display: inline-block;
-transition: all 0.3s ease;
-box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-}
-
-.vorlese-button:hover {
-transform: translateY(-3px);
-box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-}
-
-.books-grid {
-display: grid;
-grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-gap: 25px;
-padding: 30px;
-}
-
-.book-card {
-background: white;
-border-radius: 15px;
-padding: 20px;
-box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-transition: transform 0.3s ease;
-border: 3px solid #FFB6C1;
-}
-
-.book-card:hover {
-transform: translateY(-5px);
-box-shadow: 0 12px 30px rgba(0,0,0,0.2);
-}
-
-.book-cover {
-text-align: center;
-margin-bottom: 15px;
-}
-
-.book-cover img {
-width: 120px;
-height: 160px;
-object-fit: cover;
-border-radius: 10px;
-box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-}
-
-.book-title {
-font-size: 1.4em;
-font-weight: bold;
-color: #FF1493;
-margin-bottom: 10px;
-text-align: center;
-}
-
-.book-description {
-font-size: 0.95em;
-color: #555;
-margin-bottom: 15px;
-text-align: justify;
-line-height: 1.5;
-}
-
-.book-features {
-margin-bottom: 20px;
-}
-
-.book-features h4 {
-color: #FF69B4;
-font-size: 1em;
-margin-bottom: 8px;
-}
-
-.book-features ul {
-list-style: none;
-padding-left: 0;
-}
-
-.book-features li {
 font-size: 0.9em;
-color: #666;
-margin-bottom: 4px;
-padding-left: 20px;
-position: relative;
+font-weight: bold;
+margin-top: 10px;
+display: inline-block;
 }
 
-.book-features li:before {
-content: "🌟";
-position: absolute;
-left: 0;
+.controls {
+background: #fff8f8;
+padding: 20px;
+border-bottom: 3px solid #FF69B4;
+position: sticky;
+top: 0;
+z-index: 100;
+box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
 
-.book-actions {
+.control-buttons {
 display: flex;
-gap: 10px;
+gap: 15px;
 justify-content: center;
 flex-wrap: wrap;
+margin-bottom: 15px;
 }
 
 .btn {
-padding: 10px 16px;
+padding: 12px 24px;
 border: none;
-border-radius: 20px;
-font-size: 0.9em;
+border-radius: 25px;
+font-size: 1em;
 font-weight: bold;
 cursor: pointer;
-text-decoration: none;
-display: inline-block;
 transition: all 0.3s ease;
-text-align: center;
-min-width: 80px;
+min-width: 120px;
 }
 
-.btn-read {
-background: linear-gradient(135deg, #4169E1, #1E90FF);
+.btn-play {
+background: linear-gradient(135deg, #FF1493, #FF69B4);
 color: white;
 }
 
-.btn-amazon {
-background: linear-gradient(135deg, #FF8C00, #FF6347);
+.btn-stop {
+background: linear-gradient(135deg, #dc3545, #e83e8c);
+color: white;
+}
+
+.btn-continue {
+background: linear-gradient(135deg, #17a2b8, #6f42c1);
 color: white;
 }
 
 .btn:hover {
 transform: translateY(-2px);
-box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+box-shadow: 0 5px 15px rgba(0,0,0,0.2);
 }
 
-.availability {
-margin-top: 10px;
-text-align: center;
+.book-navigation, .language-navigation {
+display: flex;
+gap: 10px;
+justify-content: center;
+flex-wrap: wrap;
+margin-bottom: 10px;
 }
 
-.availability-tag {
-display: inline-block;
-padding: 4px 10px;
-border-radius: 12px;
-font-size: 0.8em;
-font-weight: bold;
-margin: 2px;
+.btn-book, .btn-lang {
+background: linear-gradient(135deg, #FF1493, #AD1457);
+color: #FFF8F0;
+padding: 10px 20px;
+border: 2px solid transparent;
 }
 
-.available-print {
-background: #90EE90;
-color: #006400;
+.btn-book.active, .btn-lang.active {
+border-color: #FFD700;
+box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
 }
 
-.available-ebook {
-background: #87CEEB;
-color: #000080;
-}
-
-@media (max-width: 768px) {
-.header h1 {
-font-size: 2.2em;
-}
-
-.header p {
+.content {
+padding: 30px;
 font-size: 1.1em;
+line-height: 1.8;
 }
 
-.books-grid {
-grid-template-columns: 1fr;
+.book-title {
+color: #FF1493;
+font-size: 2em;
+margin-bottom: 10px;
+text-align: center;
+border-bottom: 2px solid #FF69B4;
+padding-bottom: 15px;
+}
+
+.chapter-title {
+color: #AD1457;
+font-size: 1.5em;
+margin: 30px 0 20px 0;
+text-align: center;
+font-style: italic;
+}
+
+.text-content {
+text-align: justify;
+margin-bottom: 30px;
+}
+
+.word {
+cursor: pointer;
+transition: all 0.2s ease;
+padding: 1px 2px;
+border-radius: 3px;
+}
+
+.word:hover {
+background-color: #FFE4E1;
+}
+
+.word-highlight {
+background-color: #4169E1;
+color: white;
+padding: 2px 4px;
+border-radius: 4px;
+box-shadow: 0 2px 5px rgba(65, 105, 225, 0.3);
+}
+
+.hidden {
+display: none;
+}
+
+@media (max-width: 600px) {
+.control-buttons, .book-navigation, .language-navigation {
+gap: 10px;
+}
+
+.btn {
+min-width: 100px;
+font-size: 0.9em;
+padding: 10px 16px;
+}
+
+.content {
 padding: 20px;
+font-size: 1em;
+}
+
+.header h1 {
+font-size: 2em;
 }
 
 .back-button-header {
 position: relative;
 top: 0;
 left: 0;
-margin-bottom: 20px;
-}
-
-.book-actions {
-flex-direction: column;
-}
-
-.btn {
-width: 100%;
+margin-bottom: 15px;
 }
 }
 </style>
@@ -301,159 +238,303 @@ width: 100%;
 <div class="container">
 <div class="header">
 <div class="back-button-header">
-<a href="kinderbuecher.html" class="back-button">← Zurück zu Kinderbücher</a>
+<a href="kinderbuecher.html" class="back-button">← Zurück zur Übersicht</a>
 </div>
-<h1>🎪 Versuchsreihe: Kinderbücher</h1>
-<p>Spannende Abenteuer zum Anhören - Geschichten, die begeistern!</p>
+<h1>🎪 Kinderbücher Vorlese-System</h1>
+<p>Lesen & Vorlesen-System - Spannende Abenteuer zum Anhören!</p>
 <div class="versuchsreihe-badge">VERSUCHSREIHE</div>
 </div>
 
-<div class="vorlese-highlight">
-<h2>🎧 Neu: Lesen & Vorlesen-System</h2>
-<p>Wertev Interesseev! Mit einem Klick auf "Lesen & Vorlesen" erhalten Sie Zugang zu revolutionären Funktionen:<br>
-<strong>Alle 5 Bücher zum Lesen und Vorlesen lassen • Wort-für-Wort Markierung beim Vorlesen • Interaktive Steuerung • Zwischen Bändern wechseln</strong></p>
-<a href="versuchsreihe-kinderbuecher-vorlesen.html" class="vorlese-button">🎭 Lesen & Vorlesen - Alle 5 Bücher</a>
+<div class="controls">
+<div class="control-buttons">
+<button class="btn btn-play" onclick="startReading()">🔴 Vorlesen</button>
+<button class="btn btn-continue" onclick="continueReading()">▶️ Weiterlesen</button>
+<button class="btn btn-stop" onclick="stopReading()">⏹️ Stop</button>
 </div>
 
-<div class="books-grid">
-<!-- Buch 1: Rätseldetektivclub -->
-<div class="book-card">
-<div class="book-cover">
-<img src="raetseldetektivclub.jpg" alt="Rätseldetektivclub Cover">
+<div class="language-navigation">
+<button class="btn btn-lang active" onclick="switchLanguage('de')">🇩🇪 Deutsch</button>
+<button class="btn btn-lang" onclick="switchLanguage('en')">🇬🇧 English</button>
 </div>
+
+<div class="book-navigation">
+<button class="btn btn-book active" onclick="showBook(1)">Buch 1</button>
+<button class="btn btn-book" onclick="showBook(2)">Buch 2</button>
+<button class="btn btn-book" onclick="showBook(3)">Buch 3</button>
+<button class="btn btn-book" onclick="showBook(4)">Buch 4</button>
+<button class="btn btn-book" onclick="showBook(5)">Buch 5</button>
+</div>
+</div>
+
+<div class="content">
+<!-- DEUTSCHE VERSIONEN -->
+<div id="de-content" class="language-content">
+<!-- Buch 1: Rätseldetektivclub (Deutsch) -->
+<div id="de-book1" class="book-content">
 <div class="book-title">Rätseldetektivclub</div>
-<div class="book-description">
-Tim, Emma, Jonas und Lara bilden den Rätseldetektivclub. Zusammen sind sie unschlagbar, wenn es darum geht, knifflige Rätsel zu lösen und spannende Abenteuer zu erleben. Jedes Mitglied bringt besondere Fähigkeiten mit: Tim ist ein Computer-Genie, Emma eine Spurenleserin, Jonas ein Geschichtsexperte und Lara eine Mathe-Expertin.
-</div>
-<div class="book-features">
-<h4>In diesem Buch:</h4>
-<ul>
-<li>Spannende Rätselabenteuer für junge Detektive</li>
-<li>Teamwork und Freundschaft im Mittelpunkt</li>
-<li>Logisches Denken wird spielerisch gefördert</li>
-<li>Perfekt für Kinder von 8-12 Jahren</li>
-</ul>
-</div>
-<div class="book-actions">
-<a href="raetseldetektivclub-lesen.html" class="btn btn-read">📖 Lesen</a>
-<a href="https://www.amazon.de/dp/B0F8Q3LQ6K" class="btn btn-amazon" target="_blank">🛒 Amazon</a>
-</div>
-<div class="availability">
-<span class="availability-tag available-print">📚 Taschenbuch</span>
-<span class="availability-tag available-ebook">📱 E-Book</span>
+<div class="chapter-title">Kapitel 1: Das erste Rätsel</div>
+<div class="text-content" id="de-textContent1">
+<p>Max saß an seinem Schreibtisch und starrte auf den Computerbildschirm. Die Zahlen und Buchstaben verschwammen vor seinen Augen, aber er konnte sich einfach nicht konzentrieren. Draußen schien die Sonne, und er hörte die anderen Kinder auf dem Spielplatz lachen und toben. Eigentlich sollte er seine Hausaufgaben machen, aber heute fühlte sich alles so langweilig an.</p>
+
+<p>"Max!" rief seine Mutter aus der Küche. "Emma ist da!" Max sprang sofort auf. Emma war seine beste Freundin, und wenn sie kam, bedeutete das meist, dass etwas Aufregendes passieren würde. Emma war nämlich nicht nur seine Nachbarin, sondern auch die Anführerin ihres geheimen Clubs – dem Rätseldetektivclub.</p>
+
+<p>Emma kam die Treppe hinaufgerannt, ihre langen braunen Haare flogen hinter ihr her. "Max! Du glaubst nicht, was ich gefunden habe!" Sie hielt einen zerknitterten Zettel in der Hand, den sie offensichtlich irgendwo aufgelesen hatte. Ihre Augen leuchteten vor Aufregung.</p>
+
+<p>"Was ist das denn?" fragte Max neugierig und schob seine Brille zurecht. Emma war bekannt dafür, überall interessante Dinge zu finden – alte Münzen, seltsame Steine, geheimnisvolle Nachrichten. Aber dieser Zettel sah besonders vielversprechend aus.</p>
+
+<p>"Schau dir das mal an!" Emma breitete den Zettel auf Max' Schreibtisch aus. "Ich habe ihn heute Morgen im Park gefunden, zwischen den Büschen beim alten Brunnen. Siehst du die seltsamen Zeichen?" Tatsächlich war der Zettel voller merkwürdiger Symbole und Zahlen, die in keiner erkennbaren Reihenfolge standen.</p>
+
+<p>Max beugte sich über den Zettel und studierte die Zeichen genau. "Das sieht aus wie ein Code", murmelte er. "Warte mal..." Er holte sein Notizbuch hervor, in dem er alle möglichen Codes und Rätsel sammelte, die er im Internet oder in Büchern gefunden hatte. "Ich glaube, ich habe so etwas schon mal gesehen."</p>
 </div>
 </div>
 
-<!-- Buch 2: Die Zauberakademie von Morgenstern -->
-<div class="book-card">
-<div class="book-cover">
-<img src="zauberakademie.jpg" alt="Zauberakademie Cover">
-</div>
+<!-- Buch 2: Die Zauberakademie von Morgenstern (Deutsch) -->
+<div id="de-book2" class="book-content hidden">
 <div class="book-title">Die Zauberakademie von Morgenstern</div>
-<div class="book-description">
-Magie, Freundschaft und große Träume! Die Zauberakademie von Morgenstern ist ein Ort voller Wunder, an dem junge Zauberlehrlinge ihre Fähigkeiten entdecken und perfektionieren. Tauche ein in eine Welt voller magischer Abenteuer, wo Freundschaft die stärkste Magie von allen ist.
-</div>
-<div class="book-features">
-<h4>In diesem Buch:</h4>
-<ul>
-<li>Magische Welt voller Wunder und Geheimnisse</li>
-<li>Starke Charaktere mit besonderen Fähigkeiten</li>
-<li>Wichtige Werte wie Mut und Zusammenhalt</li>
-<li>Fantasievolle Abenteuer für große und kleine Träumer</li>
-</ul>
-</div>
-<div class="book-actions">
-<a href="zauberakademie-lesen.html" class="btn btn-read">📖 Lesen</a>
-<a href="https://www.amazon.de/dp/B0F8V7TLVT" class="btn btn-amazon" target="_blank">🛒 Amazon</a>
-</div>
-<div class="availability">
-<span class="availability-tag available-print">📚 Taschenbuch</span>
-<span class="availability-tag available-ebook">📱 E-Book</span>
+<div class="chapter-title">Kapitel 1: Die Ankunft</div>
+<div class="text-content" id="de-textContent2">
+<p>Leonas stand vor dem imposanten Tor der Zauberakademie von Morgenstern und konnte kaum glauben, dass er wirklich hier war. Das riesige Gebäude ragte vor ihm auf wie ein Märchenschloss, mit hohen Türmen, funkelnden Fenstern und geheimnisvollen Symbolen, die in die Steinmauern gemeißelt waren. Der Brief in seiner Hand zitterte leicht – die Einladung, die sein Leben für immer verändern würde.</p>
+
+<p>"Willkommen, junger Zauberer", sagte eine freundliche Stimme hinter ihm. Leonas drehte sich um und sah einen älteren Mann mit einem langen, weißen Bart und funkelnden Augen. Er trug einen prächtigen blauen Umhang, der mit silbernen Sternen bestickt war. "Ich bin Professor Sternenstein, der Direktor dieser Akademie. Du musst Leonas Grünfeld sein, nicht wahr?"</p>
+
+<p>Leonas nickte stumm. Er war so aufgeregt und nervös zugleich, dass er kaum ein Wort herausbringen konnte. Seit er vor drei Wochen den Brief erhalten hatte, hatte er von nichts anderem geträumt. Eine echte Zauberakademie! Er, ein ganz normaler Junge aus einem kleinen Dorf, sollte wirklich Magie lernen können!</p>
 </div>
 </div>
 
-<!-- Buch 3: Der Zeitnarr -->
-<div class="book-card">
-<div class="book-cover">
-<img src="zeitnarr.jpg" alt="Der Zeitnarr Cover">
-</div>
-<div class="book-title">Der Zeitnarr</div>
-<div class="book-description">
-Eine Reise durch verschiedene Epochen! Mit Bildung und einem fabelhaften Zeitreisegerät wird ein Junge zu einem wahren Helden vieler Epochen. Er entdeckt, wie spannend Geschichte sein kann, wenn man sie selbst erlebt. Ein aufregendes Abenteuer durch Zeit und Raum erwartet dich!
-</div>
-<div class="book-features">
-<h4>In diesem Buch:</h4>
-<ul>
-<li>Zeitreisen durch faszinierende Epochen</li>
-<li>Geschichte wird lebendig und spannend</li>
-<li>Bildung verpackt in aufregende Abenteuer</li>
-<li>Perfekt für neugierige junge Entdecker</li>
-</ul>
-</div>
-<div class="book-actions">
-<a href="zeitnarr-lesen.html" class="btn btn-read">📖 Lesen</a>
-<a href="https://www.amazon.de/dp/B0F8HY1P5G" class="btn btn-amazon" target="_blank">🛒 Amazon</a>
-</div>
-<div class="availability">
-<span class="availability-tag available-print">📚 Taschenbuch</span>
-<span class="availability-tag available-ebook">📱 E-Book</span>
-</div>
-</div>
-
-<!-- Buch 4: Der verborgene Wald -->
-<div class="book-card">
-<div class="book-cover">
-<img src="verborgenerwald.jpg" alt="Der verborgene Wald Cover">
-</div>
-<div class="book-title">Der verborgene Wald</div>
-<div class="book-description">
-Max und Lisa finden eine geheimnisvolle Karte, die zu einem magischen Wald führt. Dort entdecken sie sprechende Tiere, mystische Wesen und ein großes Geheimnis, das den Wald bedroht. Eine aufregende Geschichte über Mut, Freundschaft und die Kraft des Wunders.
-</div>
-<div class="book-features">
-<h4>In diesem Buch:</h4>
-<ul>
-<li>Magischer Wald voller sprechender Tiere</li>
-<li>Umweltbewusstsein spielerisch vermittelt</li>
-<li>Mut und Teamgeist stehen im Mittelpunkt</li>
-<li>Naturverbundene Abenteuer für alle Altersgruppen</li>
-</ul>
-</div>
-<div class="book-actions">
-<a href="verborgenerwald-lesen.html" class="btn btn-read">📖 Lesen</a>
-<span class="btn" style="background: #ccc; color: #666; cursor: not-allowed;">🛒 Bald verfügbar</span>
-</div>
-<div class="availability">
-<span class="availability-tag available-ebook">📱 E-Book geplant</span>
-</div>
-</div>
-
-<!-- Buch 5: Das Geheimnis von Mondstein -->
-<div class="book-card">
-<div class="book-cover">
-<img src="geheimnisvonmondstein.jpg" alt="Das Geheimnis von Mondstein Cover">
-</div>
+<!-- Buch 3: Das Geheimnis von Mondstein (Deutsch) -->
+<div id="de-book3" class="book-content hidden">
 <div class="book-title">Das Geheimnis von Mondstein</div>
-<div class="book-description">
-Leni, Tom und Julia entdecken das faszinierende Geheimis einer alten Stadt. Eine Entdeckung führt sie zu großem Wissen und unglaublichen Abenteuern. Sie erfahren, dass nicht alles Gold ist, was glänzt, und dass wahre Schätze oft im Herzen verborgen liegen.
-</div>
-<div class="book-features">
-<h4>In diesem Buch:</h4>
-<ul>
-<li>Geheimnisvolle Stadtlegenden und Schätze</li>
-<li>Wichtige Lebenslektionen über wahre Werte</li>
-<li>Spannende Entdeckertouren durch alte Gemäuer</li>
-<li>Freundschaft als wertvollster Schatz</li>
-</ul>
-</div>
-<div class="book-actions">
-<a href="geheimnisvonmondstein-lesen.html" class="btn btn-read">📖 Lesen</a>
-<span class="btn" style="background: #ccc; color: #666; cursor: not-allowed;">🛒 Bald verfügbar</span>
-</div>
-<div class="availability">
-<span class="availability-tag available-ebook">📱 E-Book geplant</span>
+<div class="chapter-title">Kapitel 1: Das leuchtende Fragment</div>
+<div class="text-content" id="de-textContent3">
+<p>Es war ein gewöhnlicher Nachmittag, der in einem abgelegenen Park begann, wo die Bäume sich dicht aneinanderreihen und das Licht der tiefstehenden Sonne sich in goldenen Strahlen durch die Äste schlich. Der Herbst war gekommen, und die Blätter hatten sich bereits in alle erdenklichen Farben verwandelt: von knalligem Rot bis zu sanftem Gelb.</p>
+
+<p>„Seht mal!", rief Leni plötzlich, als sie stehen blieb und ihre Augen auf etwas am Boden richtete. Sie kniete sich hin und betrachtete mit einem gemischten Ausdruck aus Staunen und Neugier einen kleinen, glimmenden Fleck im Gras. Es war ein schwaches, fast unmerkliches Licht, das aus dem Dickicht hervorzutreten schien.</p>
 </div>
 </div>
+
+<!-- Buch 4: Der verborgene Wald (Deutsch) -->
+<div id="de-book4" class="book-content hidden">
+<div class="book-title">Der verborgene Wald</div>
+<div class="chapter-title">Kapitel 1: Die geheimnisvolle Karte</div>
+<div class="text-content" id="de-textContent4">
+<p>Die Sonne neigte sich dem Horizont entgegen und tauchte den Himmel in ein sanftes Orange. Max und Lisa standen auf dem alten Marktplatz ihrer Stadt und schauten sich neugierig um. Der Platz war leer, die meisten Geschäfte hatten bereits geschlossen, und nur das entfernte Kichern der Kinder, die auf dem Heimweg waren, war zu hören.</p>
 </div>
 </div>
+
+<!-- Buch 5: Der Zeitnarr (Deutsch) -->
+<div id="de-book5" class="book-content hidden">
+<div class="book-title">Der Zeitnarr</div>
+<div class="chapter-title">Kapitel 1: Der Flohmarktfund</div>
+<div class="text-content" id="de-textContent5">
+<p>Der Flohmarkt war eine Welt für sich. Reihen von Ständen zogen sich über den kleinen Marktplatz, jeder beladen mit einer kunterbunten Mischung aus Altem, Kuriosem und Wertvollem. Max schob sich durch die Menschenmenge, die Hände tief in den Taschen seiner abgetragenen Jeans vergraben.</p>
+</div>
+</div>
+</div>
+
+<!-- ENGLISCHE VERSIONEN -->
+<div id="en-content" class="language-content hidden">
+<!-- Book 1: Mystery Detective Club (English) -->
+<div id="en-book1" class="book-content">
+<div class="book-title">Mystery Detective Club</div>
+<div class="chapter-title">Chapter 1: The First Mystery</div>
+<div class="text-content" id="en-textContent1">
+<p>Max sat at his desk, staring at the computer screen. The numbers and letters blurred before his eyes, but he just couldn't concentrate. Outside, the sun was shining, and he could hear other children laughing and playing on the playground. He was supposed to be doing his homework, but today everything felt so boring.</p>
+
+<p>"Max!" his mother called from the kitchen. "Emma is here!" Max jumped up immediately. Emma was his best friend, and when she came over, it usually meant something exciting was about to happen. Emma wasn't just his neighbor, but also the leader of their secret club – the Mystery Detective Club.</p>
+</div>
+</div>
+
+<!-- Book 2: The Magic Academy of Morgenstern (English) -->
+<div id="en-book2" class="book-content hidden">
+<div class="book-title">The Magic Academy of Morgenstern</div>
+<div class="chapter-title">Chapter 1: The Arrival</div>
+<div class="text-content" id="en-textContent2">
+<p>Leonas stood before the imposing gate of the Magic Academy of Morgenstern and could hardly believe that he was really here. The huge building towered before him like a fairy-tale castle, with tall towers, sparkling windows, and mysterious symbols carved into the stone walls. The letter in his hand trembled slightly – the invitation that would change his life forever.</p>
+</div>
+</div>
+
+<!-- Book 3: The Secret of Moonstone (English) -->
+<div id="en-book3" class="book-content hidden">
+<div class="book-title">The Secret of Moonstone</div>
+<div class="chapter-title">Chapter 1: The Glowing Fragment</div>
+<div class="text-content" id="en-textContent3">
+<p>It was an ordinary afternoon that began in a secluded park, where trees stood closely together and the light of the low sun crept through the branches in golden rays. Autumn had come, and the leaves had already turned into all imaginable colors: from bright red to soft yellow.</p>
+</div>
+</div>
+
+<!-- Book 4: The Hidden Forest (English) -->
+<div id="en-book4" class="book-content hidden">
+<div class="book-title">The Hidden Forest</div>
+<div class="chapter-title">Chapter 1: The Mysterious Map</div>
+<div class="text-content" id="en-textContent4">
+<p>The sun was leaning toward the horizon and bathed the sky in a soft orange. Max and Lisa stood on the old market square of their town and looked around curiously. The square was empty, most shops had already closed, and only the distant giggling of children on their way home could be heard.</p>
+</div>
+</div>
+
+<!-- Book 5: The Time Jester (English) -->
+<div id="en-book5" class="book-content hidden">
+<div class="book-title">The Time Jester</div>
+<div class="chapter-title">Chapter 1: The Flea Market Find</div>
+<div class="text-content" id="en-textContent5">
+<p>The flea market was a world of its own. Rows of stalls stretched across the small market square, each loaded with a colorful mixture of old, curious, and valuable things. Max pushed through the crowd, his hands buried deep in the pockets of his worn jeans.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<script>
+let currentSpeech = null;
+let currentBook = 1;
+let currentLanguage = 'de';
+let currentWordIndex = 0;
+let allBookWords = {};
+let isReading = false;
+let lastHighlightedWord = null;
+
+function initializeAllBooks() {
+['de', 'en'].forEach(lang => {
+allBookWords[lang] = {};
+for (let bookNumber = 1; bookNumber <= 5; bookNumber++) {
+const bookContent = document.querySelector(`#${lang}-book${bookNumber} .text-content`);
+if (bookContent && !bookContent.querySelector('.word')) {
+const paragraphs = bookContent.querySelectorAll('p');
+let wordCounter = 0;
+let bookWords = [];
+
+paragraphs.forEach((paragraph) => {
+if (!paragraph.textContent.trim()) return;
+const paragraphText = paragraph.textContent;
+const paragraphWords = paragraphText.split(/\s+/).filter(word => word.length > 0);
+
+let paragraphHTML = '';
+paragraphWords.forEach((word) => {
+paragraphHTML += `<span class="word" data-word-index="${wordCounter}" onclick="startFromWord(${wordCounter})">${word}</span> `;
+bookWords.push(word);
+wordCounter++;
+});
+
+paragraph.innerHTML = paragraphHTML;
+});
+
+allBookWords[lang][bookNumber] = bookWords;
+}
+}
+});
+}
+
+function switchLanguage(lang) {
+stopReading();
+document.querySelectorAll('.language-content').forEach(content => {
+content.classList.add('hidden');
+});
+document.getElementById(lang + '-content').classList.remove('hidden');
+document.querySelectorAll('.btn-lang').forEach(btn => {
+btn.classList.remove('active');
+});
+event.target.classList.add('active');
+currentLanguage = lang;
+currentWordIndex = 0;
+clearHighlight();
+showBook(currentBook);
+}
+
+function showBook(bookNumber) {
+stopReading();
+for (let i = 1; i <= 5; i++) {
+const bookElement = document.getElementById(`${currentLanguage}-book${i}`);
+if (bookElement) {
+bookElement.classList.add('hidden');
+}
+}
+document.querySelectorAll('.btn-book').forEach((btn, index) => {
+btn.classList.remove('active');
+if (index === bookNumber - 1) {
+btn.classList.add('active');
+}
+});
+const targetBook = document.getElementById(`${currentLanguage}-book${bookNumber}`);
+if (targetBook) {
+targetBook.classList.remove('hidden');
+}
+currentBook = bookNumber;
+currentWordIndex = 0;
+clearHighlight();
+}
+
+function startReading() {
+currentWordIndex = 0;
+clearHighlight();
+continueReading();
+}
+
+function continueReading() {
+if (currentSpeech) {
+currentSpeech.cancel();
+}
+
+const currentWords = allBookWords[currentLanguage] && allBookWords[currentLanguage][currentBook];
+if (currentWords && currentWords.length > 0 && currentWordIndex < currentWords.length) {
+const remainingText = currentWords.slice(currentWordIndex).join(' ');
+currentSpeech = new SpeechSynthesisUtterance(remainingText);
+currentSpeech.rate = 0.9;
+currentSpeech.lang = currentLanguage === 'de' ? 'de-DE' : 'en-US';
+
+let wordCount = currentWordIndex;
+currentSpeech.onboundary = function(event) {
+if (event.name === 'word') {
+highlightCurrentWord(wordCount);
+wordCount++;
+currentWordIndex = wordCount;
+}
+};
+
+currentSpeech.onend = function() {
+isReading = false;
+};
+
+isReading = true;
+speechSynthesis.speak(currentSpeech);
+}
+}
+
+function startFromWord(wordIndex) {
+currentWordIndex = wordIndex;
+clearHighlight();
+continueReading();
+}
+
+function highlightCurrentWord(wordIndex) {
+if (lastHighlightedWord) {
+lastHighlightedWord.classList.remove('word-highlight');
+}
+const wordSpan = document.querySelector(`#${currentLanguage}-book${currentBook} [data-word-index="${wordIndex}"]`);
+if (wordSpan) {
+wordSpan.classList.add('word-highlight');
+lastHighlightedWord = wordSpan;
+wordSpan.scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+}
+
+function clearHighlight() {
+document.querySelectorAll('.word-highlight').forEach(el => {
+el.classList.remove('word-highlight');
+});
+lastHighlightedWord = null;
+}
+
+function stopReading() {
+if (currentSpeech) {
+speechSynthesis.cancel();
+currentSpeech = null;
+isReading = false;
+}
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+initializeAllBooks();
+showBook(1);
+});
+</script>
 </body>
 </html>
