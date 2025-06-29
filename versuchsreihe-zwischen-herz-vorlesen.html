@@ -1,737 +1,658 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zwischen Herz und Verstand - Lesen & Vorlesen - Versuchsreihe - Helmut Wegners Wortwelten</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zwischen Herz und Verstand - Lesen & Vorlesen - Versuchsreihe - Helmut Wegners Wortwelten</title>
+<style>
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
 
-        body {
-            font-family: 'Georgia', serif;
-            line-height: 1.8;
-            color: #0D4F5C;
-            background: linear-gradient(135deg, #00ACC1 0%, #0097A7 30%, #80DEEA 100%);
-            min-height: 100vh;
-            padding: 20px;
-        }
+body {
+font-family: 'Georgia', serif;
+line-height: 1.8;
+color: #2c1810;
+background: linear-gradient(135deg, #FFE5E5 0%, #FFD4B8 50%, #FFCFCF 100%);
+min-height: 100vh;
+padding: 20px;
+}
 
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            background: #E0F7FA;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-            overflow: hidden;
-        }
+.container {
+max-width: 900px;
+margin: 0 auto;
+background: #FFF8F0;
+border-radius: 15px;
+box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+overflow: hidden;
+}
 
-        .header {
-            background: linear-gradient(135deg, #00ACC1, #0097A7);
-            color: #E0F7FA;
-            padding: 30px;
-            text-align: center;
-        }
+.header {
+background: linear-gradient(135deg, #FF8A80, #FFB74D);
+color: #FFF8F0;
+padding: 30px;
+text-align: center;
+position: relative;
+}
 
-        .header h1 {
-            font-size: 2.5em;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
+.back-button-header {
+position: absolute;
+top: 15px;
+left: 15px;
+}
 
-        .header p {
-            font-size: 1.2em;
-            opacity: 0.9;
-            font-style: italic;
-        }
+.back-button {
+background: rgba(255, 255, 255, 0.2);
+color: white;
+padding: 8px 16px;
+border: 2px solid rgba(255, 255, 255, 0.3);
+border-radius: 20px;
+font-size: 0.9em;
+cursor: pointer;
+text-decoration: none;
+display: inline-block;
+transition: all 0.3s ease;
+font-weight: bold;
+}
 
-        .versuchsreihe-badge {
-            background: #FFD700;
-            color: #00838F;
-            padding: 5px 15px;
-            border-radius: 15px;
-            font-size: 0.9em;
-            font-weight: bold;
-            margin-top: 10px;
-            display: inline-block;
-        }
+.back-button:hover {
+background: rgba(255, 255, 255, 0.3);
+transform: translateY(-2px);
+}
 
-        .controls {
-            background: #B2EBF2;
-            padding: 20px;
-            border-bottom: 3px solid #80DEEA;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
+.header h1 {
+font-size: 2.5em;
+margin-bottom: 10px;
+text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
 
-        .control-buttons {
-            display: flex;
-            gap: 15px;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-bottom: 15px;
-        }
+.header p {
+font-size: 1.2em;
+opacity: 0.9;
+font-style: italic;
+}
 
-        .btn {
-            padding: 12px 24px;
-            border: none;
-            border-radius: 25px;
-            font-size: 1em;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            min-width: 120px;
-        }
+.versuchsreihe-badge {
+background: #FFD700;
+color: #E91E63;
+padding: 5px 15px;
+border-radius: 15px;
+font-size: 0.9em;
+font-weight: bold;
+margin-top: 10px;
+display: inline-block;
+}
 
-        .btn-play {
-            background: linear-gradient(135deg, #28a745, #20c997);
-            color: white;
-        }
+.controls {
+background: #fff8f8;
+padding: 20px;
+border-bottom: 3px solid #FFB74D;
+position: sticky;
+top: 0;
+z-index: 100;
+box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
 
-        .btn-pause {
-            background: linear-gradient(135deg, #ffc107, #fd7e14);
-            color: white;
-        }
+.control-buttons {
+display: flex;
+gap: 15px;
+justify-content: center;
+flex-wrap: wrap;
+margin-bottom: 15px;
+}
 
-        .btn-stop {
-            background: linear-gradient(135deg, #dc3545, #e83e8c);
-            color: white;
-        }
+.btn {
+padding: 12px 24px;
+border: none;
+border-radius: 25px;
+font-size: 1em;
+font-weight: bold;
+cursor: pointer;
+transition: all 0.3s ease;
+min-width: 120px;
+}
 
-        .btn-continue {
-            background: linear-gradient(135deg, #17a2b8, #6f42c1);
-            color: white;
-        }
+.btn-play {
+background: linear-gradient(135deg, #28a745, #20c997);
+color: white;
+}
 
-        .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-        }
+.btn-stop {
+background: linear-gradient(135deg, #dc3545, #e83e8c);
+color: white;
+}
 
-        .band-navigation, .language-navigation {
-            display: flex;
-            gap: 10px;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-bottom: 10px;
-        }
+.btn-continue {
+background: linear-gradient(135deg, #17a2b8, #6f42c1);
+color: white;
+}
 
-        .btn-band, .btn-lang {
-            background: linear-gradient(135deg, #00ACC1, #0097A7);
-            color: #E0F7FA;
-            padding: 10px 20px;
-            border: 2px solid transparent;
-        }
+.btn:hover {
+transform: translateY(-2px);
+box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
 
-        .btn-band.active, .btn-lang.active {
-            border-color: #FFD700;
-            box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
-        }
+.band-navigation, .language-navigation {
+display: flex;
+gap: 10px;
+justify-content: center;
+flex-wrap: wrap;
+margin-bottom: 10px;
+}
 
-        .content {
-            padding: 30px;
-            font-size: 1.1em;
-            line-height: 1.8;
-        }
+.btn-band, .btn-lang {
+background: linear-gradient(135deg, #E91E63, #AD1457);
+color: #FFF8F0;
+padding: 10px 20px;
+border: 2px solid transparent;
+}
 
-        .book-title {
-            color: #00838F;
-            font-size: 2em;
-            margin-bottom: 10px;
-            text-align: center;
-            border-bottom: 2px solid #80DEEA;
-            padding-bottom: 15px;
-        }
+.btn-band.active, .btn-lang.active {
+border-color: #FFD700;
+box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+}
 
-        .chapter-title {
-            color: #0097A7;
-            font-size: 1.5em;
-            margin: 30px 0 20px 0;
-            text-align: center;
-            font-style: italic;
-        }
+.content {
+padding: 30px;
+font-size: 1.1em;
+line-height: 1.8;
+}
 
-        .text-content {
-            text-align: justify;
-            margin-bottom: 30px;
-        }
+.book-title {
+color: #E91E63;
+font-size: 2em;
+margin-bottom: 10px;
+text-align: center;
+border-bottom: 2px solid #FFB74D;
+padding-bottom: 15px;
+}
 
-        .word {
-            cursor: pointer;
-            transition: all 0.2s ease;
-            padding: 1px 2px;
-            border-radius: 3px;
-        }
+.chapter-title {
+color: #AD1457;
+font-size: 1.5em;
+margin: 30px 0 20px 0;
+text-align: center;
+font-style: italic;
+}
 
-        .word:hover {
-            background-color: #E1F5FE;
-        }
+.text-content {
+text-align: justify;
+margin-bottom: 30px;
+}
 
-        .word-highlight {
-            background-color: #2196F3;
-            color: white;
-            padding: 2px 4px;
-            border-radius: 4px;
-            box-shadow: 0 2px 5px rgba(33, 150, 243, 0.3);
-        }
+.word {
+cursor: pointer;
+transition: all 0.2s ease;
+padding: 1px 2px;
+border-radius: 3px;
+}
 
-        .btn-back {
-            background: linear-gradient(135deg, #6c757d, #495057);
-            color: white;
-            text-decoration: none;
-            display: inline-block;
-        }
+.word:hover {
+background-color: #FFE5E5;
+}
 
-        .hidden {
-            display: none;
-        }
+.word-highlight {
+background-color: #4169E1;
+color: white;
+padding: 2px 4px;
+border-radius: 4px;
+box-shadow: 0 2px 5px rgba(65, 105, 225, 0.3);
+}
 
-        @media (max-width: 600px) {
-            .control-buttons, .band-navigation, .language-navigation {
-                gap: 10px;
-            }
-            
-            .btn {
-                min-width: 100px;
-                font-size: 0.9em;
-                padding: 10px 16px;
-            }
-            
-            .content {
-                padding: 20px;
-                font-size: 1em;
-            }
-            
-            .header h1 {
-                font-size: 2em;
-            }
-        }
-    </style>
+.hidden {
+display: none;
+}
+
+@media (max-width: 600px) {
+.control-buttons, .band-navigation, .language-navigation {
+gap: 10px;
+}
+
+.btn {
+min-width: 100px;
+font-size: 0.9em;
+padding: 10px 16px;
+}
+
+.content {
+padding: 20px;
+font-size: 1em;
+}
+
+.header h1 {
+font-size: 2em;
+}
+
+.back-button-header {
+position: relative;
+top: 0;
+left: 0;
+margin-bottom: 15px;
+}
+}
+</style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <h1>Zwischen Herz und Verstand</h1>
-            <p>Lesen & Vorlesen-System - Erleben Sie moderne Liebesgeschichten hautnah</p>
-            <div class="versuchsreihe-badge">VERSUCHSREIHE</div>
-        </div>
+<div class="container">
+<div class="header">
+<div class="back-button-header">
+<a href="zwischen-herz-und-verstand.html" class="back-button">← Zurück zur Serie</a>
+</div>
+<h1>Zwischen Herz und Verstand</h1>
+<p>Lesen & Vorlesen-System - Lassen Sie sich in die emotionalen Geheimnisse der New Adult Welt entführen</p>
+<div class="versuchsreihe-badge">VERSUCHSREIHE</div>
+</div>
 
-        <div class="controls">
-            <div class="control-buttons">
-                <a href="versuchsreihe-zwischen-herz-verstand.html" class="btn btn-back">← Zurück zur Übersicht</a>
-                <button class="btn btn-play" onclick="startReading()">🔴 Vorlesen</button>
-                <button class="btn btn-continue" onclick="continueReading()">▶️ Weiterlesen</button>
-                <button class="btn btn-pause" onclick="pauseReading()">⏸️ Pause</button>
-                <button class="btn btn-stop" onclick="stopReading()">⏹️ Stop</button>
-            </div>
-            <div class="language-navigation">
-                <button class="btn btn-lang active" onclick="switchLanguage('de')">🇩🇪 Deutsch</button>
-                <button class="btn btn-lang" onclick="switchLanguage('en')">🇬🇧 English</button>
-            </div>
-            <div class="band-navigation">
-                <button class="btn btn-band active" onclick="showBand(1)">Band 1</button>
-                <button class="btn btn-band" onclick="showBand(2)">Band 2</button>
-            </div>
-        </div>
+<div class="controls">
+<div class="control-buttons">
+<button class="btn btn-play" onclick="startReading()">🔴 Vorlesen</button>
+<button class="btn btn-continue" onclick="continueReading()">▶️ Weiterlesen</button>
+<button class="btn btn-stop" onclick="stopReading()">⏹️ Stop</button>
+</div>
 
-        <div class="content">
-            <!-- DEUTSCHE VERSIONEN -->
-            <div id="de-content" class="language-content">
-                <!-- Band 1: Verborgene Gefühle (Deutsch) -->
-                <div id="de-band1" class="band-content">
-                    <div class="book-title">Band 1: Verborgene Gefühle</div>
-                    <div class="chapter-title">Kapitel 1: Die Nachricht, die alles veränderte</div>
-                    <div class="text-content" id="de-textContent1">
-                        <p>Die Bibliothek war wie immer ein Zufluchtsort. Lena Winter atmete tief den vertrauten Geruch nach altem Papier ein, während ihr Blick durch den Raum schweifte. Die Stille eines Donnerstagnachmittags war ein angenehmer Kontrast zum lauten Trubel draußen, wo die anderen Studenten in Gruppen zusammenstanden, lachten und redeten - ein soziales Spiel, bei dem sie nie die richtigen Karten in der Hand hatte. "Warum fällt es mir so schwer, mit anderen zu reden?", fragte sie sich zum hundertsten Mal. Diese Frage nagte ständig an ihr, besonders wenn sie andere Studenten beobachtete, die nach gerade mal drei Monaten an der Uni bereits enge Freundschaften geschlossen hatten. Freundschaften, die nach etwas Echtem aussahen, nicht nach den oberflächlichen Bekanntschaften, die sie in der Schule gehabt hatte.</p>
+<div class="language-navigation">
+<button class="btn btn-lang active" onclick="switchLanguage('de')">🇩🇪 Deutsch</button>
+<button class="btn btn-lang" onclick="switchLanguage('en')">🇬🇧 English</button>
+</div>
 
-                        <p>Sie strich über die Buchrücken in der Abteilung für deutsche Literatur, ihr Herzschlag beruhigte sich allmählich. Professor Kleinschmidt hatte ihnen für das Seminar „Realismus und gesellschaftliche Strömungen" eine Liste mit Primärliteratur gegeben. Anders als ihre Kommilitonen, die alles digital lasen, brauchte Lena das Gefühl von Papier unter ihren Fingern - eine Verbindung zur Vergangenheit, die ihr Halt gab, wenn die Gegenwart zu kompliziert wurde. Das war einer der Gründe, warum sie sich für Literaturwissenschaften entschieden hatte - hier konnte sie mit Menschen kommunizieren, die längst gestorben waren, ohne zu stottern oder rot zu werden. Durch Literatur verstand sie die Welt besser als durch direkte Erfahrung.</p>
+<div class="band-navigation">
+<button class="btn btn-band active" onclick="showBand(1)">Band 1</button>
+<button class="btn btn-band" onclick="showBand(2)">Band 2</button>
+<button class="btn btn-band" onclick="showBand(3)">Band 3</button>
+</div>
+</div>
 
-                        <p>"Du verschwendest deine besten Jahre zwischen verstaubten Büchern", hatte ihre Mutter beim letzten Besuch gesagt. Der Ton besorgt, die Augen voller Unverständnis. "Das Leben passiert da draußen, nicht auf Papierseiten." Lena biss sich auf die Lippe. Es war ihr drittes Semester, und während ihre Mitbewohnerin vom letzten Wochenende schwärmte - irgendein Typ namens Marc und zu viel Wodka - und ihre ehemalige Schulfreundin Sophie jeden zweiten Tag Fotos von Dates postete, verbrachte sie ihre Freitagabende mit fiktiven Charakteren.</p>
+<div class="content">
+<!-- DEUTSCHE VERSIONEN -->
+<div id="de-content" class="language-content">
+<!-- Band 1: Verborgene Gefühle (Deutsch) -->
+<div id="de-band1" class="band-content">
+<div class="book-title">Band 1: Verborgene Gefühle</div>
+<div class="chapter-title">Kapitel 1: Die Nachricht, die alles veränderte</div>
+<div class="text-content" id="de-textContent1">
+<p>Die Bibliothek war wie immer ein Zufluchtsort. Lena Winter atmete tief den vertrauten Geruch nach altem Papier ein, während ihr Blick durch den Raum schweifte. Die Stille eines Donnerstagnachmittags war ein angenehmer Kontrast zum lauten Trubel draußen, wo die anderen Studenten in Gruppen zusammenstanden, lachten und redeten - ein soziales Spiel, bei dem sie nie die richtigen Karten in der Hand hatte. "Warum fällt es mir so schwer, mit anderen zu reden?", fragte sie sich zum hundertsten Mal. Diese Frage nagte ständig an ihr, besonders wenn sie andere Studenten beobachtete, die nach gerade mal drei Monaten an der Uni bereits enge Freundschaften geschlossen hatten.</p>
 
-                        <p>"Ich bin einundzwanzig und habe noch nie einen richtigen Freund gehabt", flüsterte sie so leise, dass niemand es hören konnte. War das normal? Oder stimmte etwas nicht mit ihr? Was würde Sophie sagen? Vermutlich: "Du musst dich nur öffnen, Lena. Wie soll dich jemand kennenlernen, wenn du dich hinter deinen Büchern versteckst?" Aber warum fühlte sich jedes "Hey, willst du mit uns einen Kaffee trinken?" an wie eine Prüfung, für die sie nicht gelernt hatte? Warum konnte sie nur in diesen stillen Momenten zwischen Buchregalen wirklich atmen?</p>
+<p>Freundschaften, die nach etwas Echtem aussahen, nicht nach den oberflächlichen Bekanntschaften, die sie in der Schule gehabt hatte. Sie strich über die Buchrücken in der Abteilung für deutsche Literatur, ihr Herzschlag beruhigte sich allmählich. Professor Kleinschmidt hatte ihnen für das Seminar „Realismus und gesellschaftliche Strömungen" eine Liste mit Primärliteratur gegeben. Anders als ihre Kommilitonen, die alles digital lasen, brauchte Lena das Gefühl von Papier unter ihren Fingern - eine Verbindung zur Vergangenheit, die ihr Halt gab, wenn die Gegenwart zu kompliziert wurde.</p>
 
-                        <p>Trotzdem konnte sie manchmal die leise Stimme nicht ignorieren, die fragte, ob sie nicht etwas verpasste. Ob es da draußen jemanden gab, der sie verstehen würde, wenn sie nur den Mut hätte, sich zu öffnen. „Entschuldige", flüsterte jemand neben ihr, und Lena zuckte zusammen, als hätte man sie aus einem Traum gerissen. Ein junger Mann mit kurzen dunklen Haaren und einer randlosen Brille stand dort. Seine Augen - dunkelbraun mit einem interessanten goldenen Schimmer - trafen ihre, und für einen Moment vergaß sie zu atmen.</p>
+<p>Das war einer der Gründe, warum sie sich für Literaturwissenschaften entschieden hatte - hier konnte sie mit Menschen kommunizieren, die längst gestorben waren, ohne zu stottern oder rot zu werden. Durch Literatur verstand sie die Welt besser als durch direkte Erfahrung. "Du verschwendest deine besten Jahre zwischen verstaubten Büchern", hatte ihre Mutter beim letzten Besuch gesagt. Der Ton besorgt, die Augen voller Unverständnis. "Das Leben passiert da draußen, nicht auf Papierseiten."</p>
 
-                        <p>Er lächelte, ein schiefes, entschuldigendes Lächeln, das etwas in ihr berührte. „Ich muss mal an das Regal." Seine Stimme war tief und angenehm, mit einer Wärme, die sie nicht erwartet hatte. „Oh, natürlich." Lena trat hastig zur Seite und stieß dabei gegen ein Bücherregal. Mehrere Bände drohten umzufallen, und sie griff panisch danach, während ihr Gesicht die Farbe einer überreifen Tomate annahm. 'Fantastisch, Lena. So macht man Eindruck.'</p>
+<p>Lena biss sich auf die Lippe. Es war ihr drittes Semester, und während ihre Mitbewohnerin vom letzten Wochenende schwärmte - irgendein Typ namens Marc und zu viel Wodka - und ihre ehemalige Schulfreundin Sophie jeden zweiten Tag Fotos von Dates postete, verbrachte sie ihre Freitagabende mit fiktiven Charakteren. "Ich bin einundzwanzig und habe noch nie einen richtigen Freund gehabt", flüsterte sie so leise, dass niemand es hören konnte. War das normal? Oder stimmte etwas nicht mit ihr?</p>
 
-                        <p>Der Student fing geschickt einen der fallenden Bände auf. "Scheint, als würde Fontane unbedingt Aufmerksamkeit wollen", sagte er mit einem Augenzwinkern, das ihren Herzschlag beschleunigte. Er zog ein Buch heraus und betrachtete es kurz. Dann blickte er wieder zu ihr, schien kurz zu zögern, als wollte er etwas sagen, nickte ihr dann aber nur freundlich zu und ging. Lena atmete erst wieder richtig, als er außer Sichtweite war.</p>
+<p>Was würde Sophie sagen? Vermutlich: "Du musst dich nur öffnen, Lena. Wie soll dich jemand kennenlernen, wenn du dich hinter deinen Büchern versteckst?" Aber warum fühlte sich jedes "Hey, willst du mit uns einen Kaffee trinken?" an wie eine Prüfung, für die sie nicht gelernt hatte? Warum konnte sie nur in diesen stillen Momenten zwischen Buchregalen wirklich atmen? Trotzdem konnte sie manchmal die leise Stimme nicht ignorieren, die fragte, ob sie nicht etwas verpasste. Ob es da draußen jemanden gab, der sie verstehen würde, wenn sie nur den Mut hätte, sich zu öffnen.</p>
 
-                        <p>Diese kurzen sozialen Interaktionen waren ein Minenfeld, und sie hatte gerade wieder einmal bewiesen, warum sie lieber mit Büchern als mit Menschen kommunizierte. Einundzwanzig Jahre alt und immer noch unfähig, mit einem attraktiven Mann zu sprechen, ohne sich zum Komplettidioten zu machen. 'Du solltest öfter unter Menschen gehen', hatte Sophie gesagt, bevor sie in eine andere Stadt gezogen war. 'Wie willst du sonst jemals jemanden kennenlernen?'</p>
+<p>„Entschuldige", flüsterte jemand neben ihr, und Lena zuckte zusammen, als hätte man sie aus einem Traum gerissen. Ein junger Mann mit kurzen dunklen Haaren und einer randlosen Brille stand dort. Seine Augen - dunkelbraun mit einem interessanten goldenen Schimmer - trafen ihre, und für einen Moment vergaß sie zu atmen. Er lächelte, ein schiefes, entschuldigendes Lächeln, das etwas in ihr berührte. „Ich muss mal an das Regal." Seine Stimme war tief und angenehm, mit einer Wärme, die sie nicht erwartet hatte.</p>
 
-                        <p>Lena seufzte und wandte ihre Aufmerksamkeit wieder den Büchern zu. Ihre Hand blieb bei „Effi Briest" stehen - Fontanes Meisterwerk über eine junge Frau, die an den erstickenden Konventionen ihrer Zeit zerbricht. Sie zog das Buch heraus. 'Vielleicht geht es dir wie Effi', flüsterte eine Stimme in ihrem Kopf. 'Gefangen zwischen dem, was du willst, und dem, was du zu sein glaubst.'</p>
+<p>„Oh, natürlich." Lena trat hastig zur Seite und stieß dabei gegen ein Bücherregal. Mehrere Bände drohten umzufallen, und sie griff panisch danach, während ihr Gesicht die Farbe einer überreifen Tomate annahm. 'Fantastisch, Lena. So macht man Eindruck.' Der Student fing geschickt einen der fallenden Bände auf. "Scheint, als würde Fontane unbedingt Aufmerksamkeit wollen", sagte er mit einem Augenzwinkern, das ihren Herzschlag beschleunigte.</p>
 
-                        <p>Das Buch war eine ältere Ausgabe, der Einband abgegriffen, die Seiten vergilbt, als hätte es schon hunderte Geschichten mit anderen Lesern geteilt. Wie viele einsame Studenten hatten sich wohl schon in Effis Geschichte verloren? Wie viele hatten sich in ihr wiedererkannt? Mit dem Buch in der Hand ging sie zu einem abgelegenen Leseplatz am Fenster. Die Nachmittagssonne tauchte alles in warmes Licht, und für einen Moment fragte sie sich, ob der Student mit der Brille das Buch gesucht hatte, das sie jetzt in Händen hielt.</p>
+<p>Er zog ein Buch heraus und betrachtete es kurz. Dann blickte er wieder zu ihr, schien kurz zu zögern, als wollte er etwas sagen, nickte ihr dann aber nur freundlich zu und ging. Lena atmete erst wieder richtig, als er außer Sichtweite war. Diese kurzen sozialen Interaktionen waren ein Minenfeld, und sie hatte gerade wieder einmal bewiesen, warum sie lieber mit Büchern als mit Menschen kommunizierte. Einundzwanzig Jahre alt und immer noch unfähig, mit einem attraktiven Mann zu sprechen, ohne sich zum Komplettidioten zu machen.</p>
 
-                        <p>Lena setzte sich, schlug das Buch auf und tauchte ein in Effis Geschichte - die Geschichte einer jungen Frau, die heiratet, ohne zu wissen, was Liebe eigentlich bedeutet, die gesellschaftliche Erwartungen über eigene Bedürfnisse stellt und daran zerbricht. 'Was würde ich tun?', fragte sie sich. 'Wenn ich zwischen Herz und Verstand wählen müsste?' Als sie zu Kapitel fünf kam, blieb ihr Blick an etwas Ungewöhnlichem hängen.</p>
+<p>'Du solltest öfter unter Menschen gehen', hatte Sophie gesagt, bevor sie in eine andere Stadt gezogen war. 'Wie willst du sonst jemals jemanden kennenlernen?' Lena seufzte und wandte ihre Aufmerksamkeit wieder den Büchern zu. Ihre Hand blieb bei „Effi Briest" stehen - Fontanes Meisterwerk über eine junge Frau, die an den erstickenden Konventionen ihrer Zeit zerbricht. Sie zog das Buch heraus. 'Vielleicht geht es dir wie Effi', flüsterte eine Stimme in ihrem Kopf. 'Gefangen zwischen dem, was du willst, und dem, was du zu sein glaubst.'</p>
 
-                        <p>Am Rand der Seite 27 stand eine handschriftliche Notiz in blauer Tinte, die Schrift ordentlich und fast elegant: „Ist es nicht merkwürdig, wie Effi zwischen gesellschaftlichen Erwartungen und eigenen Wünschen zerrieben wird? Manche Dinge ändern sich nie, nicht wahr? -- J." Lena starrte auf die Notiz, ihr Herzschlag beschleunigte sich. In Bibliotheksbüchern zu schreiben war ein ungeschriebenes Tabu - aber diese Bemerkung war so treffend, so persönlich, als hätte jemand ihre eigenen Gedanken aufgeschrieben.</p>
+<p>Das Buch war eine ältere Ausgabe, der Einband abgegriffen, die Seiten vergilbt, als hätte es schon hunderte Geschichten mit anderen Lesern geteilt. Wie viele einsame Studenten hatten sich wohl schon in Effis Geschichte verloren? Wie viele hatten sich in ihr wiedererkannt? Mit dem Buch in der Hand ging sie zu einem abgelegenen Leseplatz am Fenster. Die Nachmittagssonne tauchte alles in warmes Licht, und für einen Moment fragte sie sich, ob der Student mit der Brille das Buch gesucht hatte, das sie jetzt in Händen hielt.</p>
 
-                        <p>J. Wer war J.? Männlich? Weiblich? Jemand, der die gleichen Fragen an das Leben stellte wie sie? Es war keine gewöhnliche Kritzelei oder belanglose Anmerkung, wie man sie manchmal in Lehrbüchern fand. Diese Worte kamen von jemandem, der nicht nur las, sondern fühlte, der zwischen den Zeilen las und Parallelen zur eigenen Welt zog. Dieser mysteriöse "J." stellte eine Frage, die direkt an künftige Leser gerichtet schien - an sie.</p>
+<p>Lena setzte sich, schlug das Buch auf und tauchte ein in Effis Geschichte - die Geschichte einer jungen Frau, die heiratet, ohne zu wissen, was Liebe eigentlich bedeutet, die gesellschaftliche Erwartungen über eigene Bedürfnisse stellt und daran zerbricht. 'Was würde ich tun?', fragte sie sich. 'Wenn ich zwischen Herz und Verstand wählen müsste?' Als sie zu Kapitel fünf kam, blieb ihr Blick an etwas Ungewöhnlichem hängen. Am Rand der Seite 27 stand eine handschriftliche Notiz in blauer Tinte, die Schrift ordentlich und fast elegant: „Ist es nicht merkwürdig, wie Effi zwischen gesellschaftlichen Erwartungen und eigenen Wünschen zerrieben wird? Manche Dinge ändern sich nie, nicht wahr? -- J."</p>
 
-                        <p>Sie las die Textpassage, neben der die Notiz stand. Effi und Innstetten sehen sich nach seiner Werbung zum ersten Mal wieder - zwei Menschen, die heiraten werden, ohne sich zu kennen, ohne zu wissen, ob ihre Herzen im gleichen Takt schlagen. 'Wie viele Menschen machen das heute noch?', dachte Lena. 'Zusammen sein, weil es erwartet wird, nicht weil es sich richtig anfühlt?' Sie dachte an ihre letzte WG-Party, als Sophie sie überreden wollte, mit diesem BWL-Studenten zu flirten.</p>
+<p>Lena starrte auf die Notiz, ihr Herzschlag beschleunigte sich. In Bibliotheksbüchern zu schreiben war ein ungeschriebenes Tabu - aber diese Bemerkung war so treffend, so persönlich, als hätte jemand ihre eigenen Gedanken aufgeschrieben. J. Wer war J.? Männlich? Weiblich? Jemand, der die gleichen Fragen an das Leben stellte wie sie? Es war keine gewöhnliche Kritzelei oder belanglose Anmerkung, wie man sie manchmal in Lehrbüchern fand. Diese Worte kamen von jemandem, der nicht nur las, sondern fühlte, der zwischen den Zeilen las und Parallelen zur eigenen Welt zog.</p>
 
-                        <p>"Er ist perfekt für dich", hatte sie gesagt. "Seine Eltern haben eine Kanzlei, er fährt einen Audi..." Als ob das die Dinge wären, die zählten. Als ob Liebe eine Checkliste wäre. Ein plötzlicher Impuls überkam sie. Dieser unbekannte J. hatte etwas in ihr berührt, eine Seite angeschlagen, die resonierte. Bevor sie ihren Mut verlieren konnte, holte sie ihren Kugelschreiber heraus und schrieb direkt unter die Notiz: „Die Formen ändern sich, aber der Druck bleibt. Heute zerreiben wir uns zwischen Authentizität und Selbstoptimierung. Fortschritt? -- L."</p>
+<p>Dieser mysteriöse "J." stellte eine Frage, die direkt an künftige Leser gerichtet schien - an sie. Sie las die Textpassage, neben der die Notiz stand. Effi und Innstetten sehen sich nach seiner Werbung zum ersten Mal wieder - zwei Menschen, die heiraten werden, ohne sich zu kennen, ohne zu wissen, ob ihre Herzen im gleichen Takt schlagen. 'Wie viele Menschen machen das heute noch?', dachte Lena. 'Zusammen sein, weil es erwartet wird, nicht weil es sich richtig anfühlt?'</p>
 
-                        <p>Ihre Hand zitterte leicht, als sie den Stift absetzte. Sie, Lena Winter, Musterbeispiel für Regelkonformität, hatte gerade ein Bibliotheksbuch beschmiert! Eine Welle von Schuldgefühlen überkam sie, gefolgt von einem unerwarteten Kribbeln der Aufregung. Es fühlte sich an wie ein Geheimnis, ein intimer Moment zwischen zwei Fremden, die sich durch nichts verbunden fühlten außer durch ihre Gedanken. Dieser unbekannte J. hatte etwas geschrieben, das direkt in ihre Seele sprach, und sie hatte geantwortet - nicht nach stundenlangem Überlegen, nicht nach dem Abwägen jedes Wortes, sondern spontan und ehrlich.</p>
+<p>Sie dachte an ihre letzte WG-Party, als Sophie sie überreden wollte, mit diesem BWL-Studenten zu flirten. "Er ist perfekt für dich", hatte sie gesagt. "Seine Eltern haben eine Kanzlei, er fährt einen Audi..." Als ob das die Dinge wären, die zählten. Als ob Liebe eine Checkliste wäre. Ein plötzlicher Impuls überkam sie. Dieser unbekannte J. hatte etwas in ihr berührt, eine Seite angeschlagen, die resonierte. Bevor sie ihren Mut verlieren konnte, holte sie ihren Kugelschreiber heraus und schrieb direkt unter die Notiz: „Die Formen ändern sich, aber der Druck bleibt. Heute zerreiben wir uns zwischen Authentizität und Selbstoptimierung. Fortschritt? -- L."</p>
 
-                        <p>'Ist das der Unterschied?', fragte sie sich. 'Zwischen einem Gespräch mit einem Fremden in einem Bus und Worten auf Papier? Die Abwesenheit von Blicken, die Freiheit von Erwartungen?' Sie versuchte weiterzulesen, aber ihre Augen wanderten immer wieder zu dem kleinen Schriftwechsel am Rand. Hatte sie gerade eine unsichtbare Tür geöffnet? Und falls ja - wohin würde sie führen? Der Gedanke, dass dieser unbekannte J. eines Tages ihre Antwort lesen könnte, löste ein ungewohntes Kribbeln in ihrem Bauch aus. Wie eine moderne Flaschenpost, geworfen in ein Meer aus Büchern.</p>
+<p>Ihre Hand zitterte leicht, als sie den Stift absetzte. Sie, Lena Winter, Musterbeispiel für Regelkonformität, hatte gerade ein Bibliotheksbuch beschmiert! Eine Welle von Schuldgefühlen überkam sie, gefolgt von einem unerwarteten Kribbeln der Aufregung. Es fühlte sich an wie ein Geheimnis, ein intimer Moment zwischen zwei Fremden, die sich durch nichts verbunden fühlten außer durch ihre Gedanken. Dieser unbekannte J. hatte etwas geschrieben, das direkt in ihre Seele sprach, und sie hatte geantwortet - nicht nach stundenlangem Überlegen, nicht nach dem Abwägen jedes Wortes, sondern spontan und ehrlich.</p>
 
-                        <p>Wer war J.? Ihr Geist malte mögliche Gesichter: War es vielleicht dieser schöne Literaturstudent aus dem vierten Semester, der immer in der ersten Reihe saß und kluge Fragen stellte? Der mit den intensiven Augen und dem leisen Lachen, der manchmal in der Cafeteria allein saß und las? Oder war J. eine Frau, vielleicht diese selbstbewusste Studentin mit den kurzen blauen Haaren, die im letzten Seminar eine leidenschaftliche Rede über die Unterdrückung weiblicher Stimmen in der Literatur gehalten hatte?</p>
+<p>'Ist das der Unterschied?', fragte sie sich. 'Zwischen einem Gespräch mit einem Fremden in einem Bus und Worten auf Papier? Die Abwesenheit von Blicken, die Freiheit von Erwartungen?' Sie versuchte weiterzulesen, aber ihre Augen wanderten immer wieder zu dem kleinen Schriftwechsel am Rand. Hatte sie gerade eine unsichtbare Tür geöffnet? Und falls ja - wohin würde sie führen? Der Gedanke, dass dieser unbekannte J. eines Tages ihre Antwort lesen könnte, löste ein ungewohntes Kribbeln in ihrem Bauch aus. Wie eine moderne Flaschenpost, geworfen in ein Meer aus Büchern.</p>
 
-                        <p>Die Handschrift gab wenig preis - ordentlich, fließend, mit einer gewissen Eleganz, aber nicht gekünstelt. Nicht die zittrige Schrift eines Professors kurz vor der Rente, aber auch nicht die hastige Kritzelei eines desinteressierten Erstsemesters. Und warum hatte J. ausgerechnet diesen Gedanken festhalten wollen? War diese Person auch manchmal einsam inmitten von Menschen? Kannte sie auch dieses Gefühl, nicht richtig dazuzugehören, anders zu sein? Die Möglichkeiten waren endlos, und diese Ungewissheit hatte etwas seltsam Aufregendes.</p>
+<p>Wer war J.? Ihr Geist malte mögliche Gesichter: War es vielleicht dieser schöne Literaturstudent aus dem vierten Semester, der immer in der ersten Reihe saß und kluge Fragen stellte? Der mit den intensiven Augen und dem leisen Lachen, der manchmal in der Cafeteria allein saß und las? Oder war J. eine Frau, vielleicht diese selbstbewusste Studentin mit den kurzen blauen Haaren, die im letzten Seminar eine leidenschaftliche Rede über die Unterdrückung weiblicher Stimmen in der Literatur gehalten hatte?</p>
 
-                        <p>Nach einer Weile klappte sie das Buch zu und sah auf ihre Uhr. Erschrocken stellte sie fest, dass sie über zwei Stunden gelesen hatte. Die Bibliothek hatte sich geleert, nur noch vereinzelt saßen Studierende an den Tischen. Lena überlegte, ob sie „Effi Briest" ausleihen sollte. Die Geschichte hatte sie gefesselt, und sie wollte wissen, wie es weiterging. Aber dann würde J. ihre Antwort vielleicht nie lesen, wenn das Buch wochenlang bei ihr zu Hause lag.</p>
+<p>Die Handschrift gab wenig preis - ordentlich, fließend, mit einer gewissen Eleganz, aber nicht gekünstelt. Nicht die zittrige Schrift eines Professors kurz vor der Rente, aber auch nicht die hastige Kritzelei eines desinteressierten Erstsemesters. Und warum hatte J. ausgerechnet diesen Gedanken festhalten wollen? War diese Person auch manchmal einsam inmitten von Menschen? Kannte sie auch dieses Gefühl, nicht richtig dazuzugehören, anders zu sein? Die Möglichkeiten waren endlos, und diese Ungewissheit hatte etwas seltsam Aufregendes.</p>
 
-                        <p>Der Gedanke traf sie mit unerwarteter Intensität: Sie wollte, dass J. ihre Antwort fand. Sie wollte diesen Dialog fortsetzen, diese seltsame, anonyme Verbindung, die echter fühlte als viele ihrer täglichen Interaktionen. 'Was ist los mit dir, Lena?', fragte sie sich. 'Du fantasierst über jemanden, den du nie getroffen hast, basierend auf einem einzigen Satz in einem Buch?' Und doch stellte sie das Buch zurück ins Regal, sorgfältig darauf achtend, dass es leicht zu finden war, der Buchrücken etwas hervorstehend zwischen den anderen. Als würde sie ein geheimes Zeichen hinterlassen.</p>
+<p>Nach einer Weile klappte sie das Buch zu und sah auf ihre Uhr. Erschrocken stellte sie fest, dass sie über zwei Stunden gelesen hatte. Die Bibliothek hatte sich geleert, nur noch vereinzelt saßen Studierende an den Tischen. Lena überlegte, ob sie „Effi Briest" ausleihen sollte. Die Geschichte hatte sie gefesselt, und sie wollte wissen, wie es weiterging. Aber dann würde J. ihre Antwort vielleicht nie lesen, wenn das Buch wochenlang bei ihr zu Hause lag.</p>
 
-                        <p>'Ich werde morgen wiederkommen', beschloss sie, überrascht von ihrer eigenen Entschlossenheit. Draußen empfing sie die kühle Oktoberluft, und sie zog ihren Mantel enger um sich. Der Campus lag ruhig da im goldenen Licht der untergehenden Sonne. Ihre Gedanken kreisten immer noch um die mysteriöse Notiz, als ihr Handy vibrierte. Eine Nachricht von ihrer Mitbewohnerin Maja: 'Heyy Lena! Wir gehen heute ins 'Basement'. Du MUSST mitkommen! Tim bringt seinen Kommilitonen mit - er studiert auch Literatur! Perfekt für dich ♥'</p>
+<p>Der Gedanke traf sie mit unerwarteter Intensität: Sie wollte, dass J. ihre Antwort fand. Sie wollte diesen Dialog fortsetzen, diese seltsame, anonyme Verbindung, die echter fühlte als viele ihrer täglichen Interaktionen. 'Was ist los mit dir, Lena?', fragte sie sich. 'Du fantasierst über jemanden, den du nie getroffen hast, basierend auf einem einzigen Satz in einem Buch?' Und doch stellte sie das Buch zurück ins Regal, sorgfältig darauf achtend, dass es leicht zu finden war, der Buchrücken etwas hervorstehend zwischen den anderen. Als würde sie ein geheimes Zeichen hinterlassen. 'Ich werde morgen wiederkommen', beschloss sie, überrascht von ihrer eigenen Entschlossenheit.</p>
+</div>
+</div>
 
-                        <p>Lena starrte auf die Nachricht. Typisch Maja - ständig darauf bedacht, sie zu verkuppeln. Als ob gemeinsame Interessen automatisch bedeuteten, dass man zusammenpasste. Als ob ihr größtes Problem wäre, keinen Freund zu haben, und nicht ihre Unfähigkeit, überhaupt mit Menschen zu reden. 'Sorry, muss noch einen Essay schreiben', tippte sie zurück, das übliche Gefühl der Schuld ignorierend. Sie hatte tatsächlich einen Essay zu schreiben - nur nicht heute.</p>
+<!-- Band 2: Enthüllte Wahrheiten (Deutsch) -->
+<div id="de-band2" class="band-content hidden">
+<div class="book-title">Band 2: Enthüllte Wahrheiten</div>
+<div class="chapter-title">Kapitel 1: Nähe, die flieht</div>
+<div class="text-content" id="de-textContent2">
+<p>Lena erwachte mit dem Gefühl, dass etwas fehlte. Die Wärme neben ihr war spürbar, körperlich präsent, atmend, real. Julians Arm lag schwer über ihrer Mitte, sein Atem gleichmäßig und tief an ihrem Nacken. Und doch existierte eine seltsame Leere, die sie nicht greifen konnte. Sie blinzelte in das frühe Morgenlicht, das durch die nicht ganz geschlossenen Vorhänge fiel, und versuchte, die Empfindung zu lokalisieren. Es war wie ein Wort, das ihr auf der Zunge lag -- präsent, aber unerreichbar.</p>
 
-                        <p>Ihr Daumen schwebte einen Moment über dem Senden-Button. War das wirklich, was sie wollte? Allein in ihrer Wohnung sitzen, während das Leben da draußen ohne sie weiterging? Wäre es nicht an der Zeit, etwas zu ändern, aus ihrer Komfortzone herauszutreten? Was, wenn dieser Literaturstudent nett wäre? Was, wenn er verstand, was sie in Büchern suchte? Was, wenn er J. wäre? Der Gedanke ließ ihr Herz schneller schlagen. Aber nein - das war lächerlich. Die Wahrscheinlichkeit, dass Majas Bekannter zufällig der geheimnisvolle Verfasser der Notiz war, ging gegen null.</p>
+<p>Drei Monate waren seit dem ersten Kuss am Fluss vergangen. Drei Monate, in denen aus zögernden Berührungen Vertrautheit geworden war, aus geteilten Büchern ein geteiltes Bett, aus zwei separaten Leben ein gemeinsamer Alltag. Alles hatte sich so natürlich entwickelt, so mühelos, als wäre es eine Geschichte, die nur darauf gewartet hatte, erzählt zu werden. Julian murmelte etwas im Schlaf, zog sie näher an sich. Sie spürte seinen Herzschlag durch den dünnen Stoff ihres T-Shirts, beständig und beruhigend.</p>
 
-                        <p>Mit einem Seufzer drückte sie auf Senden und steckte das Handy zurück in die Tasche. Sie ging den gewohnten Weg zu ihrer kleinen Wohnung, die sie sich dank des Zuschusses ihrer Eltern leisten konnte. Beide Ärzte, beide erfolgreich, beide in ständiger Sorge um ihre 'zu stille' Tochter. Ein eigener Raum bedeutete Freiheit - keine Mitbewohner, keine erzwungenen Gespräche, keine besorgt prüfenden Blicke.</p>
+<p>Sie sollte glücklich sein. Sie war glücklich. Warum also dieses nagende Gefühl der Unvollständigkeit? Vorsichtig löste sie sich aus seiner Umarmung, darauf bedacht, ihn nicht zu wecken. Auf Zehenspitzen schlich sie aus dem Schlafzimmer, durchquerte den schmalen Flur seiner Wohnung und betrat die Küche. Seine Küche. Nicht ihre. Sie verbrachte mittlerweile mehr Zeit hier als in ihrer eigenen Wohnung, aber sie hatte ihre nicht aufgegeben. Noch nicht. Eine kleine, eigenartige Resistenz, die sie selbst nicht ganz verstand.</p>
 
-                        <p>Ihre Wohnung lag im dritten Stock eines alten Backsteingebäudes, fünfzehn Minuten Fußweg vom Campus entfernt. Als sie die Tür aufschloss und eintrat, empfing sie die vertraute Umgebung: das ordentlich gemachte Bett an der einen Wand, der kleine Schreibtisch unter dem Fenster, die Bücherregale, die fast eine ganze Wand einnahmen. Sie hängte ihren Mantel auf, stellte ihre Tasche ab und ging zur Küchenzeile, um sich einen Tee zu kochen.</p>
+<p>Sie setzte Kaffee auf und beobachtete, wie das Wasser tropfenweise und geduldig durch das Kaffeepulver sickerte. Es gab einen Trost in diesen morgendlichen Ritualen, etwas Verlässliches. Der Geruch von frischem Kaffee erfüllte den Raum, verdrängte für einen Moment die unbestimmte Unruhe in ihr. Sie öffnete das Küchenfenster. Draußen lag die Stadt noch im Halbschlaf, obwohl die ersten Autos bereits durch die Straßen fuhren, frühe Pendler, die dem Berufsverkehr voraus sein wollten.</p>
 
-                        <p>Während das Wasser erhitzte, ließ sie den Tag Revue passieren. Es war ein Tag wie jeder andere gewesen - Vorlesungen, Bibliothek, Heimweg. Und doch hatte sich etwas verändert. Diese kleine Notiz, diese flüchtige Verbindung zu einem Unbekannten hatte etwas in ihr ausgelöst, eine Saite zum Klingen gebracht, deren Existenz sie bisher nicht einmal bemerkt hatte. Mit der dampfenden Teetasse in der Hand setzte sie sich an ihren Schreibtisch und blickte auf den nächtlichen Campus hinunter, der unter Straßenlaternen in sanftem Licht schimmerte.</p>
+<p>Der November hatte die Bäume fast kahl gefegt, nur einzelne hartnäckige Blätter klammerten sich noch an die Zweige. Ein wenig wie sie an ihre eigene Wohnung, dachte Lena und lächelte über den seltsamen Vergleich. „Guten Morgen." Julians Stimme ließ sie zusammenzucken. Er stand in der Tür, in Boxershorts und T-Shirt, seine Haare zerzaust vom Schlaf, sein Gesicht noch weich von Träumen. „Entschuldige, ich wollte dich nicht erschrecken." Er kam zu ihr, schlang seine Arme von hinten um ihre Taille und drückte einen Kuss auf ihre Schulter. „Du warst weg."</p>
 
-                        <p>An der Wand über ihrem Schreibtisch hing ein gerahmtes Poster mit einem Virginia Woolf-Zitat: „Bücher sind die Spiegel der Seele." Darunter ihr Stundenplan für das laufende Semester: Literaturtheorie, Germanistische Linguistik, Realismus und gesellschaftliche Strömungen, Einführung in die Erzähltheorie. Ein ordentliches, strukturiertes Leben, in dem jeder Tag dem anderen glich. Ein Leben, das sich manchmal anfühlte wie eines der Bücher in ihrem Regal - sorgfältig eingeordnet, aber selten wirklich geöffnet.</p>
+<p>„Ich wollte Kaffee machen", erklärte sie und deutete auf die Kaffeemaschine, die gerade ihre letzten Tropfen in die Kanne entließ. „Hm." Er vergrub sein Gesicht in ihrem Haar und atmete tief ein. „Du riechst gut." „Ich rieche nach Schlaf", korrigierte sie mit einem leichten Lachen. „Genau." Seine Hände wanderten unter ihr T-Shirt, streiften sanft über ihren Bauch. Seine Berührung war warm, vertraut, sendete kleine Wellen der Erregung durch ihren Körper. Sie lehnte sich instinktiv gegen ihn, ließ ihren Kopf auf seine Schulter sinken.</p>
 
-                        <p>Ihr Blick wanderte zu dem kleinen Regal mit persönlichen Fotos: Lena mit ihren Eltern bei ihrer Abiturfeier, Lena mit Sophie aus der Schulzeit, die jetzt in einer anderen Stadt studierte und mit der sie nur noch selten sprach. Auf allen Bildern lächelte sie, aber ihre Augen verrieten eine gewisse Zurückhaltung, als hielte sie einen Teil von sich zurück. Ihre Eltern - beide Ärzte mit einer gemeinsamen Praxis in einer Kleinstadt drei Stunden entfernt - hatten ihre akademischen Ambitionen immer unterstützt, auch wenn sie sich für ihre Tochter ein praktischeres Studienfach gewünscht hätten.</p>
+<p>Das war einfach. Das funktionierte. Der körperliche Teil ihrer Beziehung hatte nie die Probleme bereitet, die sie anfangs befürchtet hatte. Keine Unsicherheit, keine Scham, keine Enttäuschung. Ihre Körper hatten von Anfang an eine Sprache gefunden, die keine Übersetzung brauchte. Julian drehte sie zu sich, küsste ihren Mundwinkel, ihre Wange, schließlich ihren Mund. Sie erwiderte den Kuss, ließ ihre Finger durch seine Haare gleiten, genoss die Wärme, die sich zwischen ihnen aufbaute.</p>
 
-                        <p>"Literatur ist wundervoll, Schatz, aber man kann nicht davon leben", hatte ihre Mutter oft gesagt. Und ihr Vater hatte hinzugefügt: "Es sei denn, du wirst die nächste Rowling." Sie hatten es gut gemeint, und Lena wusste das. Trotzdem hatte sie sich für ihren eigenen Weg entschieden - wenn auch einen einsamen. Sie nahm einen Schluck von ihrem Tee und dachte an die handgeschriebene Notiz in "Effi Briest" und an ihre eigene Antwort.</p>
+<p>Als sie sich voneinander lösten, lächelte er. „Guten Morgen", wiederholte er, diesmal mit einer tieferen Bedeutung in seiner Stimme. „Guten Morgen", antwortete sie und versuchte, das Echo seines Lächelns auf ihrem eigenen Gesicht zu spüren. „Kaffee?" „Bitte." Er löste sich von ihr, griff nach zwei Tassen aus dem Schrank. Routinierte Bewegungen, eingeübter Tanz. Er wusste, wie sie ihren Kaffee mochte -- schwarz, kein Zucker -- wie sie morgens die Stille brauchte, bevor sie sprechen konnte, wie ihr Körper berührt werden wollte.</p>
 
-                        <p>"Die Formen ändern sich, aber der Druck bleibt." Wie wahr das war. Der Druck ihrer Eltern, der Druck der Gesellschaft, der Druck, den sie selbst sich machte - immer perfekt zu sein, immer die besten Noten zu haben, weil das der einzige Bereich war, in dem sie sich sicher fühlte. Sie fragte sich, ob J. diesen Druck auch kannte. Ob auch er oder sie sich manchmal zwischen Erwartungen und eigenen Wünschen zerrieben fühlte, wie Effi Briest vor über hundert Jahren.</p>
+<p>Er kannte sie. Und doch hatte sie manchmal das Gefühl, dass etwas Wesentliches fehlte, dass sie aneinander vorbeischauten, obwohl sie sich direkt in die Augen sahen. „Woran denkst du?" Julians Frage unterbrach ihre Gedanken. Er reichte ihr eine Tasse, die Wärme drang durch das Porzellan in ihre Hände. „Nichts Besonderes", log sie und hasste sich ein wenig dafür. Es war eine kleine Lüge, harmlos. Und doch spürte sie, wie sich eine Mauer zwischen ihnen aufbaute, Stein für Stein, Tag für Tag.</p>
 
-                        <p>Lena öffnete ihren Laptop und begann, an einem Essay für das Realismus-Seminar zu arbeiten. Doch ihre Gedanken wanderten immer wieder zurück zu dem Buch in der Bibliothek, zu den handgeschriebenen Zeilen, die eine unsichtbare Verbindung zwischen ihr und einem Fremden hergestellt hatten. Sie fragte sich, ob J. ihre Antwort jemals lesen würde. Ob er oder sie antworten würde. Ob dies der Beginn eines Gesprächs war oder nur ein flüchtiger Moment der Verbindung, der so schnell vergehen würde, wie er gekommen war.</p>
+<p>Worte, die ungesagt blieben, Gedanken, die sie für sich behielt -- nicht aus Bosheit oder Berechnung, sondern aus einer seltsamen Scheu, einer Angst vor Enttäuschung. Seiner oder ihrer eigenen, sie war sich nicht sicher. Julian akzeptierte ihre Antwort mit einem Nicken, keine Nachfrage, keine Insistenz. War das Respekt für ihre Grenzen oder Gleichgültigkeit? Sie fragte sich, ob er spürte, dass sie log, ob es ihn verletzte. Oder ob er einfach nicht wissen wollte, was wirklich in ihr vorging.</p>
 
-                        <p>Während sie tippte, bemerkte sie, dass sich ihr gewohnter akademischer Stil veränderte, persönlicher wurde. Als würde sie nicht nur für Professor Kleinschmidt schreiben, sondern auch für den mysteriösen J., als wäre ihr Essay Teil eines größeren Gesprächs, das über die Grenzen des Seminars hinausging. Nach zwei Stunden konzentrierter Arbeit schloss sie den Laptop. Der Essay war noch nicht fertig, aber sie hatte einen guten Anfang gemacht. Ihr Tee war längst kalt geworden.</p>
+<p>Sie tranken ihren Kaffee schweigend, jeder in Gedanken versunken. Die Uhr an der Wand tickte, markierte die Sekunden, die ungenutzt zwischen ihnen verstrichen. „Ich muss los", sagte Julian schließlich und stellte seine leere Tasse in die Spüle. Er hatte heute früh einen Workshop zu leiten, erinnerte sich Lena. Etwas über kreatives Schreiben für Oberstufenschüler. „Natürlich." Sie trat beiseite, um ihn vorbeizulassen, obwohl die Küche groß genug war, dass es keine Notwendigkeit dafür gab.</p>
 
-                        <p>Sie stand auf, streckte sich und ging zum Fenster. Der Campus lag nun im Dunkeln, nur noch vereinzelt waren Lichter in den Gebäuden zu sehen. Ihr Handy vibrierte erneut. Vermutlich Maja, die versuchte, sie doch noch zum Ausgehen zu überreden. Aber als sie es ansah, war es eine Nachricht von Sophie: 'Hey Fremde! Lang nichts gehört. Wie geht's dir? Immer noch so fleißig?' Lena lächelte. Sophie und sie hatten sich seit der Grundschule gekannt, waren durch die Pubertät gegangen, hatten zusammen die Höhen und Tiefen der Schulzeit überstanden.</p>
+<p>„Sehen wir uns heute Abend?" Er blieb kurz stehen, seine Hand auf ihrer Schulter, wie ein Anker. „Sophie hat gefragt, ob wir ins Kino wollen." Lena hatte es vergessen, oder verdrängt. Sie mochte Sophie, wirklich. Die lebhafte, direkte Art ihrer Freundin war ein willkommenes Gegengewicht zu ihrer eigenen Introvertiertheit. Aber in letzter Zeit fiel es ihr schwer, die Energie für soziale Interaktionen aufzubringen, selbst mit Menschen, die sie mochte. „Klingt gut", sagte sie dennoch, wieder eine kleine Lüge, wieder ein Stein in der Mauer.</p>
 
-                        <p>Sophie war die Einzige, die Lenas Zurückhaltung nie als Problem gesehen hatte, die sie akzeptierte, wie sie war. Und dann war Sophie für ihr Medizinstudium weggezogen, und mit der Entfernung waren auch ihre Gespräche weniger geworden. 'Hey Soph! Alles gut bei mir. Uni wie immer. Bei dir?' schrieb sie zurück, wissend, dass diese Antwort Sophie nicht zufriedenstellen würde. Und wirklich, nur Sekunden später kam die Antwort: 'Komm schon, Len. Details! Lebst du immer noch wie eine Nonne?'</p>
+<p>Julian küsste sie flüchtig auf die Stirn, eine Geste, die gleichzeitig zärtlich und distanziert wirkte. „Ich freue mich. Bis später dann." Sie hörte, wie er ins Bad ging, die Dusche anstellte. Der vertraute Rhythmus des Morgens setzte sich fort, als wäre nichts anders als sonst. Sie trank ihren Kaffee aus, nahm einen Schreibblock vom Küchentisch -- Julian hatte die Angewohnheit, überall in der Wohnung Notizblöcke zu verteilen, immer bereit, einen Gedanken festzuhalten -- und kritzelte abwesend auf das Papier.</p>
 
-                        <p>Lena lachte leise. Typisch Sophie. 'Weißt du, dass ich heute ein Bibliotheksbuch beschmiert habe?' tippte sie, überrascht von ihrem eigenen Impuls, diese kleine Rebellion zu teilen. Sophies Antwort kam prompt: 'OMG was?! Das ist dein erster Schritt in die Kriminalität! Ich bin so stolz auf dich! 😂 Aber ernsthaft, was ist passiert?' Lena zögerte. Wie erklärte man, dass man mit einem Fremden über Buchränder kommunizierte? Dass man sich zu jemandem hingezogen fühlte, den man nie gesehen hatte, nur wegen ein paar handgeschriebener Zeilen?</p>
+<p>Nicht wirklich Worte, eher Formen, Spiralen, Linien, die ineinander übergingen. Ihre Hand bewegte sich, als hätte sie einen eigenen Willen. Wie viel einfacher wäre es, wenn sie einfach aufschreiben könnte, was in ihr vorging. Aber dafür müsste sie es erst selbst verstehen. Später, nachdem Julian gegangen war und sie sich selbst für den Tag fertig gemacht hatte, sortierte sie ihre Unterlagen für die Seminare. Sie hatte heute einen vollgepackten Tag: Literaturtheorie am Vormittag, einen Workshop über deutsche Romantik am Nachmittag, dazwischen Recherche für ihre Masterarbeit.</p>
 
-                        <p>'Später mehr. Versprochen. Muss jetzt schlafen', schrieb sie zurück. 'Aber du hast mein Interesse geweckt... Gute Nacht, Kriminelle', antwortete Sophie mit einem zwinkernden Emoji. Lena stellte die Tasse in die kleine Spüle und machte sich fertig fürs Bett. Als sie unter der Decke lag, dachte sie wieder an die Notiz in dem Buch. An die Möglichkeit einer Verbindung, die über Worte entstand, nicht über die oft unbeholfenen Versuche direkter Kommunikation, die ihr so schwerfielen.</p>
+<p>Eigentlich hätte sie sich auf die Romantik-Sitzung freuen sollen -- Novalis, Eichendorff, die Sehnsucht nach dem Unendlichen, die in ihren Texten pulsierte. Themen, die sie früher in Begeisterung versetzt hatten. Aber jetzt spürte sie nur eine seltsame Gleichgültigkeit. Als hätte sich etwas zwischen sie und die Literatur geschoben, eine dünne, aber undurchdringliche Schicht aus... aus was? Sie schob die Frage beiseite, packte ihre Tasche und verließ Julians Wohnung.</p>
 
-                        <p>Es gab etwas Tröstliches an dem Gedanken, dass man durch Bücher mit anderen Menschen in Kontakt treten konnte, ohne die soziale Anspannung, die persönliche Begegnungen mit sich brachten. Als sie einschlief, formten sich in ihrem Kopf weitere Antworten an den unbekannten J., Gedanken, die sie vielleicht nie teilen würde, aber die sie dennoch näher an einen Fremden heranbrachten als an die meisten Menschen, die sie täglich auf dem Campus sah.</p>
+<p>Die kalte Novemberluft empfing sie wie ein Schock, weckte sie aus ihrer Benommenheit. Sie atmete tief ein, ließ die Kälte ihre Lungen füllen, spürte, wie ihr Körper darauf reagierte, sich zusammenzog, sich schützte. Vielleicht war es das, was sie brauchte -- ein Weckruf, etwas, das die Taubheit durchbrach, die sich langsam über ihr Leben gelegt hatte.</p>
+</div>
+</div>
 
-                        <p>Der nächste Morgen begann mit einer frühen Vorlesung zur Literaturtheorie. Professor Baumann, ein hagerer Mann mit wirrem grauem Haar und dicken Brillengläsern, referierte über Rezeptionsästhetik und die Rolle des Lesers bei der Sinngebung literarischer Texte. Lena saß wie immer in der dritten Reihe - nah genug, um alles zu verstehen, aber nicht so nah, dass sie Gefahr lief, aufgerufen zu werden. Sie machte sorgfältig Notizen, während Professor Baumann über die "Horizontverschmelzung" zwischen Leser und Text sprach, darüber, wie jede Lektüre ein Dialog sei, eine Interaktion zwischen dem Geschriebenen und dem Lesenden.</p>
+<!-- Band 3: Wo Liebe wachsen darf (Deutsch) -->
+<div id="de-band3" class="band-content hidden">
+<div class="book-title">Band 3: Wo Liebe wachsen darf</div>
+<div class="chapter-title">📝 In Bearbeitung</div>
+<div class="text-content" id="de-textContent3">
+<p style="text-align: center; color: #666; font-style: italic; font-size: 1.3em; margin: 60px 20px;">
+🔄 Dieser Band ist noch in Bearbeitung...<br><br>
+Erscheint demnächst mit der emotionalen Vollendung von Lena und Julians Geschichte!
+</p>
+</div>
+</div>
+</div>
 
-                        <p>Seine Worte ließen Lena an die Notiz in "Effi Briest" denken. War das nicht genau das, was dort geschehen war? Ein Dialog zwischen ihr und J., vermittelt durch Fontanes Text? Eine Horizontverschmelzung über Zeit und Raum hinweg? Nach der Vorlesung hatte sie eine Freistunde bis zum Seminar. Normalerweise hätte sie diese Zeit in der Cafeteria verbracht, an einem der Einzeltische am Fenster, mit einem Buch und einem Kaffee. Doch heute zog es sie zur Bibliothek. Sie wusste, dass es unwahrscheinlich war, dass J. das Buch bereits gefunden und ihre Antwort gelesen hatte. Und doch konnte sie nicht anders, als nachzusehen.</p>
+<!-- ENGLISCHE VERSIONEN -->
+<div id="en-content" class="language-content hidden">
+<!-- Band 1: Hidden Feelings (English) -->
+<div id="en-band1" class="band-content">
+<div class="book-title">Band 1: Hidden Feelings</div>
+<div class="chapter-title">Chapter 1: The Message That Changed Everything</div>
+<div class="text-content" id="en-textContent1">
+<p>The library was, as always, a refuge. Lena Winter breathed in deeply the familiar scent of old paper as her gaze wandered through the room. The silence of a Thursday afternoon was a pleasant contrast to the loud hustle and bustle outside, where other students stood together in groups, laughing and talking - a social game in which she never had the right cards in her hand. "Why is it so hard for me to talk to others?" she asked herself for the hundredth time. This question constantly gnawed at her, especially when she observed other students who had already formed close friendships after just three months at university.</p>
 
-                        <p>In der Bibliothek herrschte der typische Freitagvormittag-Betrieb. Studierende saßen an den Computern und suchten nach Quellen für ihre Wochenendarbeiten, andere stöberten in den Regalen oder diskutierten leise in den Gruppenarbeitsbereichen. Lenas Herz schlug schneller, als sie die Abteilung für deutsche Literatur des 19. Jahrhunderts betrat. Ihre Augen suchten sofort das Regal ab, in dem sie gestern "Effi Briest" zurückgestellt hatte. Ein Schreck durchfuhr sie -- das Buch war nicht da!</p>
+<p>Friendships that looked like something real, not like the superficial acquaintances she had had in school. She ran her fingers over the book spines in the German literature section, her heartbeat gradually calming. Professor Kleinschmidt had given them a list of primary literature for the seminar "Realism and Social Currents." Unlike her fellow students, who read everything digitally, Lena needed the feeling of paper under her fingers - a connection to the past that gave her support when the present became too complicated.</p>
 
-                        <p>Hatte jemand es ausgeliehen? Oder hatte ein Bibliothekar die Schreibereien entdeckt und das Buch aus dem Verkehr gezogen? Sie durchsuchte das Regal ein zweites Mal, kontrollierte die alphabetische Ordnung. Dort war ein Lücke, wo Fontanes Werk stehen sollte. Enttäuschung machte sich in ihr breit, gefolgt von einem Gefühl der Leere. Es war irrational, sich so an eine flüchtige Begegnung zu klammern, an die Möglichkeit einer Verbindung, die vielleicht nie existiert hatte.</p>
+<p>That was one of the reasons why she had chosen literary studies - here she could communicate with people who had long been dead, without stuttering or blushing. Through literature, she understood the world better than through direct experience. "You're wasting your best years among dusty books," her mother had said during her last visit. The tone worried, her eyes full of incomprehension. "Life happens out there, not on paper pages."</p>
 
-                        <p>Sie war dabei, sich umzudrehen und die Bibliothek zu verlassen, als sie ihn sah -- den Studenten von gestern, denjenigen mit der Brille, der sie um Platz am Regal gebeten hatte. Er saß an einem der Lesetische, vertieft in ein Buch. Vor ihm lag ein Stapel weiterer Bücher, und ganz oben -- Lenas Herz setzte einen Schlag aus -- "Effi Briest". Die abgegriffene, alte Ausgabe, die sie gestern gelesen hatte. War es möglich, dass er...?</p>
+<p>Lena bit her lip. It was her third semester, and while her roommate raved about last weekend - some guy named Marc and too much vodka - and her former school friend Sophie posted photos of dates every other day, she spent her Friday nights with fictional characters. "I'm twenty-one and have never had a real boyfriend," she whispered so quietly that no one could hear. Was that normal? Or was something wrong with her?</p>
 
-                        <p>Sie beobachtete ihn einen Moment lang. Er schien völlig in seiner Lektüre versunken, den Kopf leicht geneigt, eine Hand im Haar vergraben, als hätte er vergessen, sie dort wegzunehmen. Er machte sich Notizen auf einem Block neben sich, hielt ab und zu inne, um nachzudenken. Sein Profil im Licht, das durch die hohen Fenster fiel, war markant, fast klassisch, mit einer geraden Nase und einem entschlossenen Kinn. Lena spürte, wie ihr Herz schneller schlug. War er J.? Oder hatte er das Buch nur zufällig genommen, ohne ihre kleine Korrespondenz zu bemerken?</p>
+<p>What would Sophie say? Probably: "You just have to open up, Lena. How is anyone supposed to get to know you if you hide behind your books?" But why did every "Hey, do you want to have coffee with us?" feel like an exam she hadn't studied for? Why could she only really breathe in these quiet moments between bookshelves? Nevertheless, she sometimes couldn't ignore the quiet voice that asked whether she wasn't missing something. Whether there was someone out there who would understand her if she only had the courage to open up.</p>
 
-                        <p>Sie sollte weggehen, bevor er sie bemerkte. Es war albern, hier zu stehen und einen Fremden anzustarren. Und doch konnte sie sich nicht dazu bringen, sich zu bewegen. In diesem Moment blickte er auf, als hätte er ihre Anwesenheit gespürt. Seine Augen -- dunkelbraun mit diesem goldenen Schimmer -- trafen ihre, und ein Lächeln breitete sich auf seinem Gesicht aus. Er hob leicht die Hand zum Gruß, eine kleine, freundliche Geste. Lena spürte, wie ihr Gesicht heiß wurde. Sie konnte nicht anders, als das Lächeln zu erwidern, bevor sie sich hastig abwandte und aus der Bibliothek floh, ihr Herz hämmerte in ihrer Brust wie ein gefangener Vogel.</p>
+<p>"Excuse me," someone whispered beside her, and Lena jumped as if she had been torn from a dream. A young man with short dark hair and rimless glasses stood there. His eyes - dark brown with an interesting golden shimmer - met hers, and for a moment she forgot to breathe. He smiled, a crooked, apologetic smile that touched something in her. "I need to get to the shelf." His voice was deep and pleasant, with a warmth she hadn't expected.</p>
 
-                        <p>Auf dem Weg zum Seminargebäude versuchte sie, ihre rasenden Gedanken zu ordnen. Was hatte das zu bedeuten? War es nur ein zufälliges Aufeinandertreffen gewesen, oder hatte er ihre Notiz gelesen? War er wirklich J.? Und selbst wenn -- warum war das so wichtig für sie? Sie kannte diesen Mann nicht, hatte kaum ein Wort mit ihm gewechselt. Das Realismus-Seminar fand in einem der älteren Gebäude am Rand des Campus statt, einem ehrwürdigen Bau aus dem späten 19. Jahrhundert mit hohen Decken und Holzvertäfelungen, der perfekt zur Thematik passte.</p>
+<p>"Oh, of course." Lena hastily stepped aside and bumped into a bookshelf in the process. Several volumes threatened to fall, and she grabbed for them frantically while her face turned the color of an overripe tomato. 'Fantastic, Lena. That's how you make an impression.' The student skillfully caught one of the falling volumes. "Seems like Fontane really wants attention," he said with a wink that made her heartbeat accelerate.</p>
 
-                        <p>Als Lena den Raum betrat, waren bereits mehrere Studierende anwesend. Sie setzte sich auf ihren üblichen Platz am Fenster und packte ihre Notizen aus. Professor Kleinschmidt erschien pünktlich, ein mittelgroßer Mann mit akkurat gestutztem grauem Bart und einer Vorliebe für Tweedjacketts. Er legte seine Unterlagen auf das Pult und begann ohne Umschweife mit dem Thema des Tages: „Gesellschaftliche Konventionen und ihre Auswirkungen auf das Individuum in Fontanes 'Effi Briest'."</p>
+<p>He pulled out a book and looked at it briefly. Then he looked at her again, seemed to hesitate for a moment as if he wanted to say something, but then just nodded at her friendly and left. Lena didn't really breathe again until he was out of sight. These brief social interactions were a minefield, and she had just once again proven why she preferred communicating with books rather than people. Twenty-one years old and still unable to speak to an attractive man without making herself a complete idiot.</p>
 
-                        <p>Lena spürte, wie ihr Herzschlag sich beschleunigte. Genau das Thema, über das sie und J. geschrieben hatten. Professor Kleinschmidt bat um Wortmeldungen zur Einordnung des Romans in den historischen und gesellschaftlichen Kontext. Mehrere Hände gingen hoch, aber nicht Lenas. Sie zog es vor, zuzuhören, Notizen zu machen, erst dann zu sprechen, wenn sie sicher war, dass ihre Gedanken ausgereift waren. Nach einigen allgemeinen Bemerkungen über die wilhelminische Ära und die starren Moralvorstellungen der Zeit lenkte Professor Kleinschmidt das Gespräch auf Effis Charakter: „Was macht Effi zu einer so tragischen Figur? Warum bewegt uns ihr Schicksal auch heute noch?"</p>
+<p>'You should get out among people more often,' Sophie had said before she moved to another city. 'How else will you ever meet someone?' Lena sighed and turned her attention back to the books. Her hand stopped at "Effi Briest" - Fontane's masterpiece about a young woman who breaks under the suffocating conventions of her time. She pulled out the book. 'Maybe you're like Effi,' whispered a voice in her head. 'Trapped between what you want and what you think you should be.'</p>
 
-                        <p>Ohne dass sie es wollte, hoben sich Lenas Finger leicht von der Tischplatte, fast so, als hätten sie ein Eigenleben. Professor Kleinschmidt bemerkte die Bewegung sofort. „Frau Winter? Sie haben einen Gedanken dazu?" Lena spürte, wie ihr das Blut ins Gesicht schoss. Alle Augen im Raum richteten sich auf sie. Sie räusperte sich. Normalerweise hätte sie jetzt eine gut durchdachte, aber emotionslose Analyse präsentiert. Doch stattdessen hörte sie sich sagen: „Effi wird zwischen gesellschaftlichen Erwartungen und eigenen Wünschen zerrieben. Und das ist ein Konflikt, der zeitlos ist."</p>
+<p>The book was an older edition, the cover worn, the pages yellowed, as if it had already shared hundreds of stories with other readers. How many lonely students had probably already lost themselves in Effi's story? How many had recognized themselves in her? With the book in her hand, she went to a secluded reading spot by the window. The afternoon sun bathed everything in warm light, and for a moment she wondered if the student with the glasses had been looking for the book she now held in her hands.</p>
 
-                        <p>Sie hielt inne, überrascht von sich selbst. Es waren fast genau J.s Worte. „Heute sieht der Druck natürlich anders aus", fuhr sie fort, jetzt schon mutiger. „Wir zerreiben uns zwischen dem Streben nach Authentizität und dem Druck zur Selbstoptimierung. Die Formen ändern sich, aber das Grundproblem bleibt." Professor Kleinschmidt sah sie überrascht an, ein leichtes Lächeln umspielte seine Lippen. „Eine sehr interessante Beobachtung, Frau Winter. Würden Sie das näher ausführen?"</p>
+<p>Lena sat down, opened the book and immersed herself in Effi's story - the story of a young woman who marries without knowing what love actually means, who puts social expectations above her own needs and breaks because of it. 'What would I do?' she asked herself. 'If I had to choose between heart and mind?' When she got to chapter five, her gaze caught on something unusual. In the margin of page 27 was a handwritten note in blue ink, the handwriting neat and almost elegant: "Isn't it strange how Effi is torn between social expectations and her own desires? Some things never change, do they? -- J."</p>
 
-                        <p>Lena atmete tief durch und begann zu sprechen, überrascht von ihrer eigenen Eloquenz. Sie sprach über Effis jugendliches Verlangen nach Freiheit und Abenteuer, über die erdrückenden Konventionen ihrer Zeit, und über die Parallelen zur modernen Gesellschaft, in der Social Media und ständige Erreichbarkeit neue Formen von sozialem Druck erzeugen. Sie sprach ohne ihre üblichen Notizen, aus einem Gefühl heraus, das durch den Austausch mit J. geweckt worden war. Als sie endete, herrschte einen Moment lang Stille im Raum. Dann nickte Professor Kleinschmidt anerkennend. „Danke, Frau Winter. Das war eine bemerkenswert tiefgründige Analyse."</p>
+<p>Lena stared at the note, her heartbeat accelerated. Writing in library books was an unwritten taboo - but this remark was so apt, so personal, as if someone had written down her own thoughts. J. Who was J.? Male? Female? Someone who asked the same questions about life as she did? It wasn't an ordinary scribble or trivial comment like you sometimes found in textbooks. These words came from someone who didn't just read, but felt, who read between the lines and drew parallels to their own world.</p>
 
-                        <p>Seine Augen glänzten, als hätte er soeben eine neue Seite an einer Studentin entdeckt, die er bisher nur als kompetent, aber zurückhaltend eingeschätzt hatte. In der hinteren Reihe bemerkte Lena eine Bewegung. Als sie hinübersah, erstarrte sie innerlich. Dort saß er -- der Student aus der Bibliothek, derjenige mit "Effi Briest". Er beobachtete sie mit einem nachdenklichen Ausdruck, ein leichtes Lächeln auf den Lippen. Hatte er das Seminar schon immer besucht? Wie hatte sie ihn nicht bemerken können?</p>
+<p>This mysterious "J." posed a question that seemed directed at future readers - at her. She read the text passage next to which the note stood. Effi and Innstetten see each other again after his proposal - two people who will marry without knowing each other, without knowing if their hearts beat in the same rhythm. 'How many people still do that today?' thought Lena. 'Being together because it's expected, not because it feels right?'</p>
 
-                        <p>„Ich möchte diesen Gedanken noch weiterverfolgen", sagte Professor Kleinschmidt. „Wie manifestieren sich diese 'neuen Formen des Drucks' in unserer heutigen Gesellschaft?" Mehrere Hände gingen hoch, darunter auch die des mysteriösen Studenten. Professor Kleinschmidt nickte ihm zu. „Herr Bergmann, bitte." Herr Bergmann. So hieß er also. „Ich denke, was wir heute erleben, ist vielleicht noch heimtückischer als zu Fontanes Zeiten", sagte er mit der warmen, tiefen Stimme, die Lena schon in der Bibliothek aufgefallen war.</p>
+<p>She thought of her last dorm party when Sophie tried to persuade her to flirt with that business student. "He's perfect for you," she had said. "His parents have a law firm, he drives an Audi..." As if those were the things that mattered. As if love were a checklist. A sudden impulse came over her. This unknown J. had touched something in her, struck a chord that resonated. Before she could lose her courage, she took out her ballpoint pen and wrote directly under the note: "The forms change, but the pressure remains. Today we tear ourselves apart between authenticity and self-optimization. Progress? -- L."</p>
 
-                        <p>„Damals waren die Regeln klar -- einschränkend, aber zumindest transparent. Heute haben wir scheinbar alle Freiheiten, aber der Druck, das 'richtige' Leben zu führen, ist mindestens genauso stark, nur viel subtiler." Er machte eine kurze Pause, seine Augen trafen Lenas, nur für einen Moment, aber es reichte, um ihr Herz stolpern zu lassen. „Wir sind ständig konfrontiert mit Bildern von perfekten Leben in sozialen Medien, perfekten Körpern, perfekten Karrieren. Und während niemand uns direkt zwingt, diesen Standards zu folgen, fühlen wir uns dennoch schuldig, wenn wir es nicht tun. Die Tyrannei der Wahl ist nicht weniger erdrückend als die Tyrannei der Konvention."</p>
+<p>Her hand trembled slightly as she put the pen down. She, Lena Winter, the epitome of rule conformity, had just defaced a library book! A wave of guilt came over her, followed by an unexpected tingle of excitement. It felt like a secret, an intimate moment between two strangers who felt connected by nothing but their thoughts. This unknown J. had written something that spoke directly to her soul, and she had answered - not after hours of deliberation, not after weighing every word, but spontaneously and honestly.</p>
 
-                        <p>Die Tyrannei der Wahl. Eine Formulierung, die Lena traf wie ein elektrischer Schlag. Es war, als spräche er direkt zu ihr, als setzte er ihre Gedanken fort. War es Zufall? Oder hatte er tatsächlich ihre Notiz gelesen und antwortete nun in diesem öffentlichen Raum auf ihre privaten Worte? Die Diskussion ging weiter, andere Studierende brachten ihre Perspektiven ein, aber Lena konnte sich kaum konzentrieren. Ihre Gedanken kreisten um Herrn Bergmann und seine Worte, um die Möglichkeit, dass er J. sein könnte, und um die Frage, was das für sie bedeuten würde.</p>
+<p>'Is that the difference?' she asked herself. 'Between a conversation with a stranger on a bus and words on paper? The absence of gazes, the freedom from expectations?' She tried to continue reading, but her eyes kept wandering back to the little exchange of letters in the margin. Had she just opened an invisible door? And if so - where would it lead? The thought that this unknown J. might one day read her answer triggered an unfamiliar tingling in her stomach. Like a modern message in a bottle, thrown into a sea of books.</p>
 
-                        <p>Nach dem Seminar packten alle hastig ihre Sachen zusammen -- es war Freitagnachmittag, und die meisten hatten es eilig, ins Wochenende zu starten. Lena ließ sich Zeit, ordnete ihre Notizen sorgfältig in ihrem Ordner. Sie hoffte heimlich, dass Herr Bergmann vielleicht zu ihr kommen würde, dass er ihr ein Zeichen geben würde, ob er J. war oder nicht. Aber als sie aufblickte, war er verschwunden. „Frau Winter?" Professor Kleinschmidt stand vor ihrem Tisch. „Ich war beeindruckt von Ihrem Beitrag heute. Sie haben einen Blick für die tieferen Zusammenhänge in literarischen Texten."</p>
+<p>Who was J.? Her mind painted possible faces: Was it perhaps that handsome literature student from the fourth semester who always sat in the front row and asked clever questions? The one with the intense eyes and quiet laughter who sometimes sat alone in the cafeteria reading? Or was J. a woman, perhaps that confident student with short blue hair who had given a passionate speech about the suppression of female voices in literature in the last seminar?</p>
 
-                        <p>„Danke, Professor." Lena war nicht sicher, was sie sonst sagen sollte. Sie war nicht gewohnt, dass Dozenten sie nach dem Unterricht ansprachen. „Haben Sie schon überlegt, eine Hausarbeit über Fontane zu schreiben? Ihr Ansatz zur Verbindung historischer und moderner Perspektiven wäre eine ausgezeichnete Grundlage." Lena zögerte. Sie hatte eigentlich vorgehabt, über Theodor Storm zu schreiben. Aber die Idee, sich weiter mit „Effi Briest" zu beschäftigen, mit dem Buch, das sie mit J. -- oder möglicherweise mit Herrn Bergmann -- verband, hatte einen unerwarteten Reiz.</p>
+<p>The handwriting revealed little - neat, flowing, with a certain elegance, but not affected. Not the shaky writing of a professor on the verge of retirement, but also not the hasty scribble of a disinterested freshman. And why had J. wanted to capture precisely this thought? Was this person also sometimes lonely among people? Did they also know this feeling of not really belonging, of being different? The possibilities were endless, and this uncertainty had something strangely exciting about it.</p>
 
-                        <p>„Ich werde darüber nachdenken", sagte sie schließlich. Professor Kleinschmidt nickte zufrieden. „Tun Sie das. Ich denke, Sie könnten etwas wirklich Interessantes daraus machen." Er machte eine kurze Pause, dann fügte er hinzu: „Wissen Sie, manchmal finden wir unsere wichtigsten Einsichten nicht allein. Die besten Ideen entstehen oft im Dialog -- sei es mit anderen Forschern, mit den Autoren selbst durch ihre Werke, oder einfach mit Freunden, die uns neue Perspektiven eröffnen."</p>
+<p>After a while she closed the book and looked at her watch. She was shocked to find that she had been reading for over two hours. The library had emptied, only scattered students still sat at the tables. Lena wondered if she should borrow "Effi Briest." The story had captivated her, and she wanted to know how it continued. But then J. might never read her answer if the book lay at her home for weeks.</p>
 
-                        <p>Lena fragte sich, ob er irgendwie von ihrer Kommunikation mit J. wusste. Aber das war unmöglich. Sie lächelte höflich. „Ich werde das bedenken." Professor Kleinschmidt verabschiedete sich und ließ Lena mit ihren Gedanken allein. Dialog. Genau das hatte sie mit J. begonnen. Ein Dialog über Fontane, über gesellschaftliche Erwartungen, über die Parallelen zwischen Vergangenheit und Gegenwart. Ein Dialog, der bereits ihre Art zu denken verändert hatte, der ihr geholfen hatte, im Seminar eine Stimme zu finden.</p>
+<p>The thought hit her with unexpected intensity: She wanted J. to find her answer. She wanted to continue this dialogue, this strange, anonymous connection that felt more real than many of her daily interactions. 'What's wrong with you, Lena?' she asked herself. 'You're fantasizing about someone you've never met, based on a single sentence in a book?' And yet she put the book back on the shelf, carefully making sure it was easy to find, the spine protruding slightly between the others. As if she were leaving a secret sign. 'I'll come back tomorrow,' she decided, surprised by her own determination.</p>
+</div>
+</div>
 
-                        <p>Was würde geschehen, wenn dieser Dialog fortgesetzt würde? Und wenn Herr Bergmann tatsächlich J. wäre -- wollte sie das überhaupt wissen? Auf dem Weg aus dem Gebäude nahm Lena ihr Handy heraus und öffnete die Nachricht von Maja von gestern. Das Angebot, ins 'Basement' zu gehen, stand vermutlich noch. Und wenn dieser Literaturstudent, den Tim mitbringen wollte, Herr Bergmann wäre? Die Idee ließ ihr Herz schneller schlagen, sowohl vor Aufregung als auch vor Angst. Was, wenn er J. war? Was, wenn nicht?</p>
+<!-- Band 2: Revealed Truths (English) -->
+<div id="en-band2" class="band-content hidden">
+<div class="book-title">Band 2: Revealed Truths</div>
+<div class="chapter-title">Chapter 1: Proximity that Flees</div>
+<div class="text-content" id="en-textContent2">
+<p>Lena awoke with the feeling that something was missing. The warmth beside her was palpable, physically present, breathing, real. Julian's arm lay heavily across her waist, his breath steady and deep against her neck. And yet there existed a strange emptiness that she couldn't grasp. She blinked into the early morning light that fell through the not quite closed curtains and tried to locate the sensation. It was like a word on the tip of her tongue -- present, but unreachable.</p>
 
-                        <p>Sie zögerte, den Daumen über der Tastatur. Dann schüttelte sie den Kopf und steckte das Handy weg. Es war zu spät, Maja hätte längst andere Pläne gemacht. Außerdem -- was würde sie in einem Club wie dem 'Basement' tun, mit lauter Musik und Menschenmengen? Als sie die Treppen hinunterging, hörte sie jemanden ihren Namen rufen. „Lena! Warte!" Sie drehte sich um und sah Sophie auf sich zulaufen, ihre alte Schulfreundin, die sie gestern erst erwähnt hatte.</p>
+<p>Three months had passed since the first kiss by the river. Three months in which hesitant touches had become familiarity, shared books had become a shared bed, two separate lives had become a common everyday life. Everything had developed so naturally, so effortlessly, as if it were a story that had only been waiting to be told. Julian murmured something in his sleep, pulled her closer to him. She felt his heartbeat through the thin fabric of her T-shirt, constant and reassuring.</p>
 
-                        <p>Sophie, mit ihren kurzen blonden Haaren und dem breiten Lächeln, die vor einem Jahr in eine andere Stadt gezogen war, um Medizin zu studieren. „Sophie?" Lena konnte es kaum glauben. „Was machst du hier?" Sophie erreichte sie, außer Atem, aber strahlend. „Überraschung! Ich bin für das Wochenende in der Stadt und wollte dich überraschen. Ich habe dich gestern angeschrieben, um zu testen, ob du da bist." Sie umarmte Lena stürmisch. „Mann, ist das schön, dich zu sehen! Du siehst gut aus. Ein bisschen blass vielleicht, aber das ist normal für jemanden, der in Bibliotheken lebt, oder?" Sie zwinkerte.</p>
+<p>She should be happy. She was happy. Why then this nagging feeling of incompleteness? Carefully she freed herself from his embrace, careful not to wake him. On tiptoes she crept out of the bedroom, crossed the narrow hallway of his apartment and entered the kitchen. His kitchen. Not hers. She now spent more time here than in her own apartment, but she hadn't given hers up. Not yet. A small, peculiar resistance that she didn't quite understand herself.</p>
 
-                        <p>Lena lachte, die Freude über das Wiedersehen überwältigte sie. „Es ist so schön, dich zu sehen! Aber warum hast du nicht gesagt, dass du kommst?" Sophie hakte sich bei ihr unter, wie sie es früher immer getan hatte. „Dann wäre es ja keine Überraschung gewesen, oder? Außerdem wollte ich dich auf frischer Tat ertappen. Erzähl mir alles über deine kriminelle Karriere als Buchschmierer." Sie grinste. „Das war ein spontaner Moment der Rebellion", sagte Lena, plötzlich verlegen. Die Notiz, die ihr gestern noch so bedeutsam erschienen war, kam ihr in Sophies lebhafter Gegenwart fast trivial vor. „Erzähl trotzdem! Wir haben so viel aufzuholen. Lass uns in ein Café gehen." Sophie zog sie in Richtung der Cafeteria.</p>
-                    </div>
-                </div>
+<p>She made coffee and watched how the water dripped drop by drop and patiently through the coffee grounds. There was comfort in these morning rituals, something reliable. The smell of fresh coffee filled the room, displacing for a moment the indefinite restlessness in her. She opened the kitchen window. Outside, the city still lay in half-sleep, although the first cars were already driving through the streets, early commuters who wanted to be ahead of the rush hour traffic.</p>
 
-                <!-- Band 2: Enthüllte Wahrheiten (Deutsch) -->
-                <div id="de-band2" class="band-content hidden">
-                    <div class="book-title">Band 2: Enthüllte Wahrheiten</div>
-                    <div class="chapter-title">Kapitel 1: Nähe, die flieht</div>
-                    <div class="text-content" id="de-textContent2">
-                        <p>Lena erwachte mit dem Gefühl, dass etwas fehlte. Die Wärme neben ihr war spürbar, körperlich präsent, atmend, real. Julians Arm lag schwer über ihrer Mitte, sein Atem gleichmäßig und tief an ihrem Nacken. Und doch existierte eine seltsame Leere, die sie nicht greifen konnte. Sie blinzelte in das frühe Morgenlicht, das durch die nicht ganz geschlossenen Vorhänge fiel, und versuchte, die Empfindung zu lokalisieren. Es war wie ein Wort, das ihr auf der Zunge lag -- präsent, aber unerreichbar.</p>
+<p>November had swept the trees almost bare, only individual stubborn leaves still clung to the branches. A bit like her to her own apartment, Lena thought and smiled at the strange comparison. "Good morning." Julian's voice made her jump. He stood in the doorway, in boxer shorts and T-shirt, his hair tousled from sleep, his face still soft from dreams. "Sorry, I didn't want to scare you." He came to her, wrapped his arms around her waist from behind and pressed a kiss on her shoulder. "You were gone."</p>
 
-                        <p>Drei Monate waren seit dem ersten Kuss am Fluss vergangen. Drei Monate, in denen aus zögernden Berührungen Vertrautheit geworden war, aus geteilten Büchern ein geteiltes Bett, aus zwei separaten Leben ein gemeinsamer Alltag. Alles hatte sich so natürlich entwickelt, so mühelos, als wäre es eine Geschichte, die nur darauf gewartet hatte, erzählt zu werden. Julian murmelte etwas im Schlaf, zog sie näher an sich. Sie spürte seinen Herzschlag durch den dünnen Stoff ihres T-Shirts, beständig und beruhigend. Sie sollte glücklich sein. Sie war glücklich. Warum also dieses nagende Gefühl der Unvollständigkeit?</p>
+<p>"I wanted to make coffee," she explained and pointed to the coffee machine, which was just releasing its last drops into the pot. "Hmm." He buried his face in her hair and breathed deeply. "You smell good." "I smell like sleep," she corrected with a slight laugh. "Exactly." His hands wandered under her T-shirt, gently caressed her stomach. His touch was warm, familiar, sent small waves of arousal through her body. She instinctively leaned against him, let her head sink onto his shoulder.</p>
 
-                        <p>Vorsichtig löste sie sich aus seiner Umarmung, darauf bedacht, ihn nicht zu wecken. Auf Zehenspitzen schlich sie aus dem Schlafzimmer, durchquerte den schmalen Flur seiner Wohnung und betrat die Küche. Seine Küche. Nicht ihre. Sie verbrachte mittlerweile mehr Zeit hier als in ihrer eigenen Wohnung, aber sie hatte ihre nicht aufgegeben. Noch nicht. Eine kleine, eigenartige Resistenz, die sie selbst nicht ganz verstand. Sie setzte Kaffee auf und beobachtete, wie das Wasser tropfenweise und geduldig durch das Kaffeepulver sickerte. Es gab einen Trost in diesen morgendlichen Ritualen, etwas Verlässliches. Der Geruch von frischem Kaffee erfüllte den Raum, verdrängte für einen Moment die unbestimmte Unruhe in ihr.</p>
+<p>This was simple. This worked. The physical part of their relationship had never caused the problems she had initially feared. No insecurity, no shame, no disappointment. Their bodies had found a language from the beginning that needed no translation. Julian turned her to him, kissed the corner of her mouth, her cheek, finally her mouth. She returned the kiss, let her fingers glide through his hair, enjoyed the warmth that built up between them.</p>
 
-                        <p>Sie öffnete das Küchenfenster. Draußen lag die Stadt noch im Halbschlaf, obwohl die ersten Autos bereits durch die Straßen fuhren, frühe Pendler, die dem Berufsverkehr voraus sein wollten. Der November hatte die Bäume fast kahl gefegt, nur einzelne hartnäckige Blätter klammerten sich noch an die Zweige. Ein wenig wie sie an ihre eigene Wohnung, dachte Lena und lächelte über den seltsamen Vergleich. „Guten Morgen." Julians Stimme ließ sie zusammenzucken. Er stand in der Tür, in Boxershorts und T-Shirt, seine Haare zerzaust vom Schlaf, sein Gesicht noch weich von Träumen. „Entschuldige, ich wollte dich nicht erschrecken." Er kam zu ihr, schlang seine Arme von hinten um ihre Taille und drückte einen Kuss auf ihre Schulter. „Du warst weg."</p>
+<p>When they separated from each other, he smiled. "Good morning," he repeated, this time with a deeper meaning in his voice. "Good morning," she answered and tried to feel the echo of his smile on her own face. "Coffee?" "Please." He separated from her, reached for two cups from the cupboard. Routine movements, practiced dance. He knew how she liked her coffee -- black, no sugar -- how she needed the silence in the morning before she could speak, how her body wanted to be touched.</p>
 
-                        <p>„Ich wollte Kaffee machen", erklärte sie und deutete auf die Kaffeemaschine, die gerade ihre letzten Tropfen in die Kanne entließ. „Hm." Er vergrub sein Gesicht in ihrem Haar und atmete tief ein. „Du riechst gut." „Ich rieche nach Schlaf", korrigierte sie mit einem leichten Lachen. „Genau." Seine Hände wanderten unter ihr T-Shirt, streiften sanft über ihren Bauch. Seine Berührung war warm, vertraut, sendete kleine Wellen der Erregung durch ihren Körper. Sie lehnte sich instinktiv gegen ihn, ließ ihren Kopf auf seine Schulter sinken. Das war einfach. Das funktionierte. Der körperliche Teil ihrer Beziehung hatte nie die Probleme bereitet, die sie anfangs befürchtet hatte. Keine Unsicherheit, keine Scham, keine Enttäuschung. Ihre Körper hatten von Anfang an eine Sprache gefunden, die keine Übersetzung brauchte.</p>
+<p>He knew her. And yet she sometimes had the feeling that something essential was missing, that they looked past each other even though they looked directly into each other's eyes. "What are you thinking about?" Julian's question interrupted her thoughts. He handed her a cup, the warmth penetrated through the porcelain into her hands. "Nothing special," she lied and hated herself a little for it. It was a small lie, harmless. And yet she felt how a wall was building up between them, stone by stone, day by day.</p>
 
-                        <p>Julian drehte sie zu sich, küsste ihren Mundwinkel, ihre Wange, schließlich ihren Mund. Sie erwiderte den Kuss, ließ ihre Finger durch seine Haare gleiten, genoss die Wärme, die sich zwischen ihnen aufbaute. Als sie sich voneinander lösten, lächelte er. „Guten Morgen", wiederholte er, diesmal mit einer tieferen Bedeutung in seiner Stimme. „Guten Morgen", antwortete sie und versuchte, das Echo seines Lächelns auf ihrem eigenen Gesicht zu spüren. „Kaffee?" „Bitte." Er löste sich von ihr, griff nach zwei Tassen aus dem Schrank. Routinierte Bewegungen, eingeübter Tanz. Er wusste, wie sie ihren Kaffee mochte -- schwarz, kein Zucker -- wie sie morgens die Stille brauchte, bevor sie sprechen konnte, wie ihr Körper berührt werden wollte. Er kannte sie. Und doch hatte sie manchmal das Gefühl, dass etwas Wesentliches fehlte, dass sie aneinander vorbeischauten, obwohl sie sich direkt in die Augen sahen.</p>
+<p>Words that remained unspoken, thoughts that she kept to herself -- not out of malice or calculation, but out of a strange shyness, a fear of disappointment. His or her own, she wasn't sure. Julian accepted her answer with a nod, no follow-up question, no insistence. Was that respect for her boundaries or indifference? She wondered if he sensed that she was lying, if it hurt him. Or if he simply didn't want to know what was really going on inside her.</p>
 
-                        <p>„Woran denkst du?" Julians Frage unterbrach ihre Gedanken. Er reichte ihr eine Tasse, die Wärme drang durch das Porzellan in ihre Hände. „Nichts Besonderes", log sie und hasste sich ein wenig dafür. Es war eine kleine Lüge, harmlos. Und doch spürte sie, wie sich eine Mauer zwischen ihnen aufbaute, Stein für Stein, Tag für Tag. Worte, die ungesagt blieben, Gedanken, die sie für sich behielt -- nicht aus Bosheit oder Berechnung, sondern aus einer seltsamen Scheu, einer Angst vor Enttäuschung. Seiner oder ihrer eigenen, sie war sich nicht sicher.</p>
+<p>They drank their coffee in silence, each lost in thought. The clock on the wall ticked, marking the seconds that passed unused between them. "I have to go," Julian finally said and put his empty cup in the sink. He had a workshop to lead early today, Lena remembered. Something about creative writing for high school students. "Of course." She stepped aside to let him pass, although the kitchen was large enough that there was no need for it.</p>
 
-                        <p>Julian akzeptierte ihre Antwort mit einem Nicken, keine Nachfrage, keine Insistenz. War das Respekt für ihre Grenzen oder Gleichgültigkeit? Sie fragte sich, ob er spürte, dass sie log, ob es ihn verletzte. Oder ob er einfach nicht wissen wollte, was wirklich in ihr vorging. Sie tranken ihren Kaffee schweigend, jeder in Gedanken versunken. Die Uhr an der Wand tickte, markierte die Sekunden, die ungenutzt zwischen ihnen verstrichen. „Ich muss los", sagte Julian schließlich und stellte seine leere Tasse in die Spüle. Er hatte heute früh einen Workshop zu leiten, erinnerte sich Lena. Etwas über kreatives Schreiben für Oberstufenschüler. „Natürlich." Sie trat beiseite, um ihn vorbeizulassen, obwohl die Küche groß genug war, dass es keine Notwendigkeit dafür gab.</p>
+<p>"Will we see each other tonight?" He stopped briefly, his hand on her shoulder, like an anchor. "Sophie asked if we wanted to go to the movies." Lena had forgotten, or suppressed it. She liked Sophie, really. The lively, direct manner of her friend was a welcome counterweight to her own introversion. But lately it was difficult for her to muster the energy for social interactions, even with people she liked. "Sounds good," she said nevertheless, again a small lie, again a stone in the wall.</p>
 
-                        <p>„Sehen wir uns heute Abend?" Er blieb kurz stehen, seine Hand auf ihrer Schulter, wie ein Anker. „Sophie hat gefragt, ob wir ins Kino wollen." Lena hatte es vergessen, oder verdrängt. Sie mochte Sophie, wirklich. Die lebhafte, direkte Art ihrer Freundin war ein willkommenes Gegengewicht zu ihrer eigenen Introvertiertheit. Aber in letzter Zeit fiel es ihr schwer, die Energie für soziale Interaktionen aufzubringen, selbst mit Menschen, die sie mochte. „Klingt gut", sagte sie dennoch, wieder eine kleine Lüge, wieder ein Stein in der Mauer.</p>
+<p>Julian kissed her fleetingly on the forehead, a gesture that seemed both tender and distant at the same time. "I'm looking forward to it. See you later then." She heard him go into the bathroom, turn on the shower. The familiar rhythm of the morning continued as if nothing was different than usual. She finished her coffee, took a notepad from the kitchen table -- Julian had the habit of distributing notepads everywhere in the apartment, always ready to capture a thought -- and scribbled absently on the paper.</p>
 
-                        <p>Julian küsste sie flüchtig auf die Stirn, eine Geste, die gleichzeitig zärtlich und distanziert wirkte. „Ich freue mich. Bis später dann." Sie hörte, wie er ins Bad ging, die Dusche anstellte. Der vertraute Rhythmus des Morgens setzte sich fort, als wäre nichts anders als sonst. Sie trank ihren Kaffee aus, nahm einen Schreibblock vom Küchentisch -- Julian hatte die Angewohnheit, überall in der Wohnung Notizblöcke zu verteilen, immer bereit, einen Gedanken festzuhalten -- und kritzelte abwesend auf das Papier. Nicht wirklich Worte, eher Formen, Spiralen, Linien, die ineinander übergingen. Ihre Hand bewegte sich, als hätte sie einen eigenen Willen. Wie viel einfacher wäre es, wenn sie einfach aufschreiben könnte, was in ihr vorging. Aber dafür müsste sie es erst selbst verstehen.</p>
+<p>Not really words, rather shapes, spirals, lines that merged into each other. Her hand moved as if it had a will of its own. How much easier it would be if she could simply write down what was going on inside her. But for that she would first have to understand it herself. Later, after Julian had left and she had made herself ready for the day, she sorted her documents for the seminars. She had a packed day today: literary theory in the morning, a workshop on German Romanticism in the afternoon, research for her master's thesis in between.</p>
 
-                        <p>Später, nachdem Julian gegangen war und sie sich selbst für den Tag fertig gemacht hatte, sortierte sie ihre Unterlagen für die Seminare. Sie hatte heute einen vollgepackten Tag: Literaturtheorie am Vormittag, einen Workshop über deutsche Romantik am Nachmittag, dazwischen Recherche für ihre Masterarbeit. Eigentlich hätte sie sich auf die Romantik-Sitzung freuen sollen -- Novalis, Eichendorff, die Sehnsucht nach dem Unendlichen, die in ihren Texten pulsierte. Themen, die sie früher in Begeisterung versetzt hatten. Aber jetzt spürte sie nur eine seltsame Gleichgültigkeit. Als hätte sich etwas zwischen sie und die Literatur geschoben, eine dünne, aber undurchdringliche Schicht aus... aus was? Sie schob die Frage beiseite, packte ihre Tasche und verließ Julians Wohnung.</p>
+<p>Actually, she should have been looking forward to the Romanticism session -- Novalis, Eichendorff, the longing for the infinite that pulsed in their texts. Topics that had once filled her with enthusiasm. But now she felt only a strange indifference. As if something had slipped between her and literature, a thin but impenetrable layer of... of what? She pushed the question aside, packed her bag and left Julian's apartment.</p>
 
-                        <p>Die kalte Novemberluft empfing sie wie ein Schock, weckte sie aus ihrer Benommenheit. Sie atmete tief ein, ließ die Kälte ihre Lungen füllen, spürte, wie ihr Körper darauf reagierte, sich zusammenzog, sich schützte. Vielleicht war es das, was sie brauchte -- ein Weckruf, etwas, das die Taubheit durchbrach, die sich langsam über ihr Leben gelegt hatte. Der Campus war belebt, wie immer zu dieser Tageszeit. Studierende strömten zu ihren Vorlesungen, einige hetzten mit Kaffeetassen in der Hand, andere schlenderten in Gruppen, in Gespräche vertieft. Lena mischte sich unter sie, anonym, unsichtbar.</p>
+<p>The cold November air greeted her like a shock, woke her from her numbness. She breathed deeply, let the cold fill her lungs, felt how her body reacted to it, contracted, protected itself. Perhaps that was what she needed -- a wake-up call, something that broke through the numbness that had slowly settled over her life.</p>
+</div>
+</div>
 
-                        <p>In der Bibliothek suchte sie sich einen Platz in einer ruhigen Ecke, breitete ihre Unterlagen aus. Die Stunde bis zu ihrem ersten Seminar wollte sie nutzen, um die letzten Notizen für ihren Vortrag über intertextuelle Bezüge bei Virginia Woolf durchzugehen. Es war ein Thema, das sie und Julian verbunden hatte, damals, als ihre Beziehung noch aus heimlichen Notizen in Buchrändern bestand, aus geteilten Gedanken, die flüchtiger und doch irgendwie substanzieller wirkten als ihre heutigen Gespräche. Sie vermisste das manchmal -- die Spannung des Unbekannten, die Entdeckung einer neuen Gedankenwelt. Jetzt kannten sie einander, oder sollten es zumindest. Und doch hatte sie das Gefühl, dass etwas Wesentliches zwischen ihnen verloren gegangen war, gerade als sie einander gefunden hatten.</p>
+<!-- Band 3: Where Love Can Grow (English) -->
+<div id="en-band3" class="band-content hidden">
+<div class="book-title">Band 3: Where Love Can Grow</div>
+<div class="chapter-title">📝 In Progress</div>
+<div class="text-content" id="en-textContent3">
+<p style="text-align: center; color: #666; font-style: italic; font-size: 1.3em; margin: 60px 20px;">
+🔄 This volume is still in progress...<br><br>
+Coming soon with the emotional completion of Lena and Julian's story!
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
 
-                        <p>„Ist hier noch frei?" Eine Stimme riss sie aus ihren Gedanken. Ein Student, den sie vage aus einem ihrer Seminare kannte, deutete auf den Stuhl gegenüber. „Ja, natürlich", murmelte sie und rückte ihre Unterlagen zur Seite, um Platz zu machen. Er nickte dankbar, ließ sich nieder und begann sofort, seinen Laptop aufzuklappen und Bücher auszubreiten. Lena versuchte, sich wieder auf ihre Notizen zu konzentrieren, aber ihre Gedanken wanderten. Was war es, das sie an Julian vermisste? Oder war es etwas an sich selbst?</p>
+<script>
+let currentSpeech = null;
+let currentBand = 1;
+let currentLanguage = 'de';
+let currentWordIndex = 0;
+let allBandWords = {}; // Speichert Wörter für alle Bände und Sprachen
+let isReading = false;
+let lastHighlightedWord = null;
 
-                        <p>Sie dachte an den Moment zurück, als sie entdeckt hatte, dass Julian J. war, der geheimnisvolle Briefpartner, mit dem sie monatelang Gedanken durch Bücher ausgetauscht hatte. Die Aufregung, die Erleichterung, die plötzliche Öffnung eines neuen Weges, einer Möglichkeit, die vorher undenkbar erschienen war. Es war wie ein literarisches Klischee gewesen, eine zu perfekte Wendung, um real zu sein. Vielleicht war das das Problem -- die Realität konnte mit der Fantasie nicht mithalten, der Alltag war nie so farbenfroh wie der Moment der Enthüllung.</p>
+// Initialisiere alle Bände beim Seitenstart
+function initializeAllBands() {
+['de', 'en'].forEach(lang => {
+allBandWords[lang] = {};
+for (let bandNumber = 1; bandNumber <= 3; bandNumber++) {
+const bandContent = document.querySelector(`#${lang}-band${bandNumber} .text-content`);
+if (bandContent && !bandContent.querySelector('.word')) {
+const paragraphs = bandContent.querySelectorAll('p');
+let wordCounter = 0;
+let bandWords = [];
 
-                        <p>Sie schmunzelte über ihre eigenen melodramatischen Gedanken. Es war nicht so, dass sie unglücklich war. Sie hatte bekommen, was sie sich erhofft hatte -- eine tiefe Verbindung zu einem Menschen, der ihre Liebe zur Literatur teilte, der ihre Gedanken verstand, der sie respektierte und begehrte. Julian war aufmerksam, rücksichtsvoll, intelligent. Er hatte nie Druck auf sie ausgeübt, war nie besitzergreifend oder kontrollierend gewesen. Sie führten eine gleichberechtigte, moderne Beziehung, in der jeder seinen Raum hatte, seinen eigenen Rhythmus. Warum also dieses nagende Gefühl, dass etwas nicht stimmte?</p>
+paragraphs.forEach((paragraph) => {
+// Skip "In Bearbeitung" paragraphs for Band 3
+if (paragraph.style.textAlign === 'center') return;
 
-                        <p>Das Seminar zur Literaturtheorie verging in einem Nebel aus Strukturalismus und Postmoderne. Lena machte Notizen, beteiligte sich an Diskussionen, funktionierte äußerlich tadellos. Aber ein Teil von ihr blieb abwesend, beobachtete sich selbst von außen, als wäre sie eine Figur in einem Buch, dessen Handlung sie nicht ganz verstand. In der Mittagspause traf sie Sophie in der Mensa. Ihre Freundin winkte ihr enthusiastisch von einem Tisch in der Ecke zu, ihr blondes Haar wilder als gewöhnlich, ihre Augen strahlend vor Lebensfreude. Lena zwang sich zu einem Lächeln und bahnte sich ihren Weg durch die überfüllten Tischreihen.</p>
+const paragraphText = paragraph.textContent;
+const paragraphWords = paragraphText.split(/\s+/).filter(word => word.length > 0);
 
-                        <p>„Da bist du ja endlich!" Sophie umarmte sie stürmisch, als hätten sie sich Wochen nicht gesehen, obwohl es erst drei Tage her war. „Ich sterbe vor Hunger, lass uns was holen." Sie zog Lena zur Essensausgabe, plapperte dabei ununterbrochen über ihre neueste Chorprobe, über einen Professor, der sich im Seminar blamiert hatte, über den Film, den sie heute Abend sehen würden. Lena ließ sich treiben, nickte an den richtigen Stellen, stellte gelegentlich eine Frage, die Sophie zu weiteren Ausführungen animierte. Es war einfacher so, die Rolle der Zuhörerin zu übernehmen, nicht selbst sprechen zu müssen.</p>
+let paragraphHTML = '';
+paragraphWords.forEach((word) => {
+paragraphHTML += `<span class="word" data-word-index="${wordCounter}" onclick="startFromWord(${wordCounter})">${word}</span> `;
+bandWords.push(word);
+wordCounter++;
+});
 
-                        <p>„Und wie läuft's mit Julian?" Sophie stach ihre Gabel in einen Berg Nudeln, ihre Augen neugierig auf Lena gerichtet. „Seid ihr schon zusammengezogen? Offiziell, meine ich. Du bist ja praktisch ständig bei ihm." Es war eine unschuldige Frage, aber sie traf einen wunden Punkt. Lena zuckte leicht zusammen, versteckte die Reaktion hinter einem Schluck Wasser. „Nein, noch nicht", antwortete sie schließlich. „Es läuft gut, aber... wir lassen uns Zeit." Sophie runzelte die Stirn, eine seltene Geste der Ernsthaftigkeit in ihrem sonst so lebhaften Gesicht. „Zeit? Ihr kennt euch jetzt seit fast einem Jahr, seid ein halbes Jahr zusammen. Was gibt's da noch zu überlegen?"</p>
+paragraph.innerHTML = paragraphHTML;
+});
 
-                        <p>Lena stocherte in ihrem Salat. Wie sollte sie etwas erklären, das sie selbst nicht verstand? „Es ist kompliziert", sagte sie schließlich, ein Klischee, das sie selbst hasste. „Es ist nur... Ich brauche noch meinen eigenen Raum, denke ich." Sophie legte ihre Gabel beiseite, eine Geste, die Lena selten bei ihr gesehen hatte. „Okay", sagte sie langsam. „Das verstehe ich. Jeder braucht seinen Raum. Aber..." Sie zögerte, suchte offensichtlich nach den richtigen Worten. „Manchmal frage ich mich, ob du nicht einfach Angst hast." „Angst?" Lena versuchte, überrascht zu klingen, aber ein Teil von ihr wusste genau, was Sophie meinte. „Wovor sollte ich Angst haben?"</p>
+// Speichere Wörter für diesen Band und Sprache
+allBandWords[lang][bandNumber] = bandWords;
+}
+}
+});
+}
 
-                        <p>Sophie seufzte, ein uncharakteristisch geduldiger Laut. „Vor Nähe. Vor Verbindlichkeit. Davor, dass es real wird und nicht mehr nur eine romantische Idee ist." Sie griff nach Lenas Hand, drückte sie kurz. „Ich sage das als deine Freundin, okay? Du stehst dir manchmal selbst im Weg." Lena entzog ihr sanft die Hand, ein Reflex, den sie sofort bereute. „Ich bin nicht..." begann sie, brach ab, versuchte es erneut. „Es ist nicht so einfach." „Ist es nie", erwiderte Sophie mit einem traurigen Lächeln. „Aber manchmal machen wir es komplizierter, als es sein müsste." Sie wechselte abrupt das Thema, fragte nach Lenas Romantik-Workshop, als spürte sie, dass sie eine Grenze überschritten hatte. Lena war dankbar für die Ablenkung, auch wenn Sophies Worte in ihr nachklangen, eine unbequeme Wahrheit, die sie nicht ganz abschütteln konnte.</p>
+function switchLanguage(lang) {
+// Stoppe aktuelles Vorlesen
+stopReading();
 
-                        <p>Der Nachmittag verging in einem Wirbel aus Aktivitäten, die keine wirkliche Aufmerksamkeit von ihr forderten. Der Workshop lief gut -- die Studierenden waren engagiert, die Diskussion lebendig. Lena führte durch die Sitzung mit professioneller Kompetenz, aber ohne die Leidenschaft, die sie einst für diese Texte empfunden hatte. Es war, als hätte sich ein grauer Schleier über ihre Wahrnehmung gelegt, der alle Farben dämpfte, alle Konturen verwischte. Nach dem Workshop blieb sie noch eine Weile in der Bibliothek, versuchte, an ihrer Masterarbeit zu arbeiten. Aber die Worte auf dem Bildschirm verschwammen vor ihren Augen, weigerten sich, einen Sinn zu ergeben. Sie starrte aus dem Fenster, beobachtete, wie die frühe Dämmerung des November den Campus in bläuliches Licht tauchte. Die meisten Studierenden waren bereits gegangen, nur einzelne Gestalten bewegten sich noch zwischen den Gebäuden, eilten nach Hause oder zu späten Veranstaltungen.</p>
+// Verstecke alle Sprachen
+document.querySelectorAll('.language-content').forEach(content => {
+content.classList.add('hidden');
+});
 
-                        <p>Lena verspürte plötzlich ein überwältigendes Bedürfnis, allein zu sein, wirklich allein, nicht nur physisch in einem Raum voller Fremder, sondern in ihrem eigenen Raum, umgeben von ihren eigenen Dingen. Sie packte hastig ihre Sachen zusammen und verließ die Bibliothek. Draußen war es kälter geworden, der Wind schnitt durch ihren leichten Mantel. Sie zog den Schal enger um ihren Hals und machte sich auf den Weg -- nicht zu Julians Wohnung, wie sie es ursprünglich geplant hatte, sondern zu ihrer eigenen. Es war ein längerer Weg, aber sie brauchte die Zeit zum Nachdenken, zum Sortieren ihrer wirren Gedanken.</p>
+// Zeige ausgewählte Sprache
+document.getElementById(lang + '-content').classList.remove('hidden');
+
+// Update Sprachbuttons
+document.querySelectorAll('.btn-lang').forEach(btn => {
+btn.classList.remove('active');
+});
+event.target.classList.add('active');
 
-                        <p>Sie schrieb Julian eine Nachricht: „Bin etwas müde, treffe euch direkt im Kino. Sag Sophie Bescheid." Eine weitere kleine Lüge. Sie war nicht müde, zumindest nicht physisch. Aber sie brauchte diesen Moment für sich, diese Atempause im Strom der Erwartungen und Verpflichtungen. Seine Antwort kam prompt: „Alles klar. Soll ich dich abholen?" Ihre Finger zögerten über dem Bildschirm. Es wäre so einfach, ja zu sagen, sich treiben zu lassen, den Weg des geringsten Widerstands zu gehen. Aber etwas in ihr sträubte sich, beharrte auf diesem kleinen Stück Unabhängigkeit. „Nein, danke. Ich komme direkt hin. Bis später." Sie steckte das Handy weg, bevor er antworten konnte, und beschleunigte ihre Schritte.</p>
-
-                        <p>In ihrer Wohnung empfing sie der vertraute Geruch nach Büchern und Tee, nach ihr selbst. Sie hatte in den letzten Wochen nur sporadisch hier geschlafen, kam meist nur, um Kleidung zu wechseln oder etwas zu holen, was sie bei Julian brauchte. Die Luft war etwas abgestanden, aber nicht unangenehm. Sie öffnete ein Fenster, ließ die kalte Novemberluft herein, atmete tief durch. Die Stille umfing sie wie eine Decke, schützend und beruhigend. Hier gab es keine Erwartungen, keine unausgesprochenen Fragen, keine sorgsam vermiedenen Themen. Nur sie und ihre Gedanken.</p>
-
-                        <p>Sie machte sich einen Tee -- Kamille, beruhigend -- und setzte sich auf ihr Sofa, zog die Beine an, wickelte sich in eine flauschige Decke. Ihr Blick fiel auf das Bücherregal gegenüber, speziell auf eine abgegriffene Ausgabe von Virginia Woolfs „Ein Zimmer für sich allein". Es war das Buch, über das sie und Sophie ihr erstes gemeinsames Projekt gemacht hatten, damals, als sie Julian gerade kennengelernt hatte, als alles noch neu und aufregend und voller Möglichkeiten war. Sie stand auf, nahm das Buch aus dem Regal und blätterte darin. Ihre eigenen Anmerkungen am Rand, zusammen mit Sophies bunten Markierungen, erzählten die Geschichte jener Zeit -- ihre Gedanken, ihre Entdeckungen, ihre Begeisterung.</p>
-
-                        <p>Ein Satz sprang ihr ins Auge, von Woolf unterstrichen und von ihr selbst mit einem Ausrufezeichen versehen: „Eine Frau muss Geld und ein eigenes Zimmer haben, wenn sie schreiben will." Lena lächelte wehmütig. Damals hatte sie den Satz als feministische Forderung verstanden, als Aufruf zur finanziellen und intellektuellen Unabhängigkeit. Aber jetzt sah sie etwas anderes darin -- die fundamentale Notwendigkeit eines eigenen Raumes, nicht nur physisch, sondern auch emotional und geistig. Ein Raum, in dem man atmen konnte, in dem man nicht ständig navigieren musste zwischen den eigenen Bedürfnissen und denen eines anderen.</p>
-
-                        <p>Sie liebte Julian, daran zweifelte sie nicht. Aber sie hatte begonnen, sich in ihrer Beziehung zu verlieren, die Konturen ihres Selbst zu verwischen, bis sie nicht mehr sicher war, wo sie aufhörte und er begann. War das normal? War es das, was Liebe bedeutete -- diese graduelle Auflösung der Grenzen, dieses Verschmelzen? Oder sollte es anders sein -- zwei vollständige Menschen, die zusammenkamen, ohne sich aufzugeben? Die Uhr an der Wand zeigte ihr, dass sie bald losgehen musste, wenn sie rechtzeitig zum Kino kommen wollte. Sie legte das Buch beiseite, trank ihren Tee aus und ging ins Bad, um sich frisch zu machen.</p>
-
-                        <p>Im Spiegel betrachtete sie ihr Gesicht -- die dunklen Augen, die etwas müde wirkten, die leicht zusammengezogenen Augenbrauen, die ihrem Gesicht einen nachdenklichen Ausdruck verliehen. Sie versuchte zu lächeln, aber es erreichte ihre Augen nicht. Stattdessen sah sie eine gewisse Traurigkeit darin, eine Melancholie, die sie nicht ganz verstand. Auf dem Weg zum Kino spürte sie, wie sich ihre Stimmung langsam veränderte. Die kurze Zeit allein in ihrer Wohnung hatte ihr gutgetan, hatte ihr geholfen, etwas Abstand zu gewinnen, klarer zu sehen. Vielleicht dramatisierte sie, vielleicht waren ihre Zweifel nur eine Phase, eine vorübergehende Unsicherheit in einer ansonsten stabilen Beziehung.</p>
-
-                        <p>Julian und Sophie warteten bereits vor dem Kino auf sie. Sie standen unter dem Vordach, um sich vor dem leichten Nieselregen zu schützen, der eingesetzt hatte. Julian hatte seinen Arm um Sophies Schultern gelegt, eine brüderliche Geste, die Lena dennoch einen Stich versetzte -- nicht aus Eifersucht, sondern aus Neid auf die Leichtigkeit, mit der sie körperliche Nähe austauschten. Es war nie etwas zwischen Julian und Sophie gewesen, dafür waren sie zu unterschiedlich. Aber sie hatten von Anfang an eine unkomplizierte Freundschaft entwickelt, frei von den Spannungen und Unsicherheiten, die Lena manchmal in Julians Gegenwart empfand.</p>
-
-                        <p>„Da bist du ja!" Sophie winkte ihr zu, ihr Gesicht strahlend trotz des trüben Wetters. Julian drehte sich um, sein Lächeln warm, aber mit einem fragenden Blick, der mehr sagte als Worte. Hatte er ihre Entschuldigung durchschaut? Wusste er, dass sie Zeit für sich gebraucht hatte, weg von ihm? „Entschuldigt die Verspätung", sagte Lena, als sie die beiden erreichte. Julian beugte sich vor, küsste sie sanft auf die Lippen, eine Geste, die gleichzeitig vertraut und seltsam formell wirkte. „Alles okay?", fragte er leise, nur für sie hörbar. „Ja, nur müde", log sie wieder, Stein auf Stein. Er nickte, akzeptierte ihre Antwort ohne weiteres Nachhaken. War das Rücksicht oder Gleichgültigkeit? Sie wusste es nicht mehr.</p>
-
-                        <p>„Wir sollten reingehen, der Film fängt gleich an", drängte Sophie und schob sie beide in Richtung Eingang. Der Film war eine französische Komödie, leicht und unbeschwert, mit gerade genug Tiefgang, um nicht trivial zu wirken. Lena saß zwischen Julian und Sophie, spürte die Wärme ihrer Körper neben sich, hörte ihr Lachen bei den komischen Szenen, ihre leisen Kommentare. Sie versuchte, sich auf die Handlung zu konzentrieren, sich mitreißen zu lassen von der Geschichte einer Frau, die ihr Leben neu erfand, nachdem sie alles verloren hatte. Aber ihre Gedanken wanderten immer wieder ab, kehrten zurück zu ihren eigenen ungelösten Fragen.</p>
-
-                        <p>Julians Hand lag auf der Armlehne neben ihrer, die Finger leicht geöffnet, eine stumme Einladung. Nach kurzem Zögern legte sie ihre Hand in seine, spürte, wie sich seine Finger um ihre schlossen, warm und fest. Eine einfache Verbindung, ein Anker in der Dunkelheit des Kinosaals. Für einen Moment fühlte sie Frieden, eine flüchtige Erinnerung an das, was sie zusammengebracht hatte. Nach dem Film gingen sie noch in eine Bar in der Nähe, eine von Sophies Lieblingslokalen, mit gedämpftem Licht und leiser Jazzmusik im Hintergrund. Sie bestellten Getränke -- ein Glas Wein für Lena, Bier für Julian, einen bunten Cocktail für Sophie -- und sprachen über den Film, über ihre Arbeit, über gemeinsame Bekannte. Oberflächliche Gespräche, sicher und unverbindlich.</p>
-
-                        <p>Lena beobachtete Julian, wie er mit Sophie scherzte, wie sein Gesicht im Halbdunkel der Bar Schatten und Licht einfing, wie seine Hände beim Sprechen gestikulierten. Er war attraktiv, das hatte sie immer gefunden -- nicht auf eine konventionelle, offensichtliche Weise, sondern auf eine subtilere, intellektuelle Art. Seine grünen Augen, die immer etwas zu suchen schienen, sein leicht schiefes Lächeln, die Art, wie sein Haar in seine Stirn fiel, wenn er konzentriert war. Sie hatte all diese Details in sich aufgenommen, hatte sie zu einem Bild zusammengefügt, das sie liebte. Und doch fühlte sie jetzt eine seltsame Distanz, als betrachte sie ihn durch ein Fenster, unerreichbar trotz seiner physischen Nähe.</p>
-
-                        <p>„Lena?" Sophies Stimme riss sie aus ihren Gedanken. „Hast du gehört, was Julian gerade gesagt hat?" Sie schüttelte leicht den Kopf. „Entschuldigung, ich war abgelenkt." Julian lächelte nachsichtig. „Ich habe nur gesagt, dass wir vielleicht übers Wochenende wegfahren könnten. Ein Freund von mir hat ein Ferienhaus am See, das wir nutzen könnten." „Oh." Die Idee eines ganzen Wochenendes allein mit Julian -- ohne die Ablenkung des Alltags, ohne die Möglichkeit, sich in Arbeit oder anderen Verpflichtungen zu verstecken -- löste in ihr gemischte Gefühle aus. Einerseits war da die Sehnsucht nach Nähe, nach Verbindung, nach der Wiederentdeckung dessen, was sie zusammengebracht hatte. Andererseits die Angst, dass die ungeschützten Stunden nur die Kluft zwischen ihnen deutlicher machen würden, dass sie nicht mehr genug Worte finden würden, um die Stille zu füllen.</p>
-
-                        <p>„Das klingt schön", sagte sie schließlich, weil es die erwartete Antwort war, weil sie Julian nicht enttäuschen wollte. Und vielleicht, dachte ein hoffnungsvoller Teil von ihr, vielleicht würde es wirklich schön sein. Vielleicht würden sie dort, fernab des Alltags, die Verbindung wiederfinden, die langsam zwischen ihnen zu verblassen schien. Julian lächelte, offensichtlich erfreut über ihre Zustimmung. „Großartig. Ich frage ihn morgen, ob nächstes Wochenende funktioniert." „Ich bin so neidisch", seufzte Sophie theatralisch. „Romantisches Wochenende am See, während ich für meine Prüfungen lernen muss." Sie verdrehte die Augen, aber ihr Lächeln war echt, freute sich für sie.</p>
-
-                        <p>„Nächstes Mal nehmen wir dich mit", scherzte Julian und stieß mit seiner Flasche gegen Sophies Glas. „Ein Dreier-Wochenende? Klingt vielversprechend." Sophie wackelte mit den Augenbrauen, ihre Stimme voller gespielter Verführung. Sie alle lachten, die Spannung brach, das Gespräch floss wieder leichter. Lena entspannte sich etwas, ließ sich tragen von der Wärme des Moments, von der Vertrautheit zwischen ihnen dreien. Es waren Augenblicke wie diese, in denen sie sich verbunden fühlte, in denen die Zweifel in den Hintergrund traten. Sie fragte sich, ob es das war, was Beziehungen ausmachte -- diese Wellen von Nähe und Distanz, von Sicherheit und Zweifel. Ob jeder diese Momente hatte, in denen man sich fragte, ob das, was man hatte, real war, ob es ausreichte, ob es das war, was man wirklich wollte.</p>
-
-                        <p>Der Abend neigte sich dem Ende zu. Sophie verabschiedete sich als erste, musste früh raus für eine Chorprobe. Sie umarmte Lena fest, flüsterte ihr ins Ohr: „Denk nicht zu viel nach, Liebes. Manchmal muss man einfach fühlen." Dann war sie weg, ein bunter Wirbel in der Novembernacht. Julian und Lena gingen schweigend nebeneinander her. Die Straßen waren nass vom Regen, spiegelten die Lichter der Stadt in verzerrten, tanzenden Reflexionen. Er nahm ihre Hand, seine Finger warm trotz der Kälte. „Zu mir oder zu dir?", fragte er schließlich, ein Lächeln in seiner Stimme.</p>
-
-                        <p>Die Frage hing zwischen ihnen, scheinbar einfach und doch beladen mit unausgesprochenen Bedeutungen. Lena zögerte. Ein Teil von ihr sehnte sich nach der Vertrautheit seines Bettes, nach der Wärme seines Körpers in der kalten Nacht. Ein anderer Teil wollte zurück in ihre eigene Wohnung, in ihren eigenen Raum, wo sie atmen konnte, wo sie nicht ständig navigieren musste zwischen ihren eigenen Bedürfnissen und seinen. „Zu dir", sagte sie schließlich, weil es einfacher war, weil sie die Enttäuschung in seinen Augen nicht sehen wollte, wenn sie sich für ihr eigenes Bett entschied. Er drückte ihre Hand, ein Zeichen der Zustimmung, der Freude. Sie gingen weiter, synchronisierten ihre Schritte auf dem nassen Pflaster.</p>
-
-                        <p>In seiner Wohnung zogen sie sich schweigend aus, jeder in seinen eigenen Gedanken versunken. Das Ritual des Zu-Bett-Gehens hatte etwas Beruhigendes -- die geteilten Bewegungen im Bad, das Aufschlagen der Bettdecke, das Einsinken in die Matratze, die den Abdruck ihrer Körper bereits kannte. Julian zog sie an sich, sein Körper warm und fest gegen ihren. „Du warst heute so still", murmelte er gegen ihr Haar. Es war keine Anklage, eher eine Beobachtung. Lena schloss die Augen, atmete seinen vertrauten Geruch ein. „Nur müde", sagte sie, die gleiche Lüge wie zuvor, jetzt fast automatisch. „Hmm." Er strich sanft über ihren Arm, eine beruhigende Geste. „Du weißt, dass du mit mir reden kannst, oder? Über alles."</p>
-
-                        <p>Sie nickte, unfähig zu sprechen. Ja, sie wusste es, theoretisch. Aber wie erklärt man jemandem, dass man sich von ihm entfernt, ohne zu wissen warum? Wie spricht man über eine Leere, die man selbst nicht versteht? „Ich liebe dich", sagte er leise, die Worte ein Hauch gegen ihre Haut. Sie schluckte, spürte ein Brennen hinter den Augenlidern. „Ich liebe dich auch", antwortete sie, und es war keine Lüge. Sie liebte ihn, auf eine Weise, die sie nicht ganz begreifen konnte. Es war nur, dass diese Liebe sich anders anfühlte als erwartet, komplizierter, weniger eindeutig.</p>
-
-                        <p>Julian küsste ihre Schläfe, seine Lippen weich und warm. Ein Versprechen, eine Frage, eine Einladung. Sie drehte sich zu ihm, ließ ihre Hand über seine Brust gleiten, spürte, wie sein Herzschlag sich beschleunigte unter ihrer Berührung. Das war einfach, diese körperliche Sprache, die keine Übersetzung brauchte. Sie verlor sich in seinen Küssen, in der Wärme seiner Hände auf ihrer Haut, in dem langsamen Tanz ihrer Körper. Für einen Moment verschwanden die Zweifel, die Fragen, die Unsicherheiten. Es gab nur sie beide, verbunden in der intimsten Weise, die Menschen kennen.</p>
-
-                        <p>Später, als Julian schlief, sein Atem tief und gleichmäßig neben ihr, lag Lena wach, starrte an die Decke. Das Mondlicht fiel durch einen Spalt in den Vorhängen, zeichnete silberne Muster auf die Wand. Sie fühlte die angenehme Erschöpfung in ihrem Körper, das leichte Pulsieren dort, wo er sie berührt hatte. Die Nähe war da, körperlich, unbestreitbar. Und doch fühlte ein Teil von ihr sich fern, abgetrennt, als beobachte sie sich selbst aus der Distanz. War das normal? War es das, was passierte, wenn die erste Verliebtheit nachließ und der Alltag Einzug hielt? Oder war es ein Zeichen, dass etwas fehlte, dass etwas nicht stimmte zwischen ihnen?</p>
-
-                        <p>Sie drehte sich auf die Seite, betrachtete Julians schlafendes Gesicht. Im Schlaf wirkte er jünger, verletzlicher, die Linien der Konzentration, die oft seine Stirn furchten, waren geglättet. Sie erinnerte sich an den Moment, als sie entdeckt hatte, dass er J. war, als sie zum ersten Mal dieses Gesicht mit den Worten verbunden hatte, die sie monatelang in Büchern ausgetauscht hatten. Die überwältigende Freude, die sie empfunden hatte, die plötzliche Erkenntnis, dass das, was sie für unmöglich gehalten hatte, real sein könnte. Wo war diese Freude jetzt? Wann hatte sie begonnen zu verblassen, sich zu verwandeln in diese seltsame Melancholie, diese unbestimmte Sehnsucht nach etwas, das sie nicht benennen konnte?</p>
-
-                        <p>Vielleicht, dachte sie, während ihre Augen schwer wurden von Müdigkeit, vielleicht erwartete sie zu viel. Vielleicht gab es keine perfekte Verbindung, keine nahtlose Verschmelzung von Gedanken und Gefühlen. Vielleicht war das, was sie hatte, genug -- diese stille Nähe in der Nacht, diese geteilten Momente, diese Hand, die ihre hielt, wenn sie allein war. Vielleicht musste sie nur lernen, es anzunehmen, ohne ständig nach mehr zu suchen. Mit diesem Gedanken driftete sie schließlich in den Schlaf, während der Mond langsam über den Himmel wanderte und die Nacht sich ihrem Ende zuneigte.</p>
-
-                        <p>Am nächsten Morgen weckte sie das leise Klappern von Geschirr aus der Küche. Für einen Moment wusste sie nicht, wo sie war, dann erkannte sie den vertrauten Geruch von Kaffee, das gedämpfte Licht, das durch die Vorhänge fiel, und Julians leises Summen. Sie blieb noch einen Moment liegen, genoss die Wärme der Decke, das dumpfe Pochen ihres Herzens, das sich langsam dem Tag anpasste. Die Erinnerungen an die Nacht waren wie Nebel, der sich langsam lichtete -- die Nähe, die Küsse, das Gefühl, gleichzeitig geborgen und verloren zu sein.</p>
-
-                        <p>Sie stand auf, schlüpfte in Julians Hemd, das über dem Stuhl hing, und ging barfuß in die Küche. Julian stand am Herd, rührte in einer Pfanne, sein Rücken entspannt, die Haare noch zerzaust vom Schlaf. Er drehte sich um, als sie eintrat, und lächelte. Guten Morgen, Schlafmütze. Rührei? Sie nickte, setzte sich an den kleinen Tisch und beobachtete ihn. Es war eine dieser Szenen, die sie früher als Inbegriff von Glück empfunden hätte: ein gemeinsames Frühstück, das leise Knistern von Brot im Toaster, das Klirren von Besteck. Doch heute lag ein Hauch von Unsicherheit in der Luft, als würde jeder Moment auf einer unsichtbaren Waage abgewogen.</p>
-
-                        <p>Julian stellte ihr einen Teller hin, setzte sich ihr gegenüber. Ich habe mit meinem Freund gesprochen, wegen dem Ferienhaus. Nächstes Wochenende würde funktionieren. Er sah sie an, suchte in ihrem Gesicht nach einer Reaktion. Lena zwang sich zu einem Lächeln. Das klingt schön. Ein Wochenende am See, nur wir zwei. Sie hoffte, dass ihre Stimme nicht zu gezwungen klang. Er nahm einen Bissen, kaute nachdenklich. Es ist nichts Besonderes, nur eine kleine Hütte. Aber es ist ruhig dort, friedlich. Wir könnten wandern gehen, lesen, Wein trinken, reden. Das letzte Wort ließ er in der Luft hängen, als wäre es eine Einladung und eine Warnung zugleich.</p>
-
-                        <p>Sie nickte, trank einen Schluck Kaffee. Das klingt wirklich gut. Vielleicht ist es genau das, was wir brauchen. Sie aßen schweigend weiter, jeder in Gedanken versunken. Nach dem Frühstück räumten sie gemeinsam auf, ein eingespieltes Team, das sich wortlos verstand. Lena spürte, wie sich die Routine wie ein schützender Mantel um sie legte, aber darunter blieb die Unruhe, die sich nicht abschütteln ließ. Während Julian duschte, stand sie am Fenster, blickte hinaus auf die graue Stadt, die langsam erwachte. Sie dachte an das Wochenende am See, an die Möglichkeit, aus dem Alltag auszubrechen, an die Hoffnung, dass die Stille der Natur etwas in ihr lösen könnte, das in der Enge der Stadt gefangen war.</p>
-
-                        <p>Als Julian aus dem Bad kam, das Haar noch feucht, die Haut gerötet von der Wärme, lächelte er sie an, als wäre alles in Ordnung, als gäbe es keine Zweifel, keine Unsicherheiten. Sie erwiderte das Lächeln, zwang sich zur Zuversicht, doch in ihrem Inneren blieb die Frage, ob sie wirklich bereit war, sich ihm so zu öffnen, wie es nötig wäre, um die Distanz zwischen ihnen zu überwinden. Sie verbrachten den Tag mit kleinen Erledigungen, gingen einkaufen, schlenderten durch die Straßen, hielten sich an den Händen, als wollten sie sich gegenseitig vergewissern, dass sie zusammengehörten. In einem kleinen Café setzten sie sich ans Fenster, beobachteten die Menschen, die draußen vorbeihasteten, und sprachen über Belangloses -- über Bücher, Filme, Pläne für die kommende Woche. Doch immer wieder schlichen sich Pausen in das Gespräch, Momente, in denen die Worte versiegten und nur das Schweigen blieb, schwer und unausgesprochen.</p>
-
-                        <p>Am Abend, zurück in Julians Wohnung, kochten sie gemeinsam, lachten über ein misslungenes Rezept, tranken Wein, ließen Musik laufen. Für einen Moment fühlte sich alles leicht an, als hätten sie die Schwere des Tages abgeschüttelt. Später, als sie nebeneinander auf dem Sofa lagen, die Beine ineinander verschlungen, spürte Lena, wie sich die Nähe zwischen ihnen verdichtete, wie die Berührungen intensiver wurden, die Küsse verlangender, die Haut empfindlicher. Sie verlor sich in seinem Körper, in der Wärme seiner Hände, im Rhythmus seiner Atmung. Für einen Moment war da nur das Jetzt, das Prickeln auf ihrer Haut, das leise Stöhnen, das sich in den Raum mischte.</p>
-
-                        <p>Doch als sie später in der Dunkelheit lag, Julians Arm um ihre Taille, kehrte die Unruhe zurück, leise, beharrlich, wie ein Schatten, der sich nicht vertreiben ließ. Sie fragte sich, ob es immer so sein würde -- diese Wellen aus Nähe und Distanz, aus Verlangen und Zweifel, aus Hoffnung und Angst. In der Nacht träumte sie von Wasser, von einem See, der still und dunkel unter dem Mond lag, von einer Hütte am Ufer, von Stimmen, die im Nebel verschwanden. Als sie aufwachte, war ihr Herz schwer, als hätte der Traum etwas in ihr berührt, das sie nicht benennen konnte.</p>
-
-                        <p>Die Tage bis zum Wochenende vergingen in einem Nebel aus Arbeit, Vorbereitungen, kleinen Fluchten in die Routine. Lena erledigte ihre Aufgaben, traf sich mit Sophie, die sie mit Fragen nach Julian und der Beziehung löcherte, doch sie wich aus, lachte, lenkte ab, wollte nicht über das sprechen, was in ihr vorging. Sie spürte, wie die Vorfreude auf das Wochenende am See sich mit einer wachsenden Nervosität vermischte, als würde dort eine Entscheidung auf sie warten, der sie nicht ausweichen konnte. Am Freitag packten sie ihre Sachen, fuhren im Auto durch die graue Landschaft, sprachen wenig, hörten Musik, ließen die Kilometer an sich vorbeiziehen.</p>
-
-                        <p>Die Hütte lag abgelegen, umgeben von Bäumen, der See war still, das Wasser dunkel und glatt wie Glas. Drinnen war es einfach, aber gemütlich -- ein Kamin, ein großes Bett, Bücherregale, eine kleine Küche. Julian machte Feuer, Lena stellte die Taschen ab, atmete tief durch. Die Stille war ungewohnt, fast bedrohlich, als würde sie alles verstärken, was sonst im Lärm der Stadt unterging. Sie verbrachten den Abend am Kamin, tranken Wein, lasen sich gegenseitig vor, lachten über alte Geschichten. Die Nähe zwischen ihnen war spürbar, aber auch die Unsicherheit, die sich in kleinen Gesten, in Blicken, in unausgesprochenen Fragen zeigte.</p>
-
-                        <p>Als sie ins Bett gingen, war die Luft aufgeladen, jeder Kuss, jede Berührung war intensiver, dringlicher, als wollten sie sich gegenseitig beweisen, dass sie noch zueinander gehörten. In der Dunkelheit tasteten sie sich aneinander heran, suchten Halt, verloren sich in der Hitze ihrer Körper. Für einen Moment war alles vergessen -- die Zweifel, die Angst, die Fragen. Doch als sie später nebeneinander lagen, das Feuer im Kamin nur noch ein Glimmen, spürte Lena, wie die Stille sich wieder zwischen sie schob, wie eine unsichtbare Wand, die sie nicht durchbrechen konnte.</p>
-
-                        <p>Am nächsten Morgen weckte sie das Licht, das durch die Fenster fiel, das Zwitschern der Vögel, das leise Plätschern des Wassers am Ufer. Julian schlief noch, sein Gesicht entspannt, die Züge weich. Lena stand auf, zog sich an, ging hinaus auf die kleine Veranda, atmete die kühle Luft, spürte, wie der Wind ihre Haut streichelte. Sie setzte sich auf die Stufen, blickte auf den See, der im Morgenlicht silbern schimmerte. Ihre Gedanken kreisten, suchten nach Antworten, nach einem Gefühl von Klarheit, das sich nicht einstellen wollte. Sie dachte an die letzten Monate, an die Veränderungen, an das, was sie verloren und gewonnen hatte. Sie fragte sich, ob es möglich war, jemanden zu lieben, ohne sich selbst zu verlieren, ob Nähe immer auch das Risiko der Auflösung bedeutete.</p>
-
-                        <p>Julian kam zu ihr, setzte sich neben sie, legte einen Arm um ihre Schultern. Sie lehnte sich an ihn, spürte die Wärme seines Körpers, das ruhige Schlagen seines Herzens. Sie schwiegen, ließen die Stille zwischen sich wachsen, bis Julian leise fragte, ob sie glücklich sei. Lena zögerte, suchte nach Worten, die ehrlich waren, ohne zu verletzen. Ich bin glücklich mit dir, sagte sie schließlich, aber manchmal habe ich Angst, mich selbst zu verlieren. Julian nickte, zog sie enger an sich. Ich verstehe das, sagte er. Mir geht es manchmal ähnlich. Vielleicht ist das normal, vielleicht müssen wir nur lernen, damit umzugehen.</p>
-
-                        <p>Sie saßen lange so da, blickten auf das Wasser, das in der Sonne glitzerte, hörten das Rauschen der Bäume, das ferne Rufen eines Vogels. Später frühstückten sie auf der Veranda, sprachen über Pläne, über Träume, über das, was sie sich wünschten. Die Gespräche waren offen, ehrlich, manchmal schmerzhaft, aber auch befreiend. Lena spürte, wie sich etwas in ihr löste, wie die Angst langsam nachließ, wie die Nähe zwischen ihnen wieder wuchs. Sie verbrachten den Tag am See, gingen spazieren, schwammen im kalten Wasser, lachten, neckten sich, entdeckten einander neu.</p>
-
-                        <p>Am Abend, als die Sonne unterging und der Himmel in goldenen Farben leuchtete, saßen sie am Ufer, hielten sich an den Händen, schwiegen, weil keine Worte nötig waren. In der Nacht liebten sie sich langsam, zärtlich, als wollten sie jede Berührung, jeden Kuss, jeden Atemzug in sich aufnehmen, festhalten, bewahren. Lena spürte, wie die Zweifel leiser wurden, wie die Angst sich auflöste, wie sie sich selbst wiederfand in der Nähe zu Julian. Am nächsten Morgen, als sie nebeneinander im Bett lagen, das Licht sanft auf ihre Haut fiel, wusste sie, dass sie noch nicht alle Antworten hatte, dass es immer wieder Momente der Unsicherheit geben würde.</p>
-
-                        <p>Aber sie wusste auch, dass sie bereit war, sich darauf einzulassen, dass sie die Nähe nicht mehr fürchten musste, dass sie sich selbst nicht verlieren würde, solange sie sich immer wieder suchte. Sie lächelte, drehte sich zu Julian, küsste ihn, spürte, wie das Leben in ihr pulsierte, wie die Liebe sich ausbreitete, warm und ruhig, wie der See am Morgen.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- ENGLISCHE VERSIONEN -->
-            <div id="en-content" class="language-content hidden">
-                <!-- Band 1: Hidden Feelings (English) -->
-                <div id="en-band1" class="band-content">
-                    <div class="book-title">Band 1: Hidden Feelings</div>
-                    <div class="chapter-title">Chapter 1: The Message That Changed Everything</div>
-                    <div class="text-content" id="en-textContent1">
-                        <p>The library was, as always, a refuge. Lena Winter breathed in deeply the familiar smell of old paper as her gaze wandered through the room. The silence of a Thursday afternoon was a pleasant contrast to the loud bustle outside, where other students stood together in groups, laughing and talking - a social game in which she never had the right cards in her hand.</p>
-
-                        <p>"Why is it so hard for me to talk to others?" she asked herself for the hundredth time. This question constantly gnawed at her, especially when she observed other students who had already formed close friendships after just three months at university. Friendships that looked like something real, not like the superficial acquaintances she had had in school.</p>
-
-                        <p>She ran her hand over the spines in the German literature section, her heartbeat gradually calming. Professor Kleinschmidt had given them a list of primary literature for the seminar "Realism and Social Currents." Unlike her fellow students, who read everything digitally, Lena needed the feeling of paper under her fingers - a connection to the past that gave her support when the present became too complicated.</p>
-
-                        <p>That was one of the reasons why she had decided on literary studies - here she could communicate with people who had long since died, without stuttering or turning red. Through literature, she understood the world better than through direct experience. "You're wasting your best years between dusty books," her mother had said during her last visit. The tone worried, the eyes full of incomprehension. "Life happens out there, not on paper pages."</p>
-
-                        <p>Lena bit her lip. It was her third semester, and while her roommate raved about last weekend - some guy named Marc and too much vodka - and her former school friend Sophie posted photos of dates every other day, she spent her Friday evenings with fictional characters. "I'm twenty-one and have never had a real boyfriend," she whispered so quietly that no one could hear.</p>
-                    </div>
-                </div>
-
-                <!-- Band 2: Revealed Truths (English) -->
-                <div id="en-band2" class="band-content hidden">
-                    <div class="book-title">Band 2: Revealed Truths</div>
-                    <div class="chapter-title">Chapter 1: Proximity that flees</div>
-                    <div class="text-content" id="en-textContent2">
-                        <p>Lena awoke with the feeling that something was missing. The warmth next to her was tangible, physically present, breathing, real. Julian's arm lay heavy across her middle, his breathing steady and deep on her neck. And yet a strange emptiness existed that she couldn't grasp. She blinked in the early morning light filtering through the not-quite-closed curtains and tried to locate the sensation. It was like a word on the tip of her tongue---present, but unattainable.</p>
-
-                        <p>Three months had passed since their first kiss by the river. Three months in which hesitant touches had turned into familiarity, shared books into a shared bed, two separate lives into a shared everyday life. Everything had unfolded so naturally, so effortlessly, as if it were a story just waiting to be told.</p>
-
-                        <p>Julian murmured something in his sleep, pulling her closer. She felt his heartbeat through the thin fabric of her T-shirt, steady and reassuring. She should be happy. She was happy. So why this gnawing feeling of incompleteness? Cautiously, she pulled herself out of his embrace, careful not to wake him. On tiptoe, she crept out of the bedroom, crossed the narrow hallway of his apartment, and entered the kitchen. His kitchen. Not hers.</p>
-
-                        <p>She spent more time here than in her own apartment these days, but she hadn't given up on hers. Not yet. A small, peculiar resistance that she didn't quite understand. She made coffee and watched as the water patiently trickled through the grounds, drop by drop. There was a comfort in these morning rituals, something reliable.</p>
-
-                        <p>The smell of fresh coffee filled the room, momentarily dispelling the vague restlessness within her. She opened the kitchen window. Outside, the city was still half asleep, although the first cars were already driving through the streets, early commuters trying to get ahead of the rush hour. November had stripped the trees almost bare; only a few stubborn leaves still clung to the branches. A little like she remembers her own apartment, Lena thought, smiling at the strange comparison.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        let currentSpeech = null;
-        let currentBand = 1;
-        let currentLanguage = 'de';
-        let currentWordIndex = 0;
-        let allBandWords = {}; // Speichert Wörter für alle Bände und Sprachen
-        let isReading = false;
-        let lastHighlightedWord = null;
-
-        // Initialisiere alle Bände beim Seitenstart
-        function initializeAllBands() {
-            ['de', 'en'].forEach(lang => {
-                allBandWords[lang] = {};
-                for (let bandNumber = 1; bandNumber <= 2; bandNumber++) {
-                    const bandContent = document.querySelector(`#${lang}-band${bandNumber} .text-content`);
-                    if (bandContent && !bandContent.querySelector('.word')) {
-                        const paragraphs = bandContent.querySelectorAll('p');
-                        let wordCounter = 0;
-                        let bandWords = [];
-                        
-                        paragraphs.forEach((paragraph) => {
-                            const paragraphText = paragraph.textContent;
-                            const paragraphWords = paragraphText.split(/\s+/).filter(word => word.length > 0);
-                            
-                            let paragraphHTML = '';
-                            paragraphWords.forEach((word) => {
-                                paragraphHTML += `<span class="word" data-word-index="${wordCounter}" onclick="startFromWord(${wordCounter})">${word}</span> `;
-                                bandWords.push(word);
-                                wordCounter++;
-                            });
-                            
-                            paragraph.innerHTML = paragraphHTML;
-                        });
-                        
-                        // Speichere Wörter für diesen Band und Sprache
-                        allBandWords[lang][bandNumber] = bandWords;
-                    }
-                }
-            });
-        }
-
-        function switchLanguage(lang) {
-            // Stoppe aktuelles Vorlesen
-            pauseReading();
-            
-            // Verstecke alle Sprachen
-            document.querySelectorAll('.language-content').forEach(content => {
-                content.classList.add('hidden');
-            });
-            
-            // Zeige ausgewählte Sprache
-            document.getElementById(lang + '-content').classList.remove('hidden');
-            
-            // Update Sprachbuttons
-            document.querySelectorAll('.btn-lang').forEach(btn => {
-                btn.classList.remove('active');
-            });
-            event.target.classList.add('active');
-            
-            currentLanguage = lang;
-            currentWordIndex = 0;
-            clearHighlight();
-            showBand(currentBand); // Zeige aktuellen Band in neuer Sprache
-        }
-
-        function showBand(bandNumber) {
-            // Stoppe aktuelles Vorlesen
-            pauseReading();
-            
-            // Verstecke alle Bände in aktueller Sprache
-            for (let i = 1; i <= 2; i++) {
-                const bandElement = document.getElementById(`${currentLanguage}-band${i}`);
-                if (bandElement) {
-                    bandElement.classList.add('hidden');
-                }
-            }
-            
-            // Update Band-Buttons
-            document.querySelectorAll('.btn-band').forEach((btn, index) => {
-                btn.classList.remove('active');
-                if (index === bandNumber - 1) {
-                    btn.classList.add('active');
-                }
-            });
-            
-            // Zeige ausgewählten Band
-            const targetBand = document.getElementById(`${currentLanguage}-band${bandNumber}`);
-            if (targetBand) {
-                targetBand.classList.remove('hidden');
-            }
-            
-            currentBand = bandNumber;
-            currentWordIndex = 0;
-            clearHighlight();
-        }
-
-        function startReading() {
-            currentWordIndex = 0;
-            clearHighlight();
-            continueReading();
-        }
-
-        function continueReading() {
-            if (currentSpeech) {
-                currentSpeech.cancel();
-            }
-            
-            const currentWords = allBandWords[currentLanguage] && allBandWords[currentLanguage][currentBand];
-            if (currentWords && currentWords.length > 0) {
-                // Text ab der aktuellen Position
-                const remainingText = currentWords.slice(currentWordIndex).join(' ');
-                
-                currentSpeech = new SpeechSynthesisUtterance(remainingText);
-                currentSpeech.rate = 1.0;
-                currentSpeech.lang = currentLanguage === 'de' ? 'de-DE' : 'en-US';
-                
-                let wordCount = currentWordIndex;
-                
-                currentSpeech.onboundary = function(event) {
-                    if (event.name === 'word') {
-                        highlightCurrentWord(wordCount);
-                        wordCount++;
-                        currentWordIndex = wordCount;
-                    }
-                };
-                
-                currentSpeech.onend = function() {
-                    isReading = false;
-                };
-                
-                isReading = true;
-                speechSynthesis.speak(currentSpeech);
-            }
-        }
-
-        function startFromWord(wordIndex) {
-            currentWordIndex = wordIndex;
-            clearHighlight();
-            continueReading();
-        }
-
-        function highlightCurrentWord(wordIndex) {
-            // Entferne vorherige Highlights
-            if (lastHighlightedWord) {
-                lastHighlightedWord.classList.remove('word-highlight');
-            }
-            
-            // Highlights das entsprechende Wort im aktuellen Band und Sprache
-            const wordSpan = document.querySelector(`#${currentLanguage}-band${currentBand} [data-word-index="${wordIndex}"]`);
-            if (wordSpan) {
-                wordSpan.classList.add('word-highlight');
-                lastHighlightedWord = wordSpan;
-                
-                // Scroll to current word
-                wordSpan.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            }
-        }
-
-        function clearHighlight() {
-            document.querySelectorAll('.word-highlight').forEach(el => {
-                el.classList.remove('word-highlight');
-            });
-            lastHighlightedWord = null;
-        }
-
-        function pauseReading() {
-            if (currentSpeech) {
-                speechSynthesis.cancel();
-                currentSpeech = null;
-                isReading = false;
-                // BEHALTE die blaue Markierung!
-            }
-        }
-
-        function stopReading() {
-            if (currentSpeech) {
-                speechSynthesis.cancel();
-                currentSpeech = null;
-                isReading = false;
-            }
-            // Zurück zum Anfang + alle Markierungen löschen
-            currentWordIndex = 0;
-            clearHighlight();
-        }
-
-        // Initialisierung beim Seitenstart
-        document.addEventListener('DOMContentLoaded', function() {
-            initializeAllBands(); // Initialisiere ALLE Bände und Sprachen
-            showBand(1); // Zeige Band 1
-        });
-    </script>
+currentLanguage = lang;
+currentWordIndex = 0;
+clearHighlight();
+showBand(currentBand); // Zeige aktuellen Band in neuer Sprache
+}
+
+function showBand(bandNumber) {
+// Stoppe aktuelles Vorlesen
+stopReading();
+
+// Verstecke alle Bände in aktueller Sprache
+for (let i = 1; i <= 3; i++) {
+const bandElement = document.getElementById(`${currentLanguage}-band${i}`);
+if (bandElement) {
+bandElement.classList.add('hidden');
+}
+}
+
+// Update Band-Buttons
+document.querySelectorAll('.btn-band').forEach((btn, index) => {
+btn.classList.remove('active');
+if (index === bandNumber - 1) {
+btn.classList.add('active');
+}
+});
+
+// Zeige ausgewählten Band
+const targetBand = document.getElementById(`${currentLanguage}-band${bandNumber}`);
+if (targetBand) {
+targetBand.classList.remove('hidden');
+}
+
+currentBand = bandNumber;
+currentWordIndex = 0;
+clearHighlight();
+}
+
+function startReading() {
+currentWordIndex = 0;
+clearHighlight();
+continueReading();
+}
+
+function continueReading() {
+if (currentSpeech) {
+currentSpeech.cancel();
+}
+
+const currentWords = allBandWords[currentLanguage] && allBandWords[currentLanguage][currentBand];
+if (currentWords && currentWords.length > 0 && currentWordIndex < currentWords.length) {
+// Text ab der aktuellen Position
+const remainingText = currentWords.slice(currentWordIndex).join(' ');
+
+currentSpeech = new SpeechSynthesisUtterance(remainingText);
+currentSpeech.rate = 1.0;
+currentSpeech.lang = currentLanguage === 'de' ? 'de-DE' : 'en-US';
+
+let wordCount = currentWordIndex;
+currentSpeech.onboundary = function(event) {
+if (event.name === 'word') {
+highlightCurrentWord(wordCount);
+wordCount++;
+currentWordIndex = wordCount;
+}
+};
+
+currentSpeech.onend = function() {
+isReading = false;
+// BEHALTE die blaue Markierung auch am Ende!
+};
+
+isReading = true;
+speechSynthesis.speak(currentSpeech);
+}
+}
+
+function startFromWord(wordIndex) {
+currentWordIndex = wordIndex;
+clearHighlight();
+continueReading();
+}
+
+function highlightCurrentWord(wordIndex) {
+// Entferne vorherige Highlights
+if (lastHighlightedWord) {
+lastHighlightedWord.classList.remove('word-highlight');
+}
+
+// Highlights das entsprechende Wort im aktuellen Band und Sprache
+const wordSpan = document.querySelector(`#${currentLanguage}-band${currentBand} [data-word-index="${wordIndex}"]`);
+if (wordSpan) {
+wordSpan.classList.add('word-highlight');
+lastHighlightedWord = wordSpan;
+
+// Scroll to current word
+wordSpan.scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+}
+
+function clearHighlight() {
+document.querySelectorAll('.word-highlight').forEach(el => {
+el.classList.remove('word-highlight');
+});
+lastHighlightedWord = null;
+}
+
+function stopReading() {
+if (currentSpeech) {
+speechSynthesis.cancel();
+currentSpeech = null;
+isReading = false;
+}
+
+// BEHALTE die blaue Markierung und Position!
+// Nur das Vorlesen wird gestoppt
+}
+
+// Initialisierung beim Seitenstart
+document.addEventListener('DOMContentLoaded', function() {
+initializeAllBands(); // Initialisiere ALLE Bände und Sprachen
+showBand(1); // Zeige Band 1
+});
+</script>
 </body>
 </html>
