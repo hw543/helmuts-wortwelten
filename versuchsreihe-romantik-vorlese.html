@@ -1,129 +1,730 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8" />
-  <title>Herzige Kindle AI Demo</title>
-  <style>
-    body {
-      font-family: 'Georgia', serif;
-      line-height: 1.8;
-      color: #1b1b1b; /* dunkles Anthrazit für maximale Lesbarkeit */
-      background: #FFFDFB; /* ganz heller, warmer Hintergrund */
-      padding: 20px;
-      margin: 0;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Die verborgenen Kammern - Lesen & Vorlesen - Versuchsreihe - Helmut Wegners Wortwelten</title>
+<style>
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
 
-    .container {
-      max-width: 800px;
-      margin: 0 auto;
-      background: #FFFFFF; /* reines Weiß für perfekten Kontrast */
-      padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    }
+body {
+font-family: 'Georgia', serif;
+line-height: 1.8;
+color: #2c1810;
+background: linear-gradient(135deg, #FFE5E5 0%, #FFD4B8 50%, #FFCFCF 100%);
+min-height: 100vh;
+padding: 20px;
+}
 
-    .series-title {
-      color: #8B0032; /* Dunkles Bordeaux statt grellrosa */
-      font-size: 1.2em;
-      margin-bottom: 0;
-    }
+.container {
+max-width: 900px;
+margin: 0 auto;
+background: #FFF8F0;
+border-radius: 15px;
+box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+overflow: hidden;
+}
 
-    .book-title {
-      color: #8B0032;
-      font-size: 1.8em;
-      margin-top: 5px;
-      margin-bottom: 20px;
-    }
+.header {
+background: linear-gradient(135deg, #FF8A80, #FFB74D);
+color: #FFF8F0;
+padding: 30px;
+text-align: center;
+position: relative;
+}
 
-    .chapter-title {
-      color: #5D2B2B; /* satten Dunkelrot-Braunton */
-      font-size: 1.5em;
-      margin-top: 30px;
-      margin-bottom: 10px;
-    }
+.back-button-header {
+position: absolute;
+top: 15px;
+left: 15px;
+}
 
-    .text-content {
-      color: #1b1b1b;
-      font-size: 1em;
-      margin-bottom: 20px;
-    }
+.back-button {
+background: rgba(255, 255, 255, 0.2);
+color: white;
+padding: 8px 16px;
+border: 2px solid rgba(255, 255, 255, 0.3);
+border-radius: 20px;
+font-size: 0.9em;
+cursor: pointer;
+text-decoration: none;
+display: inline-block;
+transition: all 0.3s ease;
+font-weight: bold;
+}
 
-    .word {
-      cursor: pointer;
-    }
-    .word:hover {
-      background-color: #FFE0E0;
-      color: #1b1b1b;
-    }
-    .word-highlight {
-      background-color: #002D72;
-      color: #ffffff;
-    }
+.back-button:hover {
+background: rgba(255, 255, 255, 0.3);
+transform: translateY(-2px);
+}
 
-    .controls {
-      margin-top: 20px;
-      display: flex;
-      gap: 10px;
-    }
+.header h1 {
+font-size: 2.5em;
+margin-bottom: 10px;
+text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
 
-    .btn {
-      padding: 10px 15px;
-      border: none;
-      border-radius: 4px;
-      color: #ffffff;
-      font-weight: bold;
-      cursor: pointer;
-      transition: background 0.2s ease;
-    }
+.header p {
+font-size: 1.2em;
+opacity: 0.9;
+font-style: italic;
+}
 
-    .btn:hover {
-      filter: brightness(110%);
-    }
+.versuchsreihe-badge {
+background: #FFD700;
+color: #E91E63;
+padding: 5px 15px;
+border-radius: 15px;
+font-size: 0.9em;
+font-weight: bold;
+margin-top: 10px;
+display: inline-block;
+}
 
-    .btn-play {
-      background: #006B3C; /* dunkles Grün */
-    }
-    .btn-pause {
-      background: #D48A00; /* warmes Orange */
-    }
-    .btn-stop {
-      background: #B22222; /* kräftiges Dunkelrot */
-    }
-    .btn-continue {
-      background: #3A3A90; /* gedecktes Blau-Violett */
-    }
+.controls {
+background: #fff8f8;
+padding: 20px;
+border-bottom: 3px solid #FFB74D;
+position: sticky;
+top: 0;
+z-index: 100;
+box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
 
-    .versuchsreihe-badge {
-      display: inline-block;
-      padding: 5px 10px;
-      background: #FFDD00; /* warme Gelbnuance */
-      color: #7A003E; /* dunkles Pink-Bordeaux */
-      font-weight: bold;
-      border-radius: 4px;
-      margin-bottom: 10px;
-    }
-  </style>
+.control-buttons {
+display: flex;
+gap: 15px;
+justify-content: center;
+flex-wrap: wrap;
+margin-bottom: 15px;
+}
+
+.btn {
+padding: 12px 24px;
+border: none;
+border-radius: 25px;
+font-size: 1em;
+font-weight: bold;
+cursor: pointer;
+transition: all 0.3s ease;
+min-width: 120px;
+}
+
+.btn-play {
+background: linear-gradient(135deg, #28a745, #20c997);
+color: white;
+}
+
+.btn-continue {
+background: linear-gradient(135deg, #17a2b8, #6f42c1);
+color: white;
+}
+
+.btn-stop {
+background: linear-gradient(135deg, #dc3545, #e83e8c);
+color: white;
+}
+
+.btn:hover {
+transform: translateY(-2px);
+box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.band-navigation, .language-navigation {
+display: flex;
+gap: 10px;
+justify-content: center;
+flex-wrap: wrap;
+margin-bottom: 10px;
+}
+
+.btn-band, .btn-lang {
+background: linear-gradient(135deg, #E91E63, #AD1457);
+color: #FFF8F0;
+padding: 10px 20px;
+border: 2px solid transparent;
+}
+
+.btn-band.active, .btn-lang.active {
+border-color: #FFD700;
+box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+}
+
+.content {
+padding: 30px;
+font-size: 1.1em;
+line-height: 1.8;
+background: #FFFFFF;
+color: #000000;
+}
+
+.series-title {
+color: #E91E63;
+font-size: 2.5em;
+margin-bottom: 15px;
+text-align: center;
+border-bottom: 3px solid #FFB74D;
+padding-bottom: 15px;
+}
+
+.book-title {
+color: #E91E63;
+font-size: 2em;
+margin-bottom: 10px;
+text-align: center;
+border-bottom: 2px solid #FFB74D;
+padding-bottom: 15px;
+}
+
+.chapter-title {
+color: #AD1457;
+font-size: 1.5em;
+margin: 30px 0 20px 0;
+text-align: center;
+font-style: italic;
+}
+
+.text-content {
+text-align: justify;
+margin-bottom: 30px;
+background: #FFFFFF;
+color: #000000;
+padding: 20px;
+border-radius: 8px;
+box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.word {
+cursor: pointer;
+transition: all 0.2s ease;
+padding: 1px 2px;
+border-radius: 3px;
+}
+
+.word:hover {
+background-color: #FFE5E5;
+}
+
+.word-highlight {
+background-color: #4169E1;
+color: white;
+padding: 2px 4px;
+border-radius: 4px;
+box-shadow: 0 2px 5px rgba(65, 105, 225, 0.3);
+}
+
+.amazon-button {
+background: linear-gradient(135deg, #ff6b35, #f7931e);
+color: white;
+padding: 8px 16px;
+text-decoration: none;
+border-radius: 20px;
+font-weight: bold;
+margin: 5px;
+display: inline-block;
+transition: all 0.3s ease;
+}
+
+.amazon-button:hover {
+transform: translateY(-2px);
+box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.hidden {
+display: none;
+}
+
+@media (max-width: 600px) {
+.control-buttons, .band-navigation, .language-navigation {
+gap: 10px;
+}
+
+.btn {
+min-width: 100px;
+font-size: 0.9em;
+padding: 10px 16px;
+}
+
+.content {
+padding: 20px;
+font-size: 1em;
+}
+
+.header h1 {
+font-size: 2em;
+}
+
+.back-button-header {
+position: relative;
+top: 0;
+left: 0;
+margin-bottom: 15px;
+}
+}
+</style>
 </head>
 <body>
-  <div class="container">
-    <div class="versuchsreihe-badge">Versuchsreihe</div>
-    <h2 class="series-title">[SERIE]</h2>
-    <h1 class="book-title">[BUCHTITEL]</h1>
+<div class="container">
+<div class="header">
+<div class="back-button-header">
+<a href="romantik-fiktion.html" class="back-button">← Zurück zum Genre</a>
+</div>
+<h1>Die verborgenen Kammern</h1>
+<p>Lesen & Vorlesen-System - Entdecken Sie die geheimnisvollen Schätze der Leidenschaft</p>
+<div class="versuchsreihe-badge">VERSUCHSREIHE</div>
+</div>
 
-    <h3 class="chapter-title">Kapitel [NUMMER]: [TITEL]</h3>
+<div class="controls">
+<div class="control-buttons">
+<button class="btn btn-play" onclick="startReading()">🔴 Vorlesen</button>
+<button class="btn btn-continue" onclick="continueReading()">▶️ Weiterlesen</button>
+<button class="btn btn-stop" onclick="stopReading()">⏹️ Stop</button>
+</div>
 
-    <p class="text-content">
-      Lorem <span class="word">Ipsum</span> dolor sit amet, <span class="word">consectetur</span>
-      adipiscing elit. <span class="word">Phasellus</span> vehicula ex id <span class="word">erat</span>
-      malesuada, sed facilisis velit luctus.
-    </p>
+<div class="language-navigation">
+<button class="btn btn-lang active" onclick="switchLanguage('de')">🇩🇪 Deutsch</button>
+<button class="btn btn-lang" onclick="switchLanguage('en')">🇬🇧 English</button>
+<button class="btn btn-lang" id="spanish-btn" onclick="switchLanguage('es')">🇪🇸 Español</button>
+</div>
 
-    <div class="controls">
-      <button class="btn btn-play">▶️ PLAY</button>
-      <button class="btn btn-pause">⏸️ PAUSE</button>
-      <button class="btn btn-stop">⏹️ STOP</button>
-      <button class="btn btn-continue">➡️ WEITER</button>
-    </div>
-  </div>
+<div class="band-navigation">
+<button class="btn btn-band active" onclick="showBand(1)">Band 1</button>
+<button class="btn btn-band" onclick="showBand(2)">Band 2</button>
+<button class="btn btn-band" onclick="showBand(3)">Band 3</button>
+</div>
+</div>
+
+<div class="content">
+<div class="series-title">Serie 2: Die verborgenen Kammern</div>
+
+<!-- DEUTSCHE VERSIONEN -->
+<div id="de-content" class="language-content">
+
+<!-- Band 1: Hinter verschlossenen Türen (Deutsch) -->
+<div id="de-band1" class="band-content">
+<div class="book-title">Band 1: Hinter verschlossenen Türen</div>
+<div class="chapter-title">📝 In Bearbeitung</div>
+<div class="text-content" id="de-textContent1">
+<p style="text-align: center; color: #666; font-style: italic; font-size: 1.3em; margin: 60px 20px;">
+🔄 Dieses Kapitel ist noch in Bearbeitung...<br><br>
+Erscheint demnächst mit der fesselnden Geschichte von Elena und Marcus!
+</p>
+</div>
+<div style="text-align: center; margin: 20px 0;">
+<a href="https://www.amazon.de/dp/B0F1YC3J79" class="amazon-button">📖 Taschenbuch bei Amazon</a>
+<a href="https://www.amazon.de/dp/B0F8F1CVCL" class="amazon-button">📱 Kindle bei Amazon</a>
+</div>
+</div>
+
+<!-- Band 2: Die Kunst der Hingabe (Deutsch) -->
+<div id="de-band2" class="band-content hidden">
+<div class="book-title">Band 2: Die Kunst der Hingabe</div>
+<div class="chapter-title">Kapitel 1: Das Vermächtnis</div>
+<div class="text-content" id="de-textContent2">
+<p>Die Nachricht vom Tod seiner Tante Marie erreichte Marcus an einem kühlen Herbstmorgen. Die Sonne stand tief am Horizont und tauchte die toskanische Landschaft in ein goldenes Licht, das die Schatten der Vergangenheit kaum zu durchdringen vermochte. Elena, die an seiner Seite stand, spürte die Last der Nachricht, die schwer auf Marcus' Schultern ruhte. Marie, die Matriarchin der Familie Castellano, war nicht nur eine Verwandte gewesen, sondern auch die Hüterin eines Erbes, das weit über Kunst und Geschichte hinausging.</p>
+
+<p>Die Reise zum Familienanwesen in der Toskana war von einer seltsamen Stille geprägt. Elena beobachtete, wie Marcus' Gesichtszüge mit jedem Kilometer härter wurden, als ob er sich hinter einer Maske aus Kontrolle und Pflichtbewusstsein versteckte. Sie wusste, dass die Beerdigung mehr war als nur ein Abschied -- es war eine Konfrontation mit der Vergangenheit, die Marcus so lange zu verdrängen versucht hatte.</p>
+
+<p>Das Anwesen, ein imposantes Gebäude aus Stein und Geschichte, ragte vor ihnen auf wie ein stummer Zeuge der Zeit. In der großen Halle, wo das Licht durch die hohen Fenster fiel, versammelte sich die Familie. Die Luft war schwer von unausgesprochenen Worten und alten Geheimnissen. Als das Testament verlesen wurde, spürte Elena, wie sich die Atmosphäre veränderte. Ein unbekannter Teil der Sammlung wurde erwähnt, ein "verlorener Schatz", der die Familie seit Generationen begleitete.</p>
+
+<p>Marie hatte Marcus eine verschlüsselte Botschaft hinterlassen, die von einem Erbe sprach, das weit mehr war als nur materieller Besitz. Elena sah, wie Marcus' Hände leicht zitterten, als er das Dokument entgegennahm. Die Trauer und die Familiendynamik schienen ihn in alte Verhaltensmuster zurückzuführen, und Elena fragte sich, ob die Last der Vergangenheit jemals von ihm abfallen würde.</p>
+
+<p>In diesem Moment der Stille, als die Familie sich zurückzog, blieb Elena an Marcus' Seite. Sie spürte die Verletzlichkeit hinter seiner Fassade und wusste, dass die Reise, die vor ihnen lag, nicht nur eine Suche nach einem verlorenen Schatz war, sondern auch eine Reise zu sich selbst.</p>
+
+<p>Die Stille im Raum war fast greifbar, als Marcus das Dokument in seinen Händen betrachtete. Die verschlüsselte Botschaft seiner Tante Marie war nicht nur ein Rätsel, sondern ein Schlüssel zu einer Welt, die er kaum kannte. Elena beobachtete ihn aufmerksam, ihre Augen suchten nach Anzeichen von Schwäche oder Unsicherheit, doch Marcus blieb äußerlich gefasst.</p>
+
+<p>"Was denkst du, was sie uns damit sagen will?" fragte Elena leise, ihre Stimme kaum mehr als ein Flüstern.</p>
+
+<p>Marcus hob den Blick und sah sie an, seine Augen spiegelten eine Mischung aus Trauer und Entschlossenheit wider. "Marie war immer eine Meisterin der Geheimnisse. Sie wollte, dass wir die Wahrheit selbst herausfinden, dass wir uns mit der Vergangenheit auseinandersetzen."</p>
+
+<p>Elena nickte und legte sanft ihre Hand auf seine Schulter. "Wir werden es gemeinsam herausfinden. Aber zuerst müssen wir uns um die Beerdigung kümmern."</p>
+
+<p>Die Beerdigung war ein stilles, würdevolles Ereignis. Die Familie und enge Freunde versammelten sich, um Marie die letzte Ehre zu erweisen. Der Priester sprach Worte des Trostes, doch Marcus' Gedanken waren weit entfernt. Er dachte an die vielen Geschichten, die Marie ihm erzählt hatte, an die Geheimnisse, die sie bewahrt hatte.</p>
+</div>
+<div style="text-align: center; margin: 20px 0;">
+<span style="color: #666; font-style: italic;">Erscheint demnächst bei Amazon</span>
+</div>
+</div>
+
+<!-- Band 3: Die Tiefe der Begierde (Deutsch) -->
+<div id="de-band3" class="band-content hidden">
+<div class="book-title">Band 3: Die Tiefe der Begierde</div>
+<div class="chapter-title">Kapitel 1: Das Angebot</div>
+<div class="text-content" id="de-textContent3">
+<p>Das Pigment bröckelte unter Elenas behutsamen Bewegungen. Winzige Farbpartikel, einst leuchtend rot, nun zu einem matten Braun verblasst, rieselten auf das weiße Tuch, das sie unter dem Gemälde ausgebreitet hatte. Vor über zweihundert Jahren hatte ein Künstler diesen Farbton mit Quecksilbersulfid und organischen Bindemitteln angerührt, ohne zu ahnen, dass seine Schöpfung eines Tages unter Elenas Mikroskop und Skalpell liegen würde.</p>
+
+<p>"Jahrhunderte", murmelte sie, während sie mit geübten Fingern die nächste Schicht freilegte. "Und trotzdem verrätst du mir deine Geheimnisse."</p>
+
+<p>Elena Winters arbeitete im großzügigen Restaurierungsatelier des Friedrich-Museums in Berlin, umgeben von Spezialinstrumenten, Chemikalien und Referenzwerken. Die hohen Fenster ließen gleichmäßiges Nordlicht herein -- das ideale Licht für ihre präzise Arbeit. Das spätbarocke Gemälde, eine Darstellung der Göttin Diana bei der Jagd, war seit drei Wochen ihr Projekt. Es war eine Herausforderung, doch genau das machte die Arbeit für sie so befriedigend.</p>
+
+<p>Elenas Handy vibrierte auf dem Arbeitstisch. Sie ignorierte es. Der Bereich um Dianas rechtes Auge bedurfte ihrer vollen Konzentration -- zu viele übermalte Schichten, zu viel Firnis, aufgetragen von wohlmeinenden, aber unkundigen Restauratoren vergangener Jahrhunderte. Ihre Aufgabe war es, durch all diese Schichten zum Original vorzudringen, ohne es zu beschädigen.</p>
+
+<p>Das Telefon vibrierte erneut. Elena seufzte, legte ihr Skalpell beiseite und streifte die Latexhandschuhe ab. Es war Direktor Schumann, wie die Anzeige verriet. Der Museumsdirektor rief sie selten direkt an; normalerweise kommunizierte er über seine Assistentin oder E-Mail.</p>
+
+<p>"Winters", meldete sie sich knapp.</p>
+
+<p>"Elena, gut, dass ich Sie erreiche." Die Stimme des Direktors klang ungewöhnlich enthusiastisch. "Könnten Sie in einer halben Stunde in meinem Büro sein? Ich habe jemanden hier, der Sie kennenlernen möchte."</p>
+
+<p>Sie blickte auf das halb restaurierte Gemälde. "Ich bin mitten in der Arbeit an der Diana, Herr Direktor."</p>
+
+<p>"Das kann warten. Diese Gelegenheit nicht."</p>
+
+<p>Elena unterdrückte ein Seufzen. In ihrem Beruf hatte sie gelernt, dass Zeit relativ war. Für sie bedeuteten Minuten manchmal den Unterschied zwischen erhaltener und zerstörter Geschichte. Für Administratoren wie Schumann waren Termine und Netzwerkgespräche wichtiger.</p>
+
+<p>"In Ordnung. Dreißig Minuten."</p>
+
+<p>Sie legte auf und begann methodisch, ihren Arbeitsplatz zu sichern. Das Gemälde wurde sorgfältig abgedeckt, die Instrumente gereinigt und die Chemikalien verschlossen. Elena zog ihren weißen Laborkittel aus und betrachtete ihr Spiegelbild in der Fensterscheibe. Ihr rotbraunes Haar war zu einem strengen Knoten gebunden, ihre Kleidung -- eine schlichte schwarze Hose und eine graue Seidenbluse -- war zweckmäßig und unauffällig. Die einzige Extravaganz, die sie sich erlaubte, war eine antike Brosche aus Silberfiligran -- ein Erbstück ihrer Großmutter und ein subtiler Hinweis auf ihre Verbundenheit mit der Vergangenheit.</p>
+</div>
+<div style="text-align: center; margin: 20px 0;">
+<span style="color: #666; font-style: italic;">Erscheint demnächst bei Amazon</span>
+</div>
+</div>
+</div>
+
+<!-- ENGLISCHE VERSIONEN -->
+<div id="en-content" class="language-content hidden">
+
+<!-- Band 1: Behind Closed Doors (English) -->
+<div id="en-band1" class="band-content">
+<div class="book-title">Volume 1: Behind Closed Doors</div>
+<div class="chapter-title">📝 In Progress</div>
+<div class="text-content" id="en-textContent1">
+<p style="text-align: center; color: #666; font-style: italic; font-size: 1.3em; margin: 60px 20px;">
+🔄 This chapter is still in progress...<br><br>
+Coming soon with the captivating story of Elena and Marcus!
+</p>
+</div>
+<div style="text-align: center; margin: 20px 0;">
+<a href="https://www.amazon.com/dp/B0F311L2ZQ" class="amazon-button">📖 Paperback on Amazon</a>
+<a href="https://www.amazon.com/dp/B0F8NJQ56P" class="amazon-button">📱 Kindle on Amazon</a>
+</div>
+</div>
+
+<!-- Band 2: The Art of Devotion (English) -->
+<div id="en-band2" class="band-content hidden">
+<div class="book-title">Volume 2: The Art of Devotion</div>
+<div class="chapter-title">Chapter 1: The Legacy</div>
+<div class="text-content" id="en-textContent2">
+<p>The news of his aunt Marie's death reached Marcus on a cool autumn morning. The sun hung low on the horizon, bathing the Tuscan landscape in golden light that could barely penetrate the shadows of the past. Elena, standing beside him, felt the weight of the news that rested heavily on Marcus' shoulders. Marie, the matriarch of the Castellano family, had been not only a relative but also the keeper of a legacy that went far beyond art and history.</p>
+
+<p>The journey to the family estate in Tuscany was marked by a strange silence. Elena watched as Marcus' features hardened with each kilometer, as if he were hiding behind a mask of control and duty. She knew that the funeral was more than just a farewell -- it was a confrontation with the past that Marcus had tried to suppress for so long.</p>
+
+<p>The estate, an imposing building of stone and history, rose before them like a silent witness to time. In the great hall, where light fell through the high windows, the family gathered. The air was heavy with unspoken words and old secrets. When the will was read, Elena felt the atmosphere change. An unknown part of the collection was mentioned, a "lost treasure" that had accompanied the family for generations.</p>
+
+<p>Marie had left Marcus an encrypted message that spoke of a legacy that was far more than just material possessions. Elena saw how Marcus' hands trembled slightly as he received the document. The grief and family dynamics seemed to lead him back into old behavioral patterns, and Elena wondered if the burden of the past would ever fall from him.</p>
+
+<p>In this moment of silence, as the family withdrew, Elena remained at Marcus' side. She sensed the vulnerability behind his facade and knew that the journey ahead was not just a search for a lost treasure, but also a journey to himself.</p>
+
+<p>The silence in the room was almost tangible as Marcus looked at the document in his hands. His aunt Marie's encrypted message was not just a puzzle, but a key to a world he barely knew. Elena watched him attentively, her eyes searching for signs of weakness or uncertainty, yet Marcus remained outwardly composed.</p>
+
+<p>"What do you think she wants to tell us with this?" Elena asked quietly, her voice barely more than a whisper.</p>
+
+<p>Marcus looked up and met her eyes, his gaze reflecting a mixture of grief and determination. "Marie was always a master of secrets. She wanted us to find out the truth ourselves, to confront the past."</p>
+
+<p>Elena nodded and gently placed her hand on his shoulder. "We'll figure it out together. But first we need to take care of the funeral."</p>
+
+<p>After the ceremony, the family retreated to the estate's large living room. The atmosphere was tense, everyone seemed caught in their own thoughts. Marcus and Elena sat in a corner, somewhat apart from the others.</p>
+
+<p>"I remember the summers we spent here," Marcus began, his voice quiet and thoughtful. "Marie always told us stories about the family, about the artworks and their meaning. But I never really understood how deep these connections run."</p>
+
+<p>Elena listened attentively, her hand resting on his. "Maybe it's time for you to understand. Maybe that's why she left you this message."</p>
+
+<p>Marcus nodded slowly. "Yes, maybe. But it won't be easy. The past has many shadows, and I don't know if I'm ready to face them."</p>
+
+<p>Elena gently squeezed his hand. "You're not alone, Marcus. We'll get through this together."</p>
+
+<p>Night fell, and the estate was enveloped in gentle darkness. Marcus and Elena sat together for a long time, talking about the past and the future, about the secrets and hopes they shared. It was the beginning of a journey that would change them both, a journey that would lead them deeper into the world of the Castellano family and their hidden treasures.</p>
+
+<p>As the night progressed, most family members retreated to their rooms, but Marcus and Elena remained in the living room, surrounded by the shadows of the past. The crackling of the fire in the fireplace was the only sound that broke the silence. Marcus stared into the flames, his thoughts wandering through the years.</p>
+
+<p>"Do you remember the first time we were here?" he asked quietly, without taking his eyes off the fire.</p>
+
+<p>Elena smiled gently. "Of course. It was shortly after we met. Marie showed us around the estate and told us the stories behind every artwork. It was as if she was introducing us to another world."</p>
+
+<p>Marcus nodded. "Yes, she had that gift. She could bring the past to life. But I wonder if she also showed us the darker sides of this world."</p>
+
+<p>Elena leaned closer to him, her voice warm and soothing. "The darker sides belong to history just as much as the bright ones. Maybe it's time we face them."</p>
+
+<p>Marcus turned to her, his eyes searching hers for comfort and strength. "I don't know if I'm ready, Elena. The past can be painful."</p>
+
+<p>"It often is," she replied quietly. "But it can also be healing. We just need the courage to look it in the eye."</p>
+
+<p>The night passed slowly, and as morning dawned, Marcus felt somewhat strengthened. Elena's words had given him hope, and he knew he wasn't alone. Together they would uncover the secrets of the past and bring the truth to light.</p>
+</div>
+<div style="text-align: center; margin: 20px 0;">
+<span style="color: #666; font-style: italic;">Coming soon to Amazon</span>
+</div>
+</div>
+
+<!-- Band 3: The Depth of Desire (English) -->
+<div id="en-band3" class="band-content hidden">
+<div class="book-title">Volume 3: The Depth of Desire</div>
+<div class="chapter-title">Chapter 1: The Offer</div>
+<div class="text-content" id="en-textContent3">
+<p>The pigment crumbled under Elena's careful movements. Tiny particles of color, once bright red, now faded to a dull brown, trickled onto the white cloth she had spread beneath the painting. Over two hundred years ago, an artist had mixed this hue with mercuric sulfide and organic binders, unaware that his creation would one day lie beneath Elena's microscope and scalpel.</p>
+
+<p>"Centuries," she murmured, as she uncovered the next layer with practiced fingers. "And yet you tell me your secrets."</p>
+
+<p>Elena Winters worked in the spacious restoration studio of the Friedrich Museum in Berlin, surrounded by specialized instruments, chemicals, and reference works. The high windows let in steady northern light -- the ideal light for her precise work. The late Baroque painting, a depiction of the goddess Diana hunting, had been her project for three weeks. It was a challenge, but that was precisely what made the work so satisfying.</p>
+
+<p>Elena's cell phone vibrated on the worktable. She ignored it. The area around Diana's right eye needed her full concentration -- too many layers of overpainted material, too much varnish, applied by well-meaning but ignorant restorers of past centuries. Her task was to penetrate through all these layers to the original without damaging it.</p>
+
+<p>The phone vibrated again. Elena sighed, put down her scalpel, and removed her latex gloves. It was Director Schumann, as the display revealed. The museum director rarely called her directly; he usually communicated through his assistant or email.</p>
+
+<p>"Winters," she answered tersely.</p>
+
+<p>"Elena, good to reach you." The director's voice sounded unusually enthusiastic. "Could you be in my office in half an hour? I have someone here who would like to meet you."</p>
+
+<p>She looked at the half-restored painting. "I'm in the middle of working on the Diana, Mr. Director."</p>
+
+<p>"That can wait. This opportunity cannot."</p>
+
+<p>Elena suppressed a sigh. In her profession, she had learned that time was relative. For her, minutes sometimes meant the difference between preserved and destroyed history. For administrators like Schumann, appointments and networking conversations were more important.</p>
+
+<p>"All right, thirty minutes."</p>
+
+<p>She hung up and methodically began to secure her workstation. The painting was carefully covered, the instruments cleaned, and the chemicals sealed. Elena took off her white lab coat and looked at her reflection in the windowpane. Her auburn hair was tied back in a tight bun; her clothes -- simple black trousers and a gray silk blouse -- were utilitarian and unremarkable. The only extravagance she allowed herself was an antique silver filigree brooch -- an heirloom from her grandmother and a subtle nod to her connection with the past.</p>
+</div>
+<div style="text-align: center; margin: 20px 0;">
+<span style="color: #666; font-style: italic;">Coming soon to Amazon</span>
+</div>
+</div>
+</div>
+
+<!-- SPANISCHE VERSIONEN (nur Band 1) -->
+<div id="es-content" class="language-content hidden">
+
+<!-- Band 1: Tras puertas cerradas (Español) -->
+<div id="es-band1" class="band-content">
+<div class="book-title">Volumen 1: Tras puertas cerradas</div>
+<div class="chapter-title">📝 En progreso</div>
+<div class="text-content" id="es-textContent1">
+<p style="text-align: center; color: #666; font-style: italic; font-size: 1.3em; margin: 60px 20px;">
+🔄 Este capítulo aún está en progreso...<br><br>
+¡Próximamente con la cautivadora historia de Elena y Marcus!
+</p>
+</div>
+<div style="text-align: center; margin: 20px 0;">
+<a href="https://www.amazon.es/dp/B0F37NJD39" class="amazon-button">📖 Libro en Amazon</a>
+<a href="https://www.amazon.es/dp/B0F8KGH34L" class="amazon-button">📱 Kindle en Amazon</a>
+</div>
+</div>
+
+<!-- Band 2: El Arte de la Devoción (Español) - HIDDEN -->
+<div id="es-band2" class="band-content hidden">
+<div class="book-title">Volumen 2: El Arte de la Devoción</div>
+<div class="chapter-title">📝 No disponible en español</div>
+<div class="text-content" id="es-textContent2">
+<p style="text-align: center; color: #666; font-style: italic; font-size: 1.3em; margin: 60px 20px;">
+Este volumen solo está disponible en alemán e inglés.
+</p>
+</div>
+</div>
+
+<!-- Band 3: La Profundidad del Deseo (Español) - HIDDEN -->
+<div id="es-band3" class="band-content hidden">
+<div class="book-title">Volumen 3: La Profundidad del Deseo</div>
+<div class="chapter-title">📝 No disponible en español</div>
+<div class="text-content" id="es-textContent3">
+<p style="text-align: center; color: #666; font-style: italic; font-size: 1.3em; margin: 60px 20px;">
+Este volumen solo está disponible en alemán e inglés.
+</p>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<script>
+let currentSpeech = null;
+let currentBand = 1;
+let currentLanguage = 'de';
+let currentWordIndex = 0;
+let allBandWords = {};
+let isReading = false;
+let lastHighlightedWord = null;
+
+function initializeAllBands() {
+['de', 'en', 'es'].forEach(lang => {
+allBandWords[lang] = {};
+for (let bandNumber = 1; bandNumber <= 3; bandNumber++) {
+const bandContent = document.querySelector(`#${lang}-band${bandNumber} .text-content`);
+if (bandContent && !bandContent.querySelector('.word')) {
+const paragraphs = bandContent.querySelectorAll('p');
+let wordCounter = 0;
+let bandWords = [];
+
+paragraphs.forEach((paragraph) => {
+if (paragraph.style.textAlign === 'center') return;
+const paragraphText = paragraph.textContent;
+const paragraphWords = paragraphText.split(/\s+/).filter(word => word.length > 0);
+let paragraphHTML = '';
+
+paragraphWords.forEach((word) => {
+paragraphHTML += `<span class="word" data-word-index="${wordCounter}" onclick="startFromWord(${wordCounter})">${word}</span> `;
+bandWords.push(word);
+wordCounter++;
+});
+
+paragraph.innerHTML = paragraphHTML;
+});
+
+allBandWords[lang][bandNumber] = bandWords;
+}
+}
+});
+}
+
+function switchLanguage(lang) {
+pauseReading();
+document.querySelectorAll('.language-content').forEach(content => {
+content.classList.add('hidden');
+});
+document.getElementById(lang + '-content').classList.remove('hidden');
+
+document.querySelectorAll('.btn-lang').forEach(btn => {
+btn.classList.remove('active');
+});
+event.target.classList.add('active');
+
+// Show/hide Spanish button based on current band and language
+updateSpanishButton();
+
+currentLanguage = lang;
+currentWordIndex = 0;
+clearHighlight();
+showBand(currentBand);
+}
+
+function updateSpanishButton() {
+const spanishBtn = document.getElementById('spanish-btn');
+if (currentBand === 1) {
+spanishBtn.style.display = 'inline-block';
+} else {
+spanishBtn.style.display = 'none';
+if (currentLanguage === 'es') {
+switchLanguage('de');
+}
+}
+}
+
+function showBand(bandNumber) {
+pauseReading();
+
+for (let i = 1; i <= 3; i++) {
+const bandElement = document.getElementById(`${currentLanguage}-band${i}`);
+if (bandElement) {
+bandElement.classList.add('hidden');
+}
+}
+
+document.querySelectorAll('.btn-band').forEach((btn, index) => {
+btn.classList.remove('active');
+if (index === bandNumber - 1) {
+btn.classList.add('active');
+}
+});
+
+const targetBand = document.getElementById(`${currentLanguage}-band${bandNumber}`);
+if (targetBand) {
+targetBand.classList.remove('hidden');
+}
+
+currentBand = bandNumber;
+currentWordIndex = 0;
+clearHighlight();
+updateSpanishButton();
+}
+
+function startReading() {
+currentWordIndex = 0;
+clearHighlight();
+continueReading();
+}
+
+function continueReading() {
+if (currentSpeech) {
+currentSpeech.cancel();
+}
+
+const currentWords = allBandWords[currentLanguage] && allBandWords[currentLanguage][currentBand];
+if (currentWords && currentWords.length > 0) {
+const remainingText = currentWords.slice(currentWordIndex).join(' ');
+currentSpeech = new SpeechSynthesisUtterance(remainingText);
+currentSpeech.rate = 1.0;
+currentSpeech.lang = currentLanguage === 'de' ? 'de-DE' : currentLanguage === 'es' ? 'es-ES' : 'en-US';
+
+let wordCount = currentWordIndex;
+currentSpeech.onboundary = function(event) {
+if (event.name === 'word') {
+highlightCurrentWord(wordCount);
+wordCount++;
+currentWordIndex = wordCount;
+}
+};
+
+currentSpeech.onend = function() {
+isReading = false;
+};
+
+isReading = true;
+speechSynthesis.speak(currentSpeech);
+}
+}
+
+function startFromWord(wordIndex) {
+currentWordIndex = wordIndex;
+clearHighlight();
+continueReading();
+}
+
+function highlightCurrentWord(wordIndex) {
+if (lastHighlightedWord) {
+lastHighlightedWord.classList.remove('word-highlight');
+}
+
+const wordSpan = document.querySelector(`#${currentLanguage}-band${currentBand} [data-word-index="${wordIndex}"]`);
+if (wordSpan) {
+wordSpan.classList.add('word-highlight');
+lastHighlightedWord = wordSpan;
+wordSpan.scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+}
+
+function clearHighlight() {
+document.querySelectorAll('.word-highlight').forEach(el => {
+el.classList.remove('word-highlight');
+});
+lastHighlightedWord = null;
+}
+
+function pauseReading() {
+if (currentSpeech) {
+speechSynthesis.cancel();
+currentSpeech = null;
+isReading = false;
+}
+}
+
+function stopReading() {
+if (currentSpeech) {
+speechSynthesis.cancel();
+currentSpeech = null;
+isReading = false;
+}
+currentWordIndex = 0;
+clearHighlight();
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+initializeAllBands();
+showBand(1);
+});
+</script>
 </body>
 </html>
