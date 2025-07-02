@@ -98,6 +98,8 @@ position: sticky;
 top: 0;
 z-index: 100;
 box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+/* FIX: Prevent layout shift */
+min-height: 200px;
 }
 
 .control-buttons {
@@ -117,6 +119,16 @@ font-weight: bold;
 cursor: pointer;
 transition: all 0.3s ease;
 min-width: 120px;
+/* FIX: Prevent focus outline jump */
+outline: none;
+/* FIX: Prevent button shift on click */
+transform: translateZ(0);
+will-change: transform;
+}
+
+.btn:focus {
+outline: 2px solid #FFD700;
+outline-offset: 2px;
 }
 
 .btn-play {
@@ -160,6 +172,16 @@ border-radius: 25px;
 cursor: pointer;
 transition: all 0.3s ease;
 font-weight: bold;
+/* FIX: Prevent focus outline jump */
+outline: none;
+/* FIX: Prevent button shift on click */
+transform: translateZ(0);
+will-change: transform;
+}
+
+.btn-band:focus, .btn-lang:focus {
+outline: 2px solid #FFD700;
+outline-offset: 2px;
 }
 
 .btn-band.active, .btn-lang.active {
@@ -205,6 +227,8 @@ cursor: pointer;
 transition: all 0.2s ease;
 padding: 1px 2px;
 border-radius: 3px;
+/* FIX: Prevent layout shift on hover */
+will-change: background-color;
 }
 
 .word:hover {
@@ -226,20 +250,38 @@ display: none !important;
 .status-message {
 text-align: center;
 padding: 8px;
-margin: 5px 0;
+margin: 5px 0 15px 0;
 border-radius: 10px;
 background: #e8f5e8;
 color: #2d6c2d;
 font-weight: bold;
-transition: all 0.3s ease;
-height: 32px;
+transition: opacity 0.3s ease;
+/* FIX: Reserve space to prevent layout shift */
+min-height: 32px;
 line-height: 16px;
-overflow: hidden;
+opacity: 1;
+/* FIX: Position absolute to not affect layout */
+position: absolute;
+top: 10px;
+left: 20px;
+right: 20px;
+z-index: 101;
+}
+
+.status-message.hidden {
+opacity: 0;
+/* FIX: Don't use display:none, use opacity to prevent layout shift */
+pointer-events: none;
 }
 
 .error-message {
 background: #ffe8e8;
 color: #d32f2f;
+}
+
+/* FIX: Add top padding to controls to account for status message */
+.controls-inner {
+padding-top: 50px;
 }
 
 @media (max-width: 600px) {
@@ -268,6 +310,10 @@ top: 0;
 left: 0;
 margin-bottom: 15px;
 }
+
+.controls {
+min-height: 180px;
+}
 }
 </style>
 
@@ -284,6 +330,7 @@ margin-bottom: 15px;
 </div>
 <div class="controls">
 <div id="statusMessage" class="status-message hidden"></div>
+<div class="controls-inner">
 <div class="control-buttons">
 <button class="btn btn-play" id="playBtn" type="button">🔴 Vorlesen</button>
 <button class="btn btn-continue" id="continueBtn" type="button">▶️ Weiterlesen</button>
@@ -298,6 +345,7 @@ margin-bottom: 15px;
 <button class="btn btn-band" id="band2Btn" type="button">Band 2</button>
 <button class="btn btn-band" id="band3Btn" type="button">Band 3</button>
 <button class="btn btn-band" id="band4Btn" type="button">Band 4</button>
+</div>
 </div>
 </div>
 <div class="content">
@@ -503,7 +551,7 @@ function hideStatusMessage() {
     statusDiv.classList.add('hidden');
 }
 
-// Event Listeners
+// Event Listeners - FIX: Prevent event bubbling and default behavior
 function initializeEventListeners() {
     // Play/Control Buttons
     const buttons = [
@@ -518,8 +566,19 @@ function initializeEventListeners() {
             btn.addEventListener('click', (e) => {
                 e.preventDefault();
                 e.stopPropagation();
+                // FIX: Prevent focus jumping
+                e.target.blur();
                 func();
                 return false;
+            });
+            // FIX: Prevent keyboard events from causing layout shift
+            btn.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    func();
+                    return false;
+                }
             });
             console.log(`Added listener to ${id}`);
         }
@@ -537,8 +596,17 @@ function initializeEventListeners() {
             btn.addEventListener('click', (e) => {
                 e.preventDefault();
                 e.stopPropagation();
+                e.target.blur();
                 switchLanguage(lang);
                 return false;
+            });
+            btn.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    switchLanguage(lang);
+                    return false;
+                }
             });
             console.log(`Added language listener to ${id}`);
         }
@@ -551,8 +619,17 @@ function initializeEventListeners() {
             btn.addEventListener('click', (e) => {
                 e.preventDefault();
                 e.stopPropagation();
+                e.target.blur();
                 showBand(i);
                 return false;
+            });
+            btn.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    showBand(i);
+                    return false;
+                }
             });
             console.log(`Added band listener to band${i}Btn`);
         }
@@ -582,7 +659,7 @@ function initializeAllBands() {
 
                             let paragraphHTML = '';
                             paragraphWords.forEach((word) => {
-                                paragraphHTML += `<span class="word" data-word-index="${wordCounter}" onclick="event.preventDefault(); event.stopPropagation(); startFromWord(${wordCounter}); return false;">${word}</span> `;
+                                paragraphHTML += `<span class="word" data-word-index="${wordCounter}" onclick="event.preventDefault(); event.stopPropagation(); this.blur(); startFromWord(${wordCounter}); return false;">${word}</span> `;
                                 allWords.push(word);
                                 wordCounter++;
                             });
@@ -760,6 +837,7 @@ function startFromWord(wordIndex) {
     console.log(`Started reading from word ${wordIndex}`);
 }
 
+// FIX: Improved highlight function with smoother scrolling
 function highlightCurrentWord(wordIndex) {
     // Clear previous highlight
     if (lastHighlightedWord) {
@@ -772,25 +850,26 @@ function highlightCurrentWord(wordIndex) {
         wordSpan.classList.add('word-highlight');
         lastHighlightedWord = wordSpan;
 
-        // Smooth scroll with less aggressive behavior
+        // FIX: Improved scroll behavior to prevent jumping
         const rect = wordSpan.getBoundingClientRect();
-        const controlsHeight = document.querySelector('.controls').offsetHeight;
+        const controlsHeight = document.querySelector('.controls').offsetHeight || 200;
         const viewportHeight = window.innerHeight;
-        const scrollBuffer = 100; // Buffer zone
+        const scrollBuffer = 150;
         
         // Only scroll if word is not comfortably visible
         if (rect.top < controlsHeight + scrollBuffer || rect.bottom > viewportHeight - scrollBuffer) {
-            // Use a more gentle scroll approach
+            // Calculate smooth scroll position
             const elementTop = wordSpan.offsetTop;
-            const elementHeight = wordSpan.offsetHeight;
-            const containerScrollTop = window.pageYOffset;
-            const centerPosition = elementTop - (viewportHeight / 2) + (elementHeight / 2);
+            const currentScroll = window.pageYOffset;
+            const targetScroll = elementTop - controlsHeight - 100;
             
-            // Smooth scroll to center position
-            window.scrollTo({
-                top: Math.max(0, centerPosition), 
-                behavior: 'smooth'
-            });
+            // Only scroll if the difference is significant to prevent micro-movements
+            if (Math.abs(targetScroll - currentScroll) > 50) {
+                window.scrollTo({
+                    top: Math.max(0, targetScroll),
+                    behavior: 'smooth'
+                });
+            }
         }
     }
 }
