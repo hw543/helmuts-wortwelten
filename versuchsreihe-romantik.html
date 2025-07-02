@@ -1,495 +1,355 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Romantik Fiktion - Versuchsreihe - Helmut Wegners Wortwelten</title>
-<style>
-* {
-margin: 0;
-padding: 0;
-box-sizing: border-box;
-}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Romantik Fiktion - Leidenschaftliche Liebesgeschichten - Helmut Wegners Wortwelten</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-body {
-font-family: 'Arial', sans-serif;
-line-height: 1.6;
-color: #1a1a1a;
-background: linear-gradient(135deg, #FF6B9D 0%, #C44569 50%, #F8B500 100%);
-min-height: 100vh;
-padding: 20px;
-}
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            color: #2c1810;
+            background: linear-gradient(135deg, #ffeef0 0%, #ffe0e6 50%, #ffd1dc 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
 
-.container {
-max-width: 1000px;
-margin: 0 auto;
-background: rgba(255, 255, 255, 0.95);
-border-radius: 20px;
-box-shadow: 0 15px 35px rgba(0,0,0,0.4);
-overflow: hidden;
-}
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+            overflow: hidden;
+        }
 
-.header {
-background: linear-gradient(135deg, #FF6B9D, #C44569, #E91E63);
-color: white;
-padding: 40px 30px;
-text-align: center;
-position: relative;
-}
+        .header {
+            background: linear-gradient(135deg, #d63384 0%, #dc3545 100%);
+            color: #fff;
+            padding: 40px 20px;
+            text-align: center;
+            position: relative;
+        }
 
-.back-button-header {
-position: absolute;
-top: 20px;
-left: 20px;
-}
+        .back-button {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 8px 16px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 20px;
+            font-size: 0.9em;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            font-weight: bold;
+        }
 
-.back-button {
-background: rgba(255, 255, 255, 0.2);
-color: white;
-padding: 10px 20px;
-border: 2px solid rgba(255, 255, 255, 0.3);
-border-radius: 25px;
-font-size: 0.9em;
-cursor: pointer;
-text-decoration: none;
-display: inline-block;
-transition: all 0.3s ease;
-font-weight: bold;
-}
+        .back-button:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
 
-.back-button:hover {
-background: rgba(255, 255, 255, 0.3);
-transform: translateY(-2px);
-}
+        .header h1 {
+            font-size: 2.8em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
 
-.header h1 {
-font-size: 2.8em;
-margin-bottom: 15px;
-text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
-}
+        .header p {
+            font-size: 1.3em;
+            opacity: 0.95;
+            font-style: italic;
+            margin-bottom: 20px;
+        }
 
-.header p {
-font-size: 1.3em;
-opacity: 0.9;
-font-style: italic;
-}
+        .romance-info {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 20px;
+            margin: 20px;
+            border-radius: 15px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
 
-.versuchsreihe-badge {
-background: #FFD700;
-color: #E91E63;
-padding: 8px 20px;
-border-radius: 20px;
-font-size: 1em;
-font-weight: bold;
-margin-top: 15px;
-display: inline-block;
-}
+        .romance-info h3 {
+            color: #ffd700;
+            font-size: 1.4em;
+            margin-bottom: 10px;
+            text-align: center;
+        }
 
-.vorlese-highlight {
-background: rgba(255, 215, 0, 0.2);
-border: 3px solid #FFD700;
-border-radius: 15px;
-padding: 30px;
-margin: 30px;
-text-align: center;
-}
+        .romance-info p {
+            text-align: center;
+            font-size: 1.1em;
+            line-height: 1.5;
+        }
 
-.vorlese-highlight h2 {
-color: #E91E63;
-font-size: 2em;
-margin-bottom: 15px;
-}
+        .series-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 30px;
+            padding: 30px;
+        }
 
-.vorlese-highlight p {
-font-size: 1.2em;
-color: #333;
-margin-bottom: 25px;
-font-weight: bold;
-}
+        .series-card {
+            background: #fff8f9;
+            border-radius: 15px;
+            padding: 25px;
+            border: 3px solid #dc3545;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
 
-.vorlese-button {
-background: linear-gradient(135deg, #FF6B9D, #E91E63);
-color: white;
-padding: 18px 35px;
-border: none;
-border-radius: 30px;
-font-size: 1.2em;
-font-weight: bold;
-cursor: pointer;
-text-decoration: none;
-display: inline-block;
-transition: all 0.3s ease;
-box-shadow: 0 6px 18px rgba(0,0,0,0.2);
-}
+        .series-card:hover {
+            transform: translateY(-5px);
+        }
 
-.vorlese-button:hover {
-transform: translateY(-4px);
-box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-}
+        .series-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
 
-.content-intro {
-text-align: center;
-padding: 30px;
-background: rgba(233, 30, 99, 0.1);
-margin: 0 30px 30px 30px;
-border-radius: 15px;
-border: 2px solid #E91E63;
-}
+        .series-cover {
+            width: 180px;
+            height: 240px;
+            margin: 0 auto 15px auto;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
 
-.content-intro h2 {
-color: #E91E63;
-font-size: 1.8em;
-margin-bottom: 15px;
-}
+        .series-cover img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
 
-.content-intro p {
-font-size: 1.1em;
-color: #333;
-line-height: 1.6;
-}
+        .series-title {
+            color: #d63384;
+            font-size: 1.8em;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
 
-.series-section {
-margin: 30px;
-}
+        .series-subtitle {
+            color: #dc3545;
+            font-size: 1.1em;
+            font-style: italic;
+            margin-bottom: 15px;
+        }
 
-.series-title {
-color: #E91E63;
-font-size: 2.2em;
-text-align: center;
-margin-bottom: 30px;
-font-weight: bold;
-}
+        .series-description {
+            font-size: 1.05em;
+            line-height: 1.7;
+            margin-bottom: 20px;
+            text-align: justify;
+            color: #444;
+        }
 
-.books-grid {
-display: grid;
-grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-gap: 30px;
-padding: 20px 0;
-}
+        .series-info {
+            background: rgba(220, 53, 69, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+            border-left: 4px solid #dc3545;
+        }
 
-.book-card {
-background: white;
-border-radius: 20px;
-padding: 25px;
-box-shadow: 0 15px 30px rgba(0,0,0,0.2);
-transition: transform 0.3s ease;
-border: 4px solid #E91E63;
-text-align: center;
-}
+        .series-info strong {
+            color: #d63384;
+        }
 
-.book-card:hover {
-transform: translateY(-10px);
-box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-}
+        .button-group {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 20px;
+        }
 
-.book-cover {
-text-align: center;
-margin-bottom: 20px;
-}
+        .btn-primary {
+            background: linear-gradient(135deg, #d63384, #dc3545);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            font-size: 1.05em;
+        }
 
-.book-cover img {
-width: 140px;
-height: 180px;
-object-fit: cover;
-border-radius: 12px;
-box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-}
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(214, 51, 132, 0.3);
+        }
 
-.book-title {
-font-size: 1.4em;
-font-weight: bold;
-color: #E91E63;
-margin-bottom: 12px;
-}
+        .btn-secondary {
+            background: linear-gradient(135deg, #fd7e14, #ff6b35);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            font-size: 1.05em;
+        }
 
-.book-subtitle {
-font-size: 1em;
-color: #C44569;
-font-style: italic;
-margin-bottom: 15px;
-}
+        .btn-secondary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(253, 126, 20, 0.3);
+        }
 
-.book-description {
-font-size: 0.95em;
-color: #666;
-margin-bottom: 20px;
-line-height: 1.5;
-text-align: justify;
-}
+        .status-badge {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 15px;
+            font-size: 0.9em;
+            font-weight: bold;
+            margin: 10px 5px;
+        }
 
-.book-features {
-margin-bottom: 25px;
-text-align: left;
-}
+        .complete {
+            background: #d63384;
+            color: white;
+        }
 
-.book-features h4 {
-color: #E91E63;
-font-size: 1em;
-margin-bottom: 12px;
-text-align: center;
-}
+        .available {
+            background: #28a745;
+            color: white;
+        }
 
-.book-features ul {
-list-style: none;
-padding-left: 0;
-}
+        .back-link {
+            text-align: center;
+            padding: 30px;
+            background: #fef7f8;
+        }
 
-.book-features li {
-font-size: 0.9em;
-color: #666;
-margin-bottom: 6px;
-padding-left: 20px;
-position: relative;
-}
+        .btn-back {
+            background: linear-gradient(135deg, #6c757d, #495057);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
 
-.book-features li:before {
-content: "💕";
-position: absolute;
-left: 0;
-}
+        .btn-back:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(108, 117, 125, 0.3);
+        }
 
-.series-divider {
-border-top: 3px solid #FFD700;
-margin: 40px 30px;
-padding-top: 20px;
-}
+        @media (max-width: 768px) {
+            .series-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                padding: 20px;
+            }
+            
+            .header h1 {
+                font-size: 2.2em;
+            }
+            
+            .header p {
+                font-size: 1.1em;
+            }
+            
+            .button-group {
+                flex-direction: column;
+                align-items: center;
+            }
 
-@media (max-width: 768px) {
-.header h1 {
-font-size: 2.2em;
-}
-
-.header p {
-font-size: 1.1em;
-}
-
-.books-grid {
-grid-template-columns: 1fr;
-padding: 15px;
-}
-
-.back-button-header {
-position: relative;
-top: 0;
-left: 0;
-margin-bottom: 20px;
-}
-
-.series-section {
-margin: 20px;
-}
-}
-</style>
+            .back-button {
+                position: relative;
+                top: 0;
+                left: 0;
+                margin-bottom: 15px;
+            }
+        }
+    </style>
 </head>
 <body>
-<div class="container">
-<div class="header">
-<div class="back-button-header">
-<a href="romantik-fiktion.html" class="back-button">← Zurück zu Romantik</a>
-</div>
-<h1>💕 Romantik Fiktion Versuchsreihe</h1>
-<p>Interaktives Lesen & Vorlesen-System - Emotionale Geschichten über Liebe und Leidenschaft!</p>
-<div class="versuchsreihe-badge">VERSUCHSREIHE</div>
-</div>
+    <div class="container">
+        <div class="header">
+            <a href="index.html" class="back-button">← Zurück zur Übersicht</a>
+            <h1>💕 Romantik Fiktion</h1>
+            <p>Leidenschaftliche Liebesgeschichten über Herz, Seele und die Macht der wahren Liebe</p>
+            
+            <div class="romance-info">
+                <h3>💖 Emotionale Liebesreisen</h3>
+                <p>Tauchen Sie ein in bewegende Liebesgeschichten voller Leidenschaft, Emotionen und unvergesslicher Momente!</p>
+                <p><strong>Tiefgehende Charaktere • Emotionale Wendungen • Herzerwärmende Happy Ends</strong></p>
+            </div>
+        </div>
 
-<div class="vorlese-highlight">
-<h2>🎧 Revolutionäres Vorlese-System</h2>
-<p>Erleben Sie die Zukunft des Lesens: Wort-für-Wort Markierung, interaktive Steuerung, 
-romantische Geschichten in Deutsch & Englisch!</p>
-<a href="versuchsreihe-romantik-vorlese.html" class="vorlese-button">💕 Lesen & Vorlesen - Romantik</a>
-</div>
+        <div class="series-grid">
+            <div class="series-card">
+                <div class="series-header">
+                    <div class="series-cover">
+                        <img src="unter-dem-sternenhimmel.jpg" alt="Verlangen der Herzen Serie Cover">
+                    </div>
+                    <h2 class="series-title">Verlangen der Herzen</h2>
+                    <p class="series-subtitle">Adelaide Hills - Emotionale Liebesgeschichten</p>
+                </div>
+                
+                <div class="series-description">
+                    Clara und Alex begegnen sich unter dem funkelnden Sternenhimmel von Adelaide. Was als zufällige Begegnung beginnt, entwickelt sich zu einer leidenschaftlichen Liebesgeschichte voller Höhen und Tiefen. Durch vier Bände begleiten wir das Paar auf ihrer emotionalen Reise - von der ersten Begegnung über berufliche Herausforderungen bis hin zur gemeinsamen Zukunftsplanung. Eine Geschichte über wahre Liebe, Vertrauen und das Finden des Glücks zu zweit.
+                </div>
 
-<div class="content-intro">
-<h2>💖 Was Sie erwartet</h2>
-<p>Ein völlig neues Lese-Erlebnis für emotionale Romanzen! Jedes Wort wird beim Vorlesen markiert, 
-Sie können die Geschwindigkeit anpassen und in mehreren Sprachen hören. Herzerwärmende Geschichten für alle Romantik-Liebhaber!</p>
-</div>
+                <div class="series-info">
+                    <strong>4 Bände • Deutsch & Englisch • Adelaide Setting</strong><br>
+                    Themen: Erste Liebe, Berufsleben, Vertrauen, Zukunftsplanung, Happy End
+                </div>
 
-<!-- Serie 1: Verlangen der Herzen -->
-<div class="series-section">
-<h2 class="series-title">Serie 1: Verlangen der Herzen</h2>
-<p style="text-align: center; color: #666; margin-bottom: 30px; font-style: italic;">Adelaide Hills - Emotionale Liebesgeschichten</p>
+                <div class="button-group">
+                    <span class="status-badge complete">Alle 4 Bände verfügbar</span>
+                </div>
 
-<div class="books-grid">
-<div class="book-card">
-<div class="book-cover">
-<img src="unter-dem-sternenhimmel.jpg" alt="Unter dem Sternenhimmel Cover">
-</div>
-<div class="book-title">Band 1: Unter dem Sternenhimmel</div>
-<div class="book-subtitle">Der Beginn einer großen Liebe</div>
-<div class="book-description">
-Clara und Alex begegnen sich unter dem funkelnden Sternenhimmel von Adelaide. 
-Eine zufällige Begegnung wird zum Beginn einer leidenschaftlichen Liebesgeschichte, 
-die beide für immer verändern wird.
-</div>
-<div class="book-features">
-<h4>Highlights im Vorlese-System:</h4>
-<ul>
-<li>Dreisprachig verfügbar (Deutsch, Englisch, Spanisch)</li>
-<li>Emotionale Höhepunkte zum Mitfühlen</li>
-<li>Romantische Szenen in Adelaide</li>
-<li>Charakterentwicklung verstehen</li>
-<li>Pause an jeder bewegenden Stelle</li>
-<li>Immersive Liebesgeschichte</li>
-</ul>
-</div>
-</div>
+                <div class="button-group">
+                    <a href="verlangen-der-herzen.html" class="btn-primary">💕 Serie entdecken</a>
+                    <a href="#" class="btn-secondary">🛒 Bei Amazon kaufen</a>
+                </div>
+            </div>
 
-<div class="book-card">
-<div class="book-cover">
-<img src="im-netz-der-liebe.jpg" alt="Im Netz der Liebe Cover">
-</div>
-<div class="book-title">Band 2: Im Netz der Liebe</div>
-<div class="book-subtitle">Vertiefung der Gefühle</div>
-<div class="book-description">
-Clara und Alex lernen sich besser kennen, während sie sich durch die Herausforderungen 
-einer neuen Beziehung navigieren. Vertrauen, Leidenschaft und die Angst vor Verletzlichkeit 
-prägen diese emotionale Fortsetzung.
-</div>
-<div class="book-features">
-<h4>Highlights im Vorlese-System:</h4>
-<ul>
-<li>Zweisprachig verfügbar (Deutsch, Englisch)</li>
-<li>Tiefere Charakterentwicklung</li>
-<li>Emotionale Konfliktlösung</li>
-<li>Romantische Spannung</li>
-<li>Intime Gespräche verstehen</li>
-<li>Beziehungsdynamik erleben</li>
-</ul>
-</div>
-</div>
+            <div class="series-card">
+                <div class="series-header">
+                    <div class="series-cover">
+                        <img src="hinter-verschlossenen-tueren.jpg" alt="Die Verborgenen Kammern Serie Cover">
+                    </div>
+                    <h2 class="series-title">Die Verborgenen Kammern</h2>
+                    <p class="series-subtitle">Geheimnisvolle Liebesgeschichten mit Tiefe</p>
+                </div>
+                
+                <div class="series-description">
+                    Eine mysteriöse Begegnung führt zu einer Liebesgeschichte voller Geheimnisse und emotionaler Tiefe. Die Protagonisten lernen, einander zu vertrauen und ihre wahren Gefühle zu zeigen, während sie emotionale Barrieren durchbrechen. Diese Serie erforscht die tieferen Schichten der Liebe - von ersten zögernden Annäherungen über intensive Leidenschaft bis zur vollendeten emotionalen Verbindung zweier Seelen.
+                </div>
 
-<div class="book-card">
-<div class="book-cover">
-<img src="ankommen-im-neuen-leben.jpg" alt="Ankommen im neuen Leben Cover">
-</div>
-<div class="book-title">Band 3: Ankommen im neuen Leben</div>
-<div class="book-subtitle">Berufliche Konflikte und private Entscheidungen</div>
-<div class="book-description">
-Clara steht vor wichtigen beruflichen Entscheidungen, die ihre Beziehung zu Alex 
-auf die Probe stellen. Karriere oder Liebe? Die beiden müssen lernen, 
-Kompromisse zu finden und gemeinsam zu wachsen.
-</div>
-<div class="book-features">
-<h4>Highlights im Vorlese-System:</h4>
-<ul>
-<li>Zweisprachig verfügbar (Deutsch, Englisch)</li>
-<li>Berufliche Herausforderungen</li>
-<li>Beziehungskonflikte lösen</li>
-<li>Persönliches Wachstum</li>
-<li>Emotionale Wendepunkte</li>
-<li>Realistische Alltagssituationen</li>
-</ul>
-</div>
-</div>
+                <div class="series-info">
+                    <strong>3 Bände • Deutsch & Englisch & Spanisch • Mystische Atmosphäre</strong><br>
+                    Themen: Geheimnisse, Vertrauen, Leidenschaft, Emotionale Tiefe, Seelenverwandtschaft
+                </div>
 
-<div class="book-card">
-<div class="book-cover">
-<img src="gemeinsam-in-die-zukunft.jpg" alt="Gemeinsam in die Zukunft Cover">
-</div>
-<div class="book-title">Band 4: Gemeinsam in die Zukunft</div>
-<div class="book-subtitle">Ein Neuanfang zu zweit</div>
-<div class="book-description">
-Clara und Alex haben durch alle Höhen und Tiefen gefunden, was wirklich zählt. 
-Jetzt planen sie ihre gemeinsame Zukunft - mit neuen Träumen, 
-Herausforderungen und der Gewissheit ihrer Liebe.
-</div>
-<div class="book-features">
-<h4>Highlights im Vorlese-System:</h4>
-<ul>
-<li>Zweisprachig verfügbar (Deutsch, Englisch)</li>
-<li>Zukunftsplanung gemeinsam</li>
-<li>Emotionale Höhepunkte</li>
-<li>Liebesbekenntnis verstehen</li>
-<li>Happy End miterleben</li>
-<li>Vollendete Liebesgeschichte</li>
-</ul>
-</div>
-</div>
-</div>
-</div>
+                <div class="button-group">
+                    <span class="status-badge available">Alle 3 Bände verfügbar</span>
+                </div>
 
-<!-- Serie 2: Die Verborgenen Kammern -->
-<div class="series-divider">
-<div class="series-section">
-<h2 class="series-title">Serie 2: Die Verborgenen Kammern</h2>
-<p style="text-align: center; color: #666; margin-bottom: 30px; font-style: italic;">Geheimnisvolle Liebesgeschichten mit Tiefe</p>
+                <div class="button-group">
+                    <a href="die-verborgenen-kammern.html" class="btn-primary">💕 Serie entdecken</a>
+                    <a href="#" class="btn-secondary">🛒 Bei Amazon kaufen</a>
+                </div>
+            </div>
+        </div>
 
-<div class="books-grid">
-<div class="book-card">
-<div class="book-cover">
-<img src="hinter-verschlossenen-tueren.jpg" alt="Hinter verschlossenen Türen Cover">
-</div>
-<div class="book-title">Band 1: Hinter verschlossenen Türen</div>
-<div class="book-subtitle">Geheimnisse und erste Begegnungen</div>
-<div class="book-description">
-Eine mysteriöse Begegnung führt zu einer Liebesgeschichte voller Geheimnisse. 
-Emotionale Barrieren werden durchbrochen, während die Protagonisten lernen, 
-einander zu vertrauen und ihre wahren Gefühle zu zeigen.
-</div>
-<div class="book-features">
-<h4>Highlights im Vorlese-System:</h4>
-<ul>
-<li>Dreisprachig verfügbar (Deutsch, Englisch, Spanisch)</li>
-<li>Geheimnisvolle Atmosphäre</li>
-<li>Emotionale Entwicklung</li>
-<li>Spannungsgeladene Romantik</li>
-<li>Charaktertiefe verstehen</li>
-<li>Vertrauen aufbauen miterleben</li>
-</ul>
-</div>
-</div>
-
-<div class="book-card">
-<div class="book-cover">
-<img src="die-kunst-der-hingabe.jpg" alt="Die Kunst der Hingabe Cover">
-</div>
-<div class="book-title">Band 2: Die Kunst der Hingabe</div>
-<div class="book-subtitle">Leidenschaft und Vertrauen</div>
-<div class="book-description">
-Die Beziehung vertieft sich, während beide Partner lernen, sich vollständig 
-hinzugeben. Emotionale Intimität und körperliche Nähe verschmelzen zu einer 
-intensiven Liebeserfahrung voller Höhen und Tiefen.
-</div>
-<div class="book-features">
-<h4>Highlights im Vorlese-System:</h4>
-<ul>
-<li>Zweisprachig verfügbar (Deutsch, Englisch)</li>
-<li>Intensive emotionale Szenen</li>
-<li>Vertrauensaufbau verstehen</li>
-<li>Leidenschaftliche Momente</li>
-<li>Innere Konflikte mitfühlen</li>
-<li>Romantische Entwicklung</li>
-</ul>
-</div>
-</div>
-
-<div class="book-card">
-<div class="book-cover">
-<img src="die-tiefe-der-begierde.jpg" alt="Die Tiefe der Begierde Cover">
-</div>
-<div class="book-title">Band 3: Die Tiefe der Begierde</div>
-<div class="book-subtitle">Vollendung der Liebe</div>
-<div class="book-description">
-Im finalen Band der Serie erreichen die Protagonisten die tiefste Ebene 
-ihrer Verbindung. Alle Geheimnisse werden gelüftet, und die wahre Liebe 
-triumphiert über alle Hindernisse.
-</div>
-<div class="book-features">
-<h4>Highlights im Vorlese-System:</h4>
-<ul>
-<li>Zweisprachig verfügbar (Deutsch, Englisch)</li>
-<li>Emotionale Vollendung</li>
-<li>Geheimnisse werden gelüftet</li>
-<li>Intensive Liebesszenen</li>
-<li>Charakterabschluss verstehen</li>
-<li>Befriedigendes Ende</li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
+        <div class="back-link">
+            <a href="index.html" class="btn-back">← Zurück zur Übersicht</a>
+        </div>
+    </div>
 </body>
 </html>
