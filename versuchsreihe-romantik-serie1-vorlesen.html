@@ -11,6 +11,11 @@ margin: 0;
 padding: 0;
 box-sizing: border-box;
 }
+
+html {
+scroll-behavior: smooth;
+}
+
 body {
 font-family: 'Georgia', serif;
 line-height: 1.8;
@@ -280,19 +285,19 @@ margin-bottom: 15px;
 <div class="controls">
 <div id="statusMessage" class="status-message hidden"></div>
 <div class="control-buttons">
-<button class="btn btn-play" id="playBtn">🔴 Vorlesen</button>
-<button class="btn btn-continue" id="continueBtn">▶️ Weiterlesen</button>
-<button class="btn btn-stop" id="stopBtn">⏹️ Stop</button>
+<button class="btn btn-play" id="playBtn" type="button">🔴 Vorlesen</button>
+<button class="btn btn-continue" id="continueBtn" type="button">▶️ Weiterlesen</button>
+<button class="btn btn-stop" id="stopBtn" type="button">⏹️ Stop</button>
 </div>
 <div class="language-navigation">
-<button class="btn btn-lang active" id="deBtn">🇩🇪 Deutsch</button>
-<button class="btn btn-lang" id="enBtn">🇬🇧 English</button>
+<button class="btn btn-lang active" id="deBtn" type="button">🇩🇪 Deutsch</button>
+<button class="btn btn-lang" id="enBtn" type="button">🇬🇧 English</button>
 </div>
 <div class="band-navigation">
-<button class="btn btn-band active" id="band1Btn">Band 1</button>
-<button class="btn btn-band" id="band2Btn">Band 2</button>
-<button class="btn btn-band" id="band3Btn">Band 3</button>
-<button class="btn btn-band" id="band4Btn">Band 4</button>
+<button class="btn btn-band active" id="band1Btn" type="button">Band 1</button>
+<button class="btn btn-band" id="band2Btn" type="button">Band 2</button>
+<button class="btn btn-band" id="band3Btn" type="button">Band 3</button>
+<button class="btn btn-band" id="band4Btn" type="button">Band 4</button>
 </div>
 </div>
 <div class="content">
@@ -514,6 +519,7 @@ function initializeEventListeners() {
                 e.preventDefault();
                 e.stopPropagation();
                 func();
+                return false;
             });
             console.log(`Added listener to ${id}`);
         }
@@ -532,6 +538,7 @@ function initializeEventListeners() {
                 e.preventDefault();
                 e.stopPropagation();
                 switchLanguage(lang);
+                return false;
             });
             console.log(`Added language listener to ${id}`);
         }
@@ -545,6 +552,7 @@ function initializeEventListeners() {
                 e.preventDefault();
                 e.stopPropagation();
                 showBand(i);
+                return false;
             });
             console.log(`Added band listener to band${i}Btn`);
         }
@@ -574,7 +582,7 @@ function initializeAllBands() {
 
                             let paragraphHTML = '';
                             paragraphWords.forEach((word) => {
-                                paragraphHTML += `<span class="word" data-word-index="${wordCounter}" onclick="event.preventDefault(); event.stopPropagation(); startFromWord(${wordCounter})">${word}</span> `;
+                                paragraphHTML += `<span class="word" data-word-index="${wordCounter}" onclick="event.preventDefault(); event.stopPropagation(); startFromWord(${wordCounter}); return false;">${word}</span> `;
                                 allWords.push(word);
                                 wordCounter++;
                             });
@@ -764,17 +772,24 @@ function highlightCurrentWord(wordIndex) {
         wordSpan.classList.add('word-highlight');
         lastHighlightedWord = wordSpan;
 
-        // Gentle scroll to current word without jumping
+        // Smooth scroll with less aggressive behavior
         const rect = wordSpan.getBoundingClientRect();
         const controlsHeight = document.querySelector('.controls').offsetHeight;
         const viewportHeight = window.innerHeight;
+        const scrollBuffer = 100; // Buffer zone
         
-        // Only scroll if word is not visible or near the edges
-        if (rect.top < controlsHeight + 50 || rect.bottom > viewportHeight - 50) {
-            wordSpan.scrollIntoView({ 
-                behavior: 'smooth', 
-                block: 'center',
-                inline: 'nearest'
+        // Only scroll if word is not comfortably visible
+        if (rect.top < controlsHeight + scrollBuffer || rect.bottom > viewportHeight - scrollBuffer) {
+            // Use a more gentle scroll approach
+            const elementTop = wordSpan.offsetTop;
+            const elementHeight = wordSpan.offsetHeight;
+            const containerScrollTop = window.pageYOffset;
+            const centerPosition = elementTop - (viewportHeight / 2) + (elementHeight / 2);
+            
+            // Smooth scroll to center position
+            window.scrollTo({
+                top: Math.max(0, centerPosition), 
+                behavior: 'smooth'
             });
         }
     }
