@@ -419,10 +419,53 @@
             margin-top: 4rem;
         }
 
+        /* Mobile Menu */
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: #2c3e50;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .mobile-nav {
+            display: none;
+            background: white;
+            border-radius: 10px;
+            margin-top: 1rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        .mobile-nav a {
+            display: block;
+            padding: 1rem;
+            color: #2c3e50;
+            text-decoration: none;
+            border-bottom: 1px solid #f1f1f1;
+        }
+
+        .mobile-nav a:hover {
+            background: #f8f9fa;
+            color: #667eea;
+        }
+
+        .mobile-nav a:last-child {
+            border-bottom: none;
+        }
+
         /* Mobile Responsiveness */
         @media (max-width: 768px) {
             .nav-menu {
                 display: none;
+            }
+
+            .mobile-menu-toggle {
+                display: block;
+            }
+
+            .mobile-nav.active {
+                display: block;
             }
 
             .hero h1 {
@@ -479,13 +522,30 @@
                             <a href="gedichtbaende.html" class="nav-link">Gedichtbände</a>
                         </li>
                         <li class="nav-item">
+                            <a href="mysterien-der-heide.html" class="nav-link">Krimis</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="thriller.html" class="nav-link">Thriller</a>
+                        </li>
+                        <li class="nav-item">
                             <a href="#" class="nav-link" style="color: #6c757d; cursor: not-allowed;">Chroniken & Geschichte</a>
                         </li>
                         <li class="nav-item">
-                            <a href="impressum.html" class="nav-link">Impressum</a>
+                            <a href="impressum.html" class="nav-link" style="background: #e91e63; color: white; border-radius: 15px;">Impressum</a>
                         </li>
                     </ul>
+                    <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">☰</button>
                 </nav>
+            </div>
+            <div class="mobile-nav" id="mobileNav">
+                <a href="kinderbuecher.html">📚 Kinderbücher</a>
+                <a href="romantik-fiktion.html">💕 Romantik Fiktion</a>
+                <a href="versuchsreihe-new-adult.html">💫 New Adult</a>
+                <a href="high-fantasy.html">⚔️ High Fantasy</a>
+                <a href="mysterien-der-heide.html">🔍 Krimis</a>
+                <a href="thriller.html">🔥 Thriller</a>
+                <a href="gedichtbaende.html">📝 Gedichtbände</a>
+                <a href="impressum.html" style="background: #e91e63; color: white;">📄 Impressum</a>
             </div>
         </div>
     </header>
@@ -519,6 +579,7 @@
                 <a href="versuchsreihe-mysterien-der-heide.html" class="versuchsreihe-btn">🔍 Mysterien der Heide</a>
                 <a href="versuchsreihe-high-fantasy.html" class="versuchsreihe-btn">⚔️ High Fantasy System</a>
                 <a href="versuchsreihe-thriller.html" class="versuchsreihe-btn">🔥 Thriller System</a>
+                <a href="versuchsreihe-gedichtbaende.html" class="versuchsreihe-btn">📝 Gedichtbände Audio</a>
             </div>
         </section>
 
@@ -547,6 +608,7 @@
                     <br><br>
                     <div class="genre-buttons">
                         <a href="romantik-fiktion.html" class="genre-btn">💕 Serie entdecken</a>
+                        <a href="versuchsreihe-romantik-serie1-vorlesen.html" class="genre-btn experimental">🧪 Vorlese-Version</a>
                     </div>
                 </div>
 
@@ -571,7 +633,7 @@
                     <span class="book-count available">6 Bücher verfügbar</span>
                     <br><br>
                     <div class="genre-buttons">
-                        <a href="high-fantasy.html" class="genre-btn">Fantasie erleben</a>
+                        <a href="high-fantasy.html" class="genre-btn">⚔️ Fantasie erleben</a>
                         <a href="versuchsreihe-high-fantasy.html" class="genre-btn experimental">🧪 Vorlese-Version</a>
                     </div>
                 </div>
@@ -597,7 +659,7 @@
                     <span class="book-count available">1 Buch verfügbar</span>
                     <br><br>
                     <div class="genre-buttons">
-                        <a href="thriller.html" class="genre-btn">Thriller erleben</a>
+                        <a href="thriller.html" class="genre-btn">🔥 Thriller erleben</a>
                         <a href="versuchsreihe-thriller.html" class="genre-btn experimental">🧪 Vorlese-Version</a>
                     </div>
                 </div>
@@ -609,27 +671,36 @@
                     <p class="genre-description">Zwei persönliche Gedichtbände über Familie, Heimat und ein bewegtes Leben.</p>
                     <span class="book-count personal">2 Bände verfügbar</span>
                     <br><br>
-                    <a href="gedichtbaende.html" class="genre-btn">Gedichte lesen</a>
+                    <div class="genre-buttons">
+                        <a href="gedichtbaende.html" class="genre-btn">📝 Gedichte lesen</a>
+                        <a href="versuchsreihe-gedichtbaende.html" class="genre-btn experimental">🧪 Audio-Version</a>
+                    </div>
                 </div>
 
                 <div class="genre-card">
                     <span class="genre-icon">📜</span>
                     <h3 class="genre-title">Chroniken & Geschichte</h3>
                     <p class="genre-subtitle">Authentische Berichte und historische Aufarbeitungen</p>
-                    <p class="genre-description">Vergangenheit lebendig werden lassen.</p>
+                    <p class="genre-description">Vergangenheit lebendig werden lassen - historische Ereignisse und persönliche Chroniken.</p>
                     <span class="book-count coming-soon">Bald verfügbar</span>
                     <br><br>
-                    <a href="#" class="genre-btn disabled">Bald verfügbar</a>
+                    <div class="genre-buttons">
+                        <a href="#" class="genre-btn disabled">📜 Bald verfügbar</a>
+                        <a href="#" class="genre-btn disabled">🧪 In Vorbereitung</a>
+                    </div>
                 </div>
 
                 <div class="genre-card">
                     <span class="genre-icon">📖</span>
                     <h3 class="genre-title">Biografien & Memoiren</h3>
                     <p class="genre-subtitle">Persönliche Geschichten und Lebenserfahrungen</p>
-                    <p class="genre-description">Die inspirieren und zum Nachdenken anregen.</p>
+                    <p class="genre-description">Inspirierende Lebensgeschichten und persönliche Reflexionen eines bewegten Lebens.</p>
                     <span class="book-count coming-soon">Bald verfügbar</span>
                     <br><br>
-                    <a href="#" class="genre-btn disabled">Bald verfügbar</a>
+                    <div class="genre-buttons">
+                        <a href="#" class="genre-btn disabled">📖 Bald verfügbar</a>
+                        <a href="#" class="genre-btn disabled">🧪 In Vorbereitung</a>
+                    </div>
                 </div>
             </div>
         </section>
@@ -661,7 +732,15 @@
     <footer>
         <div class="container">
             <p>&copy; 2025 Helmut Wegner - Helmut Wegners Wortwelten. Geschichten mit Tiefe, Herz und Haltung.</p>
+            <p style="margin-top: 10px;"><a href="impressum.html" style="color: #f39c12; text-decoration: none;">📄 Impressum & Kontakt</a></p>
         </div>
     </footer>
+
+    <script>
+        function toggleMobileMenu() {
+            const mobileNav = document.getElementById('mobileNav');
+            mobileNav.classList.toggle('active');
+        }
+    </script>
 </body>
 </html>
