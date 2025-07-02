@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Verlangen der Herzen - Lesen & Vorlesen - Versuchsreihe - Helmut Wegners Wortwelten</title>
+<title>Zwischen Herz und Verstand - Lesen & Vorlesen - Versuchsreihe - Helmut Wegners Wortwelten</title>
 <style>
 * {
 margin: 0;
@@ -17,7 +17,7 @@ line-height: 1.8;
 color: #2c1810;
 background: linear-gradient(135deg, #FFE5E5 0%, #FFD4B8 50%, #FFCFCF 100%);
 min-height: 100vh;
-padding: 80px 20px 20px 20px; /* KORREKT: Platz für die feste Navigationsleiste oben */
+padding: 20px;
 }
 
 .container {
@@ -85,17 +85,14 @@ margin-top: 10px;
 display: inline-block;
 }
 
-/* KORREKT: Controls-Leiste jetzt fixed, weiß, Padding kleiner, starker Shadow */
 .controls {
-background: #FFFFFF;
-padding: 15px 20px;
+background: #fff8f8;
+padding: 20px;
 border-bottom: 3px solid #FFB74D;
-position: fixed;
+position: sticky;
 top: 0;
-left: 0;
-right: 0;
-z-index: 9999;
-box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+z-index: 100;
+box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
 
 .control-buttons {
@@ -122,13 +119,18 @@ background: linear-gradient(135deg, #28a745, #20c997);
 color: white;
 }
 
-.btn-continue {
-background: linear-gradient(135deg, #17a2b8, #6f42c1);
+.btn-pause {
+background: linear-gradient(135deg, #ffc107, #fd7e14);
 color: white;
 }
 
 .btn-stop {
 background: linear-gradient(135deg, #dc3545, #e83e8c);
+color: white;
+}
+
+.btn-continue {
+background: linear-gradient(135deg, #17a2b8, #6f42c1);
 color: white;
 }
 
@@ -161,17 +163,6 @@ box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
 padding: 30px;
 font-size: 1.1em;
 line-height: 1.8;
-background: #FFFFFF;
-color: #000000;
-}
-
-.series-title {
-color: #E91E63;
-font-size: 2.5em;
-margin-bottom: 15px;
-text-align: center;
-border-bottom: 3px solid #FFB74D;
-padding-bottom: 15px;
 }
 
 .book-title {
@@ -194,11 +185,6 @@ font-style: italic;
 .text-content {
 text-align: justify;
 margin-bottom: 30px;
-background: #FFFFFF;
-color: #000000;
-padding: 20px;
-border-radius: 8px;
-box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
 .word {
@@ -218,23 +204,6 @@ color: white;
 padding: 2px 4px;
 border-radius: 4px;
 box-shadow: 0 2px 5px rgba(65, 105, 225, 0.3);
-}
-
-.amazon-button {
-background: linear-gradient(135deg, #ff6b35, #f7931e);
-color: white;
-padding: 8px 16px;
-text-decoration: none;
-border-radius: 20px;
-font-weight: bold;
-margin: 5px;
-display: inline-block;
-transition: all 0.3s ease;
-}
-
-.amazon-button:hover {
-transform: translateY(-2px);
-box-shadow: 0 5px 15px rgba(0,0,0,0.2);
 }
 
 .hidden {
@@ -269,6 +238,408 @@ margin-bottom: 15px;
 }
 }
 </style>
-<!-- AB HIER FÜGE DEINEN REST DES HTML-INHALTS EIN -->
-<!-- ... -->
-<!-- ALLES UNTERHALB DES STYLE-TAGS BLEIBT UNVERÄNDERT! -->
+</head>
+
+<body>
+<div class="container">
+<div class="header">
+<div class="back-button-header">
+<a href="zwischen-herz-und-verstand.html" class="back-button">← Zurück zur Serie</a>
+</div>
+<h1>Zwischen Herz und Verstand</h1>
+<p>Lesen & Vorlesen-System - Lassen Sie sich in die emotionalen Geheimnisse der New Adult Welt entführen</p>
+<div class="versuchsreihe-badge">VERSUCHSREIHE</div>
+</div>
+
+<div class="controls">
+<div class="control-buttons">
+<button class="btn btn-play" onclick="startReading()">🔴 Vorlesen</button>
+<button class="btn btn-continue" onclick="continueReading()">▶️ Weiterlesen</button>
+<button class="btn btn-pause" onclick="pauseReading()">⏸️ Pause</button>
+<button class="btn btn-stop" onclick="stopReading()">⏹️ Stop</button>
+</div>
+
+<div class="language-navigation">
+<button class="btn btn-lang active" onclick="switchLanguage('de')">🇩🇪 Deutsch</button>
+<button class="btn btn-lang" onclick="switchLanguage('en')">🇬🇧 English</button>
+</div>
+
+<div class="band-navigation">
+<button class="btn btn-band active" onclick="showBand(1)">Band 1</button>
+<button class="btn btn-band" onclick="showBand(2)">Band 2</button>
+<button class="btn btn-band" onclick="showBand(3)">Band 3</button>
+</div>
+</div>
+
+<div class="content">
+<!-- DEUTSCHE VERSIONEN -->
+<div id="de-content" class="language-content">
+<!-- Band 1: Verborgene Gefühle (Deutsch) -->
+<div id="de-band1" class="band-content">
+<div class="book-title">Band 1: Verborgene Gefühle</div>
+<div class="chapter-title">Kapitel 1: Die Nachricht, die alles veränderte</div>
+<div class="text-content" id="de-textContent1">
+<p>Die sanfte Brise des späten Nachmittags trug den salzigen Duft des Meeres in die kleinen Gassen der Küstenstadt Adelaide. Clara versank in Gedanken, während sie über die blühende Bougainvillea entlang der Straßen schlenderte. Die warmen Farben der Sommerblumen spiegelten ihre Leidenschaft für die Kunst wider, die sie täglich in ihrem Job als Kunsthistorikerin im örtlichen Museum lebte. Diese Stadt war nicht nur ihr Zuhause, sie war ihre Muse.</p>
+
+<p>Heute war ein besonders schöner Tag. Die Sonne strahlte hell am Himmel, und die Wellen schimmerten im goldenen Licht. Clara stellte sich vor, wie sie mit Pinsel und Leinwand am Strand saß, ihre Umgebung in lebendigen Farben festhaltend. Diese Vorstellung erfüllte sie mit einem tiefen Glücksgefühl. Doch trotz der Schönheit um sie herum spürte sie eine leise Melancholie in ihrem Herzen, ein Verlangen nach etwas, das sie nicht benennen konnte.</p>
+
+<p>Gerade als sie an einem kleinen Café vorbeikam, hörte sie das Lachen von Menschen. Es zog sie magisch an, und sie beschloss, einen Moment innezuhalten und die lebhafte Atmosphäre aufzusaugen. Die Stimmen der Gäste, die Klänge von klirrenden Tassen und das Aroma von frisch gebrühtem Kaffee schienen sie in eine andere Welt zu entführen. Sie beobachtete, wie ein älteres Paar zusammensaß und die kleinen Freuden des Lebens genoss.</p>
+
+<p>Doch während sie schaute, lenkte plötzlich eine neue Person ihre Aufmerksamkeit ab. Ein Mann trat aus dem Café, und Clara konnte nicht anders, als ihn zu mustern. Er hatte eine ergreifende Ausstrahlung: groß und athletisch, mit markanten Gesichtszügen und einem selbstbewussten Lächeln. Seine dunklen Haare fielen leger über seine Stirn, und während er sich mit einem freundlichen Gruß zu einem anderen Gast drehte, bemerkte Clara, wie seine Augen in der Sonne funkelten.</p>
+
+<p>In diesem Augenblick hielt die Zeit für sie an. Als ihre Blicke sich trafen, überkam sie ein unerklärliches Prickeln. Es war, als ob die Luft zwischen ihnen elektrisch geladen war. Jeder Atemzug schien synchron zu einem tiefen, inneren Verlangen zu werden, das sie nie zuvor so intensiv gefühlt hatte. Sie war plötzlich lebendig, spürte die Sehnsucht, die sie oft in ihrer Kunst ausdrückte, doch jetzt war sie greifbar, lebendig und vor allem real.</p>
+
+<p>„Hi, ich bin Alex", sagte der Mann, als er sich Clara näherte, seine Stimme warm und einladend. „Ich hoffe, ich habe dich nicht belästigt."</p>
+
+<p>„Oh, nein! Ich bin Clara", sagte sie leise und spürte noch immer die Überraschung über die Intensität des Augenblicks. „Ich war nur... in Gedanken versunken." Ein verschmitztes Lächeln breitete sich auf Alex' Gesicht aus. „In diesem Fall könnte ich dir einen Kaffee anbieten, um die Gedanken zu sortieren?"</p>
+
+<p>Nach einem kurzen Zögern stimmte Clara zu. Es war untypisch für sie, in solchen Momenten impulsiv zu handeln, doch etwas an Alex's Ausstrahlung zog sie an. Sie ließ die Vertrautheit ihrer künstlerischen Welt hinter sich und folgte ihm ins Café.</p>
+
+<p>Sobald sie drinnen waren, bemerkte Clara, wie sich die Atmosphäre veränderte. Der Klang des Betriebs wurde zu einer sanften Melodie, und in dieser kleinen Blase fühlten sie sich wie in einer anderen Realität. Sie setzten sich an einen Tisch am Fenster, von wo aus sie die Wellen beobachten konnten, die sanft gegen die Küste brandeten.</p>
+
+<p>„Was führt dich in unsere kleine Stadt?", fragte Alex, während er den Kellner herbeirief. Clara spürte, wie ihre Nervosität allmählich verschwand, als sie ihm von ihrer Arbeit und ihrer Leidenschaft für die Kunst erzählte.</p>
+
+<p>„Ich liebe es, alte Meisterwerke zu studieren und zu verstehen, was sie über die Vergangenheit erzählen", erklärte sie begeistert. „Tatsächlich plane ich eine Ausstellung über lokale Künstler und deren Bedeutung für die Gemeinschaft."</p>
+
+<p>Seine Augen weiteten sich vor Interesse. „Das klingt fantastisch. Kunst hat eine unglaubliche Kraft, uns zu verbinden und Geschichten zu erzählen, nicht wahr?"</p>
+
+<p>„Absolut", antwortete Clara, ihre Stimme wurde lebhafter. „Es ist eine Sprache, die jeder versteht, egal woher man kommt."</p>
+
+<p>Während sie sprachen, schien die Zeit stillzustehen. Clara und Alex entdeckten, dass sie nicht nur eine gemeinsame Leidenschaft für die Kunst, sondern auch ähnliche Werte und Träume hatten. Clara spürte, wie sich eine vertrauliche Anziehung zwischen ihnen aufbaute -- eine Mischung aus Respekt und eine in die Tiefe gehende Verbindung, die sie nicht ignorieren konnte.</p>
+</div>
+</div>
+
+<!-- Band 2: Enthüllte Wahrheiten (Deutsch) -->
+<div id="de-band2" class="band-content hidden">
+<div class="book-title">Band 2: Enthüllte Wahrheiten</div>
+<div class="chapter-title">Kapitel 1: Nähe, die flieht</div>
+<div class="text-content" id="de-textContent2">
+<p>Die sanfte Brise des späten Nachmittags trug den salzigen Duft des Meeres in die kleinen Gassen der Küstenstadt Adelaide. Clara versank in Gedanken, während sie über die blühende Bougainvillea entlang der Straßen schlenderte. Die warmen Farben der Sommerblumen spiegelten ihre Leidenschaft für die Kunst wider, die sie täglich in ihrem Job als Kunsthistorikerin im örtlichen Museum lebte.</p>
+
+<p>Heute war ein besonders schöner Tag. Die Sonne strahlte hell am Himmel, und die Wellen schimmerten im goldenen Licht. Clara stellte sich vor, wie sie mit Pinsel und Leinwand am Strand saß, ihre Umgebung in lebendigen Farben festhaltend.</p>
+
+<p>Gerade als sie an einem kleinen Café vorbeikam, hörte sie das Lachen von Menschen. Es zog sie magisch an, und sie beschloss, einen Moment innezuhalten und die lebhafte Atmosphäre aufzusaugen. Die Stimmen der Gäste, die Klänge von klirrenden Tassen und das Aroma von frisch gebrühtem Kaffee schienen sie in eine andere Welt zu entführen.</p>
+
+<p>Doch während sie schaute, lenkte plötzlich eine neue Person ihre Aufmerksamkeit ab. Ein Mann trat aus dem Café, und Clara konnte nicht anders, als ihn zu mustern. Er hatte eine ergreifende Ausstrahlung: groß und athletisch, mit markanten Gesichtszügen. In diesem Augenblick hielt die Zeit für sie an. Als ihre Blicke sich trafen, überkam sie ein unerklärliches Prickeln. Es war, als ob die Luft zwischen ihnen elektrisch geladen war.</p>
+
+<p>„Oh, nein! Ich bin Clara", sagte sie leise, ihre Stimme bebte noch immer vor Überraschung über die Intensität des Augenblicks. „Ich war nur... in Gedanken versunken." Ein verschmitztes Lächeln breitete sich auf Alex' Gesicht aus.</p>
+
+<p>Nach einem kurzen Zögern stimmte Clara zu. Es war untypisch für sie, in solchen Momenten impulsiv zu handeln, doch etwas an Alex's Ausstrahlung zog sie an. Sie ließ die Vertrautheit ihrer künstlerischen Welt hinter sich und folgte ihm ins Café.</p>
+
+<p>Sobald sie drinnen waren, bemerkte Clara, wie sich die Atmosphäre veränderte. Der Klang des Betriebs wurde zu einer sanften Melodie, und in dieser kleinen Blase fühlten sie sich wie in einer anderen Realität. Sie setzten sich an einen Tisch am Fenster.</p>
+
+<p>„Was führt dich in unsere kleine Stadt?", fragte Alex, während er den Kellner herbeirief. Clara spürte, wie ihre Nervosität allmählich verschwand, als sie ihm von ihrer Arbeit und ihrer Leidenschaft für die Kunst erzählte.</p>
+
+<p>Seine Augen weiteten sich vor Interesse. „Das klingt fantastisch. Kunst hat eine unglaubliche Kraft, uns zu verbinden und Geschichten zu erzählen, nicht wahr?"</p>
+
+<p>„Absolut", antwortete Clara, ihre Stimme wurde lebhafter. „Es ist eine Sprache, die jeder versteht, egal woher man kommt."</p>
+
+<p>Während sie sprachen, schien die Zeit stillzustehen. Clara und Alex entdeckten, dass sie nicht nur eine gemeinsame Leidenschaft für die Kunst, sondern auch ähnliche Werte und Träume hatten. Clara spürte, wie sich eine vertrauliche Anziehung zwischen ihnen aufbaute.</p>
+
+<p>Doch als sie Alex' Augen betrachtete, spürte sie, dass er einen Teil seiner Geschichte nicht preisgab -- einen Schatten, über den er noch nicht sprechen wollte. Trotz ihrer eigenen Verletzlichkeit fühlte Clara ein tiefes Verlangen, ihm zu helfen, diese Mauern zu überwinden.</p>
+
+<p>„Clara, es ist so erfrischend, jemanden zu treffen, der genauso leidenschaftlich ist wie ich", sagte Alex schließlich mit einem Lächeln, das tief in ihr Herz eindrang. „Ich hoffe, es ist nicht unser letztes Gespräch."</p>
+
+<p>„Das hoffe ich auch", erwiderte sie, und in diesem Moment wussten sie beide, dass diese Begegnung nur der Anfang von etwas Außergewöhnlichem war.</p>
+</div>
+</div>
+
+<!-- Band 3: Wo Liebe wachsen darf (Deutsch) -->
+<div id="de-band3" class="band-content hidden">
+<div class="book-title">Band 3: Wo Liebe wachsen darf</div>
+<div class="chapter-title">📝 In Bearbeitung</div>
+<div class="text-content" id="de-textContent3">
+<p style="text-align: center; color: #666; font-style: italic; font-size: 1.3em; margin: 60px 20px;">
+🔄 Dieser Band ist noch in Bearbeitung...<br><br>
+Erscheint demnächst mit der emotionalen Vollendung von Lena und Julians Geschichte!
+</p>
+</div>
+</div>
+</div>
+
+<!-- ENGLISCHE VERSIONEN -->
+<div id="en-content" class="language-content hidden">
+<!-- Band 1: Hidden Feelings (English) -->
+<div id="en-band1" class="band-content">
+<div class="book-title">Band 1: Hidden Feelings</div>
+<div class="chapter-title">Chapter 1: The Message That Changed Everything</div>
+<div class="text-content" id="en-textContent1">
+<p>The gentle afternoon breeze carried the salty scent of the ocean into the small alleys of the coastal town Adelaide. Clara was lost in thought as she wandered along the blooming bougainvillea lining the streets. The warm colors of the summer flowers reflected her passion for art, which she lived daily in her job as an art historian at the local museum. This town was not just her home, it was her muse.</p>
+
+<p>Today was a particularly beautiful day. The sun shone brightly in the sky, and the waves shimmered in the golden light. Clara imagined herself sitting on the beach with brush and canvas, capturing her surroundings in vivid colors. This vision filled her with a deep sense of happiness. Yet despite the beauty around her, she felt a quiet melancholy in her heart, a longing for something she couldn't name.</p>
+
+<p>Just as she passed a small café, she heard the laughter of people. It drew her in magically, and she decided to pause for a moment and soak up the lively atmosphere. The voices of the guests, the sounds of clinking cups, and the aroma of freshly brewed coffee seemed to transport her to another world. She watched as an elderly couple sat together, enjoying life's small pleasures.</p>
+
+<p>But while she watched, suddenly a new person caught her attention. A man stepped out of the café, and Clara couldn't help but study him. He had a captivating presence: tall and athletic, with striking features and a confident smile. His dark hair fell casually over his forehead, and as he turned with a friendly greeting to another guest, Clara noticed how his eyes sparkled in the sun.</p>
+
+<p>In that moment, time stood still for her. When their eyes met, an inexplicable tingling overcame her. It was as if the air between them was electrically charged. Every breath seemed to synchronize with a deep, inner longing that she had never felt so intensely before. She was suddenly alive, feeling the yearning she often expressed in her art, but now it was tangible, alive, and above all real.</p>
+
+<p>"Hi, I'm Alex," said the man as he approached Clara, his voice warm and inviting. "I hope I haven't bothered you."</p>
+
+<p>"Oh, no! I'm Clara," she said quietly, still feeling the surprise at the intensity of the moment. "I was just... lost in thought." A mischievous smile spread across Alex's face. "In that case, I could offer you a coffee to help sort out those thoughts?"</p>
+
+<p>After a brief hesitation, Clara agreed. It was unusual for her to act impulsively in such moments, but something about Alex's presence drew her in. She left the familiarity of her artistic world behind and followed him into the café.</p>
+
+<p>Once inside, Clara noticed how the atmosphere changed. The sound of the bustling activity became a gentle melody, and in this small bubble they felt like they were in another reality. They sat at a table by the window, from where they could watch the waves gently lapping against the shore.</p>
+
+<p>"What brings you to our little town?" asked Alex as he called the waiter over. Clara felt her nervousness gradually disappear as she told him about her work and her passion for art.</p>
+
+<p>"I love studying old masterpieces and understanding what they tell us about the past," she explained enthusiastically. "Actually, I'm planning an exhibition about local artists and their significance to the community."</p>
+
+<p>His eyes widened with interest. "That sounds fantastic. Art has an incredible power to connect us and tell stories, doesn't it?"</p>
+
+<p>"Absolutely," Clara replied, her voice becoming more animated. "It's a language that everyone understands, no matter where they come from."</p>
+
+<p>As they spoke, time seemed to stand still. Clara and Alex discovered that they not only shared a common passion for art, but also similar values and dreams. Clara felt a confidential attraction building between them -- a mixture of respect and a deep connection that she couldn't ignore.</p>
+</div>
+</div>
+
+<!-- Band 2: Revealed Truths (English) -->
+<div id="en-band2" class="band-content hidden">
+<div class="book-title">Band 2: Revealed Truths</div>
+<div class="chapter-title">Chapter 1: Proximity that Flees</div>
+<div class="text-content" id="en-textContent2">
+<p>The gentle afternoon breeze carried the salty scent of the ocean into the small alleys of the coastal town Adelaide. Clara was lost in thought as she wandered along the blooming bougainvillea lining the streets. The warm colors of the summer flowers reflected her passion for art, which she lived daily in her job as an art historian at the local museum.</p>
+
+<p>Today was a particularly beautiful day. The sun shone brightly in the sky, and the waves shimmered in the golden light. Clara imagined herself sitting on the beach with brush and canvas, capturing her surroundings in vivid colors.</p>
+
+<p>Just as she passed a small café, she heard the laughter of people. It drew her in magically, and she decided to pause for a moment and soak up the lively atmosphere. The voices of the guests, the sounds of clinking cups, and the aroma of freshly brewed coffee seemed to transport her to another world.</p>
+
+<p>But while she watched, suddenly a new person caught her attention. A man stepped out of the café, and Clara couldn't help but study him. He had a captivating presence: tall and athletic, with striking features. In that moment, time stood still for her. When their eyes met, an inexplicable tingling overcame her. It was as if the air between them was electrically charged.</p>
+
+<p>"Oh, no! I'm Clara," she said quietly, her voice still trembling with surprise at the intensity of the moment. "I was just... lost in thought." A mischievous smile spread across Alex's face.</p>
+
+<p>After a brief hesitation, Clara agreed. It was unusual for her to act impulsively in such moments, but something about Alex's presence drew her in. She left the familiarity of her artistic world behind and followed him into the café.</p>
+
+<p>Once inside, Clara noticed how the atmosphere changed. The sound of the bustling activity became a gentle melody, and in this small bubble they felt like they were in another reality. They sat at a table by the window.</p>
+
+<p>"What brings you to our little town?" asked Alex as he called the waiter over. Clara felt her nervousness gradually disappear as she told him about her work and her passion for art.</p>
+
+<p>His eyes widened with interest. "That sounds fantastic. Art has an incredible power to connect us and tell stories, doesn't it?"</p>
+
+<p>"Absolutely," Clara replied, her voice becoming more animated. "It's a language that everyone understands, no matter where they come from."</p>
+
+<p>As they spoke, time seemed to stand still. Clara and Alex discovered that they not only shared a common passion for art, but also similar values and dreams. Clara felt a confidential attraction building between them.</p>
+
+<p>But when she looked into Alex's eyes, she sensed that he wasn't revealing part of his story -- a shadow he wasn't ready to talk about yet. Despite her own vulnerability, Clara felt a deep desire to help him overcome these walls.</p>
+
+<p>"Clara, it's so refreshing to meet someone who is as passionate as I am," Alex finally said with a smile that penetrated deep into her heart. "I hope this isn't our last conversation."</p>
+
+<p>"I hope so too," she replied, and in that moment they both knew that this encounter was only the beginning of something extraordinary.</p>
+</div>
+</div>
+
+<!-- Band 3: Where Love Can Grow (English) -->
+<div id="en-band3" class="band-content hidden">
+<div class="book-title">Band 3: Where Love Can Grow</div>
+<div class="chapter-title">📝 In Progress</div>
+<div class="text-content" id="en-textContent3">
+<p style="text-align: center; color: #666; font-style: italic; font-size: 1.3em; margin: 60px 20px;">
+🔄 This volume is still in progress...<br><br>
+Coming soon with the emotional completion of Lena and Julian's story!
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<script>
+let currentSpeech = null;
+let currentBand = 1;
+let currentLanguage = 'de';
+let currentWordIndex = 0;
+let allBandWords = {}; // Speichert Wörter für alle Bände und Sprachen
+let isReading = false;
+let lastHighlightedWord = null;
+
+// Initialisiere alle Bände beim Seitenstart
+function initializeAllBands() {
+['de', 'en'].forEach(lang => {
+allBandWords[lang] = {};
+for (let bandNumber = 1; bandNumber <= 3; bandNumber++) {
+const bandContent = document.querySelector(`#${lang}-band${bandNumber} .text-content`);
+if (bandContent && !bandContent.querySelector('.word')) {
+const paragraphs = bandContent.querySelectorAll('p');
+let wordCounter = 0;
+let bandWords = [];
+
+paragraphs.forEach((paragraph) => {
+// Skip "In Bearbeitung" paragraphs for Band 3
+if (paragraph.style.textAlign === 'center') return;
+
+const paragraphText = paragraph.textContent;
+const paragraphWords = paragraphText.split(/\s+/).filter(word => word.length > 0);
+
+let paragraphHTML = '';
+paragraphWords.forEach((word) => {
+paragraphHTML += `<span class="word" data-word-index="${wordCounter}" onclick="startFromWord(${wordCounter})">${word}</span> `;
+bandWords.push(word);
+wordCounter++;
+});
+
+paragraph.innerHTML = paragraphHTML;
+});
+
+// Speichere Wörter für diesen Band und Sprache
+allBandWords[lang][bandNumber] = bandWords;
+}
+}
+});
+}
+
+function switchLanguage(lang) {
+// Stoppe aktuelles Vorlesen
+pauseReading();
+
+// Verstecke alle Sprachen
+document.querySelectorAll('.language-content').forEach(content => {
+content.classList.add('hidden');
+});
+
+// Zeige ausgewählte Sprache
+document.getElementById(lang + '-content').classList.remove('hidden');
+
+// Update Sprachbuttons
+document.querySelectorAll('.btn-lang').forEach(btn => {
+btn.classList.remove('active');
+});
+event.target.classList.add('active');
+
+currentLanguage = lang;
+currentWordIndex = 0;
+clearHighlight();
+showBand(currentBand); // Zeige aktuellen Band in neuer Sprache
+}
+
+function showBand(bandNumber) {
+// Stoppe aktuelles Vorlesen
+pauseReading();
+
+// Verstecke alle Bände in aktueller Sprache
+for (let i = 1; i <= 3; i++) {
+const bandElement = document.getElementById(`${currentLanguage}-band${i}`);
+if (bandElement) {
+bandElement.classList.add('hidden');
+}
+}
+
+// Update Band-Buttons
+document.querySelectorAll('.btn-band').forEach((btn, index) => {
+btn.classList.remove('active');
+if (index === bandNumber - 1) {
+btn.classList.add('active');
+}
+});
+
+// Zeige ausgewählten Band
+const targetBand = document.getElementById(`${currentLanguage}-band${bandNumber}`);
+if (targetBand) {
+targetBand.classList.remove('hidden');
+}
+
+currentBand = bandNumber;
+currentWordIndex = 0;
+clearHighlight();
+}
+
+function startReading() {
+currentWordIndex = 0;
+clearHighlight();
+continueReading();
+}
+
+function continueReading() {
+if (currentSpeech) {
+currentSpeech.cancel();
+}
+
+const currentWords = allBandWords[currentLanguage] && allBandWords[currentLanguage][currentBand];
+
+if (currentWords && currentWords.length > 0) {
+// Text ab der aktuellen Position
+const remainingText = currentWords.slice(currentWordIndex).join(' ');
+
+currentSpeech = new SpeechSynthesisUtterance(remainingText);
+currentSpeech.rate = 1.0;
+currentSpeech.lang = currentLanguage === 'de' ? 'de-DE' : 'en-US';
+
+let wordCount = currentWordIndex;
+
+currentSpeech.onboundary = function(event) {
+if (event.name === 'word') {
+highlightCurrentWord(wordCount);
+wordCount++;
+currentWordIndex = wordCount;
+}
+};
+
+currentSpeech.onend = function() {
+isReading = false;
+};
+
+isReading = true;
+speechSynthesis.speak(currentSpeech);
+}
+}
+
+function startFromWord(wordIndex) {
+currentWordIndex = wordIndex;
+clearHighlight();
+continueReading();
+}
+
+function highlightCurrentWord(wordIndex) {
+// Entferne vorherige Highlights
+if (lastHighlightedWord) {
+lastHighlightedWord.classList.remove('word-highlight');
+}
+
+// Highlights das entsprechende Wort im aktuellen Band und Sprache
+const wordSpan = document.querySelector(`#${currentLanguage}-band${currentBand} [data-word-index="${wordIndex}"]`);
+if (wordSpan) {
+wordSpan.classList.add('word-highlight');
+lastHighlightedWord = wordSpan;
+
+// Scroll to current word
+wordSpan.scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+}
+
+function clearHighlight() {
+document.querySelectorAll('.word-highlight').forEach(el => {
+el.classList.remove('word-highlight');
+});
+lastHighlightedWord = null;
+}
+
+function pauseReading() {
+if (currentSpeech) {
+speechSynthesis.cancel();
+currentSpeech = null;
+isReading = false;
+// BEHALTE die blaue Markierung!
+}
+}
+
+function stopReading() {
+if (currentSpeech) {
+speechSynthesis.cancel();
+currentSpeech = null;
+isReading = false;
+}
+
+// Zurück zum Anfang + alle Markierungen löschen
+currentWordIndex = 0;
+clearHighlight();
+}
+
+// Initialisierung beim Seitenstart
+document.addEventListener('DOMContentLoaded', function() {
+initializeAllBands(); // Initialisiere ALLE Bände und Sprachen
+showBand(1); // Zeige Band 1
+});
+</script>
+
+</body>
+</html>
