@@ -119,10 +119,7 @@ background: linear-gradient(135deg, #28a745, #20c997);
 color: white;
 }
 
-.btn-pause {
-background: linear-gradient(135deg, #ffc107, #fd7e14);
-color: white;
-}
+
 
 .btn-stop {
 background: linear-gradient(135deg, #dc3545, #e83e8c);
@@ -225,12 +222,16 @@ display: none !important;
 
 .status-message {
 text-align: center;
-padding: 10px;
-margin: 10px 0;
+padding: 8px;
+margin: 5px 0;
 border-radius: 10px;
 background: #e8f5e8;
 color: #2d6c2d;
 font-weight: bold;
+transition: all 0.3s ease;
+height: 32px;
+line-height: 16px;
+overflow: hidden;
 }
 
 .error-message {
@@ -284,7 +285,6 @@ margin-bottom: 15px;
 <div class="control-buttons">
 <button class="btn btn-play" id="playBtn">🔴 Vorlesen</button>
 <button class="btn btn-continue" id="continueBtn">▶️ Weiterlesen</button>
-<button class="btn btn-pause" id="pauseBtn">⏸️ Pause</button>
 <button class="btn btn-stop" id="stopBtn">⏹️ Stop</button>
 </div>
 
@@ -598,14 +598,17 @@ function initializeEventListeners() {
     const buttons = [
         { id: 'playBtn', func: startReading },
         { id: 'continueBtn', func: continueReading },
-        { id: 'pauseBtn', func: pauseReading },
         { id: 'stopBtn', func: stopReading }
     ];
     
     buttons.forEach(({ id, func }) => {
         const btn = document.getElementById(id);
         if (btn) {
-            btn.addEventListener('click', func);
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                func();
+            });
             console.log(`Added listener to ${id}`);
         }
     });
@@ -619,7 +622,11 @@ function initializeEventListeners() {
     langButtons.forEach(({ id, lang }) => {
         const btn = document.getElementById(id);
         if (btn) {
-            btn.addEventListener('click', () => switchLanguage(lang));
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                switchLanguage(lang);
+            });
             console.log(`Added language listener to ${id}`);
         }
     });
@@ -628,7 +635,11 @@ function initializeEventListeners() {
     for (let i = 1; i <= 4; i++) {
         const btn = document.getElementById(`band${i}Btn`);
         if (btn) {
-            btn.addEventListener('click', () => showBand(i));
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                showBand(i);
+            });
             console.log(`Added band listener to band${i}Btn`);
         }
     }
@@ -657,7 +668,7 @@ function initializeAllBands() {
 
                             let paragraphHTML = '';
                             paragraphWords.forEach((word) => {
-                                paragraphHTML += `<span class="word" data-word-index="${wordCounter}" onclick="startFromWord(${wordCounter})">${word}</span> `;
+                                paragraphHTML += `<span class="word" data-word-index="${wordCounter}" onclick="event.preventDefault(); event.stopPropagation(); startFromWord(${wordCounter})">${word}</span> `;
                                 allWords.push(word);
                                 wordCounter++;
                             });
@@ -676,7 +687,7 @@ function initializeAllBands() {
 
 // Switch Language
 function switchLanguage(lang) {
-    pauseReading();
+    stopReading();
     showStatusMessage(`Wechsle zu ${lang === 'de' ? 'Deutsch' : 'English'}...`, false);
 
     // Hide all languages
@@ -711,7 +722,7 @@ function switchLanguage(lang) {
 
 // Show Band
 function showBand(bandNumber) {
-    pauseReading();
+    stopReading();
     showStatusMessage(`Lade Band ${bandNumber}...`, false);
 
     // Hide all bands in current language
@@ -847,8 +858,19 @@ function highlightCurrentWord(wordIndex) {
         wordSpan.classList.add('word-highlight');
         lastHighlightedWord = wordSpan;
 
-        // Scroll to current word
-        wordSpan.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        // Gentle scroll to current word without jumping
+        const rect = wordSpan.getBoundingClientRect();
+        const controlsHeight = document.querySelector('.controls').offsetHeight;
+        const viewportHeight = window.innerHeight;
+        
+        // Only scroll if word is not visible or near the edges
+        if (rect.top < controlsHeight + 50 || rect.bottom > viewportHeight - 50) {
+            wordSpan.scrollIntoView({ 
+                behavior: 'smooth', 
+                block: 'center',
+                inline: 'nearest'
+            });
+        }
     }
 }
 
@@ -857,17 +879,6 @@ function clearHighlight() {
         el.classList.remove('word-highlight');
     });
     lastHighlightedWord = null;
-}
-
-function pauseReading() {
-    if (currentSpeech && isReading) {
-        speechSynthesis.cancel();
-        currentSpeech = null;
-        isReading = false;
-        showStatusMessage('Vorlesen pausiert.', false);
-        setTimeout(() => hideStatusMessage(), 1500);
-        console.log('Reading paused');
-    }
 }
 
 function stopReading() {
