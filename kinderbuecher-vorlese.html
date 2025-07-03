@@ -1,155 +1,424 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <title>Kinderbücher Vorleseseite</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kinderbücher - Helmuts Wortwelten</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-  <style>
-    body {
-      font-family: Georgia, serif;
-      background: linear-gradient(135deg, #f093fb, #f5576c);
-      color: #2c3e50;
-      padding: 20px;
-    }
-    .book-section {
-      margin-bottom: 60px;
-      padding: 30px;
-      background: #fff;
-      border-radius: 15px;
-      box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-    }
-    .book-cover {
-      width: 180px;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-      margin-bottom: 20px;
-    }
-    .chapter {
-      margin-top: 20px;
-    }
-    .chapter h3 {
-      color: #e91e63;
-      font-style: italic;
-    }
-    .language-switch {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      z-index: 999;
-    }
-    .language-switch button {
-      margin: 5px;
-      padding: 10px 14px;
-      font-weight: bold;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      background: #fff;
-    }
-    .hidden {
-      display: none;
-    }
-  </style>
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            padding: 1rem 0;
+            margin-bottom: 2rem;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #2c3e50;
+            text-decoration: none;
+        }
+
+        /* Navigation */
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav a {
+            color: #2c3e50;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+
+        nav a:hover {
+            color: white;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            transform: translateY(-2px);
+        }
+
+        /* Back Button */
+        .back-button {
+            display: inline-block;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            margin: 2rem 0;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .back-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        /* Main Content */
+        .main-content {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            margin: 2rem 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .page-title {
+            font-size: 2.8rem;
+            color: #2c3e50;
+            margin-bottom: 2rem;
+            text-align: center;
+            border-bottom: 3px solid #e91e63;
+            padding-bottom: 1rem;
+        }
+
+        .genre-intro {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #6c757d;
+            margin-bottom: 3rem;
+            line-height: 1.8;
+        }
+
+        /* Books Grid */
+        .books-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .book-card {
+            background: #f8f9fa;
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .book-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(45deg, #f39c12, #e91e63);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .book-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .book-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .book-cover {
+            width: 200px;
+            height: 280px;
+            object-fit: cover;
+            border-radius: 15px;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .book-card:hover .book-cover {
+            transform: scale(1.05);
+        }
+
+        .book-title {
+            font-size: 1.6rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            color: #2c3e50;
+        }
+
+        .book-description {
+            color: #6c757d;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+            font-size: 1rem;
+        }
+
+        .book-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 25px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            cursor: pointer;
+        }
+
+        .btn-read {
+            background: linear-gradient(45deg, #28a745, #20c997);
+            color: white;
+            box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);
+        }
+
+        .btn-read:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(40, 167, 69, 0.4);
+        }
+
+        .btn-listen {
+            background: linear-gradient(45deg, #6f42c1, #e83e8c);
+            color: white;
+            box-shadow: 0 4px 15px rgba(111, 66, 193, 0.3);
+        }
+
+        .btn-listen:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(111, 66, 193, 0.4);
+        }
+
+        .btn-amazon {
+            background: linear-gradient(45deg, #ff9500, #ff6b35);
+            color: white;
+            box-shadow: 0 4px 15px rgba(255, 149, 0, 0.3);
+        }
+
+        .btn-amazon:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 149, 0, 0.4);
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(44, 62, 80, 0.9);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 4rem;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 1rem;
+            }
+            
+            .main-content {
+                padding: 2rem;
+                margin: 1rem;
+            }
+            
+            .page-title {
+                font-size: 2.2rem;
+            }
+            
+            .books-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .book-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 200px;
+            }
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
 </head>
-<body><!-- Sprachwahl-Schalter -->
-<div class="language-switch">
-  <button onclick="switchLanguage('de')">🇩🇪 Deutsch</button>
-  <button onclick="switchLanguage('en')">🇬🇧 English</button>
+<body>
+
+<header>
+    <div class="container">
+        <div class="header-content">
+            <a href="index.html" class="logo">Helmuts Wortwelten</a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Startseite</a></li>
+                    <li><a href="kinderbuecher.html">Kinderbücher</a></li>
+                    <li><a href="chroniken.html">Chroniken</a></li>
+                    <li><a href="kontakte.html">Kontakte</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+<div class="container">
+    <a href="index.html" class="back-button">← Zurück zur Startseite</a>
+    
+    <main class="main-content fade-in">
+        <h1 class="page-title">🌈 Kinderbücher</h1>
+        
+        <p class="genre-intro">
+            Abenteuer, die bilden – Geschichten, die begeistern! 
+            Pädagogisch wertvolle Erzählungen für junge Leser von 6-14 Jahren, 
+            die nicht nur unterhalten, sondern auch wichtige Lebenslektionen vermitteln.
+        </p>
+
+        <div class="books-grid">
+            
+            <!-- Der verborgene Wald -->
+            <div class="book-card fade-in">
+                <img src="verborgenerwald.jpg" alt="Der verborgene Wald" class="book-cover">
+                <h3 class="book-title">Der verborgene Wald</h3>
+                <p class="book-description">
+                    Ein magisches Abenteuer über Freundschaft, Mut und die Geheimnisse der Natur. 
+                    Tauche ein in eine Welt voller Wunder und lerne, dass jeder Baum eine Geschichte erzählt.
+                </p>
+                <div class="book-buttons">
+                    <a href="verborgenerwald-lesen.html" class="btn btn-read">📖 Lesen</a>
+                    <a href="verborgenerwald-vorlesen.html" class="btn btn-listen">🎧 Vorlesen</a>
+                    <a href="https://amazon.de/dp/ASINVERBORGENERWALD" class="btn btn-amazon">📚 Bei Amazon</a>
+                </div>
+            </div>
+
+            <!-- Rätseldetektivclub -->
+            <div class="book-card fade-in">
+                <img src="raetseldetektivclub.jpg" alt="Rätseldetektivclub" class="book-cover">
+                <h3 class="book-title">Rätseldetektivclub</h3>
+                <p class="book-description">
+                    Spannende Fälle für clevere Köpfe! Begleite die jungen Detektive bei ihren aufregenden 
+                    Ermittlungen und löse knifflige Rätsel voller Überraschungen.
+                </p>
+                <div class="book-buttons">
+                    <a href="raetseldetektivclub-lesen.html" class="btn btn-read">📖 Lesen</a>
+                    <a href="raetseldetektivclub-vorlesen.html" class="btn btn-listen">🎧 Vorlesen</a>
+                    <a href="https://amazon.de/dp/ASINRAETSELDETEKTIVCLUB" class="btn btn-amazon">📚 Bei Amazon</a>
+                </div>
+            </div>
+
+            <!-- Der Zeitnarr -->
+            <div class="book-card fade-in">
+                <img src="zeitnarr.jpg" alt="Der Zeitnarr" class="book-cover">
+                <h3 class="book-title">Der Zeitnarr</h3>
+                <p class="book-description">
+                    Eine fantastische Reise durch die Zeit! Erlebe historische Abenteuer und lerne, 
+                    dass Vergangenheit, Gegenwart und Zukunft miteinander verbunden sind.
+                </p>
+                <div class="book-buttons">
+                    <a href="zeitnarr-lesen.html" class="btn btn-read">📖 Lesen</a>
+                    <a href="zeitnarr-vorlesen.html" class="btn btn-listen">🎧 Vorlesen</a>
+                    <a href="https://amazon.de/dp/ASINZEITNARR" class="btn btn-amazon">📚 Bei Amazon</a>
+                </div>
+            </div>
+
+            <!-- Die Zauberakademie von Morgenstern -->
+            <div class="book-card fade-in">
+                <img src="zauberakademie.jpg" alt="Die Zauberakademie von Morgenstern" class="book-cover">
+                <h3 class="book-title">Die Zauberakademie von Morgenstern</h3>
+                <p class="book-description">
+                    Willkommen in der magischsten Schule der Welt! Entdecke die Geheimnisse der Zauberei 
+                    und lerne, dass wahre Magie im Herzen beginnt.
+                </p>
+                <div class="book-buttons">
+                    <a href="zauberakademie-lesen.html" class="btn btn-read">📖 Lesen</a>
+                    <a href="zauberakademie-vorlesen.html" class="btn btn-listen">🎧 Vorlesen</a>
+                    <a href="https://amazon.de/dp/ASINZAUBERAKADEMIE" class="btn btn-amazon">📚 Bei Amazon</a>
+                </div>
+            </div>
+
+            <!-- Mondstein - wird zur Trilogie -->
+            <div class="book-card fade-in">
+                <img src="mondstein.jpg" alt="Mondstein" class="book-cover">
+                <h3 class="book-title">Mondstein</h3>
+                <p class="book-description">
+                    Ein magisches Abenteuer um einen geheimnisvollen Stein und seine Kraft. 
+                    <strong style="color: #e91e63;">WIRD ZUR TRILOGIE ERWEITERT!</strong><br>
+                    <em>Lesen & Vorlesen derzeit in Vorbereitung - bald als 3-bändige Serie verfügbar.</em>
+                </p>
+                <div class="book-buttons">
+                    <a href="mondstein-lesen.html" class="btn btn-read">📖 Lesen</a>
+                    <a href="mondstein-vorlesen.html" class="btn btn-listen">🎧 Vorlesen</a>
+                    <a href="https://amazon.de/dp/ASINMONDSTEIN" class="btn btn-amazon">📚 Bei Amazon</a>
+                </div>
+                <div style="margin-top: 1rem; padding: 0.5rem; background: #fff3cd; border-radius: 10px; font-size: 0.9rem; color: #856404;">
+                    🔄 <strong>In Überarbeitung:</strong> Mondstein wird zur spannenden Trilogie!
+                </div>
+            </div>
+
+        </div>
+
+    </main>
 </div>
 
-<!-- Zurück zur Genre-Startseite -->
-<div style="margin-bottom: 40px;">
-  <a href="index.html" style="font-weight:bold; font-size:18px;">← Zurück zur Genre-Auswahl</a>
-</div><div id="book1" class="book-section">
-  <h2>🌲 Der verborgene Wald</h2>
-  <img src="verborgener-wald.jpg" alt="Cover Der verborgene Wald" class="book-cover">
+<footer>
+    <div class="container">
+        <p>&copy; 2025 Helmut Wegner - Helmuts Wortwelten. Geschichten mit Tiefe, Herz und Haltung.</p>
+    </div>
+</footer>
 
-  <div class="chapter de">
-    <h3>Kapitel 1: Das flüsternde Blatt</h3>
-    <p>Als Emma das erste Mal den geheimnisvollen Pfad entlangging, raschelten die Blätter wie Stimmen im Wind…</p>
-    <!-- Vollständiger deutscher Text weiter hier -->
-  </div>
-
-  <div class="chapter en hidden">
-    <h3>Chapter 1: The Whispering Leaf</h3>
-    <p>When Emma first walked down the mysterious path, the leaves rustled like voices in the wind…</p>
-    <!-- Full English translation continues here -->
-  </div>
-</div><div id="book2" class="book-section">
-  <h2>📙 Der Rätseldetektivclub</h2>
-  <img src="raetseldetektivclub.jpg" alt="Cover Der Rätseldetektivclub" class="book-cover">
-
-  <div class="chapter de">
-    <h3>Kapitel 1: Ein neuer Fall beginnt</h3>
-    <p>Die Nachmittagssonne schien durch die hohen Fenster der Schulbibliothek, und Max blätterte gelangweilt in einem alten Buch…</p>
-    <!-- Vollständiger deutscher Text weiter hier -->
-  </div>
-
-  <div class="chapter en hidden">
-    <h3>Chapter 1: A New Case Begins</h3>
-    <p>The afternoon sun streamed through the tall windows of the school library as Max flipped idly through an old book…</p>
-    <!-- Full English translation continues here -->
-  </div>
-</div><div id="book3" class="book-section">
-  <h2>⏳ Der Zeitnarr</h2>
-  <img src="zeitnarr.jpg" alt="Cover Der Zeitnarr" class="book-cover">
-
-  <div class="chapter de">
-    <h3>Kapitel 1: Der Flohmarktfund</h3>
-    <p>Der Flohmarkt war eine Welt für sich. Reihen von Ständen zogen sich über den kleinen Marktplatz…</p>
-    <!-- Vollständiger deutscher Text folgt -->
-  </div>
-
-  <div class="chapter en hidden">
-    <h3>Chapter 1: The Flea Market Discovery</h3>
-    <p>The flea market was a world of its own. Rows of stalls stretched across the small town square…</p>
-    <!-- Full English translation continues -->
-  </div>
-</div><div id="book4" class="book-section">
-  <h2>🧙‍♂️ Die Zauberakademie von Morgenstern</h2>
-  <img src="zauberakademie.jpg" alt="Cover Die Zauberakademie von Morgenstern" class="book-cover">
-
-  <div class="chapter de">
-    <h3>Kapitel 1: Die geheimnisvolle Einladung</h3>
-    <p>Die Morgenluft war kühl und klar, als Leonas Grünfeld seinen Schulranzen über die Schulter schwang...</p>
-    <!-- Vollständiger deutscher Text weiter hier -->
-  </div>
-
-  <div class="chapter en hidden">
-    <h3>Chapter 1: The Mysterious Invitation</h3>
-    <p>The morning air was cool and crisp as Leonas Grünfeld slung his school bag over his shoulder...</p>
-    <!-- Full English translation continues here -->
-  </div>
-</div><script>
-  function switchLanguage(lang) {
-    document.querySelectorAll('.chapter').forEach(section => {
-      section.classList.add('hidden');
-    });
-    document.querySelectorAll('.chapter.' + lang).forEach(section => {
-      section.classList.remove('hidden');
-    });
-  }
-
-  function speakText(lang, text) {
-    const utterance = new SpeechSynthesisUtterance(text);
-    utterance.lang = lang === 'de' ? 'de-DE' : 'en-GB';
-    utterance.rate = 1;
-    utterance.pitch = 1;
-    speechSynthesis.speak(utterance);
-  }
-</script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
