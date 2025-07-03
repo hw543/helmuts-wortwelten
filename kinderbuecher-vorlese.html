@@ -120,7 +120,28 @@
     <p>The morning air was cool and crisp as Leonas Grünfeld slung his school bag over his shoulder...</p>
     <!-- Full English translation continues here -->
   </div>
-</div>
+</div><script>
+  function switchLanguage(lang) {
+    document.querySelectorAll('.chapter').forEach(section => {
+      section.classList.add('hidden');
+    });
+    document.querySelectorAll('.chapter.' + lang).forEach(section => {
+      section.classList.remove('hidden');
+    });
+  }
+
+  function speakText(lang, text) {
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = lang === 'de' ? 'de-DE' : 'en-GB';
+    utterance.rate = 1;
+    utterance.pitch = 1;
+    speechSynthesis.speak(utterance);
+  }
+</script>
+</body>
+</html>
+
+
 
 
 
