@@ -1,1 +1,688 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kinderbücher - Lesen & Vorlesen - Helmut Wegners Wortwelten</title>
+<style>
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
 
+body {
+font-family: 'Comic Sans MS', cursive, sans-serif;
+line-height: 1.8;
+color: #2c1810;
+background: linear-gradient(135deg, #FFB6C1 0%, #FFC0CB 25%, #FFE4E1 50%, #FFCCCB 75%, #FFB6C1 100%);
+min-height: 100vh;
+padding: 20px;
+padding-top: 160px;
+}
+
+.container {
+max-width: 900px;
+margin: 0 auto;
+background: #FFF8F0;
+border-radius: 15px;
+box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+overflow: hidden;
+}
+
+.header {
+background: linear-gradient(135deg, #FF69B4, #FF1493, #DC143C);
+color: #FFF8F0;
+padding: 30px;
+text-align: center;
+position: relative;
+}
+
+.back-button-header {
+position: absolute;
+top: 15px;
+left: 15px;
+}
+
+.back-button {
+background: rgba(255, 255, 255, 0.2);
+color: white;
+padding: 8px 16px;
+border: 2px solid rgba(255, 255, 255, 0.3);
+border-radius: 20px;
+font-size: 0.9em;
+cursor: pointer;
+text-decoration: none;
+display: inline-block;
+transition: all 0.3s ease;
+font-weight: bold;
+}
+
+.back-button:hover {
+background: rgba(255, 255, 255, 0.3);
+transform: translateY(-2px);
+}
+
+.header h1 {
+font-size: 2.5em;
+margin-bottom: 10px;
+text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.header p {
+font-size: 1.2em;
+opacity: 0.9;
+font-style: italic;
+}
+
+.versuchsreihe-badge {
+background: #FFD700;
+color: #FF1493;
+padding: 5px 15px;
+border-radius: 15px;
+font-size: 0.9em;
+font-weight: bold;
+margin-top: 10px;
+display: inline-block;
+}
+
+.controls {
+background: #FFFFFF;
+padding: 20px;
+border-bottom: 3px solid #FF69B4;
+position: fixed;
+top: 0;
+z-index: 100;
+box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.control-buttons {
+display: flex;
+gap: 15px;
+justify-content: center;
+flex-wrap: wrap;
+margin-bottom: 15px;
+}
+
+.btn {
+padding: 12px 24px;
+border: none;
+border-radius: 25px;
+font-size: 1em;
+font-weight: bold;
+cursor: pointer;
+transition: all 0.3s ease;
+min-width: 120px;
+}
+
+.btn-play {
+background: linear-gradient(135deg, #FF1493, #FF69B4);
+color: white;
+}
+
+.btn-stop {
+background: linear-gradient(135deg, #dc3545, #e83e8c);
+color: white;
+}
+
+.btn-continue {
+background: linear-gradient(135deg, #17a2b8, #6f42c1);
+color: white;
+}
+
+.btn:hover {
+transform: translateY(-2px);
+box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.book-navigation, .language-navigation {
+display: flex;
+gap: 10px;
+justify-content: center;
+flex-wrap: wrap;
+margin-bottom: 10px;
+}
+
+.btn-book, .btn-lang {
+background: linear-gradient(135deg, #FF1493, #AD1457);
+color: #FFF8F0;
+padding: 10px 20px;
+border: 2px solid transparent;
+}
+
+.btn-book.active, .btn-lang.active {
+border-color: #FFD700;
+box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+}
+
+.content {
+padding: 30px;
+font-size: 1.1em;
+line-height: 1.8;
+}
+
+.book-title {
+color: #FF1493;
+font-size: 2em;
+margin-bottom: 10px;
+text-align: center;
+border-bottom: 2px solid #FF69B4;
+padding-bottom: 15px;
+}
+
+.chapter-title {
+color: #AD1457;
+font-size: 1.5em;
+margin: 30px 0 20px 0;
+text-align: center;
+font-style: italic;
+}
+
+.text-content {
+text-align: justify;
+margin-bottom: 30px;
+}
+
+.word {
+cursor: pointer;
+transition: all 0.2s ease;
+padding: 1px 2px;
+border-radius: 3px;
+}
+
+.word:hover {
+background-color: #FFE4E1;
+}
+
+.word-highlight {
+background-color: #4169E1;
+color: white;
+padding: 2px 4px;
+border-radius: 4px;
+box-shadow: 0 2px 5px rgba(65, 105, 225, 0.3);
+}
+
+.hidden {
+display: none;
+}
+
+@media (max-width: 600px) {
+.control-buttons, .book-navigation, .language-navigation {
+gap: 10px;
+}
+
+.btn {
+min-width: 100px;
+font-size: 0.9em;
+padding: 10px 16px;
+}
+
+.content {
+padding: 20px;
+font-size: 1em;
+}
+
+.header h1 {
+font-size: 2em;
+}
+
+.back-button-header {
+position: relative;
+top: 0;
+left: 0;
+margin-bottom: 15px;
+}
+}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="header">
+<div class="back-button-header">
+<a href="kinderbuecher.html" class="back-button">← Zurück zur Übersicht</a>
+</div>
+<h1>🎪 Kinderbücher Vorlese-System</h1>
+<p>Lesen & Vorlesen-System - Spannende Abenteuer zum Anhören!</p>
+</div>
+
+<div class="controls">
+<div class="control-buttons">
+<button class="btn btn-play" onclick="startReading()">🔴 Vorlesen</button>
+<button class="btn btn-continue" onclick="continueReading()">▶️ Weiterlesen</button>
+<button class="btn btn-stop" onclick="stopReading()">⏹️ Stop</button>
+</div>
+
+<div class="language-navigation">
+<button class="btn btn-lang active" onclick="switchLanguage('de')">🇩🇪 Deutsch</button>
+<button class="btn btn-lang" onclick="switchLanguage('en')">🇬🇧 English</button>
+</div>
+
+<div class="book-navigation">
+<button class="btn btn-book active" onclick="showBook(1)">Buch 1</button>
+<button class="btn btn-book" onclick="showBook(2)">Buch 2</button>
+<button class="btn btn-book" onclick="showBook(3)">Buch 3</button>
+<button class="btn btn-book" onclick="showBook(4)">Buch 4</button>
+<button class="btn btn-book" onclick="showBook(5)">Buch 5</button>
+</div>
+</div>
+
+<div class="content">
+<!-- DEUTSCHE VERSIONEN -->
+<div id="de-content" class="language-content">
+<!-- Buch 1: Rätseldetektivclub (Deutsch) -->
+<div id="de-book1" class="book-content">
+<div style="text-align: center; margin-bottom: 20px;">
+<img src="raetseldetektivclub.jpg" alt="Rätseldetektivclub Cover" style="max-width: 200px; height: auto; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.3);">
+</div>
+<div class="book-title">Rätseldetektivclub</div>
+<div class="chapter-title">Kapitel 1: Ein neuer Fall beginnt</div>
+<div class="text-content" id="de-textContent1">
+<p>Die Nachmittagssonne schien durch die hohen Fenster der Schulbibliothek, und Max blätterte gelangweilt in einem alten Buch. Sein Blick wanderte über die staubigen Regale, als er plötzlich einen alten, vergilbten Umschlag bemerkte, der aus einem zerlesenen Band hervorstand. Neugierig zog er den Umschlag heraus und öffnete ihn vorsichtig. Innen befand sich eine Notiz in geschwungener Handschrift: „Suche dort, wo die Schatten Geschichten erzählen, und finde den ersten Schlüssel." Max' Herz schlug schneller. Das klang nach einem Rätsel, das nur darauf wartete, gelöst zu werden. Ohne zu zögern, steckte er den Umschlag ein und eilte aus der Bibliothek.</p>
+
+<p>Der Club versammelt sich in ihrem geheimen Hauptquartier: dem alten Baumhaus im Garten von Jonas. Die Wände des Baumhauses waren mit Landkarten, Zeitungsausschnitten und Fotos dekoriert, die sie von ihren bisherigen Abenteuern gesammelt hatten. „Was hast du da, Max?", fragte Emma neugierig, als er den Umschlag auf den Tisch legte. „Das ist ein Rätsel!" Max erklärte aufgeregt, was er in der Bibliothek gefunden hatte. Jonas lehnte sich nach vorn, die Stirn gerunzelt. „Wo die Schatten Geschichten erzählen" ... Das klingt wie das alte Theater in der Stadt." „Oder vielleicht das Museum?", warf Lena ein. „Dort gibt es doch diese Abteilung mit alten Märchenfiguren." Die Gruppe diskutierte lebhaft, bis sie sich schließlich darauf einigte, zuerst das Theater zu untersuchen.</p>
+
+<p>Am Abend schlichen sich die vier Freunde in das alte, längst geschlossene Theater. Der große Saal war dunkel, und Staub tanzte in den Lichtstrahlen ihrer Taschenlampen. Überall standen alte Kulissen und Requisiten. „Hier erzählen die Schatten wirklich Geschichten", murmelte Lena und zeigte auf die seltsamen Schatten, die die Kulissen auf die Wände warfen. Emma entdeckte schließlich eine unscheinbare Holztruhe, die halb unter einer Bühne verborgen war. Sie kniete sich hin und zog sie hervor. „Hier! Das könnte der Schlüssel sein!" Mit klopfendem Herzen öffneten sie die Truhe und fanden darin eine kleine Karte und eine weitere Nachricht: „Der Weg beginnt mit einem Schritt ins Ungewisse. Folge den Sternen, und du wirst den zweiten Hinweis finden." Jonas hielt die Karte hoch. „Das ist ein Plan von unserer Stadt ... und diese Markierung zeigt den alten Uhrenturm. Das ist unser nächster Halt."</p>
+
+<p>Als die Kinder das Theater verließen, bemerkten sie, dass sie nicht allein waren. Ein dunkler Schatten bewegte sich hinter einem der Fenster, und draußen auf der Straße war das leise Summen eines Motors zu hören. „Jemand beobachtet uns", flüsterte Emma, während sie sich an Jonas klammerte. „Weg hier!", rief Max und rannte los, die anderen dicht hinter ihm. In letzter Sekunde schlüpften sie in eine schmale Gasse und versteckten sich hinter einem Stapel alter Kisten. Keuchend lauschten sie, wie schwere Schritte näherkamen und dann wieder verschwanden. „Das war knapp", sagte Lena atemlos. „Aber jetzt wissen wir, dass wir nicht die Einzigen sind, die hinter diesem Rätsel her sind." Max nickte. „Das macht es nur noch spannender. Morgen gehen wir zum Uhrenturm."</p>
+
+<p>Die Freunde trennten sich schließlich, jeder in Gedanken versunken. Max lag in seinem Bett und starrte an die Decke. Wer könnte noch hinter dem Rätsel her sein? Und was würde sie am Uhrenturm erwarten? Die Erkundung des Uhrenturms. Der Uhrenturm ragte düster vor ihnen auf, als sie das verlassene Gelände betraten. Die Zeit hatte ihre Spuren hinterlassen -- bröckelnde Steine, verwilderte Ranken und ein Tor, das nur noch an einer Scharnierhälfte hing " fühlt sich das unheimlich an", flüsterte Lena. „Genau richtig für ein Abenteuer", entgegnete Jonas mit einem schiefen Grinsen und schob das quietschende Tor auf. Drinnen roch es nach feuchtem Holz und Staub. Der Boden war mit alten Blättern und Schutt bedeckt, und in der Ferne hörten sie das Tropfen von Wasser. Max leuchtete mit seiner Taschenlampe umher, während Emma das Tagebuch hervorzog, das sie am Abend zuvor gefunden hatten. „Hier steht etwas über eine geheime Treppe", sagte sie. „Sie soll hinter einer Falltür sein." Jonas klopfte mit seinem Fuß gegen die Dielen und lauschte. „Hier! Das klingt hohl." Gemeinsam schafften sie es, die schwere Holzklappe anzuheben, die eine schmale, steinerne Treppe freigab, die hinab in die Dunkelheit führte.</p>
+
+<p>„Ich gehe zuerst", sagte Jonas, doch Max hielt ihn zurück. „Warte. Lass mich. Ich habe die Karte." Die Stufen knarrten unter Max' Gewicht, während er langsam hinunterstieg. Die anderen folgten ihm dicht auf den Fersen. Die Luft wurde kühler, und ein schwaches Licht flackerte am Ende der Treppe -- als würde eine alte Lampe mit letzter Kraft kämpfen, nicht zu erlöschen. „Was ist das für ein Ort?", fragte Lena flüsternd, während sie in einen kleinen Raum traten. Die Wände waren mit seltsamen Symbolen bemalt, die Max an alte Karten erinnerten, die er einmal in einem Geschichtsbuch gesehen hatte. In der Mitte des Raumes stand ein Podest, auf dem eine kleine Truhe lag, umgeben von einer dünnen Staubschicht. Emma trat vorsichtig näher und untersuchte sie. „Keine Schlösser, keine Fallen ... zumindest keine, die ich sehe", murmelte sie, bevor sie den Deckel öffnete. Drinnen lag ein seltsames Medaillon, das in die Karte eingearbeitet zu sein schien. „Das sieht aus wie ... ein Teil von etwas Größerem", bemerkte Max. „Vielleicht ein Schlüssel", überlegte Jonas. Doch bevor sie weiter nachdenken konnten, hallte ein lautes Geräusch durch den Raum -- Schritte, die sich der Treppe näherten. „Schnell, wir müssen hier raus!", flüsterte Lena panisch. Die Freunde griffen nach dem Medaillon und suchten verzweifelt nach einem zweiten Ausgang. Der Raum schien jedoch keine weiteren Türen zu haben. Die Schritte wurden lauter, und eine dunkle Silhouette erschien oben an der Treppe. Max presste das Medaillon fest an sich und flüsterte: „Egal, was passiert -- wir dürfen das Rätsel nicht aufgeben."</p>
+
+<p>Das Abenteuer hatte gerade erst begonnen, doch sie ahnten bereits, dass der Weg gefährlicher war, als sie sich vorgestellt hatten. Die Schritte hallten bedrohlich durch den Raum, jedes Geräusch ein scharfes Echo, das die Nerven der Kinder zum Zerreißen brachte. Max schloss für einen Moment die Augen und zwang sich, ruhig zu bleiben. „Wir müssen etwas tun", flüsterte er, doch die Panik in den Gesichtern seiner Freunde zeigte, dass auch sie keine Idee hatten. Emma deutete plötzlich auf eine schmale Öffnung in der Wand, kaum groß genug, um hindurchzukriechen. „Da! Vielleicht führt das nach draußen!" Jonas zögerte keine Sekunde und schob den schweren Stein beiseite, der die Öffnung verdeckte. „Los, schnell!" Lena war die Erste, die in die Dunkelheit kroch, gefolgt von Emma und Max. Jonas hielt kurz inne, sah zur Treppe, wo die Silhouette stehen geblieben war, und verschwand dann ebenfalls durch den schmalen Spalt.</p>
+
+<p>Die Passage war eng und kalt, die Wände rochen nach feuchtem Stein und Moder. Max fühlte, wie sich sein Pulsschlag beschleunigte. Vor ihm kroch Emma, die ihre Taschenlampe auf den Boden richtete, um den Weg zu beleuchten. „Wo führt das hin?", fragte Lena flüsternd. Ihre Stimme klang klein und ängstlich in der erdrückenden Stille. „Egal wohin, Hauptsache weg von dem Typen", antwortete Jonas, der hinter Max kroch und immer wieder zurückschaute, als erwartete er, dass die Silhouette ihnen folgen würde. Plötzlich endete der schmale Gang vor einer Holzleiter, die steil nach oben führte. „Das könnte unser Ausgang sein", murmelte Max und begann vorsichtig, die Sprossen zu erklimmen. Die Leiter führte in einen kleinen, verlassenen Lagerraum. Staub bedeckte alte Kisten und Möbel, und ein zerbrochenes Fenster ließ schwaches Mondlicht in den Raum fallen. Max half den anderen hinauf und zog Jonas als Letzten durch die Luke. „Das war knapp", keuchte Lena und wischte sich den Schmutz von den Händen. Doch Emma schüttelte den Kopf. „Wir sind bisher nicht in Sicherheit. Wer war das, und warum hat er uns verfolgt?" Max holte das Medaillon aus seiner Tasche und betrachtete es erneut. Die gravierten Zeichen darauf schienen im schwachen Licht fast zu schimmern. „Vielleicht wollte er das", flüsterte er.</p>
+
+<p>Max wusste, dass dies kein gewöhnliches Abenteuer werden würde -- und der wahre Schlüssel im Verborgenen lag.</p>
+</div>
+</div>
+
+<!-- Buch 2: Die Zauberakademie von Morgenstern (Deutsch) -->
+<div id="de-book2" class="book-content hidden">
+<div style="text-align: center; margin-bottom: 20px;">
+<img src="die zauberakademie.jpg" alt="Die Zauberakademie Cover" style="max-width: 200px; height: auto; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.3);">
+</div>
+<div class="book-title">Die Zauberakademie von Morgenstern</div>
+<div class="chapter-title">Kapitel 1: Die geheimnisvolle Einladung</div>
+<div class="text-content" id="de-textContent2">
+<p>Die Morgenluft war kühl und klar, als Leonas Grünfeld seinen Schulranzen über die Schulter schwang und den staubigen Weg zur Schule einschlug. Der Pfad schlängelte sich zwischen alten Eichen hindurch, deren Äste sich wie schützende Arme über ihm verwoben und Schatten auf den ausgetretenen Weg warfen. Sein Dorf, eingebettet in weite Felder und dichte Wälder, erwachte langsam zum Leben. Die Morgensonne malte goldene Streifen über die Wiesen, auf denen der Tau wie tausend kleine Diamanten funkelte.</p>
+
+<p>Leonas war ein schüchterner Junge von zwölf Jahren mit strohblonden Haaren, die ihm ständig in die Stirn fielen, und grünen Augen, die oft nachdenklich und ein wenig melancholisch in die Ferne blickten. Er mied die lauten Kinder in seiner Klasse und zog es vor, Zeit mit den Tieren des Waldes zu verbringen, die ihn nie verspotteten oder ausschlossen. Seine Schritte waren leise und bedacht, als würde er versuchen, so unsichtbar wie möglich zu bleiben, während er durch die Welt wandelte.</p>
+
+<p>Heute war keine Ausnahme. Als Leonas die Schule erreichte, das alte Backsteingebäude mit seinen hohen, schmalen Fenstern und dem verwitterten Schieferdach, war es nur eine Frage von Minuten, bevor sie ihn umringten. „Hey, Grünfeld! Hast du wieder mit deinen Eichhörnchen geplaudert?", fragte Jasper mit einem breiten Grinsen und stieß Leonas an die Schulter. Die anderen Kinder lachten, während Leonas stumm blieb und den Boden betrachtete. Seine Hände umklammerten den Riemen seines Ranzens, und er wünschte sich nichts sehnlicher, als unsichtbar zu werden.</p>
+
+<p>Nach einem langen Tag voller peinlicher Momente und schiefer Blicke eilte Leonas nach Hause. Er verbrachte den Nachmittag wie gewohnt in seinem Lieblingsversteck, einer kleinen Lichtung im Wald, wo ein alter Baum mit knorrigen Wurzeln stand. Es war sein Zufluchtsort, sein Heiligtum, der einzige Ort auf der Welt, wo er sich vollkommen zu Hause fühlte. Hier war er nicht der seltsame Junge, der nicht in die Schule passte, nicht der Außenseiter, der nicht wusste, wie er sich verhalten sollte. Hier war er einfach nur Leonas, ein Teil der natürlichen Welt, die ihn ohne Vorurteile akzeptierte.</p>
+
+<p>Doch heute war etwas anders, etwas, das die gewohnte Ruhe des Waldes durchbrach. Als er die Augen öffnete, bemerkte er eine seltsame Gestalt, die neben dem Stamm des alten Baumes stand, als wäre sie aus dem Nichts erschienen. Es war ein Mann, hochgewachsen und von edler, königlicher Haltung, in einen schimmernden, dunkelblauen Mantel gehüllt, der im gedämpften Licht des Waldes zu funkeln schien wie der Nachthimmel voller Sterne.</p>
+
+<p>„Leonas Grünfeld, nehme ich an?", fragte der Mann mit einer warmen und ruhigen Stimme. „Ja, das bin ich", stammelte Leonas und fragte sich, woher dieser fremde Mann seinen Namen kannte. „Wer sind Sie? Und woher wissen Sie, wer ich bin?" Der Mann lächelte. „Mein Name ist Elias Nachtflug. Ich bin ein Bote der Zauberakademie von Morgenstern. Und ich habe eine besondere Einladung für dich, junger Leonas." Mit diesen Worten zog er eine Pergamentrolle aus seinem Mantel. Das Pergament schimmerte in einem sanften goldenen Licht, als wäre es von Magie durchdrungen.</p>
+
+<p>Leonas starrte den Mann ungläubig an. „Eine Zauberakademie?", flüsterte er. „Aber... aber das gibt es doch gar nicht. Das sind nur Märchen." Elias' Lächeln wurde breiter. „Märchen, sagst du? Schau dich um, Leonas. Siehst du nicht die Magie, die dich jeden Tag umgibt? Die Art, wie die Tiere zu dir kommen, wie die Pflanzen unter deinen Händen zu gedeihen scheinen? Du hast schon immer gewusst, dass du anders bist." Das Abenteuer, von dem er immer geträumt hatte, hatte endlich begonnen, und obwohl er nicht wusste, was ihn erwartete, spürte er zum ersten Mal in seinem Leben, dass er bereit war, mutig zu sein.</p>
+</div>
+</div>
+
+<!-- Buch 3: Das Geheimnis von Mondstein (Deutsch) -->
+<div id="de-book3" class="book-content hidden">
+<div style="text-align: center; margin-bottom: 20px;">
+<img src="mondstein.jpg" alt="Das Geheimnis von Mondstein Cover" style="max-width: 200px; height: auto; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.3);">
+</div>
+<div class="book-title">Das Geheimnis von Mondstein</div>
+<div style="text-align: center; color: #AD1457; font-size: 0.9em; margin-bottom: 15px; font-style: italic;">
+📚 Wird zu einer 3-Band-Reihe erweitert - in Arbeit!
+</div>
+<div class="chapter-title">Kapitel 1: Das leuchtende Fragment</div>
+<div class="text-content" id="de-textContent3">
+<p>Es war ein gewöhnlicher Nachmittag, der in einem abgelegenen Park begann, wo die Bäume sich dicht aneinanderreihen und das Licht der tiefstehenden Sonne sich in goldenen Strahlen durch die Äste schlich. Der Herbst war gekommen, und die Blätter hatten sich bereits in alle erdenklichen Farben verwandelt: von knalligem Rot bis zu sanftem Gelb. Der Park, der aus alten Eichen und knorrigen Buchen bestand, war ein Ort, den Leni, Finn und Arvid oft besuchten, um ihre Abenteuer zu erleben. Doch heute sollte alles anders werden.</p>
+
+<p>„Seht mal!", rief Leni plötzlich, als sie stehen blieb und ihre Augen auf etwas am Boden richtete. Sie kniete sich hin und betrachtete mit einem gemischten Ausdruck aus Staunen und Neugier einen kleinen, glimmenden Fleck im Gras. Es war ein schwaches, fast unmerkliches Licht, das aus dem Dickicht hervorzutreten schien, wie ein flimmerndes Geheimnis, das darauf wartete, entdeckt zu werden.</p>
+
+<p>Finn trat vorsichtig näher. „Was ist das?", fragte er, seine Stimme trug die Skepsis eines Jungen, der gern alles hinterfragt. Er konnte sich nicht vorstellen, dass etwas in diesem Park so wichtig sein sollte. Doch dann, als das Licht sanft auf seine Hand fiel, spürte er etwas -- eine seltsame, beinahe magnetische Anziehungskraft.</p>
+
+<p>Arvid war die erste Person, die sich nicht zurückhielt. „Wahrscheinlich irgendein Schimmer von einem alten Spiegel oder so!", sagte er enthusiastisch und ging noch einen Schritt näher. „Ich schau mal!" Und schon war er mit einem lauten Knistern im Laub bei dem leuchtenden Fleck angekommen. „Pass auf, Arvid", warnte Leni, aber sie konnte die Neugier in ihren eigenen Augen nicht verbergen. „Was, wenn das wirklich etwas Besonderes ist?" Sie blickte hinab, um das Licht genauer zu untersuchen. Das war kein gewöhnlicher Glanz. Es schimmerte und flimmerte, als ob der Park selbst einen verborgenen Schatz von Bedeutung verborgen hätte.</p>
+
+<p>Arvid beugte sich hinab und zog vorsichtig das Objekt aus dem Gras. Es war ein kleiner, unscheinbarer Stein, der auf der Oberfläche eine fast unsichtbare Gravur hatte. Doch als Arvid den Stein in den Händen hielt und das Licht des Spätnachmittags darauf fiel, änderte sich etwas. Die Gravur leuchtete schwach und bildete Muster, die die Freunde nicht sofort deuten konnten. „Was ist das für ein Zeichen?", fragte Finn und betrachtete es aus der Nähe. „Ich habe so etwas noch nie gesehen." Leni beugte sich ebenfalls näher und strich mit dem Finger über die feinen Linien. „Es sieht aus wie... eine Art Karte?" Ihre Stimme war von einer Mischung aus Aufregung und Verwunderung begleitet. „Seht mal, hier sind Linien, die sich kreuzen, und da... da ist etwas, das wie ein Berg aussieht!"</p>
+
+<p>Arvid, der immer gleich in Aktion war, sprang auf. „Das ist doch kein Zufall! Vielleicht ist das eine Art Schatzkarte!", rief er aus und grinste begeistert. „Komm schon, wir müssen herausfinden, wohin sie führt!" Finn, der eher der Denker war, schüttelte nachdenklich den Kopf. „Moment mal, das hier könnte gefährlich sein. Wir sollten erstmal mehr darüber herausfinden. Es könnte eine alte Legende oder ein Rätsel sein, das wir lösen müssen." Doch Leni hatte bereits einen neuen Gedanken. „Finn, du hast doch von diesem alten Naturbuch erzählt, in dem von verschwundenen Orten und magischen Zeichen die Rede ist, oder? Vielleicht passt das hier zu den Geschichten!" Finn nickte, nachdenklich, aber auch ein wenig skeptisch. „Es könnte... aber wir wissen noch nichts über das Fragment. Es könnte eine Falle sein." Arvid jedoch konnte es kaum erwarten, das Rätsel zu lösen. „Kommt schon, wir müssen es herausfinden! Vielleicht steckt hinter diesem Stein mehr, als wir uns vorstellen können!"</p>
+
+<p>Als sie über das Fragment und die Muster auf der Oberfläche diskutierten, spürten sie plötzlich ein leichtes Vibrieren in ihren Händen. Es war, als würde der Stein selbst eine Antwort geben -- eine Verbindung, die sie noch nicht ganz verstehen konnten. Das Licht des Fragments wurde intensiver, und der Park schien sich um sie herum zu verändern. Ein fast unmerklicher Wind zog auf, und die Bäume rauschten, als ob sie ein geheimes Flüstern zu den Kindern hatten. Leni und Finn tauschten einen kurzen Blick aus, und in diesem Moment wussten sie, dass sie an der Schwelle zu etwas viel Größerem standen. Das Fragment war kein gewöhnlicher Stein -- es war ein Schlüssel zu etwas, das sie noch nicht begreifen konnten, aber das sie für immer verändern würde.</p>
+
+<p>„Das ist erst der Anfang", flüsterte Leni, ihre Augen glänzten vor Aufregung. „Und was kommt als Nächstes?", fragte Arvid, sein Gesicht war eine Mischung aus Neugier und Abenteuerlust. Seine Finger kribbelten bereits vor Vorfreude auf das, was vor ihnen lag. „Ich weiß nicht, aber wir sollten vorsichtig sein", sagte Finn ernst. „Vielleicht ist es nur der erste Schritt in etwas, das viel größer und gefährlicher ist, als wir uns vorstellen können." Aber Leni, die nicht stillsitzen konnte, trat einen Schritt zurück, um das Fragment in ihren Händen noch einmal zu betrachten. Es fühlte sich nun anders an -- nicht nur ein Stein, sondern ein Rätsel, das darauf wartete, entschlüsselt zu werden. „Wir müssen mehr herausfinden. Vielleicht gibt es noch andere Fragmente, vielleicht sind wir nicht die Ersten, die es gefunden haben."</p>
+
+<p>Die drei Freunde standen zusammen, ein starkes Band der Entschlossenheit und Neugier zwischen ihnen. Und obwohl sie noch nicht wussten, wohin diese Entdeckung sie führen würde, wussten sie eines mit Sicherheit: Es würde ihre Welt verändern. Mit der letzten Dämmerung des Tages begannen sie ihren ersten Schritt in ein Abenteuer, das mehr Fragen aufwarf, als es Antworten gab. Doch sie waren bereit, jeder Herausforderung zu begegnen. Was auch immer vor ihnen lag, sie würden es gemeinsam erleben. Und während sie mit dem Fragment in der Hand und einem aufregenden Plan im Kopf den Park verließen, war sich jeder von ihnen sicher: Dies war erst der Anfang einer Reise, die nicht nur ihre Freundschaft auf die Probe stellen würde, sondern auch die Welt, wie sie sie gekannt hatten.</p>
+
+<p>Sie würden nicht mehr dieselben Menschen sein, die sie einmal waren. Das Fragment hatte etwas in ihnen geweckt, etwas, das tief in ihren Herzen schlummerte. Eine Neugier, die sie nicht mehr loslassen würde. Die Zeit, in der sie sorglos durch den Park gewandert waren, war vorbei. Jetzt waren sie auf der Suche nach etwas, das ihre Welt für immer verändern konnte. Die Antworten auf ihre Fragen, das wussten sie, waren nicht einfach zu finden. Aber der Drang, weiterzusuchen, war stärker als je zuvor.</p>
+</div>
+</div>
+
+<!-- Buch 4: Der verborgene Wald (Deutsch) -->
+<div id="de-book4" class="book-content hidden">
+<div style="text-align: center; margin-bottom: 20px;">
+<img src="verborgener-wald.jpg" alt="Der verborgene Wald Cover" style="max-width: 200px; height: auto; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.3);">
+</div>
+<div class="book-title">Der verborgene Wald</div>
+<div class="chapter-title">Kapitel 1: Die geheimnisvolle Karte</div>
+<div class="text-content" id="de-textContent4">
+<p>Die Sonne neigte sich dem Horizont entgegen und tauchte den Himmel in ein sanftes Orange. Max und Lisa standen auf dem alten Marktplatz ihrer Stadt und schauten sich neugierig um. Der Platz war leer, die meisten Geschäfte hatten bereits geschlossen, und nur das entfernte Kichern der Kinder, die auf dem Heimweg waren, war zu hören. Aber Max und Lisa waren nicht in die Richtung nach Hause gegangen. Sie hatten etwas anderes im Kopf.</p>
+
+<p>„Glaubst du, es ist wirklich der Verborgene Wald?", fragte Max aufgeregt. Er sprang von einem Bein auf das andere und klopfte sich mit der Hand auf die Tasche, in der er eine kleine Notiz versteckt hatte, die sie den ganzen Nachmittag über verfolgt hatte. „Vielleicht...", antwortete Lisa nachdenklich. Sie drehte sich langsam um, um nach dem geheimen Hinweis zu suchen, den sie erhalten hatten. Max hatte die Nachricht in einem alten Buch gefunden, das sie im Antiquariat der Stadt entdeckt hatten. Sie hatte sie verwirrt, aber auch neugierig gemacht.</p>
+
+<p>Die Nachricht sprach von einem alten Mann, der sie zur geheimen Karte führen würde -- eine Karte, die zu einem versteckten Ort voller Magie und Abenteuer führte. Max hatte sofort entschieden, dass sie sich auf den Weg machen sollten, aber Lisa hatte etwas mehr Zeit gebraucht, um sich zu überlegen, ob es wirklich sicher war. „Schau mal da!", rief Max plötzlich und zeigte auf einen schmalen, fast verborgenen Weg zwischen den Häusern. Am Ende des Weges stand ein alter Mann in einem langen, grauen Umhang. Seine Augen leuchteten wie zwei funkelnde Sterne. Lisa spürte sofort eine seltsame Energie in seiner Nähe -- als ob der Wald, von dem sie gehört hatten, in ihm lebte.</p>
+
+<p>Der Mann bemerkte sie sofort und winkte mit einer einladenden Geste. „Ah, du bist gekommen", sagte er mit einer Stimme, die sich wie das Flüstern des Windes anhörte. „Ich habe gewusst, dass ihr es seid." „W-wir?", fragte Max überrascht. „Wie können Sie das wissen?" Der Mann lächelte geheimnisvoll. „Ich kenne viele Dinge, die andere nicht wissen. Die Karte, die ihr sucht, wird euch den Weg zeigen, aber nur, wenn ihr mutig genug seid, ihn zu gehen."</p>
+
+<p>Er zog eine alte, zusammengerollte Karte aus seinem Mantel und überreichte sie Max. Die Karte war mit seltsamen Symbolen und bunten, geheimen Markierungen verziert. Der Rand war mit goldenen Schnörkeln geschmückt, die in der Dämmerung im Schein des Mondes schimmerten. Max öffnete die Karte und hielt sie neugierig in der Hand. Es war, als ob die Karte lebendig wurde. Sie schien zu flimmern und zu pulsieren, als ob sie aufgeregt darauf wartete, dass er sie entdeckte. „Was bedeutet das?", fragte Lisa und deutete auf einen merkwürdigen, leuchtenden Punkt in der Mitte der Karte. „Der Verborgene Wald", erklärte der Mann. „Er wartet auf euch. Wenn ihr ihm begegnet, werdet ihr ein Geheimnis erfahren, das schon viele Jahre verborgen ist. Doch nur die, die das Herz eines Abenteurers haben, können es finden."</p>
+
+<p>Max' Augen glänzten vor Aufregung. „Das hört sich nach einem echten Abenteuer an!", rief er und drückte die Karte fest an sich. Lisa hingegen schaute sich die Karte und den alten Mann misstrauisch an. „Aber was passiert, wenn wir nicht zurückkommen?", fragte sie leise. Der Mann schaute sie mit einem wissenden Blick an. „Ihr werdet zurückkommen", sagte er sanft. „Doch nicht so, wie ihr gegangen seid. Ihr werdet stärker, weiser und vielleicht auch ein wenig anders sein. Aber das ist das Abenteuer." Max zog Lisa etwas ungeduldig am Ärmel. „Komm schon, Lisa! Wir können es doch wenigstens versuchen!" Lisa seufzte, doch in ihren Augen funkelte die Neugier. „Okay", sagte sie schließlich. „Aber nur, wenn du uns auch hilfst, den Weg zu finden." Der alte Mann nickte und verschwand dann im Schatten der Gasse, als ob er nie da gewesen wäre. Max und Lisa standen einen Moment lang unschlüssig da, dann drehten sie sich gemeinsam in Richtung des Waldes.</p>
+
+<p>Es war bereits Abend, und die ersten Sterne waren am Himmel zu sehen. Die Karte in Max' Händen leuchtete schwach, als ob sie ihnen den Weg wies. Sie waren sich nicht sicher, was sie erwarten würde -- doch die Spannung, die das Unbekannte mit sich brachte, ließ ihre Herzen schneller schlagen. „Lass uns aufbrechen", sagte Max entschlossen. Lisa zögerte kurz, dann nickte sie. „Ja, aufbrechen, aber vorsichtig", murmelte sie, während sie Bruno, ihren Hund, der freudig neben ihnen herlief, ansah. „Wir müssen uns gut vorbereiten. Vielleicht brauchen wir Proviant, ein paar Seile und auf jeden Fall etwas zum Leuchten", überlegte Lisa laut, während Max bereits in eine der Taschen seiner Jacke griff und nach seinen Abenteuergütern suchte. „Das wird großartig", sagte Max und packte eine Taschenlampe ein. „Was ist, wenn wir Magie entdecken?" Lisa drehte sich um und blickte zur Karte, die in seinen Händen pulsierte. „Was, wenn wir uns verlaufen oder etwas anderes passiert?"</p>
+
+<p>Doch gerade, als sie die Frage laut aussprach, schimmerte die Karte plötzlich heller. Ein warmes, goldenes Licht flimmerte auf der Karte auf und löste sich wie ein Nebel in der Luft auf. Ein leises Geräusch, wie das sanfte Rascheln von Blättern, war zu hören. „Sie lebt...", flüsterte Lisa fasziniert. Max griff nach ihrer Hand, und gemeinsam folgten sie der magischen Spur, die die Karte ihnen zeigte. Doch gerade als sie die ersten Schritte auf den Waldweg setzten, erklang ein leises, unheimliches Knistern in der Luft -- ein Geräusch, das ihnen das Gefühl gab, dass sie nicht alleine waren. „Bist du bereit?", fragte Max. „Ich weiß nicht", sagte Lisa mit einem Blick auf die Karte, „aber ich glaube, die Reise hat gerade erst begonnen."</p>
+
+<p>Mit einem letzten Blick zurück auf die Stadt, die langsam in der Dunkelheit verschwand, traten Max, Lisa und Bruno in den geheimen Wald ein, und das Abenteuer begann. Der Wald schien in dieser Nacht lebendig zu sein. Das Rascheln der Blätter war wie ein leises, einladendes Murmeln, das nur für sie bestimmt war. Doch gleichzeitig war da ein Gefühl der Unheimlichkeit -- als ob sie nicht alleine auf diesem Weg waren. Ein Knistern lag in der Luft. Die Karte in Max' Händen leuchtete weiter schwach, als ob sie ihnen den Weg wies. Sie waren sich nicht sicher, was sie erwarten würde -- doch die Spannung, die das Unbekannte mit sich brachte, ließ ihre Herzen schneller schlagen. Ihre Herzen klopften schneller, als sie sich tiefer in die Dunkelheit wagten. Und so begann ihre Reise -- ein Abenteuer, das sie nie vergessen würden.</p>
+</div>
+</div>
+
+<!-- Buch 5: Der Zeitnarr (Deutsch) -->
+<div id="de-book5" class="book-content hidden">
+<div style="text-align: center; margin-bottom: 20px;">
+<img src="zeitnarr.jpg" alt="Der Zeitnarr Cover" style="max-width: 200px; height: auto; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.3);">
+</div>
+<div class="book-title">Der Zeitnarr</div>
+<div class="chapter-title">Kapitel 1: Der Flohmarktfund</div>
+<div class="text-content" id="de-textContent5">
+<p>Der Flohmarkt war eine Welt für sich. Reihen von Ständen zogen sich über den kleinen Marktplatz, jeder beladen mit einer kunterbunten Mischung aus Altem, Kuriosem und Wertvollem. Max schob sich durch die Menschenmenge, die Hände tief in den Taschen seiner abgetragenen Jeans vergraben. Seine Mutter hatte ihn mitgeschleppt, obwohl er eigentlich lieber zu Hause geblieben wäre.</p>
+
+<p>„Hier, Max! Schau mal, alte Bücher!" rief seine Mutter und verschwand zwischen den Ständen. Max seufzte. Bücher waren nicht sein Ding. Er streifte ziellos durch die Gassen, bis sein Blick an einem kleinen Stand hängen blieb. Er war unscheinbar -- ein alter Mann mit einem zerknitterten Gesicht saß auf einem wackeligen Stuhl hinter einem Tisch, auf dem eine Ansammlung von scheinbar wertlosem Kram lag. Doch etwas auf diesem Tisch zog Max magisch an. Eine Taschenuhr.</p>
+
+<p>Die Uhr war aus Messing, verziert mit filigranen Gravuren, die sich wie ein Labyrinth über die Oberfläche zogen. Ihr Glas war leicht zerkratzt, und der Deckel lag halb offen. Max griff danach, zögerte kurz, doch dann nahm er sie in die Hand. Sie fühlte sich überraschend schwer an, und als er sie öffnete, schlug die Zeiger wie von selbst einen wilden Tanz.</p>
+
+<p>„Interessierst du dich für alte Dinge?" fragte der Mann mit heiserer Stimme. Seine Augen funkelten auf eine Art, die Max nicht einordnen konnte -- irgendwo zwischen Neugier und Geheimnis. „Vielleicht. Was kostet sie?" Max drehte die Uhr in seiner Hand, während das Zifferblatt im Licht der Nachmittagssonne aufblitzte. Der Mann schien kurz nachzudenken. „Für dich? Zehn Euro. Aber sei vorsichtig mit ihr. Diese Uhr hat mehr Geschichte, als du dir vorstellen kannst."</p>
+
+<p>Zuhause setzte sich Max an seinen Schreibtisch. Er klappte die Uhr auf und betrachtete das Zifferblatt genauer. Es schien fast zu leben -- die Gravuren bewegten sich leicht, als ob sie atmeten. Ohne lange nachzudenken, zog er die kleine Krone an der Seite auf. Plötzlich schien die Luft im Raum zu vibrieren. Ein tiefes Summen erfüllte seine Ohren, und die Wände um ihn herum verschwammen. Max riss die Augen auf, wollte die Uhr fallen lassen, doch sie klebte wie festgewachsen an seiner Hand.</p>
+
+<p>Ein grelles Licht flammte auf, und für einen Moment schien die Welt stillzustehen. Dann war es vorbei. Als Max blinzelte, fand er sich nicht mehr in seinem Zimmer wieder. Er stand in einer engen, kopfsteingepflasterten Gasse. Die Gebäude zu beiden Seiten waren alt und schief, aus grobem Holz und Stein gebaut. Menschen in seltsamen Kleidern eilten an ihm vorbei, manche warfen ihm irritierte Blicke zu. Max schnappte nach Luft. „Wo bin ich?" murmelte er, doch seine Stimme klang fremd, fast erstickt. Er spürte die Uhr in seiner Hand pulsieren, wie ein Herzschlag. Und dann hörte er eine Stimme hinter sich, leise und bedrohlich: „Na, Zeitnarr? Du hast keine Ahnung, was du da angerichtet hast."</p>
+</div>
+</div>
+</div>
+
+<!-- ENGLISCHE VERSIONEN -->
+<div id="en-content" class="language-content hidden">
+<!-- Book 1: Mystery Detective Club (English) -->
+<div id="en-book1" class="book-content">
+<div style="text-align: center; margin-bottom: 20px;">
+<img src="raetseldetektivclub.jpg" alt="Mystery Detective Club Cover" style="max-width: 200px; height: auto; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.3);">
+</div>
+<div class="book-title">Mystery Detective Club</div>
+<div class="chapter-title">Chapter 1: A New Case Begins</div>
+<div class="text-content" id="en-textContent1">
+<p>The afternoon sun shone through the tall windows of the school library, and Max was leafing boredly through an old book. His gaze wandered over the dusty shelves when he suddenly noticed an old, yellowed envelope protruding from a well-worn volume. Curious, he pulled out the envelope and opened it carefully. Inside was a note in elegant handwriting: "Search where shadows tell stories, and find the first key." Max's heart beat faster. This sounded like a riddle just waiting to be solved. Without hesitation, he pocketed the envelope and hurried out of the library.</p>
+
+<p>The club gathered in their secret headquarters: the old tree house in Jonas's garden. The walls of the tree house were decorated with maps, newspaper clippings, and photos they had collected from their previous adventures. "What do you have there, Max?" Emma asked curiously as he placed the envelope on the table. "It's a riddle!" Max excitedly explained what he had found in the library. Jonas leaned forward, his brow furrowed. "Where shadows tell stories"... That sounds like the old theater in town." "Or maybe the museum?" Lena suggested. "There's that section with old fairy tale figures." The group discussed animatedly until they finally agreed to investigate the theater first.</p>
+
+<p>In the evening, the four friends snuck into the old, long-closed theater. The large hall was dark, and dust danced in the light beams of their flashlights. Old backdrops and props stood everywhere. "Here the shadows really do tell stories," Lena murmured, pointing to the strange shadows that the backdrops cast on the walls. Emma finally discovered an inconspicuous wooden chest that was half hidden under a stage. She knelt down and pulled it out. "Here! This could be the key!" With beating hearts, they opened the chest and found a small map and another message: "The path begins with a step into the unknown. Follow the stars, and you will find the second clue." Jonas held up the map. "This is a plan of our city... and this marking shows the old clock tower. That's our next stop."</p>
+
+<p>As the children left the theater, they noticed they were not alone. A dark shadow moved behind one of the windows, and outside on the street, the quiet hum of a motor could be heard. "Someone is watching us," Emma whispered while clinging to Jonas. "Get out of here!" Max shouted and ran off, the others close behind him. At the last second, they slipped into a narrow alley and hid behind a pile of old boxes. Gasping, they listened as heavy footsteps approached and then disappeared again. "That was close," Lena said breathlessly. "But now we know we're not the only ones after this riddle." Max nodded. "That just makes it more exciting. Tomorrow we go to the clock tower."</p>
+
+<p>The friends finally separated, each lost in thought. Max lay in his bed and stared at the ceiling. Who else could be after the riddle? And what would await them at the clock tower? The exploration of the clock tower. The clock tower loomed ominously before them as they entered the abandoned grounds. Time had left its marks -- crumbling stones, wild vines, and a gate that hung only on one hinge. "This feels scary," Lena whispered. "Perfect for an adventure," Jonas replied with a crooked grin and pushed open the squeaking gate. Inside it smelled of damp wood and dust. The floor was covered with old leaves and debris, and in the distance they heard the dripping of water. Max shone his flashlight around while Emma pulled out the diary they had found the evening before. "There's something here about a secret staircase," she said. "It's supposed to be behind a trapdoor." Jonas tapped his foot against the floorboards and listened. "Here! This sounds hollow." Together they managed to lift the heavy wooden flap, which revealed a narrow stone staircase leading down into the darkness.</p>
+
+<p>"I'll go first," Jonas said, but Max held him back. "Wait. Let me. I have the map." The steps creaked under Max's weight as he slowly descended. The others followed close behind. The air became cooler, and a weak light flickered at the end of the stairs -- as if an old lamp was fighting with its last strength not to go out. "What kind of place is this?" Lena asked in a whisper as they entered a small room. The walls were painted with strange symbols that reminded Max of old maps he had once seen in a history book. In the center of the room stood a pedestal on which lay a small chest, surrounded by a thin layer of dust. Emma stepped closer cautiously and examined it. "No locks, no traps... at least none that I can see," she murmured before opening the lid. Inside lay a strange medallion that seemed to be worked into the map. "This looks like... part of something bigger," Max noted. "Maybe a key," Jonas pondered. But before they could think further, a loud noise echoed through the room -- footsteps approaching the stairs. "Quick, we have to get out of here!" Lena whispered in panic. The friends grabbed the medallion and desperately searched for a second exit. The room, however, seemed to have no other doors. The footsteps grew louder, and a dark silhouette appeared at the top of the stairs. Max pressed the medallion tightly against himself and whispered: "No matter what happens -- we must not give up the riddle."</p>
+
+<p>The adventure had just begun, but they already sensed that the path was more dangerous than they had imagined. The footsteps echoed threateningly through the room, each sound a sharp echo that made the children's nerves snap. Max closed his eyes for a moment and forced himself to stay calm. "We have to do something," he whispered, but the panic in his friends' faces showed that they had no ideas either. Emma suddenly pointed to a narrow opening in the wall, barely large enough to crawl through. "There! Maybe that leads outside!" Jonas didn't hesitate for a second and pushed aside the heavy stone that covered the opening. "Come on, quick!" Lena was the first to crawl into the darkness, followed by Emma and Max. Jonas paused briefly, looked toward the stairs where the silhouette had stopped, and then also disappeared through the narrow gap.</p>
+
+<p>The passage was narrow and cold, the walls smelled of damp stone and mold. Max felt his pulse quicken. In front of him crawled Emma, who directed her flashlight at the ground to illuminate the way. "Where does this lead?" Lena asked in a whisper. Her voice sounded small and frightened in the oppressive silence. "Anywhere, as long as it's away from that guy," Jonas answered, crawling behind Max and constantly looking back, as if he expected the silhouette to follow them. Suddenly the narrow corridor ended at a wooden ladder that led steeply upward. "This could be our exit," Max murmured and began carefully to climb the rungs. The ladder led to a small, abandoned storage room. Dust covered old boxes and furniture, and a broken window let weak moonlight into the room. Max helped the others up and pulled Jonas last through the hatch. "That was close," Lena gasped and wiped the dirt from her hands. But Emma shook her head. "We're still not safe. Who was that, and why was he following us?" Max took the medallion from his pocket and looked at it again. The engraved signs on it seemed to shimmer almost in the weak light. "Maybe he wanted this," he whispered.</p>
+
+<p>Max knew this would not be an ordinary adventure -- and the true key lay hidden in the shadows.</p>
+</div>
+</div>
+
+<!-- Book 2: The Magic Academy of Morgenstern (English) -->
+<div id="en-book2" class="book-content hidden">
+<div style="text-align: center; margin-bottom: 20px;">
+<img src="die zauberakademie.jpg" alt="The Magic Academy Cover" style="max-width: 200px; height: auto; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.3);">
+</div>
+<div class="book-title">The Magic Academy of Morgenstern</div>
+<div class="chapter-title">Chapter 1: The Mysterious Invitation</div>
+<div class="text-content" id="en-textContent2">
+<p>The morning air was cool and clear as Leonas Grünfeld swung his school bag over his shoulder and took the dusty path to school. The path wound between old oak trees whose branches wove like protective arms above him, casting shadows on the worn path. His village, nestled in wide fields and dense forests, slowly awakened to life. The morning sun painted golden stripes across the meadows, where the dew sparkled like thousands of tiny diamonds.</p>
+
+<p>Leonas was a shy boy of twelve with straw-blonde hair that constantly fell into his forehead, and green eyes that often looked thoughtfully and a little melancholically into the distance. He avoided the loud children in his class and preferred to spend time with the animals of the forest, who never mocked or excluded him. His steps were quiet and deliberate, as if he were trying to remain as invisible as possible while moving through the world.</p>
+
+<p>Today was no exception. When Leonas reached the school, the old brick building with its high, narrow windows and weathered slate roof, it was only a matter of minutes before they surrounded him. "Hey, Grünfeld! Have you been chatting with your squirrels again?" Jasper asked with a broad grin and pushed Leonas on the shoulder. The other children laughed while Leonas remained silent and looked at the ground. His hands clutched the strap of his bag, and he wished for nothing more than to become invisible.</p>
+
+<p>After a long day full of embarrassing moments and sideways glances, Leonas hurried home. He spent the afternoon as usual in his favorite hiding place, a small clearing in the forest where an old tree with gnarled roots stood. It was his refuge, his sanctuary, the only place in the world where he felt completely at home. Here he was not the strange boy who didn't fit into school, not the outsider who didn't know how to behave. Here he was simply Leonas, part of the natural world that accepted him without prejudice.</p>
+
+<p>But today something was different, something that broke the usual peace of the forest. When he opened his eyes, he noticed a strange figure standing next to the trunk of the old tree, as if it had appeared out of nowhere. It was a man, tall and of noble, royal bearing, wrapped in a shimmering, dark blue cloak that seemed to sparkle in the subdued light of the forest like the night sky full of stars.</p>
+
+<p>"Leonas Grünfeld, I presume?" the man asked with a warm and calm voice. "Yes, that's me," Leonas stammered, wondering how this strange man knew his name. "Who are you? And how do you know who I am?" The man smiled. "My name is Elias Nightflight. I am a messenger from the Magic Academy of Morgenstern. And I have a special invitation for you, young Leonas." With these words, he pulled a scroll of parchment from his cloak. The parchment shimmered in a gentle golden light, as if it were imbued with magic.</p>
+
+<p>Leonas stared at the man in disbelief. "A magic academy?" he whispered. "But... but that doesn't exist. Those are just fairy tales." Elias's smile grew broader. "Fairy tales, you say? Look around you, Leonas. Don't you see the magic that surrounds you every day? The way animals come to you, how plants seem to flourish under your hands? You've always known you were different." The adventure he had always dreamed of had finally begun, and although he didn't know what awaited him, he felt for the first time in his life that he was ready to be brave.</p>
+</div>
+</div>
+
+<!-- Book 3: The Secret of Moonstone (English) -->
+<div id="en-book3" class="book-content hidden">
+<div style="text-align: center; margin-bottom: 20px;">
+<img src="mondstein.jpg" alt="The Secret of Moonstone Cover" style="max-width: 200px; height: auto; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.3);">
+</div>
+<div class="book-title">The Secret of Moonstone</div>
+<div style="text-align: center; color: #AD1457; font-size: 0.9em; margin-bottom: 15px; font-style: italic;">
+📚 Will be expanded to a 3-volume series - work in progress!
+</div>
+<div class="chapter-title">Chapter 1: The Glowing Fragment</div>
+<div class="text-content" id="en-textContent3">
+<p>It was an ordinary afternoon that began in a secluded park, where trees stood closely together and the light of the low sun crept through the branches in golden rays. Autumn had come, and the leaves had already turned into all imaginable colors: from bright red to soft yellow. The park, consisting of old oaks and gnarled beeches, was a place that Leni, Finn, and Arvid often visited to experience their adventures. But today everything would be different.</p>
+
+<p>"Look!" Leni suddenly called out as she stopped and directed her eyes to something on the ground. She knelt down and observed with a mixed expression of amazement and curiosity a small, glimmering spot in the grass. It was a weak, almost imperceptible light that seemed to emerge from the thicket, like a flickering secret waiting to be discovered.</p>
+
+<p>Finn stepped closer cautiously. "What is that?" he asked, his voice carrying the skepticism of a boy who liked to question everything. He couldn't imagine that something in this park could be so important. But then, as the light gently fell on his hand, he felt something -- a strange, almost magnetic attraction.</p>
+
+<p>Arvid was the first person who didn't hold back. "Probably some glimmer from an old mirror or something!" he said enthusiastically and took another step closer. "I'll take a look!" And already he was with a loud rustling in the leaves at the glowing spot. "Be careful, Arvid," Leni warned, but she couldn't hide the curiosity in her own eyes. "What if this really is something special?"</p>
+
+<p>Arvid bent down and carefully pulled the object from the grass. It was a small, inconspicuous stone that had an almost invisible engraving on its surface. But when Arvid held the stone in his hands and the light of the late afternoon fell on it, something changed. The engraving glowed weakly and formed patterns that the friends couldn't immediately interpret. "What kind of sign is that?" Finn asked, examining it closely. "I've never seen anything like it."</p>
+
+<p>As they discussed the fragment and the patterns on its surface, they suddenly felt a slight vibration in their hands. It was as if the stone itself was giving an answer -- a connection they couldn't quite understand yet. The light of the fragment became more intense, and the park seemed to change around them. An almost imperceptible wind arose, and the trees rustled as if they had a secret whisper for the children. The three friends stood together, a strong bond of determination and curiosity between them. And although they didn't yet know where this discovery would lead them, they knew one thing for certain: It would change their world.</p>
+</div>
+</div>
+
+<!-- Book 4: The Hidden Forest (English) -->
+<div id="en-book4" class="book-content hidden">
+<div style="text-align: center; margin-bottom: 20px;">
+<img src="verborgener-wald.jpg" alt="The Hidden Forest Cover" style="max-width: 200px; height: auto; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.3);">
+</div>
+<div class="book-title">The Hidden Forest</div>
+<div class="chapter-title">Chapter 1: The Mysterious Map</div>
+<div class="text-content" id="en-textContent4">
+<p>The sun was leaning toward the horizon and bathed the sky in a soft orange. Max and Lisa stood on the old market square of their town and looked around curiously. The square was empty, most shops had already closed, and only the distant giggling of children on their way home could be heard. But Max and Lisa had not gone in the direction of home. They had something else in mind.</p>
+
+<p>"Do you think it's really the Hidden Forest?" Max asked excitedly. He jumped from one leg to the other and tapped his hand on the pocket where he had hidden a small note that had been following them all afternoon. "Maybe..." Lisa answered thoughtfully. She turned slowly to look for the secret clue they had received. Max had found the message in an old book they had discovered in the town's antique shop.</p>
+
+<p>"Look there!" Max suddenly called out and pointed to a narrow, almost hidden path between the houses. At the end of the path stood an old man in a long, gray cloak. His eyes shone like two sparkling stars. Lisa immediately felt a strange energy near him -- as if the forest they had heard about lived in him.</p>
+
+<p>The man noticed them immediately and waved with an inviting gesture. "Ah, you have come," he said with a voice that sounded like the whisper of the wind. "I knew it was you." "W-we?" Max asked in surprise. "How can you know that?" The man smiled mysteriously. "I know many things that others don't know. The map you seek will show you the way, but only if you are brave enough to walk it."</p>
+
+<p>He pulled an old, rolled-up map from his cloak and handed it to Max. The map was decorated with strange symbols and colorful, secret markings. The edge was adorned with golden flourishes that shimmered in the twilight in the light of the moon. Max opened the map and held it curiously in his hand. It was as if the map came alive. It seemed to flicker and pulse, as if it was excitedly waiting for him to discover it.</p>
+
+<p>With one last look back at the city, which slowly disappeared in the darkness, Max, Lisa and Bruno entered the secret forest, and the adventure began. The map in Max's hands glowed weakly, as if it was showing them the way. They weren't sure what to expect -- but the excitement that the unknown brought with it made their hearts beat faster.</p>
+</div>
+</div>
+
+<!-- Book 5: The Time Fool (English) -->
+<div id="en-book5" class="book-content hidden">
+<div style="text-align: center; margin-bottom: 20px;">
+<img src="zeitnarr.jpg" alt="The Time Fool Cover" style="max-width: 200px; height: auto; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.3);">
+</div>
+<div class="book-title">The Time Fool</div>
+<div class="chapter-title">Chapter 1: The Flea Market Find</div>
+<div class="text-content" id="en-textContent5">
+<p>The flea market was a world of its own. Rows of stalls stretched across the small market square, each loaded with a colorful mixture of old, curious, and valuable things. Max pushed through the crowd, his hands buried deep in the pockets of his worn jeans. His mother had dragged him along, although he would have preferred to stay at home.</p>
+
+<p>"Here, Max! Look, old books!" his mother called and disappeared between the stalls. Max sighed. Books weren't his thing. He wandered aimlessly through the alleys until his gaze caught on a small stall. It was inconspicuous -- an old man with a wrinkled face sat on a wobbly chair behind a table on which a collection of seemingly worthless junk lay. But something on this table magically attracted Max. A pocket watch.</p>
+
+<p>The watch was made of brass, decorated with delicate engravings that spread like a labyrinth over the surface. Its glass was slightly scratched, and the lid lay half open. Max reached for it, hesitated briefly, but then took it in his hand. It felt surprisingly heavy, and when he opened it, the hands began to dance wildly as if by themselves.</p>
+
+<p>"Are you interested in old things?" the man asked with a hoarse voice. His eyes sparkled in a way that Max couldn't categorize -- somewhere between curiosity and mystery. "Maybe. What does it cost?" Max turned the watch in his hand while the dial flashed in the light of the afternoon sun. The man seemed to think briefly. "For you? Ten euros. But be careful with it. This watch has more history than you can imagine."</p>
+
+<p>At home, Max sat down at his desk. He opened the watch and examined the dial more closely. It seemed almost to live -- the engravings moved slightly, as if they were breathing. Without thinking long, he pulled the small crown on the side. Suddenly the air in the room seemed to vibrate. A deep humming filled his ears, and the walls around him blurred. Max opened his eyes wide, wanted to drop the watch, but it stuck to his hand as if grown on.</p>
+
+<p>A bright light flared up, and for a moment the world seemed to stand still. Then it was over. When Max blinked, he no longer found himself in his room. He stood in a narrow, cobblestone alley. The buildings on both sides were old and crooked, built from rough wood and stone. People in strange clothes hurried past him, some threw him irritated glances. Max gasped for air. "Where am I?" he murmured, but his voice sounded strange, almost suffocated. He felt the watch in his hand pulsing like a heartbeat. And then he heard a voice behind him, quiet and threatening: "Well, Time Fool? You have no idea what you've done."</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<script>
+let currentSpeech = null;
+let currentBook = 1;
+let currentLanguage = 'de';
+let currentWordIndex = 0;
+let allBookWords = {};
+let isReading = false;
+let lastHighlightedWord = null;
+
+function initializeAllBooks() {
+['de', 'en'].forEach(lang => {
+allBookWords[lang] = {};
+for (let bookNumber = 1; bookNumber <= 5; bookNumber++) {
+const bookContent = document.querySelector(`#${lang}-book${bookNumber} .text-content`);
+if (bookContent && !bookContent.querySelector('.word')) {
+const paragraphs = bookContent.querySelectorAll('p');
+let wordCounter = 0;
+let bookWords = [];
+
+paragraphs.forEach((paragraph) => {
+if (!paragraph.textContent.trim()) return;
+const paragraphText = paragraph.textContent;
+const paragraphWords = paragraphText.split(/\s+/).filter(word => word.length > 0);
+
+let paragraphHTML = '';
+paragraphWords.forEach((word) => {
+paragraphHTML += `<span class="word" data-word-index="${wordCounter}" onclick="startFromWord(${wordCounter})">${word}</span> `;
+bookWords.push(word);
+wordCounter++;
+});
+
+paragraph.innerHTML = paragraphHTML;
+});
+
+allBookWords[lang][bookNumber] = bookWords;
+}
+}
+});
+}
+
+function switchLanguage(lang) {
+stopReading();
+document.querySelectorAll('.language-content').forEach(content => {
+content.classList.add('hidden');
+});
+document.getElementById(lang + '-content').classList.remove('hidden');
+document.querySelectorAll('.btn-lang').forEach(btn => {
+btn.classList.remove('active');
+});
+event.target.classList.add('active');
+currentLanguage = lang;
+currentWordIndex = 0;
+clearHighlight();
+showBook(currentBook);
+}
+
+function showBook(bookNumber) {
+stopReading();
+for (let i = 1; i <= 5; i++) {
+const bookElement = document.getElementById(`${currentLanguage}-book${i}`);
+if (bookElement) {
+bookElement.classList.add('hidden');
+}
+}
+document.querySelectorAll('.btn-book').forEach((btn, index) => {
+btn.classList.remove('active');
+if (index === bookNumber - 1) {
+btn.classList.add('active');
+}
+});
+const targetBook = document.getElementById(`${currentLanguage}-book${bookNumber}`);
+if (targetBook) {
+targetBook.classList.remove('hidden');
+}
+currentBook = bookNumber;
+currentWordIndex = 0;
+clearHighlight();
+}
+
+function startReading() {
+currentWordIndex = 0;
+clearHighlight();
+continueReading();
+}
+
+function continueReading() {
+if (currentSpeech) {
+currentSpeech.cancel();
+}
+
+const currentWords = allBookWords[currentLanguage] && allBookWords[currentLanguage][currentBook];
+if (currentWords && currentWords.length > 0 && currentWordIndex < currentWords.length) {
+const remainingText = currentWords.slice(currentWordIndex).join(' ');
+currentSpeech = new SpeechSynthesisUtterance(remainingText);
+currentSpeech.rate = 0.9;
+currentSpeech.lang = currentLanguage === 'de' ? 'de-DE' : 'en-US';
+
+let wordCount = currentWordIndex;
+currentSpeech.onboundary = function(event) {
+if (event.name === 'word') {
+highlightCurrentWord(wordCount);
+wordCount++;
+currentWordIndex = wordCount;
+}
+};
+
+currentSpeech.onend = function() {
+isReading = false;
+};
+
+isReading = true;
+speechSynthesis.speak(currentSpeech);
+}
+}
+
+function startFromWord(wordIndex) {
+currentWordIndex = wordIndex;
+clearHighlight();
+continueReading();
+}
+
+function highlightCurrentWord(wordIndex) {
+if (lastHighlightedWord) {
+lastHighlightedWord.classList.remove('word-highlight');
+}
+const wordSpan = document.querySelector(`#${currentLanguage}-book${currentBook} [data-word-index="${wordIndex}"]`);
+if (wordSpan) {
+wordSpan.classList.add('word-highlight');
+lastHighlightedWord = wordSpan;
+wordSpan.scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+}
+
+function clearHighlight() {
+document.querySelectorAll('.word-highlight').forEach(el => {
+el.classList.remove('word-highlight');
+});
+lastHighlightedWord = null;
+}
+
+function stopReading() {
+if (currentSpeech) {
+speechSynthesis.cancel();
+currentSpeech = null;
+isReading = false;
+}
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+initializeAllBooks();
+showBook(1);
+});
+</script>
+</body>
+</html>
