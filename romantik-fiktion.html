@@ -1,1 +1,396 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Romantik Fiktion - Helmut Wegners Wortwelten</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #2c3e50;
+            text-decoration: none;
+        }
+
+        /* Back Button */
+        .back-button {
+            display: inline-block;
+            margin: 2rem 0 1rem 0;
+            padding: 12px 24px;
+            background: rgba(255, 255, 255, 0.9);
+            color: #e91e63;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .back-button:hover {
+            background: white;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(233, 30, 99, 0.2);
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            color: white;
+            padding: 4rem 0 2rem 0;
+        }
+
+        .author-image {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin: 0 auto 2rem auto;
+            border: 4px solid white;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+            object-fit: cover;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        /* Main Content */
+        .main-content {
+            background: white;
+            border-radius: 30px;
+            padding: 3rem;
+            margin: 2rem 0;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+        }
+
+        .main-content h2 {
+            text-align: center;
+            color: #2c3e50;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+        }
+
+        /* Series Grid */
+        .series-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .series-card {
+            background: linear-gradient(135deg, #fff5f5 0%, #fef7f7 100%);
+            border-radius: 25px;
+            padding: 2.5rem;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.4s ease;
+            border: 3px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .series-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(45deg, #ff9a9e, #e91e63);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .series-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .series-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(233, 30, 99, 0.2);
+            border-color: #ff9a9e;
+        }
+
+        .series-icon {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .series-title {
+            font-size: 2.2rem;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+
+        .series-label {
+            font-size: 1.1rem;
+            color: #e91e63;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+            padding: 8px 16px;
+            background: rgba(233, 30, 99, 0.1);
+            border-radius: 20px;
+            display: inline-block;
+        }
+
+        .series-subtitle {
+            font-size: 1.1rem;
+            color: #e91e63;
+            font-style: italic;
+            margin-bottom: 1.5rem;
+        }
+
+        .series-description {
+            color: #6c757d;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+
+        .series-stats {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: rgba(233, 30, 99, 0.05);
+            border-radius: 15px;
+            border: 1px solid rgba(233, 30, 99, 0.1);
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #e91e63;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: #6c757d;
+            margin-top: 0.5rem;
+        }
+
+        .series-status {
+            font-size: 0.9rem;
+            color: #6c757d;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+
+        .series-button {
+            display: inline-block;
+            padding: 15px 35px;
+            background: linear-gradient(45deg, #ff9a9e, #e91e63);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 20px rgba(233, 30, 99, 0.3);
+        }
+
+        .series-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(233, 30, 99, 0.4);
+        }
+
+        .series-button.coming-soon {
+            background: linear-gradient(45deg, #95a5a6, #7f8c8d);
+            box-shadow: 0 6px 20px rgba(127, 140, 141, 0.3);
+            cursor: not-allowed;
+        }
+
+        .series-button.coming-soon:hover {
+            transform: none;
+            box-shadow: 0 6px 20px rgba(127, 140, 141, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(44, 62, 80, 0.9);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+
+            .series-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .main-content {
+                padding: 2rem;
+                margin: 1rem 0;
+            }
+
+            .series-stats {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .stat {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            .stat-number {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">Helmut Wegners Wortwelten</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <a href="index.html" class="back-button">← Zurück zur Startseite</a>
+        
+        <section class="hero">
+            <img src="helmut.jpg" alt="Helmut Wegner" class="author-image">
+            <h1>Romantik Fiktion</h1>
+            <p class="hero-subtitle">Leidenschaftliche Geschichten - Geschichten, die begeistern</p>
+        </section>
+
+        <div class="main-content">
+            <h2>Meine Romantik-Serien</h2>
+            
+            <div class="series-grid">
+                <!-- Verlangen der Herzen Serie -->
+                <div class="series-card">
+                    <div class="series-icon">💕</div>
+                    <div class="series-label">Serie - Verlangen der Herzen</div>
+                    <h3 class="series-title">Verlangen der Herzen</h3>
+                    <p class="series-subtitle">Leidenschaftliche Geschichten aus den malerischen Adelaide Hills</p>
+                    <p class="series-description">
+                        Eine emotionale Reise durch Liebe, Träume und menschliche Verbindungen. 
+                        Begleite die Charaktere auf ihrem Weg durch Höhen und Tiefen des Lebens 
+                        in den wunderschönen Adelaide Hills.
+                    </p>
+                    <div class="series-stats">
+                        <div class="stat">
+                            <span class="stat-number">4</span>
+                            <div class="stat-label">Bände</div>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">🇩🇪🇬🇧</span>
+                            <div class="stat-label">Sprachen</div>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">4</span>
+                            <div class="stat-label">Verfügbar</div>
+                        </div>
+                    </div>
+                    <p class="series-status">Alle 4 Bände verfügbar - Band 1-4 vollständig verfügbar</p>
+                    <a href="verlangen-der-herzen.html" class="series-button">Serie entdecken →</a>
+                </div>
+
+                <!-- Die Verborgenen Kammern Serie -->
+                <div class="series-card">
+                    <div class="series-icon">🏰</div>
+                    <div class="series-label">Serie - Die Verborgenen Kammern</div>
+                    <h3 class="series-title">Die Verborgenen Kammern</h3>
+                    <p class="series-subtitle">Geheimnisvolle Romanzen in historischen Gemäuern</p>
+                    <p class="series-description">
+                        Wo Vergangenheit und Gegenwart aufeinandertreffen und Herzen ihre dunkelsten 
+                        Geheimnisse preisgeben. Mystische Atmosphäre verbindet sich mit 
+                        leidenschaftlicher Romantik in jahrhundertealten Gemäuern.
+                    </p>
+                    <div class="series-stats">
+                        <div class="stat">
+                            <span class="stat-number">3</span>
+                            <div class="stat-label">Bände</div>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">🇩🇪🇬🇧🇪🇸</span>
+                            <div class="stat-label">Sprachen*</div>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">1</span>
+                            <div class="stat-label">Verfügbar</div>
+                        </div>
+                    </div>
+                    <p class="series-status">*Spanisch nur Band 1 - Band 1 vollständig verfügbar</p>
+                    <a href="die-verborgenen-kammern.html" class="series-button">Serie entdecken →</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Helmut Wegner - Professionelle Autoren-Website. Alle Rechte vorbehalten.</p>
+        </div>
+    </footer>
+</body>
+</html>
