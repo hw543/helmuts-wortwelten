@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Die Verborgenen Kammern - Helmut Wegners Wortwelten</title>
+    <title>Romantik Serien - Helmut Wegners Wortwelten</title>
     <style>
         * {
             margin: 0;
@@ -15,7 +15,7 @@
             font-family: 'Georgia', serif;
             line-height: 1.6;
             color: #2c3e50;
-            background: linear-gradient(135deg, #8B4513 0%, #D2691E 100%);
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
             min-height: 100vh;
         }
 
@@ -66,7 +66,7 @@
 
         .nav-link:hover {
             background: #f8f9fa;
-            color: #8B4513;
+            color: #e91e63;
         }
 
         /* Hero Section */
@@ -90,16 +90,6 @@
             text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
         }
 
-        .author-image {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            margin: 0 auto 1rem auto;
-            display: block;
-            border: 4px solid white;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-        }
-
         .back-link {
             background: rgba(255, 255, 255, 0.2);
             color: white;
@@ -116,8 +106,8 @@
             background: rgba(255, 255, 255, 0.3);
         }
 
-        /* Books Section */
-        .books-section {
+        /* Series Section */
+        .series-section {
             background: white;
             border-radius: 20px;
             margin: 2rem auto;
@@ -125,145 +115,106 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
 
-        .books-title {
+        .series-title {
             text-align: center;
             font-size: 2.5rem;
             color: #2c3e50;
             margin-bottom: 3rem;
         }
 
-        .books-grid {
+        .series-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
             gap: 3rem;
             margin-top: 2rem;
         }
 
-        .book-card {
-            background: #f8f9fa;
+        .series-card {
+            background: linear-gradient(135deg, #fff5f5, #ffebee);
             border-radius: 15px;
             padding: 2rem;
             text-align: center;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border: 2px solid #e9ecef;
+            border: 2px solid #fce4ec;
         }
 
-        .book-card:hover {
+        .series-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            box-shadow: 0 15px 30px rgba(233, 30, 99, 0.2);
         }
 
-        .book-cover {
-            width: 160px;
-            height: 240px;
-            object-fit: cover;
-            border-radius: 10px;
-            margin: 0 auto 1.5rem auto;
+        .series-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
             display: block;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
         }
 
-        .book-title {
-            font-size: 1.5rem;
+        .series-name {
+            font-size: 1.8rem;
             font-weight: bold;
-            color: #2c3e50;
+            color: #e91e63;
             margin-bottom: 0.5rem;
         }
 
-        .book-subtitle {
-            color: #8B4513;
+        .series-subtitle {
+            color: #ad1457;
             font-style: italic;
             margin-bottom: 1rem;
-            font-size: 1rem;
+            font-size: 1.1rem;
         }
 
-        .book-description {
+        .series-description {
             color: #6c757d;
             margin-bottom: 1.5rem;
             line-height: 1.6;
             text-align: left;
         }
 
-        .language-info {
-            margin-bottom: 1.5rem;
-        }
-
-        .language-label {
-            background: #e9ecef;
-            color: #495057;
-            padding: 4px 8px;
-            border-radius: 12px;
-            font-size: 0.8rem;
-            margin-bottom: 0.5rem;
-            display: inline-block;
-        }
-
-        .status-badge {
-            display: inline-block;
-            padding: 6px 12px;
-            border-radius: 15px;
-            font-size: 0.8rem;
+        .book-count {
+            background: #e91e63;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
             font-weight: bold;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+            font-size: 0.9rem;
         }
 
-        .status-available {
-            background: #d4edda;
-            color: #155724;
+        .series-features {
+            margin-bottom: 2rem;
         }
 
-        .status-coming-soon {
-            background: #f8d7da;
-            color: #721c24;
-        }
-
-        .button-container {
-            display: flex;
-            gap: 0.5rem;
-            justify-content: center;
-            flex-wrap: wrap;
+        .feature-item {
+            background: #f8f9fa;
+            padding: 0.5rem 1rem;
+            margin: 0.5rem;
+            border-radius: 15px;
+            display: inline-block;
+            font-size: 0.9rem;
+            color: #6c757d;
         }
 
         .btn {
-            padding: 10px 20px;
+            padding: 12px 24px;
             border: none;
-            border-radius: 20px;
+            border-radius: 25px;
             text-decoration: none;
             font-weight: bold;
             cursor: pointer;
             transition: all 0.3s ease;
-            font-size: 0.9rem;
+            font-size: 1rem;
             display: inline-block;
         }
 
         .btn-primary {
-            background: linear-gradient(45deg, #8B4513, #A0522D);
+            background: linear-gradient(45deg, #e91e63, #ad1457);
             color: white;
         }
 
         .btn-primary:hover {
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(139, 69, 19, 0.3);
-        }
-
-        .btn-secondary {
-            background: linear-gradient(45deg, #ff7b54, #ff6b35);
-            color: white;
-        }
-
-        .btn-secondary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(255, 123, 84, 0.3);
-        }
-
-        .btn-disabled {
-            background: #6c757d;
-            color: white;
-            cursor: not-allowed;
-        }
-
-        .btn-disabled:hover {
-            transform: none;
+            box-shadow: 0 5px 15px rgba(233, 30, 99, 0.3);
         }
 
         /* Footer */
@@ -285,28 +236,18 @@
                 font-size: 2rem;
             }
 
-            .books-grid {
+            .series-grid {
                 grid-template-columns: 1fr;
                 gap: 2rem;
             }
 
-            .book-card {
+            .series-card {
                 padding: 1.5rem;
             }
 
-            .books-section {
+            .series-section {
                 margin: 1rem;
                 padding: 2rem 1rem;
-            }
-
-            .button-container {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .btn {
-                width: 100%;
-                max-width: 200px;
             }
         }
     </style>
@@ -321,8 +262,10 @@
                         <li><a href="index.html" class="nav-link">Startseite</a></li>
                         <li><a href="kinderbuecher.html" class="nav-link">Kinderbücher</a></li>
                         <li><a href="krimis.html" class="nav-link">Krimis</a></li>
-                        <li><a href="romantik-fiktion.html" class="nav-link">Romantik</a></li>
-                        <li><a href="#" class="nav-link">Chroniken</a></li>
+                        <li><a href="romantik-serien.html" class="nav-link">Romantik</a></li>
+                        <li><a href="new-adult.html" class="nav-link">New Adult</a></li>
+                        <li><a href="high-fantasy.html" class="nav-link">High Fantasy</a></li>
+                        <li><a href="thriller.html" class="nav-link">Thriller</a></li>
                         <li><a href="#" class="nav-link">Kontakt</a></li>
                     </ul>
                 </nav>
@@ -332,71 +275,53 @@
 
     <div class="container">
         <div class="hero">
-            <a href="romantik-fiktion.html" class="back-link">← Zurück zu Romantik-Fiktion</a>
+            <a href="index.html" class="back-link">← Zurück zur Startseite</a>
             
-            <img src="helmut.jpg" alt="Helmut Wegner" class="author-image">
-            
-            <h1>Die Verborgenen Kammern</h1>
-            <p>Geheimnisvolle Romanzen in historischen Gemäuern. Wo Vergangenheit und Gegenwart aufeinandertreffen und Herzen ihre dunkelsten Geheimnisse preisgeben. Mystische Atmosphäre verbindet sich mit leidenschaftlicher Romantik in jahrhundertealten Gemäuern.</p>
+            <h1>Romantik Serien</h1>
+            <p>Zwei fesselnde Serien voller Leidenschaft, Geheimnisse und emotionaler Tiefe. Entdecke Geschichten, die das Herz berühren und die Seele bewegen.</p>
         </div>
 
-        <div class="books-section">
-            <h2 class="books-title">Alle Bände der Serie</h2>
+        <div class="series-section">
+            <h2 class="series-title">Unsere Romantik-Serien</h2>
 
-            <div class="books-grid">
-                <!-- Band 1 -->
-                <div class="book-card">
-                    <img src="hinter-verschlossenen-tueren.jpg" alt="Hinter verschlossenen Türen" class="book-cover">
-                    <h3 class="book-title">Band 1: Hinter verschlossenen Türen</h3>
-                    <p class="book-subtitle">Geheimnisse in historischen Gemäuern</p>
-                    <p class="book-description">Elena Winters, eine renommierte Kunstrestauratorin, erhält ein geheimnisvolles Angebot von Marcus Castellano. Sein italienisches Museum birgt nicht nur kunstvolle Schätze, sondern auch dunkle Geheimnisse, die Elena in eine tiefere Verbindung voller Brillanz und Träume verstricken.</p>
+            <div class="series-grid">
+                <!-- Serie 1: Verlangen der Herzen -->
+                <div class="series-card">
+                    <span class="series-icon">💕</span>
+                    <h3 class="series-name">Verlangen der Herzen</h3>
+                    <p class="series-subtitle">Adelaide Hills Serie</p>
+                    <p class="series-description">Eine emotionale Reise durch die Höhen und Tiefen der Liebe. Clara und Alex entdecken in den malerischen Adelaide Hills nicht nur zueinander, sondern auch zu sich selbst. Eine Geschichte über Vertrauen, Leidenschaft und die Kraft der wahren Liebe.</p>
                     
-                    <div class="language-info">
-                        <div class="language-label">Verfügbar in: 🇩🇪🇬🇧🇪🇸</div>
+                    <div class="book-count">4 Bände verfügbar</div>
+                    
+                    <div class="series-features">
+                        <span class="feature-item">🇩🇪 Deutsch</span>
+                        <span class="feature-item">🇬🇧 English</span>
+                        <span class="feature-item">💝 Emotional</span>
+                        <span class="feature-item">🌅 Adelaide Hills</span>
                     </div>
                     
-                    <div class="status-badge status-available">Vollständig in Stock</div>
-                    
-                    <div class="button-container">
-                        <a href="hinter-verschlossenen-tueren-lesen.html" class="btn btn-primary">📖 Lesen</a>
-                        <a href="https://amazon.de/dp/B0F1YC3J79" class="btn btn-secondary" target="_blank">🛒 Bei Amazon kaufen</a>
-                    </div>
+                    <a href="verlangen-der-herzen.html" class="btn btn-primary">Serie entdecken</a>
                 </div>
 
-                <!-- Band 2 -->
-                <div class="book-card">
-                    <img src="die-kunst-der-hingabe.jpg" alt="Die Kunst der Hingabe" class="book-cover">
-                    <h3 class="book-title">Band 2: Die Kunst der Hingabe</h3>
-                    <p class="book-subtitle">Wenn sich Herzen in Toskanischen Träumen verlieren</p>
-                    <p class="book-description">Die Destinationen für aufreizende Pläne, in der berufliche Herausforderungen und persönliche Träume aufeinandertreffen und neue Wege entstehen können.</p>
+                <!-- Serie 2: Die Verborgenen Kammern -->
+                <div class="series-card">
+                    <span class="series-icon">🏰</span>
+                    <h3 class="series-name">Die Verborgenen Kammern</h3>
+                    <p class="series-subtitle">Geheimnisvolle Romanzen</p>
+                    <p class="series-description">In den Schatten alter Gemäuer verbergen sich nicht nur architektonische Schätze, sondern auch die tiefsten Geheimnisse des Herzens. Elena und Marcus entdecken in historischen Palästen eine Liebe, die Jahrhunderte überdauert.</p>
                     
-                    <div class="language-info">
-                        <div class="language-label">Verfügbar in: 🇩🇪🇬🇧</div>
+                    <div class="book-count">3 Bände verfügbar</div>
+                    
+                    <div class="series-features">
+                        <span class="feature-item">🇩🇪 Deutsch</span>
+                        <span class="feature-item">🇬🇧 English</span>
+                        <span class="feature-item">🇪🇸 Español</span>
+                        <span class="feature-item">🏛️ Historisch</span>
+                        <span class="feature-item">🔮 Mystisch</span>
                     </div>
                     
-                    <div class="status-badge status-available">Vollständig in Stock</div>
-                    
-                    <div class="button-container">
-                        <a href="die-kunst-der-hingabe-lesen.html" class="btn btn-primary">📖 Lesen</a>
-                    </div>
-                </div>
-
-                <!-- Band 3 -->
-                <div class="book-card">
-                    <img src="die-tiefe-der-begierde.jpg" alt="Die Tiefe der Begierde" class="book-cover">
-                    <h3 class="book-title">Band 3: Die Tiefe der Begierde</h3>
-                    <p class="book-subtitle">Ein Angebot zu Begehren</p>
-                    <p class="book-description">Das bewegende Abschluss der Serie, in dem alle Charaktere ihre Frieden finden und gemeinsam in die hoffnungsvolle Zukunft blicken.</p>
-                    
-                    <div class="language-info">
-                        <div class="language-label">Verfügbar in: 🇩🇪🇬🇧</div>
-                    </div>
-                    
-                    <div class="status-badge status-available">Vollständig in Stock</div>
-                    
-                    <div class="button-container">
-                        <a href="die-tiefe-der-begierde-lesen.html" class="btn btn-primary">📖 Lesen</a>
-                    </div>
+                    <a href="die-verborgenen-kammern.html" class="btn btn-primary">Serie entdecken</a>
                 </div>
             </div>
         </div>
