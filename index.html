@@ -14,7 +14,7 @@
         body {
             font-family: 'Georgia', serif;
             line-height: 1.6;
-            color: #2c3e50;
+            color: white;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
         }
@@ -55,10 +55,6 @@
             list-style: none;
         }
 
-        .nav-item {
-            position: relative;
-        }
-
         .nav-link {
             color: #2c3e50;
             text-decoration: none;
@@ -73,72 +69,30 @@
             color: #667eea;
         }
 
-        /* Dropdown */
-        .dropdown {
-            position: relative;
-        }
-
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            background: white;
-            min-width: 200px;
-            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-            z-index: 1;
-            border-radius: 5px;
-            top: 100%;
-            left: 0;
-        }
-
-        .dropdown:hover .dropdown-content {
-            display: block;
-        }
-
-        .dropdown-content a {
-            color: #2c3e50;
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block;
-            border-radius: 5px;
-            transition: all 0.3s ease;
-        }
-
-        .dropdown-content a:hover {
-            background: #f1f1f1;
-            color: #667eea;
-        }
-
-        /* Hero Section */
-        .hero {
+        /* Main Content */
+        .main-content {
             text-align: center;
-            color: white;
             padding: 4rem 0;
         }
 
-        .hero h1 {
-            font-size: 3.5rem;
+        .main-title {
+            font-size: 4rem;
+            font-weight: bold;
             margin-bottom: 1rem;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            color: #f8f9fa;
         }
 
-        .hero-subtitle {
+        .subtitle {
             font-size: 1.5rem;
-            margin-bottom: 2rem;
+            margin-bottom: 3rem;
             opacity: 0.9;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            max-width: 800px;
-            margin: 0 auto 2rem;
-            opacity: 0.85;
-            line-height: 1.8;
+            color: #f8f9fa;
         }
 
         /* Author Photo */
         .author-photo {
-            margin: 2rem 0;
-            text-align: center;
+            margin: 2rem 0 3rem 0;
         }
 
         .author-img {
@@ -155,186 +109,118 @@
             transform: scale(1.05);
         }
 
-        /* Author Message */
-        .author-message {
-            background: white;
+        /* Welcome Text */
+        .welcome-text {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 4rem auto;
+            line-height: 1.8;
+            opacity: 0.9;
+            color: #f8f9fa;
+        }
+
+        /* Genres Section */
+        .genres-section {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
             border-radius: 20px;
             padding: 3rem;
-            margin: 3rem 0;
+            margin: 2rem auto;
+            max-width: 900px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            text-align: center;
         }
 
-        .author-message h2 {
-            color: #2c3e50;
-            font-size: 2rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .author-message p {
-            font-size: 1.1rem;
-            color: #6c757d;
-            line-height: 1.8;
-            margin-bottom: 1.5rem;
-        }
-
-        .highlight {
-            color: #e91e63;
+        .genres-title {
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            color: #FFD700;
             font-weight: bold;
         }
 
-        /* Genre Grid */
-        .genres-section {
-            margin: 4rem 0;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            color: white;
-            margin-bottom: 3rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        .genres-title::before {
+            content: "📚 ";
+            margin-right: 0.5rem;
         }
 
         .genres-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-        }
-
-        .genre-card {
-            background: white;
-            border-radius: 20px;
-            padding: 2rem;
-            text-align: center;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .genre-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 5px;
-            background: linear-gradient(45deg, #f39c12, #e91e63);
-            transform: scaleX(0);
-            transition: transform 0.3s ease;
-        }
-
-        .genre-card:hover::before {
-            transform: scaleX(1);
-        }
-
-        .genre-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
-        }
-
-        .genre-icon {
-            font-size: 4rem;
-            margin-bottom: 1rem;
-            display: block;
-        }
-
-        .genre-title {
-            font-size: 1.5rem;
-            font-weight: bold;
-            margin-bottom: 0.5rem;
-            color: #2c3e50;
-        }
-
-        .genre-subtitle {
-            color: #e91e63;
-            font-style: italic;
-            margin-bottom: 1rem;
-        }
-
-        .genre-description {
-            color: #6c757d;
-            margin-bottom: 1.5rem;
-            line-height: 1.6;
-        }
-
-        .book-count {
-            background: #667eea;
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 15px;
-            font-weight: bold;
-            margin-bottom: 1rem;
-            display: inline-block;
-        }
-
-        .available {
-            background: #28a745;
-        }
-
-        .coming-soon {
-            background: #6c757d;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+            margin-bottom: 2rem;
         }
 
         .genre-btn {
-            background: linear-gradient(45deg, #667eea, #764ba2);
+            background: rgba(255, 255, 255, 0.2);
             color: white;
             padding: 12px 24px;
-            border: none;
+            border: 2px solid rgba(255, 255, 255, 0.3);
             border-radius: 25px;
             font-weight: bold;
             cursor: pointer;
             transition: all 0.3s ease;
             text-decoration: none;
-            display: inline-block;
-        }
-
-        .genre-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
-        }
-
-        .genre-btn.disabled {
-            background: #6c757d;
-            cursor: not-allowed;
-        }
-
-        .genre-btn.disabled:hover {
-            transform: none;
-            box-shadow: none;
-        }
-
-        /* Statistics */
-        .stats-section {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 3rem 0;
-            margin: 4rem 0;
-            border-radius: 20px;
+            font-size: 1rem;
             backdrop-filter: blur(10px);
         }
 
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
+        .genre-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2);
+        }
+
+        .genre-btn.kinderbuecher {
+            background: rgba(76, 175, 80, 0.3);
+            border-color: #4CAF50;
+        }
+
+        .genre-btn.romantik {
+            background: rgba(233, 30, 99, 0.3);
+            border-color: #E91E63;
+        }
+
+        .genre-btn.new-adult {
+            background: rgba(255, 193, 7, 0.3);
+            border-color: #FFC107;
+        }
+
+        .genre-btn.fantasy {
+            background: rgba(156, 39, 176, 0.3);
+            border-color: #9C27B0;
+        }
+
+        .genre-btn.krimis {
+            background: rgba(96, 125, 139, 0.3);
+            border-color: #607D8B;
+        }
+
+        .genre-btn.thriller {
+            background: rgba(244, 67, 54, 0.3);
+            border-color: #F44336;
+        }
+
+        .genre-btn.chroniken {
+            background: rgba(255, 152, 0, 0.3);
+            border-color: #FF9800;
+        }
+
+        .upcoming-section {
             text-align: center;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
         }
 
-        .stat-item {
-            color: white;
+        .upcoming-text {
+            font-size: 1rem;
+            opacity: 0.8;
+            color: #f8f9fa;
         }
 
-        .stat-number {
-            font-size: 3rem;
-            font-weight: bold;
-            color: #f39c12;
-            display: block;
-        }
-
-        .stat-label {
-            font-size: 1.1rem;
-            opacity: 0.9;
+        .upcoming-text::before {
+            content: "📝 ";
+            margin-right: 0.5rem;
         }
 
         /* Footer */
@@ -352,16 +238,22 @@
                 display: none;
             }
 
-            .hero h1 {
+            .main-title {
                 font-size: 2.5rem;
             }
 
             .genres-grid {
-                grid-template-columns: 1fr;
+                flex-direction: column;
+                align-items: center;
             }
 
-            .stats-grid {
-                grid-template-columns: repeat(2, 1fr);
+            .genre-btn {
+                width: 200px;
+            }
+
+            .genres-section {
+                padding: 2rem 1rem;
+                margin: 1rem;
             }
         }
     </style>
@@ -373,153 +265,45 @@
                 <a href="index.html" class="logo">Helmut Wegners Wortwelten</a>
                 <nav>
                     <ul class="nav-menu">
-                        <li class="nav-item">
-                            <a href="kinderbuecher.html" class="nav-link">Kinderbücher</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a href="#" class="nav-link">Fiction & Fantasy ▼</a>
-                            <div class="dropdown-content">
-                                <a href="romantik-fiktion.html">Romantik Fiktion</a>
-                                <a href="new-adult.html">New Adult</a>
-                                <a href="high-fantasy.html">High Fantasy</a>
-                            </div>
-                        </li>
-                        <li class="nav-item">
-                            <a href="krimis.html" class="nav-link">Krimis</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="thriller.html" class="nav-link">Thriller</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">Chroniken & Geschichte</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">Kontakt</a>
-                        </li>
+                        <li><a href="impressum.html" class="nav-link">Kontakt</a></li>
                     </ul>
                 </nav>
             </div>
         </div>
     </header>
 
-    <section class="hero">
+    <main class="main-content">
         <div class="container">
-            <h1>Helmut Wegners Wortwelten</h1>
-            <p class="hero-subtitle">Geschichten mit Tiefe, Herz und Haltung</p>
+            <h1 class="main-title">Helmut Wegners Wortwelten</h1>
+            <p class="subtitle">Geschichten mit Tiefe, Herz und Haltung</p>
+            
             <div class="author-photo">
                 <img src="helmut.jpg" alt="Helmut Wegner" class="author-img">
             </div>
-            <p>Willkommen in meiner literarischen Welt! Als 82-jähriger Autor mit über 30 Jahren Lehrerfahrung bringe ich eine besondere pädagogische Perspektive in meine Werke ein. Von liebevollen Kinderbüchern bis hin zu tiefgründigen Chroniken und spannenden Thrillern -- hier findest du Geschichten, die berühren, bilden und begeistern.</p>
+            
+            <p class="welcome-text">
+                Willkommen in einer Welt voller faszinierender Geschichten! Entdecke einzigartige Erzählungen, die dich von magischen Fantasiewelten über herzerwärmende Liebesgeschichten bis hin zu spannungsgeladenen Krimis führen. Mit unserem revolutionären Vorlese-System erlebst du jede Geschichte interaktiv – perfekt zum Selbstlesen oder gemeinsamen Lauschen. Hier findest du Bücher, die das Herz berühren und unvergessliche Momente schenken.
+            </p>
+
+            <div class="genres-section">
+                <h2 class="genres-title">Verfügbare Genres</h2>
+                
+                <div class="genres-grid">
+                    <a href="navigation-kinderbuecher.html" class="genre-btn kinderbuecher">📚 Kinderbücher</a>
+                    <a href="navigation-romantik.html" class="genre-btn romantik">💕 Romantik Fiktion</a>
+                    <a href="navigation-new-adult.html" class="genre-btn new-adult">💫 New Adult</a>
+                    <a href="navigation-high-fantasy.html" class="genre-btn fantasy">⚔️ High Fantasy</a>
+                    <a href="navigation-krimis.html" class="genre-btn krimis">🔍 Krimis</a>
+                    <a href="navigation-thriller.html" class="genre-btn thriller">🔥 Thriller</a>
+                    <a href="navigation-chroniken.html" class="genre-btn chroniken">📜 Chroniken</a>
+                </div>
+
+                <div class="upcoming-section">
+                    <p class="upcoming-text">Gedichtbände (Familiäre Angelegenheiten)</p>
+                </div>
+            </div>
         </div>
-    </section>
-
-    <div class="container">
-        <section class="author-message">
-            <h2>Mein Lebenswerk</h2>
-            <p><span class="highlight">Mit über 70 Jahren entdeckte ich das Schreiben für mich</span> -- und heute, mit 82, schreibe ich mit mehr Leidenschaft denn je! Als ehemaliger Lehrmeister verstehe ich es, komplexe Themen verständlich und spannend zu vermitteln.</p>
-            <p>Jedes meiner Bücher ist sorgfältig konzipiert, um nicht nur zu unterhalten, sondern auch wichtige Lebenslektionen zu vermitteln. <span class="highlight">Es ist nie zu spät, etwas Neues zu beginnen</span> -- das ist die Botschaft, die ich mit meinen Geschichten teile.</p>
-        </section>
-
-        <section class="genres-section">
-            <h2 class="section-title">Meine Buchgenres</h2>
-            <div class="genres-grid">
-                <div class="genre-card">
-                    <span class="genre-icon">📚</span>
-                    <h3 class="genre-title">Kinderbücher</h3>
-                    <p class="genre-subtitle">Abenteuer, die bilden -- Geschichten, die begeistern</p>
-                    <p class="genre-description">Pädagogisch wertvolle Erzählungen für junge Leser von 6-14 Jahren.</p>
-                    <span class="book-count available">5 Bücher verfügbar</span>
-                    <a href="kinderbuecher.html" class="genre-btn">Bücher entdecken</a>
-                </div>
-
-                <div class="genre-card">
-                    <span class="genre-icon">💕</span>
-                    <h3 class="genre-title">Romantik Fiktion</h3>
-                    <p class="genre-subtitle">Verlangen der Herzen -- Adelaide Hills Serie</p>
-                    <p class="genre-description">Emotionale Geschichten über Liebe, Leidenschaft und menschliche Verbindungen.</p>
-                    <span class="book-count available">7 Bücher verfügbar</span>
-                    <a href="romantik-fiktion.html" class="genre-btn">Serie erkunden</a>
-                </div>
-
-                <div class="genre-card">
-                    <span class="genre-icon">💫</span>
-                    <h3 class="genre-title">New Adult</h3>
-                    <p class="genre-subtitle">Zwischen Herz und Verstand -- Eine romantische Serie</p>
-                    <p class="genre-description">Geschichten über das Erwachsenwerden, erste große Liebe und die Suche nach dem eigenen Weg.</p>
-                    <span class="book-count available">3 Bücher verfügbar</span>
-                    <a href="new-adult.html" class="genre-btn">Serie erkunden</a>
-                </div>
-
-                <div class="genre-card">
-                    <span class="genre-icon">⚔️</span>
-                    <h3 class="genre-title">High Fantasy</h3>
-                    <p class="genre-subtitle">Eldorias Vermächtnis -- Epische Saga</p>
-                    <p class="genre-description">Fantastische Welten und heldenhafte Abenteuer in einer magischen Dimension.</p>
-                    <span class="book-count available">6 Bücher verfügbar</span>
-                    <a href="high-fantasy.html" class="genre-btn">Fantasie erleben</a>
-                </div>
-
-                <div class="genre-card">
-                    <span class="genre-icon">🔍</span>
-                    <h3 class="genre-title">Krimis</h3>
-                    <p class="genre-subtitle">Mysterien der Heide -- Fesselnde Ermittlungsgeschichten</p>
-                    <p class="genre-description">Spannungsgeladene Krimis aus der Lüneburger Heide und anderen düsteren Schauplätzen.</p>
-                    <span class="book-count available">3 Bücher verfügbar</span>
-                    <a href="krimis.html" class="genre-btn">Krimis entdecken</a>
-                </div>
-
-                <div class="genre-card">
-                    <span class="genre-icon">🔥</span>
-                    <h3 class="genre-title">Thriller</h3>
-                    <p class="genre-subtitle">Flammen des Verrats -- Intensive Charakterstudien</p>
-                    <p class="genre-description">Psychologisch tiefgreifende Thriller über menschliche Abgründe und Obsessionen.</p>
-                    <span class="book-count available">1 Buch verfügbar</span>
-                    <a href="thriller.html" class="genre-btn">Thriller erleben</a>
-                </div>
-
-                <div class="genre-card">
-                    <span class="genre-icon">📜</span>
-                    <h3 class="genre-title">Chroniken & Geschichte</h3>
-                    <p class="genre-subtitle">Authentische Berichte und historische Aufarbeitungen</p>
-                    <p class="genre-description">Vergangenheit lebendig werden lassen.</p>
-                    <span class="book-count coming-soon">Bald verfügbar</span>
-                    <a href="#" class="genre-btn disabled">Bald verfügbar</a>
-                </div>
-
-                <div class="genre-card">
-                    <span class="genre-icon">📖</span>
-                    <h3 class="genre-title">Biografien & Memoiren</h3>
-                    <p class="genre-subtitle">Persönliche Geschichten und Lebenserfahrungen</p>
-                    <p class="genre-description">Die inspirieren und zum Nachdenken anregen.</p>
-                    <span class="book-count coming-soon">Bald verfügbar</span>
-                    <a href="#" class="genre-btn disabled">Bald verfügbar</a>
-                </div>
-            </div>
-        </section>
-
-        <section class="stats-section">
-            <div class="container">
-                <div class="stats-grid">
-                    <div class="stat-item">
-                        <span class="stat-number">82</span>
-                        <span class="stat-label">Jahre jung</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-number">30+</span>
-                        <span class="stat-label">Jahre Lehrerfahrung</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-number">10+</span>
-                        <span class="stat-label">Jahre Schreiberfahrung</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-number">20+</span>
-                        <span class="stat-label">Bücher veröffentlicht</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </div>
+    </main>
 
     <footer>
         <div class="container">
