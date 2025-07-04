@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Romantik Serien - Helmut Wegners Wortwelten</title>
+    <title>Romantik Fiktion - Helmut Wegners Wortwelten</title>
     <style>
         * {
             margin: 0;
@@ -12,325 +12,362 @@
         }
 
         body {
-            font-family: 'Georgia', serif;
-            line-height: 1.6;
-            color: #2c3e50;
-            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
+            font-family: 'Georgia', 'Times New Roman', serif;
+            background: linear-gradient(135deg, #2c1810 0%, #8b4513 25%, #1a1a2e 50%, #16213e 75%, #d2691e 100%);
+            color: #fff;
             min-height: 100vh;
+            padding: 20px;
         }
 
-        .container {
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+            background: rgba(0,0,0,0.4);
+            padding: 40px;
+            border-radius: 20px;
+            backdrop-filter: blur(15px);
+            border: 2px solid rgba(255,215,0,0.3);
+        }
+
+        .header h1 {
+            font-size: 3.2rem;
+            background: linear-gradient(45deg, #ffd700, #c9b037, #ffd700);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+            margin-bottom: 15px;
+        }
+
+        .header .subtitle {
+            font-size: 1.3rem;
+            color: #ffebcd;
+            font-style: italic;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
+        }
+
+        .navigation {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .nav-breadcrumb {
+            display: inline-flex;
+            align-items: center;
+            background: rgba(255,255,255,0.1);
+            padding: 18px 30px;
+            border-radius: 30px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,215,0,0.3);
+        }
+
+        .nav-breadcrumb span {
+            color: #ffd700;
+            font-weight: bold;
+            margin: 0 12px;
+        }
+
+        .nav-breadcrumb .arrow {
+            color: #ffebcd;
+            margin: 0 18px;
+            font-size: 1.3rem;
+        }
+
+        .intro-section {
+            max-width: 900px;
+            margin: 0 auto 60px;
+            text-align: center;
+            background: rgba(0,0,0,0.3);
+            padding: 40px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,215,0,0.2);
+        }
+
+        .intro-section h2 {
+            color: #ffd700;
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+        }
+
+        .intro-section p {
+            font-size: 1.2rem;
+            line-height: 1.7;
+            color: #ffebcd;
+        }
+
+        .series-container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Header */
-        header {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-            padding: 1rem 0;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 1.8rem;
-            font-weight: bold;
-            color: #2c3e50;
-            text-decoration: none;
-        }
-
-        .nav-menu {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-        }
-
-        .nav-link {
-            color: #2c3e50;
-            text-decoration: none;
-            font-weight: 500;
-            padding: 0.5rem 1rem;
-            border-radius: 5px;
-            transition: all 0.3s ease;
-        }
-
-        .nav-link:hover {
-            background: #f8f9fa;
-            color: #e91e63;
-        }
-
-        /* Hero Section */
-        .hero {
-            text-align: center;
-            padding: 4rem 0;
-            color: white;
-        }
-
-        .hero h1 {
-            font-size: 3rem;
-            font-weight: bold;
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            max-width: 600px;
-            margin: 0 auto 2rem auto;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
-        }
-
-        .back-link {
-            background: rgba(255, 255, 255, 0.2);
-            color: white;
-            padding: 8px 16px;
-            border-radius: 20px;
-            text-decoration: none;
-            font-size: 0.9rem;
-            margin-bottom: 2rem;
-            display: inline-block;
-            backdrop-filter: blur(10px);
-        }
-
-        .back-link:hover {
-            background: rgba(255, 255, 255, 0.3);
-        }
-
-        /* Series Section */
-        .series-section {
-            background: white;
-            border-radius: 20px;
-            margin: 2rem auto;
-            padding: 3rem;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        }
-
-        .series-title {
-            text-align: center;
-            font-size: 2.5rem;
-            color: #2c3e50;
-            margin-bottom: 3rem;
-        }
-
-        .series-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 3rem;
-            margin-top: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            padding: 40px 0;
         }
 
         .series-card {
-            background: linear-gradient(135deg, #fff5f5, #ffebee);
+            background: rgba(0,0,0,0.4);
             border-radius: 15px;
-            padding: 2rem;
+            padding: 30px;
+            backdrop-filter: blur(15px);
+            border: 2px solid transparent;
+            background-clip: padding-box;
             text-align: center;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border: 2px solid #fce4ec;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            height: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .series-card.romantic {
+            border-image: linear-gradient(45deg, #ffd700, #ffb347, #ffd700) 1;
+            background: rgba(139, 69, 19, 0.2);
+        }
+
+        .series-card.mysterious {
+            border-image: linear-gradient(45deg, #c9b037, #1a1a2e, #c9b037) 1;
+            background: rgba(26, 26, 46, 0.3);
         }
 
         .series-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(233, 30, 99, 0.2);
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(255,215,0,0.3);
         }
 
-        .series-icon {
-            font-size: 4rem;
-            margin-bottom: 1rem;
-            display: block;
+        .series-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, transparent 0%, rgba(255,215,0,0.1) 50%, transparent 100%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
         }
 
-        .series-name {
+        .series-card:hover::before {
+            opacity: 1;
+        }
+
+        .series-content {
+            position: relative;
+            z-index: 2;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .series-header {
+            margin-bottom: 20px;
+        }
+
+        .series-title {
             font-size: 1.8rem;
-            font-weight: bold;
-            color: #e91e63;
-            margin-bottom: 0.5rem;
+            margin-bottom: 8px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+        }
+
+        .romantic .series-title {
+            color: #ffd700;
+        }
+
+        .mysterious .series-title {
+            color: #c9b037;
         }
 
         .series-subtitle {
-            color: #ad1457;
+            font-size: 1rem;
             font-style: italic;
-            margin-bottom: 1rem;
-            font-size: 1.1rem;
+            color: #ffebcd;
+            opacity: 0.9;
         }
 
         .series-description {
-            color: #6c757d;
-            margin-bottom: 1.5rem;
-            line-height: 1.6;
-            text-align: left;
+            margin-bottom: 20px;
         }
 
-        .book-count {
-            background: #e91e63;
-            color: white;
-            padding: 8px 16px;
-            border-radius: 20px;
+        .series-description p {
+            font-size: 1rem;
+            line-height: 1.5;
+            color: #e6ddc4;
+        }
+
+        .series-stats {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 25px;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 1.8rem;
             font-weight: bold;
-            margin-bottom: 1.5rem;
-            display: inline-block;
+            color: #ffd700;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+        }
+
+        .stat-label {
             font-size: 0.9rem;
+            color: #ffebcd;
+            opacity: 0.8;
         }
 
-        .series-features {
-            margin-bottom: 2rem;
-        }
-
-        .feature-item {
-            background: #f8f9fa;
-            padding: 0.5rem 1rem;
-            margin: 0.5rem;
-            border-radius: 15px;
-            display: inline-block;
-            font-size: 0.9rem;
-            color: #6c757d;
-        }
-
-        .btn {
-            padding: 12px 24px;
+        .series-btn {
+            background: linear-gradient(45deg, #28a745, #20c997);
+            color: white;
             border: none;
+            padding: 12px 25px;
             border-radius: 25px;
-            text-decoration: none;
+            font-size: 1rem;
             font-weight: bold;
             cursor: pointer;
             transition: all 0.3s ease;
-            font-size: 1rem;
+            text-decoration: none;
             display: inline-block;
+            box-shadow: 0 6px 15px rgba(40, 167, 69, 0.3);
+            position: relative;
+            z-index: 2;
         }
 
-        .btn-primary {
-            background: linear-gradient(45deg, #e91e63, #ad1457);
-            color: white;
-        }
-
-        .btn-primary:hover {
+        .series-btn:hover {
+            background: linear-gradient(45deg, #20c997, #28a745);
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(233, 30, 99, 0.3);
+            box-shadow: 0 8px 20px rgba(40, 167, 69, 0.4);
         }
 
-        /* Footer */
-        footer {
-            background: rgba(44, 62, 80, 0.9);
-            color: white;
+        .back-link {
             text-align: center;
-            padding: 2rem 0;
-            margin-top: 3rem;
+            margin-top: 60px;
         }
 
-        /* Mobile Responsiveness */
+        .back-link a {
+            color: #ffd700;
+            text-decoration: none;
+            font-size: 1.2rem;
+            padding: 15px 30px;
+            border: 2px solid #ffd700;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+
+        .back-link a:hover {
+            background: #ffd700;
+            color: #2c1810;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(255,215,0,0.3);
+        }
+
         @media (max-width: 768px) {
-            .nav-menu {
-                display: none;
-            }
-
-            .hero h1 {
-                font-size: 2rem;
-            }
-
-            .series-grid {
+            .series-container {
                 grid-template-columns: 1fr;
-                gap: 2rem;
+                gap: 20px;
+            }
+
+            .header h1 {
+                font-size: 2.5rem;
             }
 
             .series-card {
-                padding: 1.5rem;
+                padding: 25px 20px;
+                height: auto;
             }
 
-            .series-section {
-                margin: 1rem;
-                padding: 2rem 1rem;
+            .series-title {
+                font-size: 1.6rem;
             }
         }
     </style>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <div class="header-content">
-                <a href="index.html" class="logo">Helmut Wegners Wortwelten</a>
-                <nav>
-                    <ul class="nav-menu">
-                        <li><a href="index.html" class="nav-link">Startseite</a></li>
-                        <li><a href="kinderbuecher.html" class="nav-link">Kinderbücher</a></li>
-                        <li><a href="krimis.html" class="nav-link">Krimis</a></li>
-                        <li><a href="romantik-serien.html" class="nav-link">Romantik</a></li>
-                        <li><a href="new-adult.html" class="nav-link">New Adult</a></li>
-                        <li><a href="high-fantasy.html" class="nav-link">High Fantasy</a></li>
-                        <li><a href="thriller.html" class="nav-link">Thriller</a></li>
-                        <li><a href="#" class="nav-link">Kontakt</a></li>
-                    </ul>
-                </nav>
+    <div class="header">
+        <h1>Romantik Fiktion</h1>
+        <div class="subtitle">Zwei fesselnde Serien voller Leidenschaft und Geheimnisse</div>
+    </div>
+
+    <div class="navigation">
+        <div class="nav-breadcrumb">
+            <span>Genres</span>
+            <div class="arrow">→</div>
+            <span>Romantik</span>
+            <div class="arrow">→</div>
+            <span style="color: #ffebcd;">Serien-Übersicht</span>
+        </div>
+    </div>
+
+    <div class="intro-section">
+        <h2>Willkommen in der Welt der Romantik</h2>
+        <p>Entdecken Sie zwei außergewöhnliche Serien, die Sie in völlig verschiedene Welten entführen. Von emotionalen Reisen der Liebe bis hin zu geheimnisvollen Kunstschätzen und verbotener Leidenschaft - hier finden Sie Geschichten, die Ihr Herz berühren und Ihre Fantasie beflügeln werden.</p>
+    </div>
+
+    <div class="series-container">
+        <!-- Serie 1: Verlangen der Herzen -->
+        <div class="series-card romantic">
+            <div class="series-content">
+                <div class="series-header">
+                    <h3 class="series-title">Verlangen der Herzen</h3>
+                    <div class="series-subtitle">Adelaide Hills Serie</div>
+                </div>
+                
+                <div class="series-description">
+                    <p>Eine emotionale Reise durch die Höhen und Tiefen der Liebe. Clara und Alex entdecken in den malerischen Adelaide Hills nicht nur zueinander, sondern auch zu sich selbst.</p>
+                </div>
+
+                <div class="series-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">4</div>
+                        <div class="stat-label">Bände</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">🇩🇪🇬🇧</div>
+                        <div class="stat-label">Sprachen</div>
+                    </div>
+                </div>
+
+                <a href="lese-vorlese-romantik.html" class="series-btn">Serie entdecken</a>
             </div>
         </div>
-    </header>
 
-    <div class="container">
-        <div class="hero">
-            <a href="index.html" class="back-link">← Zurück zur Startseite</a>
-            
-            <h1>Romantik Serien</h1>
-            <p>Zwei fesselnde Serien voller Leidenschaft, Geheimnisse und emotionaler Tiefe. Entdecke Geschichten, die das Herz berühren und die Seele bewegen.</p>
-        </div>
-
-        <div class="series-section">
-            <h2 class="series-title">Unsere Romantik-Serien</h2>
-
-            <div class="series-grid">
-                <!-- Serie 1: Verlangen der Herzen -->
-                <div class="series-card">
-                    <span class="series-icon">💕</span>
-                    <h3 class="series-name">Verlangen der Herzen</h3>
-                    <p class="series-subtitle">Adelaide Hills Serie</p>
-                    <p class="series-description">Eine emotionale Reise durch die Höhen und Tiefen der Liebe. Clara und Alex entdecken in den malerischen Adelaide Hills nicht nur zueinander, sondern auch zu sich selbst. Eine Geschichte über Vertrauen, Leidenschaft und die Kraft der wahren Liebe.</p>
-                    
-                    <div class="book-count">4 Bände verfügbar</div>
-                    
-                    <div class="series-features">
-                        <span class="feature-item">🇩🇪 Deutsch</span>
-                        <span class="feature-item">🇬🇧 English</span>
-                        <span class="feature-item">💝 Emotional</span>
-                        <span class="feature-item">🌅 Adelaide Hills</span>
-                    </div>
-                    
-                    <a href="verlangen-der-herzen.html" class="btn btn-primary">Serie entdecken</a>
+        <!-- Serie 2: Die verborgenen Kammern -->
+        <div class="series-card mysterious">
+            <div class="series-content">
+                <div class="series-header">
+                    <h3 class="series-title">Die verborgenen Kammern</h3>
+                    <div class="series-subtitle">Geheimnisvolle Romanzen</div>
+                </div>
+                
+                <div class="series-description">
+                    <p>In den Schatten alter Gemäuer verbergen sich nicht nur architektonische Schätze, sondern auch die tiefsten Geheimnisse des Herzens. Elena und Marcus entdecken eine zeitlose Liebe.</p>
                 </div>
 
-                <!-- Serie 2: Die Verborgenen Kammern -->
-                <div class="series-card">
-                    <span class="series-icon">🏰</span>
-                    <h3 class="series-name">Die Verborgenen Kammern</h3>
-                    <p class="series-subtitle">Geheimnisvolle Romanzen</p>
-                    <p class="series-description">In den Schatten alter Gemäuer verbergen sich nicht nur architektonische Schätze, sondern auch die tiefsten Geheimnisse des Herzens. Elena und Marcus entdecken in historischen Palästen eine Liebe, die Jahrhunderte überdauert.</p>
-                    
-                    <div class="book-count">3 Bände verfügbar</div>
-                    
-                    <div class="series-features">
-                        <span class="feature-item">🇩🇪 Deutsch</span>
-                        <span class="feature-item">🇬🇧 English</span>
-                        <span class="feature-item">🇪🇸 Español</span>
-                        <span class="feature-item">🏛️ Historisch</span>
-                        <span class="feature-item">🔮 Mystisch</span>
+                <div class="series-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">3</div>
+                        <div class="stat-label">Bände</div>
                     </div>
-                    
-                    <a href="die-verborgenen-kammern.html" class="btn btn-primary">Serie entdecken</a>
+                    <div class="stat-item">
+                        <div class="stat-number">🇩🇪🇬🇧🇪🇸</div>
+                        <div class="stat-label">Sprachen</div>
+                    </div>
                 </div>
+
+                <a href="lese-vorlese-romantik.html" class="series-btn">Zu den Bändern</a>
             </div>
         </div>
     </div>
 
-    <footer>
-        <div class="container">
-            <p>&copy; 2025 Helmut Wegner - Professionelle Autoren-Website. Alle Rechte vorbehalten.</p>
-        </div>
-    </footer>
+    <div class="back-link">
+        <a href="index.html">← Zurück zur Hauptseite</a>
+    </div>
 </body>
 </html>
