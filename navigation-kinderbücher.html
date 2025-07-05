@@ -87,16 +87,14 @@
             height: 260px;
             margin: 0 auto 20px;
             border-radius: 15px;
-            background: linear-gradient(135deg, #FFE4E1, #E6E6FA);
-            border: 3px solid #FFB6C1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5em;
-            color: #9370DB;
-            font-weight: bold;
-            text-align: center;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            border: 3px solid #FFD700;
+            object-fit: cover;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+            transition: transform 0.3s ease;
+        }
+        
+        .book-cover:hover {
+            transform: scale(1.05);
         }
         
         .book-title {
@@ -188,16 +186,15 @@
         .series-cover {
             width: 120px;
             height: 180px;
-            background: linear-gradient(135deg, #483D8B, #6A5ACD);
             border-radius: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: bold;
-            font-size: 1.2em;
-            text-align: center;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            border: 3px solid #FFD700;
+            object-fit: cover;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+            transition: transform 0.3s ease;
+        }
+        
+        .series-cover:hover {
+            transform: scale(1.05);
         }
         
         .navigation {
@@ -249,6 +246,11 @@
                 height: 220px;
             }
             
+            .series-cover {
+                width: 100px;
+                height: 150px;
+            }
+            
             .book-title {
                 font-size: 1.5em;
             }
@@ -286,11 +288,7 @@
         <div class="books-grid">
             <!-- Buch 1: Die Zauberakademie von Morgenstern -->
             <div class="book-card">
-                <div class="book-cover">
-                    ✨🏰✨<br>
-                    Die Zauber-<br>akademie<br>
-                    von<br>Morgenstern
-                </div>
+                <img src="zauberakademie.jpg" alt="Die Zauberakademie von Morgenstern Cover" class="book-cover">
                 <h2 class="book-title">Die Zauberakademie von Morgenstern</h2>
                 <p class="book-description">
                     Leonas ist anders als andere Kinder. Tiere vertrauen ihm, und Pflanzen gedeihen unter seinen Händen. 
@@ -304,11 +302,7 @@
             
             <!-- Buch 2: Das Geheimnis des verborgenen Waldes -->
             <div class="book-card">
-                <div class="book-cover">
-                    🌲🗺️🌲<br>
-                    Das Geheimnis<br>
-                    des<br>verborgenen<br>Waldes
-                </div>
+                <img src="verborgener-wald.jpg" alt="Das Geheimnis des verborgenen Waldes Cover" class="book-cover">
                 <h2 class="book-title">Das Geheimnis des verborgenen Waldes</h2>
                 <p class="book-description">
                     Max und Lisa finden eine geheimnisvolle Karte, die sie zu einem magischen Ort führt. 
@@ -322,10 +316,7 @@
             
             <!-- Buch 3: Der Rätseldetektivclub -->
             <div class="book-card">
-                <div class="book-cover">
-                    🔍🗝️🔍<br>
-                    Der<br>Rätsel-<br>detektiv-<br>club
-                </div>
+                <img src="raetseldetektivclub.jpg" alt="Der Rätseldetektivclub Cover" class="book-cover">
                 <h2 class="book-title">Der Rätseldetektivclub</h2>
                 <p class="book-description">
                     Max, Emma, Jonas und Lena sind die besten Rätseldetektive weit und breit! 
@@ -339,10 +330,7 @@
             
             <!-- Buch 4: Der Zeitnarr -->
             <div class="book-card">
-                <div class="book-cover">
-                    ⏰🌀⏰<br>
-                    Der<br>Zeitnarr
-                </div>
+                <img src="zeitnarr.jpg" alt="Der Zeitnarr Cover" class="book-cover">
                 <h2 class="book-title">Der Zeitnarr</h2>
                 <p class="book-description">
                     Max findet auf einem Flohmarkt eine geheimnisvolle Taschenuhr. 
@@ -360,12 +348,7 @@
             <h2>🌙 Bald verfügbar</h2>
             <p><strong>Die Mondstein-Serie</strong> - Eine aufregende neue Buchreihe mit 3 Bänden!</p>
             <div class="series-info">
-                <div class="series-cover">
-                    🌙✨🌙<br>
-                    Mondstein<br>
-                    Serie<br>
-                    (3 Bände)
-                </div>
+                <img src="mondstein.jpg" alt="Mondstein Serie Cover" class="series-cover">
                 <div>
                     <p style="font-size: 1.1em; color: #2F4F4F; margin: 0;">
                         Eine magische Trilogie voller Abenteuer und Geheimnisse wartet auf euch! 
