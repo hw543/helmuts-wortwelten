@@ -38,16 +38,44 @@
             border: 3px solid #FFD700;
         }
         
+        .header-section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 50px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            position: relative;
+        }
+        
+        .cover-image {
+            width: 120px;
+            height: 180px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+            border: 3px solid #FFD700;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+            margin-right: 20px;
+        }
+        
+        .cover-image:hover {
+            transform: scale(1.05);
+        }
+        
+        .title-section {
+            text-align: center;
+            flex: 1;
+        }
+        
         h1 {
             color: #FF6347;
-            text-align: center;
             font-size: 2.5em;
             margin-bottom: 10px;
             text-shadow: 2px 2px 4px rgba(255,105,180,0.3);
         }
         
         .author {
-            text-align: center;
             color: #9370DB;
             font-style: italic;
             font-size: 1.2em;
@@ -213,6 +241,16 @@
                 margin: 10px;
             }
             
+            .header-section {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .cover-image {
+                width: 100px;
+                height: 150px;
+            }
+            
             h1 {
                 font-size: 2em;
             }
@@ -248,8 +286,13 @@
     <div class="rainbow-header"></div>
     
     <div class="container">
-        <h1 id="main-title">Der Zeitnarr</h1>
-        <p class="author" id="author">von Helmut Wegner</p>
+        <div class="header-section">
+            <img src="zeitnarr.jpg" alt="Der Zeitnarr Cover" class="cover-image">
+            <div class="title-section">
+                <h1 id="main-title">Der Zeitnarr</h1>
+                <p class="author" id="author">von Helmut Wegner</p>
+            </div>
+        </div>
         
         <div class="controls">
             <div class="language-navigation">
